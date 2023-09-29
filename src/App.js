@@ -1,11 +1,22 @@
-import './App.css'
-import { Button } from '@chakra-ui/react'
-
+import { Nav } from './components/Nav'
 function App() {
   return (
-    <div className='App'>
-      <Button colorScheme='blue'>Hola</Button>
-    </div>
+    <>
+      <Nav />
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim amet sit corporis recusandae neque beatae explicabo porro assumenda mollitia nemo eos, perferendis, maxime doloremque at fugit iste velit exercitationem distinctio.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim amet sit corporis recusandae neque beatae explicabo porro assumenda mollitia nemo eos, perferendis, maxime doloremque at fugit iste velit exercitationem distinctio.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim amet sit corporis recusandae neque beatae explicabo porro assumenda mollitia nemo eos, perferendis, maxime doloremque at fugit iste velit exercitationem distinctio.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim amet sit corporis recusandae neque beatae explicabo porro assumenda mollitia nemo eos, perferendis, maxime doloremque at fugit iste velit exercitationem distinctio.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim amet sit corporis recusandae neque beatae explicabo porro assumenda mollitia nemo eos, perferendis, maxime doloremque at fugit iste velit exercitationem distinctio.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim amet sit corporis recusandae neque beatae explicabo porro assumenda mollitia nemo eos, perferendis, maxime doloremque at fugit iste velit exercitationem distinctio.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim amet sit corporis recusandae neque beatae explicabo porro assumenda mollitia nemo eos, perferendis, maxime doloremque at fugit iste velit exercitationem distinctio.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim amet sit corporis recusandae neque beatae explicabo porro assumenda mollitia nemo eos, perferendis, maxime doloremque at fugit iste velit exercitationem distinctio.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim amet sit corporis recusandae neque beatae explicabo porro assumenda mollitia nemo eos, perferendis, maxime doloremque at fugit iste velit exercitationem distinctio.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim amet sit corporis recusandae neque beatae explicabo porro assumenda mollitia nemo eos, perferendis, maxime doloremque at fugit iste velit exercitationem distinctio.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim amet sit corporis recusandae neque beatae explicabo porro assumenda mollitia nemo eos, perferendis, maxime doloremque at fugit iste velit exercitationem distinctio.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim amet sit corporis recusandae neque beatae explicabo porro assumenda mollitia nemo eos, perferendis, maxime doloremque at fugit iste velit exercitationem distinctio.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim amet sit corporis recusandae neque beatae explicabo porro assumenda mollitia nemo eos, perferendis, maxime doloremque at fugit iste velit exercitationem distinctio.</p>
+    </>
   )
 }
 
