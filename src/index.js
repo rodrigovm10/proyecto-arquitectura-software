@@ -3,7 +3,16 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
-import { ChakraProvider } from '@chakra-ui/react'
+import { ChakraProvider } from '@chakra-ui/react';
+import { createBrowserRouter } from "react-router-dom";
+import { Empresa } from '../src/components/Empresa';
+
+const router = createBrowserRouter([
+  {
+    path: "/empresa",
+    element: <Empresa />,
+  }
+]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
