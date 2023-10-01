@@ -1,8 +1,5 @@
 import {
-  Flex,
-  Spacer,
   Box,
-  Link,
   Image,
   Text,
   Heading,
@@ -10,32 +7,17 @@ import {
   Stack,
   Card,
 } from "@chakra-ui/react";
-import logo from "../img/logo.png";
-import bdt from "../img/bdt.jpg";
-import negocio from "../img/negocio.jpg";
-import solucion from "../img/solucion.png";
+import logo from "../../src/img/logo.png";
+import bdt from "../../src/img/bdt.jpg";
+import negocio from "../../src/img/negocio.jpg";
+import solucion from "../../src/img/solucion.png";
 
-export function Landig() {
+export function NavMedium() {
   return (
     <Box>
-      <Box bg="#181c24" p="1rem">
-        <Flex>
-          <Image src={logo} width={200} />
-          <Spacer />
-          <Flex gap={3}>
-            <Link color="#fff">Inicio</Link>
-            <Link color="#fff">Buscadores de Trabajo</Link>
-            <Link color="#fff" href="/empresa">
-              Empresas
-            </Link>
-          </Flex>
-        </Flex>
-      </Box>
-      {/**Body */}
       <Box>
-        <Box w="100%" pos="relative">
+        <Box w="100%" pos="relative" mb="4rem">
           <Image src={solucion} w="100%" boxSize="full" />
-
           <Text
             pos="absolute"
             fontSize="4xl"
@@ -101,7 +83,7 @@ export function Landig() {
         >
           <Stack>
             <CardBody>
-              <Heading size="md">Negocios</Heading>
+              <Heading size="md">Empresas</Heading>
               <Text py="4">
                 Agradecemos la confianza depositada en nosotros para encontrar
                 talento. Juntos, construiremos un futuro lleno de posibilidades.

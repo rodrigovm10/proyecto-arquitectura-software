@@ -8,22 +8,16 @@ import {
   Center,
   Select,
   Grid,
-  GridItem,
   Stack,
 } from "@chakra-ui/react";
-import { Nav } from "../../src/pages/Nav";
-import {
-  DATOS_UBICACION,
-  DATOS_PRINCIPALES,
-  MUNICIPIOS,
-} from "../constants/FormEmpresa";
+import { Nav } from "../pages/Nav";
 
-export function FormEmpresa() {
+export function Vacante() {
   return (
     <>
       <Nav />
       <Heading as="h3">
-        <Center>Registro Buscador de Trabajo</Center>
+        <Center>Registro Vacantes</Center>
       </Heading>
       <FormControl
         display="flex"
@@ -37,12 +31,12 @@ export function FormEmpresa() {
         w={{ base: "80%", sm: "80%", md: "55%" }}
       >
         <Flex gap={2} direction="column" justify="space-between">
-          {DATOS_PRINCIPALES.map((campo) => (
+          {/**{DATOS_PRINCIPALES.map((campo) => (
             <Box key={campo.id} flex="1">
               <FormLabel>{campo.campo}</FormLabel>
               <Input type={campo.type} />
             </Box>
-          ))}
+          ))} */}
         </Flex>
         <Flex
           gap={5}
@@ -65,11 +59,11 @@ export function FormEmpresa() {
         <Stack>
           <FormLabel>Municipio</FormLabel>
           <Select>
-            {MUNICIPIOS.map((municipio, i) => (
+            {/**{MUNICIPIOS.map((municipio, i) => (
               <option key={i} disabled={municipio === "Municipios"}>
                 {municipio}
               </option>
-            ))}
+            ))} */}
           </Select>
         </Stack>
 
@@ -78,12 +72,12 @@ export function FormEmpresa() {
           templateColumns={{ base: "repeat(1, 1fr)", sm: "repeat(2, 1fr)" }}
           gap={2}
         >
-          {DATOS_UBICACION.map((campo) => (
+          {/**{DATOS_UBICACION.map((campo) => (
             <GridItem key={campo.id} flex="1">
               <FormLabel key={campo.id}>{campo.campo}</FormLabel>
               <Input type={campo.type} />
             </GridItem>
-          ))}
+          ))} */}
         </Grid>
       </FormControl>
     </>

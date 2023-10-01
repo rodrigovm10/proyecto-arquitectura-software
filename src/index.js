@@ -7,6 +7,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { LoginEmpresa } from './services/LoginEmpresa'
 import { FormEmpresa } from './pages/FormEmpresa'
+import { Vacante } from './pages/Vacante'
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: '/form-empresa',
     element: <FormEmpresa />
+  },
+  {
+    path: '/vacante',
+    element: <Vacante />
   }
 ])
 
