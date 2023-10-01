@@ -7,7 +7,6 @@ import {
   Stack,
   Card,
 } from "@chakra-ui/react";
-import logo from "../../src/img/logo.png";
 import bdt from "../../src/img/bdt.jpg";
 import negocio from "../../src/img/negocio.jpg";
 import solucion from "../../src/img/solucion.png";

@@ -8,7 +8,9 @@ import {
   Center,
   Select,
   Grid,
+  GridItem,
   Stack,
+  Container,
 } from "@chakra-ui/react";
 import { Nav } from "../pages/Nav";
 
@@ -19,67 +21,110 @@ export function Vacante() {
       <Heading as="h3">
         <Center>Registro Vacantes</Center>
       </Heading>
-      <FormControl
-        display="flex"
-        flexDirection="column"
-        gap="2rem"
-        boxShadow="dark-lg"
-        p="6"
-        rounded="md"
-        bg="#fff"
-        m="2rem auto 0"
-        w={{ base: "80%", sm: "80%", md: "55%" }}
-      >
-        <Flex gap={2} direction="column" justify="space-between">
-          {/**{DATOS_PRINCIPALES.map((campo) => (
-            <Box key={campo.id} flex="1">
-              <FormLabel>{campo.campo}</FormLabel>
-              <Input type={campo.type} />
-            </Box>
-          ))} */}
-        </Flex>
-        <Flex
-          gap={5}
-          justify="space-between"
-          direction={{ base: "column", sm: "row" }}
-        >
-          <Box flex="1">
-            <FormLabel>Tipo RFC</FormLabel>
-            <Select>
-              <option disabled>Tipo RFC</option>
-              <option>RFC Moral</option>
-              <option>RFC Físico</option>
-            </Select>
-          </Box>
-          <Box flex="1">
-            <FormLabel>RFC</FormLabel>
+      <Center py={6}>
+        <Grid templateColumns="repeat(2, 1fr)" gap={10}>
+          <GridItem w="100%" h="10">
+            <FormLabel>Nombre Vacante</FormLabel>
             <Input type="text"></Input>
-          </Box>
-        </Flex>
-        <Stack>
-          <FormLabel>Municipio</FormLabel>
-          <Select>
-            {/**{MUNICIPIOS.map((municipio, i) => (
-              <option key={i} disabled={municipio === "Municipios"}>
-                {municipio}
-              </option>
-            ))} */}
-          </Select>
-        </Stack>
-
-        <Grid
-          templateRows={{ base: "repeat(4, 1fr)", sm: "repeat(2, 1fr)" }}
-          templateColumns={{ base: "repeat(1, 1fr)", sm: "repeat(2, 1fr)" }}
-          gap={2}
-        >
-          {/**{DATOS_UBICACION.map((campo) => (
-            <GridItem key={campo.id} flex="1">
-              <FormLabel key={campo.id}>{campo.campo}</FormLabel>
-              <Input type={campo.type} />
-            </GridItem>
-          ))} */}
+          </GridItem>
+          <GridItem w="100%" h="10">
+            <FormLabel>Descripción</FormLabel>
+            <Input type="text"></Input>
+          </GridItem>
+          <GridItem w="100%" h="10">
+            <FormLabel>Número de plazas</FormLabel>
+            <Input type="text"></Input>
+          </GridItem>
+          <GridItem w="100%" h="10">
+            <FormLabel>Dias laborales</FormLabel>
+            <Input type="text"></Input>
+          </GridItem>
+          <GridItem w="100%" h="10">
+            <FormLabel>Habilidades blandas</FormLabel>
+            <Input type="text"></Input>
+          </GridItem>
+          <GridItem w="100%" h="10">
+            <FormLabel>Habilidades técnicas</FormLabel>
+            <Input type="text"></Input>
+          </GridItem>
+          <GridItem w="100%" h="10">
+            <FormLabel>Género</FormLabel>
+            <Input type="text"></Input>
+          </GridItem>
+          <GridItem w="100%" h="10">
+            <FormLabel>Edad Min</FormLabel>
+            <Input type="text"></Input>
+          </GridItem>
+          <GridItem w="100%" h="10">
+            <FormLabel>Edad Max</FormLabel>
+            <Input type="text"></Input>
+          </GridItem>
+          <GridItem w="100%" h="10">
+            <FormLabel>Discapacidades Aceptadas</FormLabel>
+            <Input type="text"></Input>
+          </GridItem>
+          <GridItem w="100%" h="10">
+            <FormLabel>Área</FormLabel>
+            <Input type="text"></Input>
+          </GridItem>
+          <GridItem w="100%" h="10">
+            <FormLabel>Tipo empleo</FormLabel>
+            <Input type="text"></Input>
+          </GridItem>
+          <GridItem w="100%" h="10">
+            <FormLabel>Causa vacante</FormLabel>
+            <Input type="text"></Input>
+          </GridItem>
+          <GridItem w="100%" h="10">
+            <FormLabel>Disponibildad para vijar</FormLabel>
+            <Input type="text"></Input>
+          </GridItem>
+          <GridItem w="100%" h="10">
+            <FormLabel>Disponibildad para radicar</FormLabel>
+            <Input type="text"></Input>
+          </GridItem>
+          <GridItem w="100%" h="10">
+            <FormLabel>Escolaridad</FormLabel>
+            <Input type="text"></Input>
+          </GridItem>
+          <GridItem w="100%" h="10">
+            <FormLabel>Vigencia Vacante</FormLabel>
+            <Input type="text"></Input>
+          </GridItem>
+          <GridItem w="100%" h="10">
+            <FormLabel>Prestaciones</FormLabel>
+            <Input type="text"></Input>
+          </GridItem>
+          <GridItem w="100%" h="10">
+            <FormLabel>Direccion empresa</FormLabel>
+            <Input type="text"></Input>
+          </GridItem>
+          <GridItem w="100%" h="10">
+            <FormLabel>Municipio</FormLabel>
+            <Input type="text"></Input>
+          </GridItem>
+          <GridItem w="100%" h="10">
+            <FormLabel>Colonia</FormLabel>
+            <Input type="text"></Input>
+          </GridItem>
+          <GridItem w="100%" h="10">
+            <FormLabel>Calle</FormLabel>
+            <Input type="text"></Input>
+          </GridItem>
+          <GridItem w="100%" h="10">
+            <FormLabel>CP</FormLabel>
+            <Input type="text"></Input>
+          </GridItem>
+          <GridItem w="100%" h="10">
+            <FormLabel>Núnero</FormLabel>
+            <Input type="text"></Input>
+          </GridItem>
+          <GridItem w="100%" h="10">
+            <FormLabel>Idioma</FormLabel>
+            <Input type="text"></Input>
+          </GridItem>
         </Grid>
-      </FormControl>
+      </Center>
     </>
   );
 }
