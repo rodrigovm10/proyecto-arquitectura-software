@@ -1,0 +1,104 @@
+type Oportunidades @model @auth(rules: [{allow: public}, {allow: owner}]) {
+  id: ID!
+  motivoBDT: String
+  motivoEmpresa: String
+  status: String
+  mensaje: String
+  vacanteID: String
+  empresaID: String
+  statusVisible: String
+  fechEntrevista: String
+  direccionEmpresaEntrevista: String
+  horarioEntrevista: String
+  ocumentacionEntrevistad: String
+  municipio: String
+  colonia: String
+  calle: String
+  numero: String
+  codigoPostal: String
+  idstep: String
+}
+
+type Vacante @model @auth(rules: [{allow: public}, {allow: owner}, {allow: private}]) {
+  id: ID!
+  nombreVacante: String
+  descripcion: String
+  numeroPlazas: String
+  diasLaborales: String
+  salario: String
+  habilidadesBlandas: String
+  habilidadesTecnicas: String
+  generoBDT: String
+  edadMin: String
+  edadMax: String
+  discapacidadAcept: [String]
+  area: String
+  tipoEmpleo: String
+  causaVacante: String
+  dispViajar: Boolean
+  dispRadicar: Boolean
+  nivelPuesto: String
+  experiencia: String
+  escolaridad: String
+  vigenciaVacante: String
+  prestaciones: String
+  direccionEmpresa: Boolean
+  municipio: String
+  colonia: String
+  calle: String
+  codigoPostal: String
+  numero: String
+  idioma: String
+  statusVisible: Boolean
+  tipoCotrato: String
+  modalidad: String
+  tipoLicencia: String
+  contratoDirecto: String
+  salarioMax: String
+  salarioMin: String
+  periodoPago: String
+  tipoSueldo: String
+  correoContactoDirecto: String
+  telefonoContactoDirecto: String
+  horarioLaboral: String
+}
+
+type Empresa @model @auth(rules: [{allow: public}, {allow: private, provider: iam}, {allow: private}, {allow: groups, groups: ["BDT"], operations: [read, create, update, delete]}]) {
+  id: ID!
+  nombreComercial: String
+  razonSocial: String
+  rfc: String
+  email: String
+  telefono: String
+  tamanoEmpresa: String
+  municipio: String
+  codigoPostal: String
+  colonia: String
+  calle: String
+  actividad: String
+  sector: String
+  tipoSucursal: String
+}
+
+type BDT @model @auth(rules: [{allow: public}, {allow: owner}]) {
+  id: ID!
+  nombre: String
+  apellidos: String
+  curp: String
+  fechaNacimiento: String
+  telefono: String
+  escolaridad: String
+  genero: String
+  idioma: [String]
+  buscaEmpleo: Boolean
+  trabajando: Boolean
+  correo: String
+  habilidadesBlandas: [String]
+  habilidadesTecnicas: String
+  dispViajar: Boolean
+  dispRadicar: Boolean
+  municipio: String
+  colonia: String
+  calle: String
+  codigoPostal: String
+} 

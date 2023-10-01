@@ -1,9 +1,10 @@
-import { Landig } from './pages/Landing';
+
+import { Landing } from '../src/landing/screens/Landing'
 
 function App() {
   return (
     <>
-      <Landig />
+      <Landing />
     </>
   )
 }
