@@ -1,10 +1,10 @@
 
-import { Landing } from '../src/landing/screens/Landing'
+import { Nav } from '../src/components/Nav'
 
 function App() {
   return (
     <>
-      <Landing />
+      <Nav />
     </>
   )
 }
