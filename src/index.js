@@ -4,18 +4,40 @@ import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { ChakraProvider } from '@chakra-ui/react'
-import { Amplify } from 'aws-amplify';
-import awsExports from './aws-exports';
-import LoginBdE from './pages/BDT/login-bdt'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { LoginEmpresa } from './services/LoginEmpresa'
+import { FormEmpresa } from './pages/FormEmpresa'
+import LoginBdt from './pages/BDT/LoginBdt'
+import RegistroBdt from './components/BDT/RegistroBdt/RegistroBdt'
 
-import RegistroInfoPersonal from './components/BDT/RegistroBdt/RegistroSituacionActual'
-Amplify.configure(awsExports);
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <App />
+  },
+  {
+    path: '/login-empresa',
+    element: <LoginEmpresa />
+  },
+  {
+    path: '/login-bdt',
+    element: <LoginBdt />
+  },
+  {
+    path: '/form-empresa',
+    element: <FormEmpresa />
+  },
+  {
+    path: '/registro-bdt',
+    element: <RegistroBdt />
+  },
+])
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render( 
   <ChakraProvider>
     <React.StrictMode>
-      <RegistroInfoPersonal/>
+      <RouterProvider router={router} />
     </React.StrictMode>
   </ChakraProvider>
 )

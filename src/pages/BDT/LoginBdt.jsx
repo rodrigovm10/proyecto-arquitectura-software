@@ -6,7 +6,7 @@ import { Navigate } from "react-router-dom";
 import { DataStore } from "@aws-amplify/datastore";
 import { BDT } from "../../models";
 
-function LoginBdE() {
+function LoginBdt() {
   const [session, setSession] = useState(false);
   const [nombreGrupo, setNombreGrupo] = useState("trabajador");
   const [userData, setUserData] = useState({});
@@ -69,4 +69,4 @@ function LoginBdE() {
 }
 
 
-export default withAuthenticator(LoginBdE);
+export default withAuthenticator(LoginBdt);

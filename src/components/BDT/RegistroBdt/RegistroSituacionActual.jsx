@@ -32,14 +32,14 @@ export default function RegistroInfoPersonal() {
         borderWidth="2px"
         borderColor="gray.200"
         borderRadius="lg"
-        p="4"
+        p="16"
         maxW="md"
       >
         <FormControl
           display="flex"
           alignItems="center"
           justifyContent="space-between" // Añade esta línea
-          mb={4} // También puedes ajustar el espaciado vertical aquí
+          mb={6} // También puedes ajustar el espaciado vertical aquí
         >
           <FormLabel htmlFor="buscaEmpleo" mb="0">
             ¿Estás buscando empleo?
@@ -55,7 +55,7 @@ export default function RegistroInfoPersonal() {
           display="flex"
           alignItems="center"
           justifyContent="space-between" // Añade esta línea
-          mb={4} // También puedes ajustar el espaciado vertical aquí
+          mb={6} // También puedes ajustar el espaciado vertical aquí
         >
           <FormLabel htmlFor="trabajando" mb="0">
             ¿Estás trabajando actualmente?
@@ -71,7 +71,7 @@ export default function RegistroInfoPersonal() {
           display="flex"
           alignItems="center"
           justifyContent="space-between" // Añade esta línea
-          mb={4} // También puedes ajustar el espaciado vertical aquí
+          mb={6} // También puedes ajustar el espaciado vertical aquí
         >
           <FormLabel htmlFor="dispViajar" mb="0">
             ¿Estás dispuesto a viajar?
@@ -87,7 +87,7 @@ export default function RegistroInfoPersonal() {
           display="flex"
           alignItems="center"
           justifyContent="space-between" // Añade esta línea
-          mb={4} // También puedes ajustar el espaciado vertical aquí
+          mb={6} // También puedes ajustar el espaciado vertical aquí
         >
           <FormLabel htmlFor="dispRadicar" mb="0">
             ¿Estás dispuesto a radicar en otro lugar?

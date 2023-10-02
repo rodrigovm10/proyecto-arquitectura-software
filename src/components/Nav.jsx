@@ -1,12 +1,10 @@
-import { Flex, Heading, Spacer, Box, Link } from '@chakra-ui/react'
+import { Flex, Heading, Spacer, Box, Link, ButtonGroup } from '@chakra-ui/react'
 
 export function Nav() {
   return (
     <Box
       bg='#181c24'
-      p='3rem'
-      pos='fixed'
-      w='100%'>
+      p={2}>
       <Flex>
         <Box>
           <Heading color='#fff'>Red Laboral</Heading>
@@ -14,8 +12,18 @@ export function Nav() {
         <Spacer />
         <Flex gap={3}>
           <Link color='#fff'>Inicio</Link>
-          <Link color='#fff'>Buscadores de Trabajo</Link>
-          <Link color='#fff'>Empresas</Link>
+          <ButtonGroup>
+            <Link
+              color='#fff'
+              href='/login-bdt'>
+              Buscadores de Trabajo
+            </Link>
+            <Link
+              color='#fff'
+              href='/login-empresa'>
+              Empresas
+            </Link>
+          </ButtonGroup>
         </Flex>
         {/* <ButtonGroup>
           <Button>Empresas</Button>
