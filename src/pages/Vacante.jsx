@@ -1,18 +1,27 @@
 import {
-  FormControl,
   FormLabel,
   Input,
-  Flex,
-  Box,
   Heading,
   Center,
   Select,
   Grid,
   GridItem,
-  Stack,
-  Container,
 } from "@chakra-ui/react";
 import { Nav } from "../pages/Nav";
+import {
+  Genero,
+  DiasLaborales,
+  Idiomas,
+  Municipios,
+  HabilidadesTecnicas,
+  HabilidadesBlandas,
+  Discapacidades,
+  Prestaciones,
+  Escolaridad,
+  TipoEmpleo,
+  CausaVacante,
+  AreaEmpresa,
+} from "../constants/Datos";
 
 export function Vacante() {
   return (
@@ -37,19 +46,43 @@ export function Vacante() {
           </GridItem>
           <GridItem w="100%" h="10">
             <FormLabel>Dias laborales</FormLabel>
-            <Input type="text"></Input>
+            <Select placeholder="Seleccione dias laborales">
+              {DiasLaborales.map((diaslaborales) => (
+                <option key={diaslaborales} value={diaslaborales}>
+                  {diaslaborales}
+                </option>
+              ))}
+            </Select>
           </GridItem>
           <GridItem w="100%" h="10">
             <FormLabel>Habilidades blandas</FormLabel>
-            <Input type="text"></Input>
+            <Select placeholder="Seleccione sus habilidades blandas">
+              {HabilidadesBlandas.map((habilidadesblandas) => (
+                <option key={habilidadesblandas} value={habilidadesblandas}>
+                  {habilidadesblandas}
+                </option>
+              ))}
+            </Select>
           </GridItem>
           <GridItem w="100%" h="10">
             <FormLabel>Habilidades técnicas</FormLabel>
-            <Input type="text"></Input>
+            <Select placeholder="Seleccione sus habilidades blandas">
+              {HabilidadesTecnicas.map((habilidadestecnicas) => (
+                <option key={habilidadestecnicas} value={habilidadestecnicas}>
+                  {habilidadestecnicas}
+                </option>
+              ))}
+            </Select>
           </GridItem>
           <GridItem w="100%" h="10">
             <FormLabel>Género</FormLabel>
-            <Input type="text"></Input>
+            <Select placeholder="Seleccione un género">
+              {Genero.map((genero) => (
+                <option key={genero} value={genero}>
+                  {genero}
+                </option>
+              ))}
+            </Select>
           </GridItem>
           <GridItem w="100%" h="10">
             <FormLabel>Edad Min</FormLabel>
@@ -61,19 +94,43 @@ export function Vacante() {
           </GridItem>
           <GridItem w="100%" h="10">
             <FormLabel>Discapacidades Aceptadas</FormLabel>
-            <Input type="text"></Input>
+            <Select placeholder="Seleccione las discapacidades aceptadas ">
+              {Discapacidades.map((discapacidades) => (
+                <option key={discapacidades} value={discapacidades}>
+                  {discapacidades}
+                </option>
+              ))}
+            </Select>
           </GridItem>
           <GridItem w="100%" h="10">
             <FormLabel>Área</FormLabel>
-            <Input type="text"></Input>
+            <Select placeholder="Seleccione el Área de la empresa">
+              {AreaEmpresa.map((areaempresa) => (
+                <option key={areaempresa} value={areaempresa}>
+                  {areaempresa}
+                </option>
+              ))}
+            </Select>
           </GridItem>
           <GridItem w="100%" h="10">
             <FormLabel>Tipo empleo</FormLabel>
-            <Input type="text"></Input>
+            <Select placeholder="Seleccione el Tipo empleo">
+              {TipoEmpleo.map((tipoempleo) => (
+                <option key={tipoempleo} value={tipoempleo}>
+                  {tipoempleo}
+                </option>
+              ))}
+            </Select>
           </GridItem>
           <GridItem w="100%" h="10">
             <FormLabel>Causa vacante</FormLabel>
-            <Input type="text"></Input>
+            <Select placeholder="Seleccione la Causa de la vacante">
+              {CausaVacante.map((causavacante) => (
+                <option key={causavacante} value={causavacante}>
+                  {causavacante}
+                </option>
+              ))}
+            </Select>
           </GridItem>
           <GridItem w="100%" h="10">
             <FormLabel>Disponibildad para vijar</FormLabel>
@@ -85,15 +142,27 @@ export function Vacante() {
           </GridItem>
           <GridItem w="100%" h="10">
             <FormLabel>Escolaridad</FormLabel>
-            <Input type="text"></Input>
+            <Select placeholder="Seleccione la Escolaridad">
+              {Escolaridad.map((escolaridad) => (
+                <option key={escolaridad} value={escolaridad}>
+                  {escolaridad}
+                </option>
+              ))}
+            </Select>
           </GridItem>
           <GridItem w="100%" h="10">
             <FormLabel>Vigencia Vacante</FormLabel>
-            <Input type="text"></Input>
+            <Input type="date"></Input>
           </GridItem>
           <GridItem w="100%" h="10">
             <FormLabel>Prestaciones</FormLabel>
-            <Input type="text"></Input>
+            <Select placeholder="Seleccione las Prestaciones">
+              {Prestaciones.map((prestaciones) => (
+                <option key={prestaciones} value={prestaciones}>
+                  {prestaciones}
+                </option>
+              ))}
+            </Select>
           </GridItem>
           <GridItem w="100%" h="10">
             <FormLabel>Direccion empresa</FormLabel>
@@ -101,7 +170,13 @@ export function Vacante() {
           </GridItem>
           <GridItem w="100%" h="10">
             <FormLabel>Municipio</FormLabel>
-            <Input type="text"></Input>
+            <Select placeholder="Seleccione el municipio">
+              {Municipios.map((municipios) => (
+                <option key={municipios} value={municipios}>
+                  {municipios}
+                </option>
+              ))}
+            </Select>
           </GridItem>
           <GridItem w="100%" h="10">
             <FormLabel>Colonia</FormLabel>
@@ -116,12 +191,18 @@ export function Vacante() {
             <Input type="text"></Input>
           </GridItem>
           <GridItem w="100%" h="10">
-            <FormLabel>Núnero</FormLabel>
+            <FormLabel>Número</FormLabel>
             <Input type="text"></Input>
           </GridItem>
           <GridItem w="100%" h="10">
             <FormLabel>Idioma</FormLabel>
-            <Input type="text"></Input>
+            <Select placeholder="Seleccione el idioma">
+              {Idiomas.map((idiomas) => (
+                <option key={idiomas} value={idiomas}>
+                  {idiomas}
+                </option>
+              ))}
+            </Select>
           </GridItem>
         </Grid>
       </Center>
