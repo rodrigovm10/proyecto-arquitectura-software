@@ -10,6 +10,11 @@
       "StackName": "amplify-proyectoarquitectura-dev-230004",
       "StackId": "arn:aws:cloudformation:us-east-1:572600291931:stack/amplify-proyectoarquitectura-dev-230004/c30c3370-5e52-11ee-a936-12416a274075",
       "AmplifyAppId": "d1bf8mwj1y7bg8"
+    },
+    "categories": {
+      "auth": {
+        "RedLaboral": {}
+      }
     }
   }
 }
