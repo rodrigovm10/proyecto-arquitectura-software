@@ -8,6 +8,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { LoginEmpresa } from './services/LoginEmpresa'
 import { FormEmpresa } from './pages/FormEmpresa'
 import { Vacante } from './pages/Vacante'
+import LoginBdt from './pages/BDT/LoginBdt'
+import RegistroBdt from './components/BDT/RegistroBdt/RegistroBdt'
 
 const router = createBrowserRouter([
   {
@@ -19,17 +21,25 @@ const router = createBrowserRouter([
     element: <LoginEmpresa />
   },
   {
+    path: '/login-bdt',
+    element: <LoginBdt />
+  },
+  {
     path: '/form-empresa',
     element: <FormEmpresa />
   },
   {
     path: '/vacante',
     element: <Vacante />
+  },
+  {
+    path: '/registro-bdt',
+    element: <RegistroBdt />
   }
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
-root.render(
+root.render( 
   <ChakraProvider>
     <React.StrictMode>
       <RouterProvider router={router} />
