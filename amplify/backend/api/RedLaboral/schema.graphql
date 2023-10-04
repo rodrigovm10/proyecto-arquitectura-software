@@ -1,4 +1,4 @@
-type Oportunidades @model @auth(rules: [{allow: public}, {allow: owner}]) {
+type Oportunidades @model @auth(rules: [{ allow: public }, { allow: owner }]) {
   id: ID!
   motivoBDT: String
   motivoEmpresa: String
@@ -19,7 +19,7 @@ type Oportunidades @model @auth(rules: [{allow: public}, {allow: owner}]) {
   idstep: String
 }
 
-type Vacante @model @auth(rules: [{allow: public}, {allow: owner}, {allow: private}]) {
+type Vacante @model @auth(rules: [{ allow: public }, { allow: owner }, { allow: private }]) {
   id: ID!
   nombreVacante: String
   descripcion: String
@@ -63,7 +63,7 @@ type Vacante @model @auth(rules: [{allow: public}, {allow: owner}, {allow: priva
   horarioLaboral: String
 }
 
-type Empresa @model @auth(rules: [{allow: public}, {allow: private, provider: iam}, {allow: private}, {allow: groups, groups: ["BDT"], operations: [read, create, update, delete]}]) {
+type Empresa @model @auth(rules: [{ allow: public }, { allow: private, provider: iam }, { allow: private }, { allow: groups, groups: ["BDT"], operations: [read, create, update, delete] }]) {
   id: ID!
   nombreComercial: String
   razonSocial: String
@@ -80,7 +80,7 @@ type Empresa @model @auth(rules: [{allow: public}, {allow: private, provider: ia
   tipoSucursal: String
 }
 
-type BDT @model @auth(rules: [{allow: public}, {allow: owner}]) {
+type BDT @model @auth(rules: [{ allow: public }, { allow: owner }]) {
   id: ID!
   nombre: String
   apellidos: String
@@ -101,4 +101,4 @@ type BDT @model @auth(rules: [{allow: public}, {allow: owner}]) {
   colonia: String
   calle: String
   codigoPostal: String
-} 
+}
