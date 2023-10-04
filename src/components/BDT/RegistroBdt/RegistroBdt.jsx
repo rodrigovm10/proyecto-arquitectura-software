@@ -3,6 +3,7 @@ import RegistroSituacionActual from './RegistroSituacionActual'
 import RegistroInfoPersonal from './RegistroInfoPersonal'
 
 export default function RegistroBdt() {
+    
   return (
     <div>
         <div>
