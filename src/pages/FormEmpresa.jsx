@@ -30,8 +30,6 @@ export function FormEmpresa() {
       ...datosEmpresa,
       [name]: value
     })
-    console.log(value)
-    console.log(name)
   }
 
   const handleSubmitForm = e => {
@@ -46,6 +44,7 @@ export function FormEmpresa() {
         <Center>Registro Empresa</Center>
       </Heading>
       <FormControl
+        onSubmit={handleSubmitForm}
         display='flex'
         flexDirection='column'
         gap='2rem'
@@ -66,10 +65,10 @@ export function FormEmpresa() {
               <FormLabel>{campo.campo}</FormLabel>
               <Input
                 type={campo.type}
-                placeholder={campo?.placeholder}
+                placeholder={campo.placeholder}
                 focusBorderColor='#ea754b'
-                name={datosEmpresa[campo?.datoNombre]}
-                value={datosEmpresa[campo.campo]}
+                name={campo.nombre}
+                value={datosEmpresa[campo.nombre]}
                 onChange={handleInputChange}
               />
             </Box>
@@ -81,7 +80,10 @@ export function FormEmpresa() {
           direction={{ base: 'column', sm: 'row' }}>
           <Box flex='1'>
             <FormLabel>Tipo RFC</FormLabel>
-            <Select>
+            <Select
+              name='tipoRFC'
+              value={datosEmpresa.tipoRFC}
+              onChange={handleInputChange}>
               <option disabled>Tipo RFC</option>
               <option>RFC Moral</option>
               <option>RFC Físico</option>
@@ -93,12 +95,18 @@ export function FormEmpresa() {
               type='text'
               placeholder='VEMR031106RA5'
               focusBorderColor='#ea754b'
+              name='rfc'
+              value={datosEmpresa.rfc}
+              onChange={handleInputChange}
             />
           </Box>
         </Flex>
         <Stack>
           <FormLabel>Municipio</FormLabel>
-          <Select>
+          <Select
+            name='municipio'
+            value={datosEmpresa.municipio}
+            onChange={handleInputChange}>
             {MUNICIPIOS.map((municipio, i) => (
               <option
                 key={i}
@@ -121,6 +129,9 @@ export function FormEmpresa() {
                 type={campo.type}
                 placeholder={campo.placeholder}
                 focusBorderColor='#ea754b'
+                name={campo.nombre}
+                value={datosEmpresa[campo.nombre]}
+                onChange={handleInputChange}
               />
             </GridItem>
           ))}
@@ -129,14 +140,17 @@ export function FormEmpresa() {
           gap={5}
           justify='space-between'
           direction={{ base: 'column', sm: 'row' }}>
-          {DATOS_EMPRESA.map(campo => {
-            const { id, nombre, datos } = campo
+          {DATOS_EMPRESA.map(campos => {
+            const { id, campo, nombre, datos } = campos
             return (
               <Box
                 key={id}
                 flex='1'>
-                <FormLabel>{nombre}</FormLabel>
-                <Select>
+                <FormLabel>{campo}</FormLabel>
+                <Select
+                  name={nombre}
+                  value={datosEmpresa[nombre]}
+                  onChange={handleInputChange}>
                   {datos.map((dato, i) => (
                     <option
                       key={i}
@@ -160,7 +174,7 @@ export function FormEmpresa() {
             color='#fff'
             _hover={{ bg: 'rgb(234, 117, 90)' }}
             type='submit'
-            onSubmit={handleSubmitForm}>
+            onClick={handleSubmitForm}>
             Guardar
           </Button>
         </ButtonGroup>
