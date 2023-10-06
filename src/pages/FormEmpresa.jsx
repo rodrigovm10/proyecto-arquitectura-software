@@ -44,7 +44,7 @@ export function FormEmpresa() {
           nombreComercial,
           razonSocial,
           rfc,
-          email: 'a',
+          numero,
           telefono,
           municipio,
           codigoPostal,
@@ -55,6 +55,7 @@ export function FormEmpresa() {
           tipoSucursal
         })
       )
+
       console.log('guardo')
     } catch (e) {
       console.log(e)
@@ -70,9 +71,6 @@ export function FormEmpresa() {
   return (
     <>
       <Nav />
-      <Heading as='h3'>
-        <Center>Registro Empresa</Center>
-      </Heading>
       <FormControl
         onSubmit={handleSubmitForm}
         display='flex'
@@ -84,6 +82,12 @@ export function FormEmpresa() {
         bg='#fff'
         m='2rem auto 0'
         w={{ base: '80%', sm: '80%', md: '55%' }}>
+        <Heading
+          as='h2'
+          size='lg'>
+          <Center>Registro Empresa</Center>
+        </Heading>
+
         <Flex
           gap={2}
           direction='column'

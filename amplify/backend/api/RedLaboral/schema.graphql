@@ -1,4 +1,4 @@
-type Oportunidades @model @auth(rules: [{allow: public}, {allow: owner}]) {
+type Oportunidades @model @auth(rules: [{allow: public}]) {
   id: ID!
   motivoBDT: String
   motivoEmpresa: String
@@ -19,7 +19,7 @@ type Oportunidades @model @auth(rules: [{allow: public}, {allow: owner}]) {
   idstep: String
 }
 
-type Vacante @model @auth(rules: [{allow: public}, {allow: owner}, {allow: private}]) {
+type Vacante @model @auth(rules: [{allow: public}]) {
   id: ID!
   nombreVacante: String
   descripcion: String
@@ -41,7 +41,7 @@ type Vacante @model @auth(rules: [{allow: public}, {allow: owner}, {allow: priva
   salarioMin: Int
 }
 
-type Empresa @model @auth(rules: [{allow: groups, groups: ["BDT"], operations: [read, create, update, delete]}, {allow: groups, groups: ["Empresa"], operations: [read, create, update, delete]}, {allow: private}, {allow: public}]) {
+type Empresa @model @auth(rules: [{allow: public}]) {
   id: ID!
   nombreComercial: String
   razonSocial: String
@@ -58,7 +58,7 @@ type Empresa @model @auth(rules: [{allow: groups, groups: ["BDT"], operations: [
   numero: String
 }
 
-type BDT @model @auth(rules: [{allow: public}, {allow: owner}]) {
+type BDT @model @auth(rules: [{allow: public}]) {
   id: ID!
   nombre: String
   apellidos: String
