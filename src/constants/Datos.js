@@ -35,55 +35,6 @@ export const Idiomas = [
     "Eslovaco",
 ];
 
-export const Municipios = [
-    "Abasolo",
-    "Acámbaro",
-    "San Miguel de Allende",
-    "Apaseo el Alto",
-    "Apaseo el Grande",
-    "Atarjea",
-    "Celaya",
-    "Manuel Doblado",
-    "Comonfort",
-    "Coroneo",
-    "Cortazar",
-    "Cuerámaro",
-    "Doctor Mora",
-    "Dolores Hidalgo Cuna de la Independencia Nacional",
-    "Guanajuato",
-    "Huanímaro",
-    "Irapuato",
-    "Jaral del Progreso",
-    "Jerécuaro",
-    "León",
-    "Moroleón",
-    "Ocampo",
-    "Pénjamo",
-    "Pueblo Nuevo",
-    "Purísima del Rincón",
-    "Romita",
-    "Salamanca",
-    "Salvatierra",
-    "San Diego de la Unión",
-    "San Felipe",
-    "San Francisco del Rincón",
-    "San José Iturbide",
-    "San Luis de la Paz",
-    "Santa Catarina",
-    "Santa Cruz de Juventino Rosas",
-    "Santiago Maravatío",
-    "Silao de la Victoria",
-    "Tarandacuao",
-    "Tarimoro",
-    "Tierra Blanca",
-    "Uriangato",
-    "Valle de Santiago",
-    "Victoria",
-    "Villagrán",
-    "Xichú",
-    "Yuriria"
-];
-
 export const HabilidadesBlandas = [
     "Comunicación efectiva",
     "Trabajo en equipo",
@@ -147,27 +98,10 @@ export const HabilidadesTecnicas = [
     "Diseño 3D y animación"
 ];
 
-export const Discapacidades = [
-    "Discapacidad auditiva",
-    "Discapacidad del desarrollo",
-    "Discapacidad del habla y el lenguaje",
-    "Discapacidad física",
-    "Discapacidad intelectual",
-    "Discapacidad invisible",
-    "Discapacidad neurológica",
-    "Discapacidad psicosocial",
-    "Discapacidad sensorial",
-    "Discapacidad visual",
-];
-
 export const TipoEmpleo = [
     "Fines de semana",
     "Medio tiempo (4 hrs)",
-    "Por tarea completada/destajo",
-    "Temporal",
     "Tiempo completo (8 hrs)",
-    "Turno nocturno",
-    "Turnos rotativos/jornadas rotativas",
 ];
 
 export const Escolaridad = [
@@ -205,13 +139,6 @@ export const Prestaciones = [
     "Vales de despensa",
     "Vales de gasolina",
     "Vehículo",
-];
-
-export const CausaVacante = [
-    "Empresa nueva",
-    "Necesidades temporales de mano de obra",
-    "Puesto de nueva creación",
-    "Reposición del personal",
 ];
 
 export const AreaEmpresa = [

@@ -19,7 +19,6 @@ export declare type EmpresaUpdateFormInputValues = {
     rfc?: string;
     email?: string;
     telefono?: string;
-    tamanoEmpresa?: string;
     municipio?: string;
     codigoPostal?: string;
     colonia?: string;
@@ -27,6 +26,7 @@ export declare type EmpresaUpdateFormInputValues = {
     actividad?: string;
     sector?: string;
     tipoSucursal?: string;
+    numero?: string;
 };
 export declare type EmpresaUpdateFormValidationValues = {
     nombreComercial?: ValidationFunction<string>;
@@ -34,7 +34,6 @@ export declare type EmpresaUpdateFormValidationValues = {
     rfc?: ValidationFunction<string>;
     email?: ValidationFunction<string>;
     telefono?: ValidationFunction<string>;
-    tamanoEmpresa?: ValidationFunction<string>;
     municipio?: ValidationFunction<string>;
     codigoPostal?: ValidationFunction<string>;
     colonia?: ValidationFunction<string>;
@@ -42,6 +41,7 @@ export declare type EmpresaUpdateFormValidationValues = {
     actividad?: ValidationFunction<string>;
     sector?: ValidationFunction<string>;
     tipoSucursal?: ValidationFunction<string>;
+    numero?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type EmpresaUpdateFormOverridesProps = {
@@ -51,7 +51,6 @@ export declare type EmpresaUpdateFormOverridesProps = {
     rfc?: PrimitiveOverrideProps<TextFieldProps>;
     email?: PrimitiveOverrideProps<TextFieldProps>;
     telefono?: PrimitiveOverrideProps<TextFieldProps>;
-    tamanoEmpresa?: PrimitiveOverrideProps<TextFieldProps>;
     municipio?: PrimitiveOverrideProps<TextFieldProps>;
     codigoPostal?: PrimitiveOverrideProps<TextFieldProps>;
     colonia?: PrimitiveOverrideProps<TextFieldProps>;
@@ -59,6 +58,7 @@ export declare type EmpresaUpdateFormOverridesProps = {
     actividad?: PrimitiveOverrideProps<TextFieldProps>;
     sector?: PrimitiveOverrideProps<TextFieldProps>;
     tipoSucursal?: PrimitiveOverrideProps<TextFieldProps>;
+    numero?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type EmpresaUpdateFormProps = React.PropsWithChildren<{
     overrides?: EmpresaUpdateFormOverridesProps | undefined | null;

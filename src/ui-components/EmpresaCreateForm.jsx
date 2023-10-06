@@ -28,7 +28,6 @@ export default function EmpresaCreateForm(props) {
     rfc: "",
     email: "",
     telefono: "",
-    tamanoEmpresa: "",
     municipio: "",
     codigoPostal: "",
     colonia: "",
@@ -36,6 +35,7 @@ export default function EmpresaCreateForm(props) {
     actividad: "",
     sector: "",
     tipoSucursal: "",
+    numero: "",
   };
   const [nombreComercial, setNombreComercial] = React.useState(
     initialValues.nombreComercial
@@ -46,9 +46,6 @@ export default function EmpresaCreateForm(props) {
   const [rfc, setRfc] = React.useState(initialValues.rfc);
   const [email, setEmail] = React.useState(initialValues.email);
   const [telefono, setTelefono] = React.useState(initialValues.telefono);
-  const [tamanoEmpresa, setTamanoEmpresa] = React.useState(
-    initialValues.tamanoEmpresa
-  );
   const [municipio, setMunicipio] = React.useState(initialValues.municipio);
   const [codigoPostal, setCodigoPostal] = React.useState(
     initialValues.codigoPostal
@@ -60,6 +57,7 @@ export default function EmpresaCreateForm(props) {
   const [tipoSucursal, setTipoSucursal] = React.useState(
     initialValues.tipoSucursal
   );
+  const [numero, setNumero] = React.useState(initialValues.numero);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setNombreComercial(initialValues.nombreComercial);
@@ -67,7 +65,6 @@ export default function EmpresaCreateForm(props) {
     setRfc(initialValues.rfc);
     setEmail(initialValues.email);
     setTelefono(initialValues.telefono);
-    setTamanoEmpresa(initialValues.tamanoEmpresa);
     setMunicipio(initialValues.municipio);
     setCodigoPostal(initialValues.codigoPostal);
     setColonia(initialValues.colonia);
@@ -75,6 +72,7 @@ export default function EmpresaCreateForm(props) {
     setActividad(initialValues.actividad);
     setSector(initialValues.sector);
     setTipoSucursal(initialValues.tipoSucursal);
+    setNumero(initialValues.numero);
     setErrors({});
   };
   const validations = {
@@ -83,7 +81,6 @@ export default function EmpresaCreateForm(props) {
     rfc: [],
     email: [],
     telefono: [],
-    tamanoEmpresa: [],
     municipio: [],
     codigoPostal: [],
     colonia: [],
@@ -91,6 +88,7 @@ export default function EmpresaCreateForm(props) {
     actividad: [],
     sector: [],
     tipoSucursal: [],
+    numero: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -123,7 +121,6 @@ export default function EmpresaCreateForm(props) {
           rfc,
           email,
           telefono,
-          tamanoEmpresa,
           municipio,
           codigoPostal,
           colonia,
@@ -131,6 +128,7 @@ export default function EmpresaCreateForm(props) {
           actividad,
           sector,
           tipoSucursal,
+          numero,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -190,7 +188,6 @@ export default function EmpresaCreateForm(props) {
               rfc,
               email,
               telefono,
-              tamanoEmpresa,
               municipio,
               codigoPostal,
               colonia,
@@ -198,6 +195,7 @@ export default function EmpresaCreateForm(props) {
               actividad,
               sector,
               tipoSucursal,
+              numero,
             };
             const result = onChange(modelFields);
             value = result?.nombreComercial ?? value;
@@ -226,7 +224,6 @@ export default function EmpresaCreateForm(props) {
               rfc,
               email,
               telefono,
-              tamanoEmpresa,
               municipio,
               codigoPostal,
               colonia,
@@ -234,6 +231,7 @@ export default function EmpresaCreateForm(props) {
               actividad,
               sector,
               tipoSucursal,
+              numero,
             };
             const result = onChange(modelFields);
             value = result?.razonSocial ?? value;
@@ -262,7 +260,6 @@ export default function EmpresaCreateForm(props) {
               rfc: value,
               email,
               telefono,
-              tamanoEmpresa,
               municipio,
               codigoPostal,
               colonia,
@@ -270,6 +267,7 @@ export default function EmpresaCreateForm(props) {
               actividad,
               sector,
               tipoSucursal,
+              numero,
             };
             const result = onChange(modelFields);
             value = result?.rfc ?? value;
@@ -298,7 +296,6 @@ export default function EmpresaCreateForm(props) {
               rfc,
               email: value,
               telefono,
-              tamanoEmpresa,
               municipio,
               codigoPostal,
               colonia,
@@ -306,6 +303,7 @@ export default function EmpresaCreateForm(props) {
               actividad,
               sector,
               tipoSucursal,
+              numero,
             };
             const result = onChange(modelFields);
             value = result?.email ?? value;
@@ -334,7 +332,6 @@ export default function EmpresaCreateForm(props) {
               rfc,
               email,
               telefono: value,
-              tamanoEmpresa,
               municipio,
               codigoPostal,
               colonia,
@@ -342,6 +339,7 @@ export default function EmpresaCreateForm(props) {
               actividad,
               sector,
               tipoSucursal,
+              numero,
             };
             const result = onChange(modelFields);
             value = result?.telefono ?? value;
@@ -357,42 +355,6 @@ export default function EmpresaCreateForm(props) {
         {...getOverrideProps(overrides, "telefono")}
       ></TextField>
       <TextField
-        label="Tamano empresa"
-        isRequired={false}
-        isReadOnly={false}
-        value={tamanoEmpresa}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              nombreComercial,
-              razonSocial,
-              rfc,
-              email,
-              telefono,
-              tamanoEmpresa: value,
-              municipio,
-              codigoPostal,
-              colonia,
-              calle,
-              actividad,
-              sector,
-              tipoSucursal,
-            };
-            const result = onChange(modelFields);
-            value = result?.tamanoEmpresa ?? value;
-          }
-          if (errors.tamanoEmpresa?.hasError) {
-            runValidationTasks("tamanoEmpresa", value);
-          }
-          setTamanoEmpresa(value);
-        }}
-        onBlur={() => runValidationTasks("tamanoEmpresa", tamanoEmpresa)}
-        errorMessage={errors.tamanoEmpresa?.errorMessage}
-        hasError={errors.tamanoEmpresa?.hasError}
-        {...getOverrideProps(overrides, "tamanoEmpresa")}
-      ></TextField>
-      <TextField
         label="Municipio"
         isRequired={false}
         isReadOnly={false}
@@ -406,7 +368,6 @@ export default function EmpresaCreateForm(props) {
               rfc,
               email,
               telefono,
-              tamanoEmpresa,
               municipio: value,
               codigoPostal,
               colonia,
@@ -414,6 +375,7 @@ export default function EmpresaCreateForm(props) {
               actividad,
               sector,
               tipoSucursal,
+              numero,
             };
             const result = onChange(modelFields);
             value = result?.municipio ?? value;
@@ -442,7 +404,6 @@ export default function EmpresaCreateForm(props) {
               rfc,
               email,
               telefono,
-              tamanoEmpresa,
               municipio,
               codigoPostal: value,
               colonia,
@@ -450,6 +411,7 @@ export default function EmpresaCreateForm(props) {
               actividad,
               sector,
               tipoSucursal,
+              numero,
             };
             const result = onChange(modelFields);
             value = result?.codigoPostal ?? value;
@@ -478,7 +440,6 @@ export default function EmpresaCreateForm(props) {
               rfc,
               email,
               telefono,
-              tamanoEmpresa,
               municipio,
               codigoPostal,
               colonia: value,
@@ -486,6 +447,7 @@ export default function EmpresaCreateForm(props) {
               actividad,
               sector,
               tipoSucursal,
+              numero,
             };
             const result = onChange(modelFields);
             value = result?.colonia ?? value;
@@ -514,7 +476,6 @@ export default function EmpresaCreateForm(props) {
               rfc,
               email,
               telefono,
-              tamanoEmpresa,
               municipio,
               codigoPostal,
               colonia,
@@ -522,6 +483,7 @@ export default function EmpresaCreateForm(props) {
               actividad,
               sector,
               tipoSucursal,
+              numero,
             };
             const result = onChange(modelFields);
             value = result?.calle ?? value;
@@ -550,7 +512,6 @@ export default function EmpresaCreateForm(props) {
               rfc,
               email,
               telefono,
-              tamanoEmpresa,
               municipio,
               codigoPostal,
               colonia,
@@ -558,6 +519,7 @@ export default function EmpresaCreateForm(props) {
               actividad: value,
               sector,
               tipoSucursal,
+              numero,
             };
             const result = onChange(modelFields);
             value = result?.actividad ?? value;
@@ -586,7 +548,6 @@ export default function EmpresaCreateForm(props) {
               rfc,
               email,
               telefono,
-              tamanoEmpresa,
               municipio,
               codigoPostal,
               colonia,
@@ -594,6 +555,7 @@ export default function EmpresaCreateForm(props) {
               actividad,
               sector: value,
               tipoSucursal,
+              numero,
             };
             const result = onChange(modelFields);
             value = result?.sector ?? value;
@@ -622,7 +584,6 @@ export default function EmpresaCreateForm(props) {
               rfc,
               email,
               telefono,
-              tamanoEmpresa,
               municipio,
               codigoPostal,
               colonia,
@@ -630,6 +591,7 @@ export default function EmpresaCreateForm(props) {
               actividad,
               sector,
               tipoSucursal: value,
+              numero,
             };
             const result = onChange(modelFields);
             value = result?.tipoSucursal ?? value;
@@ -643,6 +605,42 @@ export default function EmpresaCreateForm(props) {
         errorMessage={errors.tipoSucursal?.errorMessage}
         hasError={errors.tipoSucursal?.hasError}
         {...getOverrideProps(overrides, "tipoSucursal")}
+      ></TextField>
+      <TextField
+        label="Numero"
+        isRequired={false}
+        isReadOnly={false}
+        value={numero}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              nombreComercial,
+              razonSocial,
+              rfc,
+              email,
+              telefono,
+              municipio,
+              codigoPostal,
+              colonia,
+              calle,
+              actividad,
+              sector,
+              tipoSucursal,
+              numero: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.numero ?? value;
+          }
+          if (errors.numero?.hasError) {
+            runValidationTasks("numero", value);
+          }
+          setNumero(value);
+        }}
+        onBlur={() => runValidationTasks("numero", numero)}
+        errorMessage={errors.numero?.errorMessage}
+        hasError={errors.numero?.hasError}
+        {...getOverrideProps(overrides, "numero")}
       ></TextField>
       <Flex
         justifyContent="space-between"
