@@ -1,4 +1,4 @@
-type Oportunidades @model @auth(rules: [{ allow: public }, { allow: owner }]) {
+type Oportunidades @model @auth(rules: [{allow: public}, {allow: owner}]) {
   id: ID!
   motivoBDT: String
   motivoEmpresa: String
@@ -19,58 +19,35 @@ type Oportunidades @model @auth(rules: [{ allow: public }, { allow: owner }]) {
   idstep: String
 }
 
-type Vacante @model @auth(rules: [{ allow: public }, { allow: owner }, { allow: private }]) {
+type Vacante @model @auth(rules: [{allow: public}, {allow: owner}, {allow: private}]) {
   id: ID!
   nombreVacante: String
   descripcion: String
-  numeroPlazas: String
   diasLaborales: String
-  salario: String
-  habilidadesBlandas: String
-  habilidadesTecnicas: String
+  habilidadesBlandas: [String]
+  habilidadesTecnicas: [String]
   generoBDT: String
-  edadMin: String
-  edadMax: String
-  discapacidadAcept: [String]
+  edadMin: Int
+  edadMax: Int
   area: String
   tipoEmpleo: String
-  causaVacante: String
   dispViajar: Boolean
   dispRadicar: Boolean
-  nivelPuesto: String
-  experiencia: String
   escolaridad: String
-  vigenciaVacante: String
   prestaciones: String
-  direccionEmpresa: Boolean
-  municipio: String
-  colonia: String
-  calle: String
-  codigoPostal: String
-  numero: String
-  idioma: String
-  statusVisible: Boolean
-  tipoCotrato: String
-  modalidad: String
-  tipoLicencia: String
-  contratoDirecto: String
-  salarioMax: String
-  salarioMin: String
-  periodoPago: String
-  tipoSueldo: String
-  correoContactoDirecto: String
-  telefonoContactoDirecto: String
-  horarioLaboral: String
+  direccionEmpresa: String
+  Idioma: [String]
+  salarioMax: Int
+  salarioMin: Int
 }
 
-type Empresa @model @auth(rules: [{ allow: public }, { allow: private, provider: iam }, { allow: private }, { allow: groups, groups: ["BDT"], operations: [read, create, update, delete] }]) {
+type Empresa @model @auth(rules: [{allow: groups, groups: ["BDT"], operations: [read, create, update, delete]}, {allow: groups, groups: ["Empresa"], operations: [read, create, update, delete]}, {allow: private}, {allow: public}]) {
   id: ID!
   nombreComercial: String
   razonSocial: String
   rfc: String
   email: String
   telefono: String
-  tamanoEmpresa: String
   municipio: String
   codigoPostal: String
   colonia: String
@@ -78,9 +55,10 @@ type Empresa @model @auth(rules: [{ allow: public }, { allow: private, provider:
   actividad: String
   sector: String
   tipoSucursal: String
+  numero: String
 }
 
-type BDT @model @auth(rules: [{ allow: public }, { allow: owner }]) {
+type BDT @model @auth(rules: [{allow: public}, {allow: owner}]) {
   id: ID!
   nombre: String
   apellidos: String
@@ -102,3 +80,4 @@ type BDT @model @auth(rules: [{ allow: public }, { allow: owner }]) {
   calle: String
   codigoPostal: String
 }
+ 

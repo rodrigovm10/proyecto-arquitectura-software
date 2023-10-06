@@ -19,6 +19,13 @@ export const DATOS_PRINCIPALES = [
     nombre: 'actividad',
     type: 'text',
     placeholder: 'Somos una empresa encargada de...'
+  },
+  {
+    id: 4,
+    campo: 'Teléfono',
+    nombre: 'telefono',
+    type: 'text',
+    placeholder: '4681555248'
   }
 ]
 

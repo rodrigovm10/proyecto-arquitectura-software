@@ -4,11 +4,15 @@ import { DATOS_UBICACION, DATOS_PRINCIPALES, DATOS_EMPRESA } from '../constants/
 import { MUNICIPIOS } from '../constants/Datos'
 import { useState, useEffect } from 'react'
 
+import { DataStore } from 'aws-amplify'
+import { Empresa } from '../models'
+
 export function FormEmpresa() {
   const [datosEmpresa, setDatosEmpresa] = useState({
     nombreComercial: '',
     razonSocial: '',
     actividad: '',
+    telefono: '',
     tipoRFC: '',
     rfc: '',
     municipio: '',
@@ -32,8 +36,34 @@ export function FormEmpresa() {
     })
   }
 
+  const guardarEmpresaEnDataStore = async () => {
+    const { nombreComercial, razonSocial, actividad, telefono, rfc, municipio, calle, colonia, numero, codigoPostal, tipoSucursal, sector } = datosEmpresa
+    try {
+      await DataStore.save(
+        new Empresa({
+          nombreComercial,
+          razonSocial,
+          rfc,
+          email: 'a',
+          telefono,
+          municipio,
+          codigoPostal,
+          colonia,
+          calle,
+          actividad,
+          sector,
+          tipoSucursal
+        })
+      )
+      console.log('guardo')
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
   const handleSubmitForm = e => {
     e.preventDefault()
+    guardarEmpresaEnDataStore()
     console.log(datosEmpresa)
   }
 

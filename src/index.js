@@ -5,7 +5,7 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { ChakraProvider } from '@chakra-ui/react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { LoginEmpresa } from './services/LoginEmpresa'
+import LoginEmpresa from './services/LoginEmpresa'
 import { FormEmpresa } from './pages/FormEmpresa'
 import { Vacante } from './pages/Vacante'
 import LoginBdt from './pages/BDT/LoginBdt'
@@ -39,7 +39,7 @@ const router = createBrowserRouter([
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
-root.render( 
+root.render(
   <ChakraProvider>
     <React.StrictMode>
       <RouterProvider router={router} />
