@@ -9,7 +9,7 @@ import { useAddToGroup } from '../hooks/useAddToGroup'
 function LoginEmpresa() {
   const [session, setSession] = useState(false)
   const [, setUserData] = useState({})
-  const { callLambdaToAddToGroup, nombreGrupo } = useAddToGroup()
+  const { callLambdaToAddToGroup, nombreGrupo } = useAddToGroup({ nombreDelGrupo: 'Empresa' })
 
   useEffect(() => {
     async function getData() {
@@ -33,7 +33,7 @@ function LoginEmpresa() {
   return (
     <div>
       Loading...
-      {session ? nombreGrupo === 'Empresa' ? <Navigate to='/form-empresa' /> : <Navigate to='/login-empresa' /> : <></>}
+      {session ? nombreGrupo === 'Empresa' ? <Navigate to='/registro-empresa' /> : <Navigate to='/login-empresa' /> : <></>}
     </div>
   )
 }

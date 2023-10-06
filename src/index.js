@@ -7,10 +7,12 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import LoginEmpresa from './services/LoginEmpresa'
 import { FormEmpresa } from './pages/FormEmpresa'
+import { RegistroEmpresa } from './components/Empresa/RegistroEmpresa'
 import { Vacante } from './pages/Vacante'
 import LoginBdt from './pages/BDT/LoginBdt'
 import InicioBdT from './pages/BDT/InicioBdT'
 import RegistroBdt from './components/BDT/RegistroBdt/RegistroBdt'
+import { LandingEmpresa } from './pages/LandingEmpresa'
 import { Amplify } from 'aws-amplify'
 import awsExports from './aws-exports'
 
@@ -21,29 +23,40 @@ const router = createBrowserRouter([
     path: '/',
     element: <App />
   },
+  //Empresa
   {
     path: '/login-empresa',
     element: <LoginEmpresa />
   },
   {
-    path: '/login-bdt',
-    element: <LoginBdt />
+    path: '/registro-empresa',
+    element: <RegistroEmpresa />
   },
   {
     path: '/form-empresa',
     element: <FormEmpresa />
   },
   {
-    path: '/vacante',
-    element: <Vacante />
+    path: '/inicio-empresa',
+    element: <LandingEmpresa />
+  },
+  //BDT
+  {
+    path: '/login-bdt',
+    element: <LoginBdt />
   },
   {
     path: '/registro-bdt',
     element: <RegistroBdt />
   },
   {
-    path: "/inicio-bdt",
-    element: <InicioBdT />,
+    path: '/inicio-bdt',
+    element: <InicioBdT />
+  },
+  //Vacante
+  {
+    path: '/vacante',
+    element: <Vacante />
   }
 ])
 

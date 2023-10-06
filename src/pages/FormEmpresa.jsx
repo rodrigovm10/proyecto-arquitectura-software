@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react'
 import { DataStore } from 'aws-amplify'
 import { Empresa } from '../models'
 
-export function FormEmpresa() {
+export function FormEmpresa({ email }) {
   const [datosEmpresa, setDatosEmpresa] = useState({
     nombreComercial: '',
     razonSocial: '',
@@ -38,24 +38,24 @@ export function FormEmpresa() {
 
   const guardarEmpresaEnDataStore = async () => {
     const { nombreComercial, razonSocial, actividad, telefono, rfc, municipio, calle, colonia, numero, codigoPostal, tipoSucursal, sector } = datosEmpresa
+    const empresa = new Empresa({
+      nombreComercial,
+      razonSocial,
+      rfc,
+      numero,
+      email,
+      telefono,
+      municipio,
+      codigoPostal,
+      colonia,
+      calle,
+      actividad,
+      sector,
+      tipoSucursal
+    })
     try {
-      await DataStore.save(
-        new Empresa({
-          nombreComercial,
-          razonSocial,
-          rfc,
-          numero,
-          telefono,
-          municipio,
-          codigoPostal,
-          colonia,
-          calle,
-          actividad,
-          sector,
-          tipoSucursal
-        })
-      )
-
+      await DataStore.save(empresa)
+      console.log(empresa)
       console.log('guardo')
     } catch (e) {
       console.log(e)
