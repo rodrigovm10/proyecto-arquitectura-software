@@ -41,7 +41,7 @@ type Vacante @model @auth(rules: [{allow: public}]) {
   salarioMin: Int
 }
 
-type Empresa @model @auth(rules: [{allow: public}]) {
+type Empresa @model @auth(rules: [{allow: public}, {allow: owner}, {allow: private}, {allow: private, provider: iam}, {allow: groups, groups: ["Empresa"], operations: [read, create, update, delete]}, {allow: groups, groups: ["trabajador"], operations: [read, create, update, delete]}]) {
   id: ID!
   nombreComercial: String
   razonSocial: String
@@ -58,7 +58,7 @@ type Empresa @model @auth(rules: [{allow: public}]) {
   numero: String
 }
 
-type BDT @model @auth(rules: [{allow: public}]) {
+type BDT @model @auth(rules: [{allow: public}, {allow: owner}, {allow: private}, {allow: private, provider: iam}, {allow: groups, groups: ["trabajador"], operations: [read, create, update, delete]}, {allow: groups, groups: ["Empresa"], operations: [read, create, update, delete]}]) {
   id: ID!
   nombre: String
   apellidos: String
