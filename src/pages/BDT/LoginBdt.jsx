@@ -49,6 +49,12 @@ function LoginBdt() {
         })
     })
   }
+
+  return (
+    <div>
+      <></>
+    </div>
+  )
 }
 
 export default withAuthenticator(LoginBdt)

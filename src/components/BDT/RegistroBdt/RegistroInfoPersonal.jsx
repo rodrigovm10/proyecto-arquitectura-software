@@ -28,19 +28,7 @@ export default function RegistroInfoPersonal() {
     }))
   }
 
-  const attributes = [
-    'Nombre',
-    'Apellidos',
-    'Curp',
-    'Fecha de Nacimiento',
-    'Teléfono', // Corregido nombre
-    'Genero',
-    'Municipio',
-    'Colonia',
-    'Calle',
-    'Codigo Postal', // Corregido nombre
-    'escolaridad'
-  ]
+  const attributes = ['Nombre', 'Apellidos', 'Curp', 'Fecha de Nacimiento', 'Teléfono', 'Genero', 'Municipio', 'Colonia', 'Calle', 'Codigo Postal', 'escolaridad']
 
   return (
     <Center py={6}>
@@ -57,7 +45,16 @@ export default function RegistroInfoPersonal() {
           {attributes.map(attribute => (
             <FormControl key={attribute}>
               <FormLabel>{attribute}</FormLabel>
-              {attribute === 'escolaridad' ? (
+              {attribute === 'Fecha de Nacimiento' ? (
+                <Input
+                  placeholder='Select Date and Time'
+                  size='md'
+                  type='date'
+                  name='fechaNacimiento'
+                  value={formData.fechaNacimiento}
+                  onChange={handleChange}
+                />
+              ) : attribute === 'Escolaridad' ? (
                 <Select
                   name={attribute}
                   value={formData[attribute]}
@@ -73,7 +70,7 @@ export default function RegistroInfoPersonal() {
                 </Select>
               ) : (
                 <Input
-                  type={attribute === 'Teléfono' || attribute === 'Codigo Postal' ? 'number' : 'text'} // Cambiado a number para Teléfono y Codigo Postal
+                  type={attribute === 'Teléfono' || attribute === 'Codigo Postal' ? 'number' : 'text'}
                   name={attribute}
                   value={formData[attribute]}
                   onChange={handleChange}
