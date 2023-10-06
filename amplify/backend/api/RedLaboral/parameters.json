@@ -2,11 +2,5 @@
   "AppSyncApiName": "RedLaboral",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": false,
-  "AuthCognitoUserPoolId": {
-    "Fn::GetAtt": [
-      "authRedLaboral",
-      "Outputs.UserPoolId"
-    ]
-  },
-  "AuthModeLastUpdated": "2023-09-30T23:59:25.043Z"
+  "AuthModeLastUpdated": "2023-10-06T03:21:13.974Z"
 }
