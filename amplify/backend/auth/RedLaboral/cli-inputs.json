@@ -3,7 +3,7 @@
   "cognitoConfig": {
     "identityPoolName": "testAuthIdentityPool",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "redlab0ae9c600",
+    "resourceNameTruncated": "redlabf0b61c1f",
     "userPoolName": "RedLaboral",
     "autoVerifiedAttributes": [
       "email"
@@ -24,15 +24,17 @@
       "Requires Symbols",
       "Requires Uppercase"
     ],
-    "requiredAttributes": [],
+    "requiredAttributes": [
+      "email"
+    ],
     "aliasAttributes": [],
     "userpoolClientGenerateSecret": false,
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [],
     "userpoolClientReadAttributes": [],
-    "userpoolClientLambdaRole": "RedLab0ae9c600_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "RedLabf0b61c1f_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "0ae9c600",
+    "sharedId": "f0b61c1f",
     "resourceName": "RedLaboral",
     "authSelections": "identityPoolAndUserPool",
     "serviceName": "Cognito",
@@ -46,21 +48,6 @@
     "thirdPartyAuth": false,
     "authProviders": [],
     "usernameCaseSensitive": false,
-    "useEnabledMfas": true,
-    "authRoleArn": {
-      "Fn::GetAtt": [
-        "AuthRole",
-        "Arn"
-      ]
-    },
-    "unauthRoleArn": {
-      "Fn::GetAtt": [
-        "UnauthRole",
-        "Arn"
-      ]
-    },
-    "breakCircularDependency": true,
-    "dependsOn": [],
-    "hostedUI": false
+    "useEnabledMfas": true
   }
 }
