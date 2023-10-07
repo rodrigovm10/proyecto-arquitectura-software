@@ -6,6 +6,7 @@ import { Navigate } from "react-router-dom";
 import { DataStore } from "@aws-amplify/datastore";
 import { BDT } from "../../models";
 
+
 function LoginBdt() {
   const [session, setSession] = useState(false);
   const [nombreGrupo, setNombreGrupo] = useState("trabajador");
@@ -38,15 +39,14 @@ function LoginBdt() {
   //Agregar los usuarios a sus grupos
   async function addToGroup(username) {
     await Auth.currentSession().then((data) => {
-      var token = data.idToken.jwtToken;
+      var token = data.accessToken.jwtToken;
       const requestOptions = {
         method: "POST",
-        headers: { Authorization: "Bearer " + token,
-        "Content-Type": "application/json" },
+        headers: { Authorization: token},
         body: JSON.stringify({ groupname: nombreGrupo, username: username, idAplicacion: process.env.REACT_APP_API_USER_GROUP }),
       };
       fetch(
-        process.env.REACT_APP_API_CONEECTA + "/agregar-usuario-a-grupo",
+        process.env.REACT_APP_API_REDLABORAL + "/agregar-usuarios",
         requestOptions
       )
         .then((response) => {
@@ -61,9 +61,16 @@ function LoginBdt() {
 
   return (
     <div>
-
+      Loading...
+      {session ? (
+        nombreGrupo === "trabajador" ? (
+          <Navigate to="/inicio-bdt" />
+        ) : (
+          <Navigate to="/login-empresa" />
+        )
+      ) : (
         <></>
-      
+      )}
     </div>
   );
 }

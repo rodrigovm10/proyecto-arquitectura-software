@@ -9,7 +9,13 @@ import { LoginEmpresa } from './services/LoginEmpresa'
 import { FormEmpresa } from './pages/FormEmpresa'
 import { Vacante } from './pages/Vacante'
 import LoginBdt from './pages/BDT/LoginBdt'
+import InicioBdT from './pages/BDT/InicioBdT'
 import RegistroBdt from './components/BDT/RegistroBdt/RegistroBdt'
+import { Amplify } from 'aws-amplify';
+import awsExports from './aws-exports';
+
+Amplify.configure(awsExports);
+
 
 const router = createBrowserRouter([
   {
@@ -35,6 +41,10 @@ const router = createBrowserRouter([
   {
     path: '/registro-bdt',
     element: <RegistroBdt />
+  },
+  {
+    path: "/inicio-bdt",
+    element: <InicioBdT />,
   }
 ])
 
