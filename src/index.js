@@ -4,10 +4,11 @@ import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { ChakraProvider } from '@chakra-ui/react'
+import { DatosEmpresaProvider } from './context/DataEmpresaContext'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import LoginEmpresa from './services/LoginEmpresa'
-import { FormEmpresa } from './pages/FormEmpresa'
-import { RegistroEmpresa } from './components/Empresa/RegistroEmpresa'
+import { FormEmpresa } from './components/Empresa/FormEmpresa'
+import { RegistroEmpresa } from './pages/RegistroEmpresa'
 import { Vacante } from './pages/Vacante'
 import LoginBdt from './pages/BDT/LoginBdt'
 import InicioBdT from './pages/BDT/InicioBdT'
@@ -63,9 +64,7 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <ChakraProvider>
-    <React.StrictMode>
-      <RouterProvider router={router} />
-    </React.StrictMode>
+    <RouterProvider router={router} />
   </ChakraProvider>
 )
 

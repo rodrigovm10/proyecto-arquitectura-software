@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
 import { Auth } from 'aws-amplify'
 import { Navigate } from 'react-router-dom'
-import { useAddToGroup } from '../../hooks/useAddToGroup'
+import { useAddToGroup } from '../hooks/useAddToGroup'
 import { DataStore } from '@aws-amplify/datastore'
-import { Empresa } from '../../models'
-import { FormEmpresa } from '../../pages/FormEmpresa'
+import { Empresa } from '../models'
+import { FormEmpresa } from '../components/Empresa/FormEmpresa'
 
 export function RegistroEmpresa() {
   const { callLambdaToAddToGroup, nombreGrupo } = useAddToGroup({ nombreDelGrupo: 'Empresa' })

@@ -4,28 +4,40 @@ export const DATOS_PRINCIPALES = [
     campo: 'Nombre Comercial',
     nombre: 'nombreComercial',
     type: 'text',
-    placeholder: 'Google...'
+    placeholder: 'Google...',
+    length: 100,
+    helperText: 'Ingrese el nombre comercial de la empresa.',
+    errorMessage: 'El nombre comercial es obligatorio.'
   },
   {
     id: 2,
     campo: 'Razón Social',
     nombre: 'razonSocial',
     type: 'text',
-    placeholder: 'Google México S. de R.L de C.V'
+    placeholder: 'Google México S. de R.L de C.V',
+    length: 100,
+    helperText: 'Ingrese la razón social de la empresa.',
+    errorMessage: 'La razón social es obligatoria.'
   },
   {
     id: 3,
     campo: 'Actividad',
     nombre: 'actividad',
     type: 'text',
-    placeholder: 'Somos una empresa encargada de...'
+    placeholder: 'Somos una empresa encargada de...',
+    length: 500,
+    helperText: 'Describa la actividad principal de la empresa.',
+    errorMessage: 'La descripción de la actividad es obligatoria.'
   },
   {
     id: 4,
     campo: 'Teléfono',
     nombre: 'telefono',
     type: 'text',
-    placeholder: '4681555248'
+    placeholder: '4681555248',
+    length: 10,
+    helperText: 'Ingrese un número de teléfono válido, sin espacios ni caracteres especiales.',
+    errorMessage: 'El número de teléfono es obligatorio y debe tener 10 dígitos.'
   }
 ]
 
@@ -74,3 +86,35 @@ export const DATOS_EMPRESA = [
     datos: ['Sector', '0', 'A', 'B']
   }
 ]
+
+export const DATOS_EMPRESA_STATE_INITIAL = {
+  nombreComercial: '',
+  razonSocial: '',
+  actividad: '',
+  telefono: '',
+  tipoRFC: '',
+  rfc: '',
+  municipio: '',
+  colonia: '',
+  calle: '',
+  numero: '',
+  codigoPostal: '',
+  tipoSucursal: '',
+  sector: ''
+}
+
+export const DATOS_EMPRESA_STATE_INITIAL_ERRORS = {
+  nombreComercial: false,
+  razonSocial: false,
+  actividad: false,
+  telefono: false,
+  tipoRFC: false,
+  rfc: false,
+  municipio: false,
+  colonia: false,
+  calle: false,
+  numero: false,
+  codigoPostal: false,
+  tipoSucursal: false,
+  sector: false
+}
