@@ -310,6 +310,13 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "direccionVacante": {
+                    "name": "direccionVacante",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -482,8 +489,6 @@ export const schema = {
                     "properties": {
                         "rules": [
                             {
-<<<<<<< HEAD
-=======
                                 "allow": "public",
                                 "operations": [
                                     "create",
@@ -524,7 +529,6 @@ export const schema = {
                                 ]
                             },
                             {
->>>>>>> 9d9363be63c94c782d64b95aeb7e47fc01a37cb9
                                 "groupClaim": "cognito:groups",
                                 "provider": "userPools",
                                 "allow": "groups",
@@ -550,38 +554,6 @@ export const schema = {
                                     "create",
                                     "update",
                                     "delete"
-                                ]
-                            },
-                            {
-                                "groupClaim": "cognito:groups",
-                                "provider": "userPools",
-                                "allow": "groups",
-                                "groups": [
-                                    "Empresa"
-                                ],
-                                "operations": [
-                                    "read",
-                                    "create",
-                                    "update",
-                                    "delete"
-                                ]
-                            },
-                            {
-                                "allow": "private",
-                                "operations": [
-                                    "create",
-                                    "update",
-                                    "delete",
-                                    "read"
-                                ]
-                            },
-                            {
-                                "allow": "public",
-                                "operations": [
-                                    "create",
-                                    "update",
-                                    "delete",
-                                    "read"
                                 ]
                             }
                         ]
@@ -730,7 +702,7 @@ export const schema = {
                 "codigoPostal": {
                     "name": "codigoPostal",
                     "isArray": false,
-                    "type": "String",
+                    "type": "Int",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -839,5 +811,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "1cf0083d4c014d4b81d30d907cca763d"
+    "version": "2275545252cfd22473ad6edf5d09b4e3"
 };

@@ -90,6 +90,7 @@ type EagerVacante = {
   readonly Idioma?: (string | null)[] | null;
   readonly salarioMax?: number | null;
   readonly salarioMin?: number | null;
+  readonly direccionVacante?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -118,6 +119,7 @@ type LazyVacante = {
   readonly Idioma?: (string | null)[] | null;
   readonly salarioMax?: number | null;
   readonly salarioMin?: number | null;
+  readonly direccionVacante?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -204,7 +206,7 @@ type EagerBDT = {
   readonly municipio?: string | null;
   readonly colonia?: string | null;
   readonly calle?: string | null;
-  readonly codigoPostal?: string | null;
+  readonly codigoPostal?: number | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -233,7 +235,7 @@ type LazyBDT = {
   readonly municipio?: string | null;
   readonly colonia?: string | null;
   readonly calle?: string | null;
-  readonly codigoPostal?: string | null;
+  readonly codigoPostal?: number | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

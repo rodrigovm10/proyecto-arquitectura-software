@@ -31,7 +31,7 @@ export declare type BDTCreateFormInputValues = {
     municipio?: string;
     colonia?: string;
     calle?: string;
-    codigoPostal?: string;
+    codigoPostal?: number;
 };
 export declare type BDTCreateFormValidationValues = {
     nombre?: ValidationFunction<string>;
@@ -52,7 +52,7 @@ export declare type BDTCreateFormValidationValues = {
     municipio?: ValidationFunction<string>;
     colonia?: ValidationFunction<string>;
     calle?: ValidationFunction<string>;
-    codigoPostal?: ValidationFunction<string>;
+    codigoPostal?: ValidationFunction<number>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type BDTCreateFormOverridesProps = {
