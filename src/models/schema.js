@@ -310,6 +310,13 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "direccionVacante": {
+                    "name": "direccionVacante",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -695,7 +702,7 @@ export const schema = {
                 "codigoPostal": {
                     "name": "codigoPostal",
                     "isArray": false,
-                    "type": "String",
+                    "type": "Int",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -804,5 +811,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "1cf0083d4c014d4b81d30d907cca763d"
+    "version": "2275545252cfd22473ad6edf5d09b4e3"
 };
