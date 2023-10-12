@@ -1,11 +1,11 @@
+import { Header } from '../components/Header'
 import { FormLabel, Input, Heading, Center, Select, Grid, GridItem } from '@chakra-ui/react'
-import { Nav } from '../pages/Nav'
 import { Genero, DiasLaborales, Idiomas, MUNICIPIOS, HabilidadesTecnicas, HabilidadesBlandas, Discapacidades, Prestaciones, Escolaridad, TipoEmpleo, CausaVacante, AreaEmpresa } from '../constants/Datos'
 
 export function Vacante() {
   return (
     <>
-      <Nav />
+      <Header />
       <Heading as='h3'>
         <Center>Registro Vacantes</Center>
       </Heading>

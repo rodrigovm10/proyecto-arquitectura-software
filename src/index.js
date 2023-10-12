@@ -4,7 +4,6 @@ import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { ChakraProvider } from '@chakra-ui/react'
-import { DatosEmpresaProvider } from './context/DataEmpresaContext'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import LoginEmpresa from './services/LoginEmpresa'
 import { FormEmpresa } from './components/Empresa/FormEmpresa'
@@ -16,6 +15,7 @@ import RegistroBdt from './components/BDT/RegistroBdt/RegistroBdt'
 import { LandingEmpresa } from './pages/LandingEmpresa'
 import { Amplify } from 'aws-amplify'
 import awsExports from './aws-exports'
+import { SessionProvider } from './context/SessionContext'
 
 Amplify.configure(awsExports)
 
@@ -64,7 +64,9 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <ChakraProvider>
-    <RouterProvider router={router} />
+    <SessionProvider>
+      <RouterProvider router={router} />
+    </SessionProvider>
   </ChakraProvider>
 )
 

@@ -1,5 +1,4 @@
 import { Center, FormControl, Heading } from '@chakra-ui/react'
-import { Nav } from '../../pages/Nav'
 import { DatosPrincipalesForm } from './DatosPrincipalesForm'
 import { DatosRFCForm } from './DatosRFCForm'
 import { DatosUbicacionForm } from './DatosUbicacionForm'
@@ -7,6 +6,7 @@ import { DatosSucursalForm } from './DatosSucursalForm'
 import { BotonesForm } from '../BotonesForm'
 import { guardarEmpresaEnDataStore } from '../../services/CrearEmpresas'
 import { useRegister } from '../../hooks/useRegister'
+import { Header } from '../Header'
 
 export function FormEmpresa({ email }) {
   const { datosEmpresa, errors } = useRegister()
@@ -21,7 +21,7 @@ export function FormEmpresa({ email }) {
 
   return (
     <>
-      <Nav />
+      <Header />
       <FormControl
         onSubmit={handleSubmitForm}
         display='flex'
@@ -32,7 +32,7 @@ export function FormEmpresa({ email }) {
         rounded='md'
         bg='#fff'
         m='2rem auto 0'
-        w={{ base: '80%', sm: '80%', md: '55%' }}>
+        w={{ base: '80%', sm: '80%', md: '70%' }}>
         <Heading
           as='h2'
           size='lg'>

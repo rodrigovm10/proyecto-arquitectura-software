@@ -24,5 +24,5 @@ export function useAddToGroup({ nombreDelGrupo }) {
     })
   }
 
-  return { callLambdaToAddToGroup, nombreGrupo }
+  return { callLambdaToAddToGroup, nombreGrupo, setNombreGrupo }
 }
