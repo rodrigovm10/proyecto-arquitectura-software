@@ -3,7 +3,7 @@ import logo from '../img/logo.png'
 import { useSession } from '../hooks/useSession'
 
 export function Nav() {
-  const { logOut, dataSession } = useSession()
+  const { logOut, dataSession, nombreGrupo } = useSession()
 
   return (
     <Flex>
@@ -20,17 +20,17 @@ export function Nav() {
           href='/'>
           Inicio
         </Link>
-        {dataSession?.session && (
+        {dataSession?.session && nombreGrupo === 'Empresa' && (
           <ButtonGroup>
+            <Link
+              color='#fff'
+              href='#'>
+              Vacantes
+            </Link>
             <Link
               color='#fff'
               onClick={logOut}>
               Logout
-            </Link>
-            <Link
-              color='#fff'
-              href='/login-empresa'>
-              Empresas
             </Link>
           </ButtonGroup>
         )}
@@ -45,6 +45,20 @@ export function Nav() {
               color='#fff'
               href='/login-empresa'>
               Empresas
+            </Link>
+          </ButtonGroup>
+        )}
+        {dataSession?.session && nombreGrupo === 'BDT' && (
+          <ButtonGroup>
+            <Link
+              color='#fff'
+              href='#'>
+              Vacantes
+            </Link>
+            <Link
+              color='#fff'
+              onClick={logOut}>
+              Logout
             </Link>
           </ButtonGroup>
         )}

@@ -6,22 +6,35 @@ export function useRegister() {
   const { datosEmpresa, setDatosEmpresa } = useContext(DataEmpresaContext)
   const [errors, setErrors] = useState(DATOS_EMPRESA_STATE_INITIAL_ERRORS)
 
+  const handleInputChange = e => {
+    const { value, name } = e.target
+    let newValue
+    name === 'rfc' ? (newValue = transformToUppercase({ value })) : (newValue = '')
+
+    setDatosEmpresa(prevDatosEmpresa => ({
+      ...prevDatosEmpresa,
+      [name]: value,
+      rfc: newValue
+    }))
+    console.log(datosEmpresa)
+    inputValidation({ value, name })
+  }
+
   const inputValidation = ({ value, name }) => {
     if (value === ' ') {
-      setErrors({
-        ...errors,
-        [name]: true
-      })
+      setErrors(prevErrors => ({ ...prevErrors, [name]: true }))
       return
     }
 
-    setErrors({
-      ...errors,
-      [name]: false
-    })
+    setErrors(prevErrors => ({ ...prevErrors, [name]: false }))
+  }
+
+  const transformToUppercase = ({ value }) => {
+    const newValue = value.toUpperCase()
+    return newValue
   }
 
   const selectValidation = () => {}
 
-  return { datosEmpresa, errors, setDatosEmpresa, inputValidation }
+  return { datosEmpresa, errors, setDatosEmpresa, handleInputChange }
 }

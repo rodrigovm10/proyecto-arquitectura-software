@@ -5,6 +5,7 @@ import { Empresa } from '../models'
 import { Auth } from 'aws-amplify'
 import { useAddToGroup } from './useAddToGroup'
 import { useNavigate } from 'react-router-dom'
+import { DATA_SESSION_STATE_INITIAL } from '../constants/EstadosIniciales'
 
 export function useSession() {
   const navigate = useNavigate()
@@ -18,7 +19,7 @@ export function useSession() {
   async function logOut() {
     try {
       await Auth.signOut()
-      setDataSession(prevDataSession => ({ ...prevDataSession, session: false }))
+      setDataSession(prevDataSession => ({ ...prevDataSession, DATA_SESSION_STATE_INITIAL }))
       navigate('/')
       // Puedes redirigir al usuario a la página de inicio de sesión u otra página después del logout.
     } catch (error) {

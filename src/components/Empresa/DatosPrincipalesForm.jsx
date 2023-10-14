@@ -2,20 +2,9 @@ import { Box, Flex, FormHelperText, FormLabel, Input } from '@chakra-ui/react'
 import { DATOS_PRINCIPALES } from '../../constants/FormEmpresa'
 import { useRegister } from '../../hooks/useRegister'
 
-export function DatosPrincipalesForm({ errors }) {
-  const { datosEmpresa, inputValidation, setDatosEmpresa } = useRegister()
+export function DatosPrincipalesForm() {
+  const { datosEmpresa, handleInputChange, errors } = useRegister()
 
-  const handleInputChange = e => {
-    let { value, name } = e.target
-    setDatosEmpresa({
-      ...datosEmpresa,
-      [name]: value
-    })
-
-    console.log(datosEmpresa)
-
-    inputValidation({ value, name })
-  }
   return (
     <Flex
       gap={2}

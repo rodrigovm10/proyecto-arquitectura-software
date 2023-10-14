@@ -38,16 +38,10 @@ export function FormEmpresa({ email }) {
           size='lg'>
           <Center>Registro Empresa</Center>
         </Heading>
-        <DatosPrincipalesForm errors={errors} />
-        <DatosRFCForm
-          datosEmpresa={datosEmpresa}
-          handleInputChange={handleInputChange}
-        />
+        <DatosPrincipalesForm />
+        <DatosRFCForm />
         <DatosUbicacionForm />
-        <DatosSucursalForm
-          datosEmpresa={datosEmpresa}
-          handleInputChange={handleInputChange}
-        />
+        <DatosSucursalForm />
       </FormControl>
       <BotonesForm onClick={handleSubmitForm} />
     </>

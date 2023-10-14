@@ -3,7 +3,6 @@ export const DATOS_EMPRESA_STATE_INITIAL = {
   razonSocial: '',
   actividad: '',
   telefono: '',
-  tipoRFC: '',
   rfc: '',
   municipio: '',
   colonia: '',
@@ -19,7 +18,6 @@ export const DATOS_EMPRESA_STATE_INITIAL_ERRORS = {
   razonSocial: false,
   actividad: false,
   telefono: false,
-  tipoRFC: false,
   rfc: false,
   municipio: false,
   colonia: false,
@@ -34,6 +32,5 @@ export const DATA_SESSION_STATE_INITIAL = {
   session: false,
   idOwner: '',
   email: '',
-  cuentaExistente: 0,
-  grupo: ''
+  cuentaExistente: 0
 }

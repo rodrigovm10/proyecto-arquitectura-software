@@ -47,28 +47,32 @@ export const DATOS_UBICACION = [
     campo: 'Calle',
     nombre: 'calle',
     type: 'text',
-    placeholder: 'Avenida General, Iturbide, Cruz Blanca...'
+    placeholder: 'Avenida General, Iturbide, Cruz Blanca...',
+    errorMessage: 'El campo de la calle es obligatorio.'
   },
   {
     id: 2,
     campo: 'Colonia',
     nombre: 'colonia',
     type: 'text',
-    placeholder: 'Montañita, Arboleda, La Banda...'
+    placeholder: 'Montañita, Arboleda, La Banda...',
+    errorMessage: 'El campo de la colonia es obligatorio.'
   },
   {
     id: 3,
     campo: 'Número Exterior / Interior',
     nombre: 'numero',
     type: 'text',
-    placeholder: '10B Int. 4, 120...'
+    placeholder: '10B Int. 4, 120...',
+    errorMessage: 'El campo de número exterior/interior es obligatorio.'
   },
   {
     id: 4,
     campo: 'Código Postal',
     nombre: 'codigoPostal',
     type: 'text',
-    placeholder: '37900'
+    placeholder: '37900',
+    errorMessage: 'El campo de código postal es obligatorio.'
   }
 ]
 

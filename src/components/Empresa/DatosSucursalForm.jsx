@@ -1,7 +1,9 @@
 import { Box, Flex, FormLabel, Select } from '@chakra-ui/react'
 import { DATOS_EMPRESA } from '../../constants/FormEmpresa'
+import { useRegister } from '../../hooks/useRegister'
 
-export function DatosSucursalForm({ datosEmpresa, handleInputChange }) {
+export function DatosSucursalForm() {
+  const { datosEmpresa, handleInputChange } = useRegister()
   return (
     <Flex
       gap={5}
@@ -19,11 +21,7 @@ export function DatosSucursalForm({ datosEmpresa, handleInputChange }) {
               value={datosEmpresa[nombre]}
               onChange={handleInputChange}>
               {datos.map((dato, i) => (
-                <option
-                  key={i}
-                  disabled={dato === 'Tipo Sucursal' || dato === 'Sector'}>
-                  {dato}
-                </option>
+                <option key={i}>{dato}</option>
               ))}
             </Select>
           </Box>

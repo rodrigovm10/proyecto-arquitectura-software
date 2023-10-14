@@ -3,6 +3,7 @@ import { Navigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useAddToGroup } from '../hooks/useAddToGroup'
 import { useSession } from '../hooks/useSession'
+import { Loading } from '../components/Loading'
 
 function LoginEmpresa() {
   const { dataSession, getDataSession } = useSession()
@@ -14,8 +15,8 @@ function LoginEmpresa() {
 
   return (
     <div>
-      Loading...
-      {dataSession.session ? nombreGrupo === 'Empresa' ? <Navigate to='/registro-empresa' /> : <Navigate to='/login-empresa' /> : <></>}
+      <Loading />
+      {dataSession.session && nombreGrupo === 'Empresa' ? <Navigate to='/registro-empresa' /> : <Navigate to='/login-empresa' />}
     </div>
   )
 }
