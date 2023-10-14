@@ -31,6 +31,7 @@ export declare type VacanteCreateFormInputValues = {
     Idioma?: string[];
     salarioMax?: number;
     salarioMin?: number;
+    direccionVacante?: string;
 };
 export declare type VacanteCreateFormValidationValues = {
     nombreVacante?: ValidationFunction<string>;
@@ -51,6 +52,7 @@ export declare type VacanteCreateFormValidationValues = {
     Idioma?: ValidationFunction<string>;
     salarioMax?: ValidationFunction<number>;
     salarioMin?: ValidationFunction<number>;
+    direccionVacante?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type VacanteCreateFormOverridesProps = {
@@ -73,6 +75,7 @@ export declare type VacanteCreateFormOverridesProps = {
     Idioma?: PrimitiveOverrideProps<TextFieldProps>;
     salarioMax?: PrimitiveOverrideProps<TextFieldProps>;
     salarioMin?: PrimitiveOverrideProps<TextFieldProps>;
+    direccionVacante?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type VacanteCreateFormProps = React.PropsWithChildren<{
     overrides?: VacanteCreateFormOverridesProps | undefined | null;

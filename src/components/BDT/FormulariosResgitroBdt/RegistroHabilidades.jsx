@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import {Box,Button,Center,FormControl,FormLabel,Grid,HStack,Select,Tag,TagLabel,TagCloseButton,} from '@chakra-ui/react';
 import { idiomas, nivelIdiomas } from '../../../files/Idiomas';
 import { habilidadesBlandas} from '../../../files/HabilidadesBlandas';
 import { habilidadesTecnicas} from '../../../files/HabilidadesTecnicas';
 
-const RegistroHabilidades = () => {
+const RegistroHabilidades = ({habilidades, setHabilidades}) => {
   const [idiomasSeleccionados, setIdiomasSeleccionados] = useState([]);
   const [idiomaSeleccionado, setIdiomaSeleccionado] = useState('');
   const [nivelSeleccionado, setNivelSeleccionado] = useState('');
@@ -12,6 +12,7 @@ const RegistroHabilidades = () => {
   const [habilidadBlandaSeleccionada, setHabilidadBlandaSeleccionada] = useState('');
   const [habilidadesTecnicasSeleccionadas, setHabilidadesTecnicasSeleccionadas] = useState([]);
   const [habilidadTecnicaSeleccionada, setHabilidadTecnicaSeleccionada] = useState('');
+
 
   const IdiomaChange = (event) => {
     setIdiomaSeleccionado(event.target.value);
@@ -29,28 +30,7 @@ const RegistroHabilidades = () => {
     setHabilidadTecnicaSeleccionada(event.target.value);
   };
 
-  const concatenarIdioma = () => {
-    if (idiomaSeleccionado && nivelSeleccionado) {
-      const idiomaConcatenado = idiomaSeleccionado + ' - ' + nivelSeleccionado;
-      setIdiomasSeleccionados([...idiomasSeleccionados, idiomaConcatenado]);
-      setIdiomaSeleccionado('');
-      setNivelSeleccionado('');
-    }
-  };
 
-  const concatenarHabilidadBlanda = () => {
-    if (habilidadBlandaSeleccionada) {
-      setHabilidadesBlandasSeleccionadas([...habilidadesBlandasSeleccionadas, habilidadBlandaSeleccionada]);
-      setHabilidadBlandaSeleccionada('');
-    }
-  };
-
-  const concatenarHabilidadTecnica = () => {
-    if (habilidadTecnicaSeleccionada) {
-      setHabilidadesTecnicasSeleccionadas([...habilidadesTecnicasSeleccionadas, habilidadTecnicaSeleccionada]);
-      setHabilidadTecnicaSeleccionada('');
-    }
-  };
 
   const removeIdioma = (index) => {
     const updatedIdiomas = [...idiomasSeleccionados];
@@ -69,7 +49,48 @@ const RegistroHabilidades = () => {
     updatedHabilidadesTecnicas.splice(index, 1);
     setHabilidadesTecnicasSeleccionadas(updatedHabilidadesTecnicas);
   };
+  const concatenarIdioma = () => {
+    if (idiomaSeleccionado && nivelSeleccionado) {
+      const idiomaConcatenado = `${idiomaSeleccionado}/${nivelSeleccionado}`;
+      setIdiomasSeleccionados([...idiomasSeleccionados, idiomaConcatenado]);
+      setIdiomaSeleccionado('');
+      setNivelSeleccionado('');
 
+      // Actualiza el estado de habilidades con el nuevo idioma
+      setHabilidades((prevHabilidades) => ({
+        ...prevHabilidades,
+        idioma: [...prevHabilidades.idioma, idiomaConcatenado],
+      }));
+    }
+  };
+
+  const concatenarHabilidadBlanda = () => {
+    if (habilidadBlandaSeleccionada) {
+      setHabilidadesBlandasSeleccionadas([...habilidadesBlandasSeleccionadas, habilidadBlandaSeleccionada]);
+      setHabilidadBlandaSeleccionada('');
+
+      // Actualiza el estado de habilidades con la nueva habilidad blanda
+      setHabilidades((prevHabilidades) => ({
+        ...prevHabilidades,
+        habilidadesBlandas: [...prevHabilidades.habilidadesBlandas, habilidadBlandaSeleccionada],
+      }));
+    }
+  };
+
+  const concatenarHabilidadTecnica = () => {
+    if (habilidadTecnicaSeleccionada) {
+      setHabilidadesTecnicasSeleccionadas([...habilidadesTecnicasSeleccionadas, habilidadTecnicaSeleccionada]);
+      setHabilidadTecnicaSeleccionada('');
+
+      // Actualiza el estado de habilidades con la nueva habilidad técnica
+      setHabilidades((prevHabilidades) => ({
+        ...prevHabilidades,
+        habilidadesTecnicas: [...prevHabilidades.habilidadesTecnicas, habilidadTecnicaSeleccionada],
+      }));
+    }
+  };
+
+  
   return (
     <Center py={6}>
   <Box
@@ -85,6 +106,7 @@ const RegistroHabilidades = () => {
       <FormControl>
         <FormLabel>Selecciona un idioma</FormLabel>
         <Select onChange={IdiomaChange} value={idiomaSeleccionado}>
+        <option value="">Seleccionar idioma</option>
           {idiomas.map((idioma) => (
             <option key={idioma} value={idioma}>
               {idioma}
@@ -95,6 +117,7 @@ const RegistroHabilidades = () => {
       <FormControl>
         <FormLabel>Selecciona el nivel</FormLabel>
         <Select onChange={NivelChange} value={nivelSeleccionado}>
+        <option value="">Seleccionar nivel</option>
           {nivelIdiomas.map((nivel) => (
             <option key={nivel} value={nivel}>
               {nivel}
@@ -116,7 +139,7 @@ const RegistroHabilidades = () => {
                 variant="solid"
                 colorScheme="green"
               >
-                <TagLabel>{idioma}</TagLabel>
+                <TagLabel>{idioma }</TagLabel>
                 <TagCloseButton onClick={() => removeIdioma(index)} />
               </Tag>
             ))}
@@ -126,6 +149,7 @@ const RegistroHabilidades = () => {
       <FormControl>
         <FormLabel>Selecciona una habilidad blanda</FormLabel>
         <Select onChange={HabilidadBlandaChange} value={habilidadBlandaSeleccionada}>
+        <option value="">Seleccionar habilida blanda</option>
           {habilidadesBlandas.map((habilidad) => (
             <option key={habilidad} value={habilidad}>
               {habilidad}
@@ -157,6 +181,7 @@ const RegistroHabilidades = () => {
       <FormControl>
         <FormLabel>Selecciona una habilidad técnica</FormLabel>
         <Select onChange={HabilidadTecnicaChange} value={habilidadTecnicaSeleccionada}>
+        <option value="">Seleccionar habilida técnica</option>
           {habilidadesTecnicas.map((habilidad) => (
             <option key={habilidad} value={habilidad}>
               {habilidad}

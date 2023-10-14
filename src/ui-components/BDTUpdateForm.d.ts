@@ -26,13 +26,13 @@ export declare type BDTUpdateFormInputValues = {
     trabajando?: boolean;
     correo?: string;
     habilidadesBlandas?: string[];
-    habilidadesTecnicas?: string;
+    habilidadesTecnicas?: string[];
     dispViajar?: boolean;
     dispRadicar?: boolean;
     municipio?: string;
     colonia?: string;
     calle?: string;
-    codigoPostal?: string;
+    codigoPostal?: number;
 };
 export declare type BDTUpdateFormValidationValues = {
     nombre?: ValidationFunction<string>;
@@ -53,7 +53,7 @@ export declare type BDTUpdateFormValidationValues = {
     municipio?: ValidationFunction<string>;
     colonia?: ValidationFunction<string>;
     calle?: ValidationFunction<string>;
-    codigoPostal?: ValidationFunction<string>;
+    codigoPostal?: ValidationFunction<number>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type BDTUpdateFormOverridesProps = {

@@ -1,29 +1,32 @@
 import { DataStore } from '@aws-amplify/datastore';
-import { BDT } from './models';
-export const registarBdE = async (datosInfoPersonal,infoHabilidades, datosEducacion, datosSituacion, datosExperencia, datosCertificacion, ocupaciones, email, combinacionIdioma) =>{
-await DataStore.save(
+import { BDT } from '../models';
+
+export const registarBdE = async (datosInforPersonal,habilidades, datosSituacion,  email) =>{
+
+
+    await DataStore.save(
     new BDT({
-        "nombre": datosInfoPersonal.nombre,
-        "apellidos": datosInfoPersonal.apellidos,
-        "correo": email,
-        "telefono": datosInfoPersonal.telefono,
-        "curp": datosInfoPersonal.curp,
-        "escolaridad": datosEducacion.escolaridad,
-        "fechaNacimiento": datosCertificacion.fechaNacimiento,
-        "genero": datosInfoPersonal.genero,
-        "idioma": combinacionIdioma,
-        "habilidadesBlandas": infoHabilidades.habilidadesBlandas,
-        "habilidadesTecnicas": infoHabilidades.habilidadesTecnicas,
+        "nombre": datosInforPersonal.nombre,
+        "apellidos": datosInforPersonal.apellidos,
+        "correo": datosInforPersonal.correo,
+        "telefono": datosInforPersonal.telefono,
+        "curp": datosInforPersonal.curp,
+        "escolaridad": datosInforPersonal.escolaridad,
+        "fechaNacimiento": String(datosInforPersonal.fechaNacimiento),
+        "genero": datosInforPersonal.genero,
+        "municipio": datosInforPersonal.municipio,
+        "colonia": datosInforPersonal.colonia,
+        "calle": datosInforPersonal.calle,
+        "codigoPostal": Number(datosInforPersonal.codigoPostal),
+        "idioma": habilidades.idioma,
+        "habilidadesBlandas": habilidades.habilidadesBlandas,
+        "habilidadesTecnicas":habilidades.habilidadesTecnicas,
         "buscaEmpleo": datosSituacion.buscasEmpleo === "false" || datosSituacion.buscasEmpleo === false  ? false : true,
         "trabajando": datosSituacion.trabajando  === "false" || datosSituacion.trabajando  === false ? false : true,
-        "municipio": datosInfoPersonal.municipio,
-        "colonia": datosInfoPersonal.colonia,
-        "calle": datosInfoPersonal.calle,
-        "codigoPostal": parseInt(datosInfoPersonal.codigoPostal, 10),
-        "dispViaja": datosSituacion.dispViaja === "false"  || datosSituacion.dispViaja === false ? false : true,
-        "dispRadicar": datosSituacion.dispRadicar === "false"  || datosSituacion.dispRadicar === false ? false : true,
-        "aqueteDedicas": ocupaciones.aqueteDedicas,
-        "queBuscas": ocupaciones.queBuscas,
+        "dispRadicar": datosSituacion.dispRadicar  === "false" || datosSituacion.dispRadicar  === false ? false : true,
+        "dispViajar": datosSituacion.dispViaja === "false"  || datosSituacion.dispViaja === false ? false : true,
+
+
 
 	})
 );

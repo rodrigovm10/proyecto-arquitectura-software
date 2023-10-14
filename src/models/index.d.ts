@@ -90,6 +90,7 @@ type EagerVacante = {
   readonly Idioma?: (string | null)[] | null;
   readonly salarioMax?: number | null;
   readonly salarioMin?: number | null;
+  readonly direccionVacante?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -118,6 +119,7 @@ type LazyVacante = {
   readonly Idioma?: (string | null)[] | null;
   readonly salarioMax?: number | null;
   readonly salarioMin?: number | null;
+  readonly direccionVacante?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -198,13 +200,13 @@ type EagerBDT = {
   readonly trabajando?: boolean | null;
   readonly correo?: string | null;
   readonly habilidadesBlandas?: (string | null)[] | null;
-  readonly habilidadesTecnicas?: string | null;
+  readonly habilidadesTecnicas?: (string | null)[] | null;
   readonly dispViajar?: boolean | null;
   readonly dispRadicar?: boolean | null;
   readonly municipio?: string | null;
   readonly colonia?: string | null;
   readonly calle?: string | null;
-  readonly codigoPostal?: string | null;
+  readonly codigoPostal?: number | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -227,13 +229,13 @@ type LazyBDT = {
   readonly trabajando?: boolean | null;
   readonly correo?: string | null;
   readonly habilidadesBlandas?: (string | null)[] | null;
-  readonly habilidadesTecnicas?: string | null;
+  readonly habilidadesTecnicas?: (string | null)[] | null;
   readonly dispViajar?: boolean | null;
   readonly dispRadicar?: boolean | null;
   readonly municipio?: string | null;
   readonly colonia?: string | null;
   readonly calle?: string | null;
-  readonly codigoPostal?: string | null;
+  readonly codigoPostal?: number | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

@@ -10,7 +10,7 @@ import { FormEmpresa } from './pages/FormEmpresa'
 import { Vacante } from './pages/Vacante'
 import LoginBdt from './pages/BDT/LoginBdt'
 import InicioBdT from './pages/BDT/InicioBdT'
-import RegistroBdt from './components/BDT/RegistroBdt/RegistroBdt'
+import RegistroBdT from './pages/BDT/RegistroBdT'
 import { Amplify } from 'aws-amplify';
 import awsExports from './aws-exports';
 
@@ -40,7 +40,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/registro-bdt',
-    element: <RegistroBdt />
+    element: <RegistroBdT />
   },
   {
     path: "/inicio-bdt",

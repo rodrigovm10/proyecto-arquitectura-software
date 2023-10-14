@@ -53,22 +53,19 @@ function InicioBdT() {
       {session ? (
         <div>
           {nombreGrupo === 'trabajador' ? (
-            <div>
-              { (
-                <div>
-                 
-                 
-                  <InicioPrincipal  />
-                 
-                </div>
-              )}
-            </div>
+            existe === "Si" ?
+            <InicioPrincipal existe={existe} />
+              : existe === "No" ?
+                <>
+                  <Navigate to="/registro-bdt" />
+                </>
+                : <></>
           ) : nombreGrupo === 'Empresa' && (
             <Navigate to='/login-empresa' />
           )}
         </div>
       ) : (
-      session === false && <Navigate to='/' />
+        session === false && <Navigate to='/' />
       )}
     </div>
   );

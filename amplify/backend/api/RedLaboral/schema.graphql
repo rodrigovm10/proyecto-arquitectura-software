@@ -39,6 +39,7 @@ type Vacante @model @auth(rules: [{allow: public}]) {
   Idioma: [String]
   salarioMax: Int
   salarioMin: Int
+  direccionVacante: String
 }
 
 type Empresa @model @auth(rules: [{allow: public}, {allow: owner}, {allow: private}, {allow: private, provider: iam}, {allow: groups, groups: ["Empresa"], operations: [read, create, update, delete]}, {allow: groups, groups: ["trabajador"], operations: [read, create, update, delete]}]) {
@@ -72,12 +73,12 @@ type BDT @model @auth(rules: [{allow: public}, {allow: owner}, {allow: private},
   trabajando: Boolean
   correo: String
   habilidadesBlandas: [String]
-  habilidadesTecnicas: String
+  habilidadesTecnicas: [String]
   dispViajar: Boolean
   dispRadicar: Boolean
   municipio: String
   colonia: String
   calle: String
-  codigoPostal: String
+  codigoPostal: Int
 }
  

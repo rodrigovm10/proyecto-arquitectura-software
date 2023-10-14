@@ -208,6 +208,7 @@ export default function VacanteCreateForm(props) {
     Idioma: [],
     salarioMax: "",
     salarioMin: "",
+    direccionVacante: "",
   };
   const [nombreVacante, setNombreVacante] = React.useState(
     initialValues.nombreVacante
@@ -245,6 +246,9 @@ export default function VacanteCreateForm(props) {
   const [Idioma, setIdioma] = React.useState(initialValues.Idioma);
   const [salarioMax, setSalarioMax] = React.useState(initialValues.salarioMax);
   const [salarioMin, setSalarioMin] = React.useState(initialValues.salarioMin);
+  const [direccionVacante, setDireccionVacante] = React.useState(
+    initialValues.direccionVacante
+  );
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setNombreVacante(initialValues.nombreVacante);
@@ -268,6 +272,7 @@ export default function VacanteCreateForm(props) {
     setCurrentIdiomaValue("");
     setSalarioMax(initialValues.salarioMax);
     setSalarioMin(initialValues.salarioMin);
+    setDireccionVacante(initialValues.direccionVacante);
     setErrors({});
   };
   const [currentHabilidadesBlandasValue, setCurrentHabilidadesBlandasValue] =
@@ -297,6 +302,7 @@ export default function VacanteCreateForm(props) {
     Idioma: [],
     salarioMax: [],
     salarioMin: [],
+    direccionVacante: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -342,6 +348,7 @@ export default function VacanteCreateForm(props) {
           Idioma,
           salarioMax,
           salarioMin,
+          direccionVacante,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -414,6 +421,7 @@ export default function VacanteCreateForm(props) {
               Idioma,
               salarioMax,
               salarioMin,
+              direccionVacante,
             };
             const result = onChange(modelFields);
             value = result?.nombreVacante ?? value;
@@ -455,6 +463,7 @@ export default function VacanteCreateForm(props) {
               Idioma,
               salarioMax,
               salarioMin,
+              direccionVacante,
             };
             const result = onChange(modelFields);
             value = result?.descripcion ?? value;
@@ -496,6 +505,7 @@ export default function VacanteCreateForm(props) {
               Idioma,
               salarioMax,
               salarioMin,
+              direccionVacante,
             };
             const result = onChange(modelFields);
             value = result?.diasLaborales ?? value;
@@ -533,6 +543,7 @@ export default function VacanteCreateForm(props) {
               Idioma,
               salarioMax,
               salarioMin,
+              direccionVacante,
             };
             const result = onChange(modelFields);
             values = result?.habilidadesBlandas ?? values;
@@ -603,6 +614,7 @@ export default function VacanteCreateForm(props) {
               Idioma,
               salarioMax,
               salarioMin,
+              direccionVacante,
             };
             const result = onChange(modelFields);
             values = result?.habilidadesTecnicas ?? values;
@@ -677,6 +689,7 @@ export default function VacanteCreateForm(props) {
               Idioma,
               salarioMax,
               salarioMin,
+              direccionVacante,
             };
             const result = onChange(modelFields);
             value = result?.generoBDT ?? value;
@@ -722,6 +735,7 @@ export default function VacanteCreateForm(props) {
               Idioma,
               salarioMax,
               salarioMin,
+              direccionVacante,
             };
             const result = onChange(modelFields);
             value = result?.edadMin ?? value;
@@ -767,6 +781,7 @@ export default function VacanteCreateForm(props) {
               Idioma,
               salarioMax,
               salarioMin,
+              direccionVacante,
             };
             const result = onChange(modelFields);
             value = result?.edadMax ?? value;
@@ -808,6 +823,7 @@ export default function VacanteCreateForm(props) {
               Idioma,
               salarioMax,
               salarioMin,
+              direccionVacante,
             };
             const result = onChange(modelFields);
             value = result?.area ?? value;
@@ -849,6 +865,7 @@ export default function VacanteCreateForm(props) {
               Idioma,
               salarioMax,
               salarioMin,
+              direccionVacante,
             };
             const result = onChange(modelFields);
             value = result?.tipoEmpleo ?? value;
@@ -890,6 +907,7 @@ export default function VacanteCreateForm(props) {
               Idioma,
               salarioMax,
               salarioMin,
+              direccionVacante,
             };
             const result = onChange(modelFields);
             value = result?.dispViajar ?? value;
@@ -931,6 +949,7 @@ export default function VacanteCreateForm(props) {
               Idioma,
               salarioMax,
               salarioMin,
+              direccionVacante,
             };
             const result = onChange(modelFields);
             value = result?.dispRadicar ?? value;
@@ -972,6 +991,7 @@ export default function VacanteCreateForm(props) {
               Idioma,
               salarioMax,
               salarioMin,
+              direccionVacante,
             };
             const result = onChange(modelFields);
             value = result?.escolaridad ?? value;
@@ -1013,6 +1033,7 @@ export default function VacanteCreateForm(props) {
               Idioma,
               salarioMax,
               salarioMin,
+              direccionVacante,
             };
             const result = onChange(modelFields);
             value = result?.prestaciones ?? value;
@@ -1054,6 +1075,7 @@ export default function VacanteCreateForm(props) {
               Idioma,
               salarioMax,
               salarioMin,
+              direccionVacante,
             };
             const result = onChange(modelFields);
             value = result?.direccionEmpresa ?? value;
@@ -1091,6 +1113,7 @@ export default function VacanteCreateForm(props) {
               Idioma: values,
               salarioMax,
               salarioMin,
+              direccionVacante,
             };
             const result = onChange(modelFields);
             values = result?.Idioma ?? values;
@@ -1161,6 +1184,7 @@ export default function VacanteCreateForm(props) {
               Idioma,
               salarioMax: value,
               salarioMin,
+              direccionVacante,
             };
             const result = onChange(modelFields);
             value = result?.salarioMax ?? value;
@@ -1206,6 +1230,7 @@ export default function VacanteCreateForm(props) {
               Idioma,
               salarioMax,
               salarioMin: value,
+              direccionVacante,
             };
             const result = onChange(modelFields);
             value = result?.salarioMin ?? value;
@@ -1219,6 +1244,48 @@ export default function VacanteCreateForm(props) {
         errorMessage={errors.salarioMin?.errorMessage}
         hasError={errors.salarioMin?.hasError}
         {...getOverrideProps(overrides, "salarioMin")}
+      ></TextField>
+      <TextField
+        label="Direccion vacante"
+        isRequired={false}
+        isReadOnly={false}
+        value={direccionVacante}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              nombreVacante,
+              descripcion,
+              diasLaborales,
+              habilidadesBlandas,
+              habilidadesTecnicas,
+              generoBDT,
+              edadMin,
+              edadMax,
+              area,
+              tipoEmpleo,
+              dispViajar,
+              dispRadicar,
+              escolaridad,
+              prestaciones,
+              direccionEmpresa,
+              Idioma,
+              salarioMax,
+              salarioMin,
+              direccionVacante: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.direccionVacante ?? value;
+          }
+          if (errors.direccionVacante?.hasError) {
+            runValidationTasks("direccionVacante", value);
+          }
+          setDireccionVacante(value);
+        }}
+        onBlur={() => runValidationTasks("direccionVacante", direccionVacante)}
+        errorMessage={errors.direccionVacante?.errorMessage}
+        hasError={errors.direccionVacante?.hasError}
+        {...getOverrideProps(overrides, "direccionVacante")}
       ></TextField>
       <Flex
         justifyContent="space-between"

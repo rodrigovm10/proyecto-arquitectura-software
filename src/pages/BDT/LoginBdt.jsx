@@ -64,7 +64,7 @@ function LoginBdt() {
       Loading...
       {session ? (
         nombreGrupo === "trabajador" ? (
-          <Navigate to="/inicio-bdt" />
+          <Navigate to="/registro-bdt" />
         ) : (
           <Navigate to="/login-empresa" />
         )
