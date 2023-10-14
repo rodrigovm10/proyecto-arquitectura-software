@@ -1,4 +1,4 @@
-import {  Box } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 import { Nav } from './Nav'
 
 export function Header() {
@@ -7,7 +7,7 @@ export function Header() {
       <Box
         bg='#181c24'
         p='1rem'>
-        <Nav></Nav>
+        <Nav />
       </Box>
     </Box>
   )

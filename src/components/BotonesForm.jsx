@@ -5,7 +5,7 @@ export function BotonesForm({ onClick }) {
     <Flex
       justifyContent='center'
       mt='2rem'>
-      <ButtonGroup>
+      <ButtonGroup mb='3rem'>
         <Button colorScheme='red'>Cancelar</Button>
         <Button
           bg='#ea754b'

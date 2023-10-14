@@ -1,5 +1,5 @@
 import { createContext, useState } from 'react'
-import { DATOS_EMPRESA_STATE_INITIAL } from '../constants/FormEmpresa'
+import { DATOS_EMPRESA_STATE_INITIAL } from '../constants/EstadosIniciales'
 
 // 1. Crear el Contexto
 export const DataEmpresaContext = createContext()

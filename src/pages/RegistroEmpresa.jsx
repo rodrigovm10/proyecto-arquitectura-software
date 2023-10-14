@@ -5,38 +5,21 @@ import { useEffect } from 'react'
 import { DatosEmpresaProvider } from '../context/DataEmpresaContext'
 
 export function RegistroEmpresa() {
-  const { dataSession, getSessionData, nombreGrupo } = useSession()
+  const { dataSession, getDataSession, nombreGrupo } = useSession()
   console.log(dataSession)
   useEffect(() => {
-    getSessionData()
+    getDataSession()
   }, [])
   return (
     <div>
-      {dataSession.session ? (
-        <>
-          {nombreGrupo === 'Empresa' ? (
-            dataSession.cuentaExistente === 1 ? (
-              <Navigate to='/inicio-empresa' />
-            ) : dataSession.cuentaExistente === 0 ? (
-              <>
-                <DatosEmpresaProvider>
-                  <FormEmpresa email={dataSession.email} />
-                </DatosEmpresaProvider>
-              </>
-            ) : (
-              <></>
-            )
-          ) : nombreGrupo === 'trabajador' ? (
-            <Navigate to='/login-empresa' />
-          ) : (
-            <></>
-          )}
-        </>
-      ) : dataSession.session === false ? (
-        <Navigate to='/' />
-      ) : (
-        <></>
+      {dataSession.session && nombreGrupo === 'Empresa' && dataSession.cuentaExistente === 1 && <Navigate to='/inicio-empresa' />}
+      {dataSession.session && nombreGrupo === 'Empresa' && dataSession.cuentaExistente === 0 && (
+        <DatosEmpresaProvider>
+          <FormEmpresa email={dataSession.email} />
+        </DatosEmpresaProvider>
       )}
+      {dataSession.session && nombreGrupo === 'BDT' && dataSession.cuentaExistente === 0 && <Navigate to='/login-bdt' />}
+      {dataSession.session === false && <Navigate to='/' />}
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react'
 import { DataEmpresaContext } from '../context/DataEmpresaContext'
-import { DATOS_EMPRESA_STATE_INITIAL_ERRORS } from '../constants/FormEmpresa'
+import { DATOS_EMPRESA_STATE_INITIAL_ERRORS } from '../constants/EstadosIniciales'
 
 export function useRegister() {
   const { datosEmpresa, setDatosEmpresa } = useContext(DataEmpresaContext)

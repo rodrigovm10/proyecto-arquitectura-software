@@ -86,35 +86,3 @@ export const DATOS_EMPRESA = [
     datos: ['Sector', '0', 'A', 'B']
   }
 ]
-
-export const DATOS_EMPRESA_STATE_INITIAL = {
-  nombreComercial: '',
-  razonSocial: '',
-  actividad: '',
-  telefono: '',
-  tipoRFC: '',
-  rfc: '',
-  municipio: '',
-  colonia: '',
-  calle: '',
-  numero: '',
-  codigoPostal: '',
-  tipoSucursal: '',
-  sector: ''
-}
-
-export const DATOS_EMPRESA_STATE_INITIAL_ERRORS = {
-  nombreComercial: false,
-  razonSocial: false,
-  actividad: false,
-  telefono: false,
-  tipoRFC: false,
-  rfc: false,
-  municipio: false,
-  colonia: false,
-  calle: false,
-  numero: false,
-  codigoPostal: false,
-  tipoSucursal: false,
-  sector: false
-}

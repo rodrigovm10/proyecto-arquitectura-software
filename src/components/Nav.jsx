@@ -1,7 +1,10 @@
-import { Flex, Spacer, Link, Image, ButtonGroup } from '@chakra-ui/react'
+import { Flex, Spacer, Link, Image, ButtonGroup, Button } from '@chakra-ui/react'
 import logo from '../img/logo.png'
+import { useSession } from '../hooks/useSession'
 
 export function Nav() {
+  const { logOut, dataSession } = useSession()
+
   return (
     <Flex>
       <Link href='/'>
@@ -17,18 +20,34 @@ export function Nav() {
           href='/'>
           Inicio
         </Link>
-        <ButtonGroup>
-          <Link
-            color='#fff'
-            href='/login-bdt'>
-            Buscadores de Trabajo
-          </Link>
-          <Link
-            color='#fff'
-            href='/login-empresa'>
-            Empresas
-          </Link>
-        </ButtonGroup>
+        {dataSession?.session && (
+          <ButtonGroup>
+            <Link
+              color='#fff'
+              onClick={logOut}>
+              Logout
+            </Link>
+            <Link
+              color='#fff'
+              href='/login-empresa'>
+              Empresas
+            </Link>
+          </ButtonGroup>
+        )}
+        {dataSession?.session === false && (
+          <ButtonGroup>
+            <Link
+              color='#fff'
+              href='/login-bdt'>
+              Buscadores de Trabajo
+            </Link>
+            <Link
+              color='#fff'
+              href='/login-empresa'>
+              Empresas
+            </Link>
+          </ButtonGroup>
+        )}
       </Flex>
     </Flex>
   )
