@@ -11,7 +11,7 @@ export default function RegistroInfoPersonal({ datosInforPersonal, setEDatosInfo
     telefono: '', // Cambiado a string para manejar números
     escolaridad: '',
     genero: '',
-    correo: '',
+   
     municipio: '',
     colonia: '',
     calle: '',

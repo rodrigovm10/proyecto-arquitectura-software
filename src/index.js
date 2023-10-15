@@ -13,6 +13,7 @@ import InicioBdT from './pages/BDT/InicioBdT'
 import RegistroBdT from './pages/BDT/RegistroBdT'
 import { Amplify } from 'aws-amplify';
 import awsExports from './aws-exports';
+import PerfilBdT from './pages/BDT/PerfilBdT'
 
 Amplify.configure(awsExports);
 
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
   {
     path: '/login-bdt',
     element: <LoginBdt />
+  },
+  {
+    path: "/perfil-bdt",
+    element: <PerfilBdT />,
   },
   {
     path: '/form-empresa',
