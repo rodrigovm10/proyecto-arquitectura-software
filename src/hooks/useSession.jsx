@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import { SessionContext } from '../context/SessionContext'
 import { DataStore } from '@aws-amplify/datastore'
 import { Empresa } from '../models'
@@ -7,21 +7,17 @@ import { useAddToGroup } from './useAddToGroup'
 import { useNavigate } from 'react-router-dom'
 import { DATA_SESSION_STATE_INITIAL } from '../constants/EstadosIniciales'
 
-export function useSession() {
+export function useSession(nombreDelGrupo) {
   const navigate = useNavigate()
   const { dataSession, setDataSession } = useContext(SessionContext)
-  const { callLambdaToAddToGroup, nombreGrupo } = useAddToGroup({ nombreDelGrupo: 'Empresa' })
-
-  useEffect(() => {
-    console.log(dataSession)
-  }, [])
+  const { callLambdaToAddToGroup, nombreGrupo } = useAddToGroup({ nombreDelGrupo })
 
   async function logOut() {
     try {
       await Auth.signOut()
-      setDataSession(prevDataSession => ({ ...prevDataSession, DATA_SESSION_STATE_INITIAL }))
+      setDataSession(DATA_SESSION_STATE_INITIAL)
+      sessionStorage.clear()
       navigate('/')
-      // Puedes redirigir al usuario a la página de inicio de sesión u otra página después del logout.
     } catch (error) {
       console.error('Error al cerrar sesión', error)
     }
@@ -30,7 +26,6 @@ export function useSession() {
   async function getDataSession() {
     try {
       const userData = await Auth.currentAuthenticatedUser()
-      console.log(userData)
       setDataSession(prevDataSession => ({
         ...prevDataSession,
         session: true,

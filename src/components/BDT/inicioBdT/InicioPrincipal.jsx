@@ -1,9 +1,8 @@
 
-
-function InicioPrincipal({ }) {
+function InicioPrincipal({ existe }) {
   return (
     <div className='container pt-3 min-vh-100'>
-        <p>Hola bde</p>
+      <p>hola</p>
     </div >
   );
 };

@@ -11,10 +11,11 @@ import { RegistroEmpresa } from './pages/RegistroEmpresa'
 import { Vacante } from './pages/Vacante'
 import LoginBdt from './pages/BDT/LoginBdt'
 import InicioBdT from './pages/BDT/InicioBdT'
-import RegistroBdt from './components/BDT/RegistroBdt/RegistroBdt'
-import { LandingEmpresa } from './pages/LandingEmpresa'
+import RegistroBdT from './pages/BDT/RegistroBdT'
 import { Amplify } from 'aws-amplify'
 import awsExports from './aws-exports'
+import PerfilBdT from './pages/BDT/PerfilBdT'
+import { LandingEmpresa } from './pages/LandingEmpresa'
 import { SessionProvider } from './context/SessionContext'
 
 Amplify.configure(awsExports)
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
     element: <RegistroEmpresa />
   },
   {
+    path: '/perfil-bdt',
+    element: <PerfilBdT />
+  },
+  {
     path: '/form-empresa',
     element: <FormEmpresa />
   },
@@ -48,7 +53,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/registro-bdt',
-    element: <RegistroBdt />
+    element: <RegistroBdT />
   },
   {
     path: '/inicio-bdt',

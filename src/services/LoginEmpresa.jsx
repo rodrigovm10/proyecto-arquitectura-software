@@ -1,17 +1,15 @@
 import { withAuthenticator } from '@aws-amplify/ui-react'
 import { Navigate } from 'react-router-dom'
-import { useEffect } from 'react'
-import { useAddToGroup } from '../hooks/useAddToGroup'
 import { useSession } from '../hooks/useSession'
 import { Loading } from '../components/Loading'
+import { useEffect } from 'react'
 
 function LoginEmpresa() {
-  const { dataSession, getDataSession } = useSession()
-  const { nombreGrupo } = useAddToGroup({ nombreDelGrupo: 'Empresa' })
+  const { dataSession, getDataSession, nombreGrupo } = useSession('Empresa')
 
   useEffect(() => {
     getDataSession()
-  }, [])
+  })
 
   return (
     <div>
