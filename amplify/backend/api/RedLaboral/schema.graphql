@@ -17,6 +17,10 @@ type Oportunidades @model @auth(rules: [{allow: public}]) {
   numero: String
   codigoPostal: String
   idstep: String
+  correoEmpresa: String
+  correoBDT: String
+  nombreBDT: String
+  nombreEmpresa: String
 }
 
 type Vacante @model @auth(rules: [{allow: public}]) {
@@ -73,7 +77,7 @@ type BDT @model @auth(rules: [{allow: public}, {allow: owner}, {allow: private},
   trabajando: Boolean
   correo: String
   habilidadesBlandas: [String]
-  habilidadesTecnicas: String
+  habilidadesTecnicas: [String]
   dispViajar: Boolean
   dispRadicar: Boolean
   municipio: String

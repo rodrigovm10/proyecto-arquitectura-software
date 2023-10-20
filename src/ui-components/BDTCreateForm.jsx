@@ -202,7 +202,7 @@ export default function BDTCreateForm(props) {
     trabajando: false,
     correo: "",
     habilidadesBlandas: [],
-    habilidadesTecnicas: "",
+    habilidadesTecnicas: [],
     dispViajar: false,
     dispRadicar: false,
     municipio: "",
@@ -260,6 +260,7 @@ export default function BDTCreateForm(props) {
     setHabilidadesBlandas(initialValues.habilidadesBlandas);
     setCurrentHabilidadesBlandasValue("");
     setHabilidadesTecnicas(initialValues.habilidadesTecnicas);
+    setCurrentHabilidadesTecnicasValue("");
     setDispViajar(initialValues.dispViajar);
     setDispRadicar(initialValues.dispRadicar);
     setMunicipio(initialValues.municipio);
@@ -273,6 +274,9 @@ export default function BDTCreateForm(props) {
   const [currentHabilidadesBlandasValue, setCurrentHabilidadesBlandasValue] =
     React.useState("");
   const habilidadesBlandasRef = React.createRef();
+  const [currentHabilidadesTecnicasValue, setCurrentHabilidadesTecnicasValue] =
+    React.useState("");
+  const habilidadesTecnicasRef = React.createRef();
   const validations = {
     nombre: [],
     apellidos: [],
@@ -938,13 +942,9 @@ export default function BDTCreateForm(props) {
           {...getOverrideProps(overrides, "habilidadesBlandas")}
         ></TextField>
       </ArrayField>
-      <TextField
-        label="Habilidades tecnicas"
-        isRequired={false}
-        isReadOnly={false}
-        value={habilidadesTecnicas}
-        onChange={(e) => {
-          let { value } = e.target;
+      <ArrayField
+        onChange={async (items) => {
+          let values = items;
           if (onChange) {
             const modelFields = {
               nombre,
@@ -959,7 +959,7 @@ export default function BDTCreateForm(props) {
               trabajando,
               correo,
               habilidadesBlandas,
-              habilidadesTecnicas: value,
+              habilidadesTecnicas: values,
               dispViajar,
               dispRadicar,
               municipio,
@@ -968,20 +968,51 @@ export default function BDTCreateForm(props) {
               codigoPostal,
             };
             const result = onChange(modelFields);
-            value = result?.habilidadesTecnicas ?? value;
+            values = result?.habilidadesTecnicas ?? values;
           }
-          if (errors.habilidadesTecnicas?.hasError) {
-            runValidationTasks("habilidadesTecnicas", value);
-          }
-          setHabilidadesTecnicas(value);
+          setHabilidadesTecnicas(values);
+          setCurrentHabilidadesTecnicasValue("");
         }}
-        onBlur={() =>
-          runValidationTasks("habilidadesTecnicas", habilidadesTecnicas)
+        currentFieldValue={currentHabilidadesTecnicasValue}
+        label={"Habilidades tecnicas"}
+        items={habilidadesTecnicas}
+        hasError={errors?.habilidadesTecnicas?.hasError}
+        runValidationTasks={async () =>
+          await runValidationTasks(
+            "habilidadesTecnicas",
+            currentHabilidadesTecnicasValue
+          )
         }
-        errorMessage={errors.habilidadesTecnicas?.errorMessage}
-        hasError={errors.habilidadesTecnicas?.hasError}
-        {...getOverrideProps(overrides, "habilidadesTecnicas")}
-      ></TextField>
+        errorMessage={errors?.habilidadesTecnicas?.errorMessage}
+        setFieldValue={setCurrentHabilidadesTecnicasValue}
+        inputFieldRef={habilidadesTecnicasRef}
+        defaultFieldValue={""}
+      >
+        <TextField
+          label="Habilidades tecnicas"
+          isRequired={false}
+          isReadOnly={false}
+          value={currentHabilidadesTecnicasValue}
+          onChange={(e) => {
+            let { value } = e.target;
+            if (errors.habilidadesTecnicas?.hasError) {
+              runValidationTasks("habilidadesTecnicas", value);
+            }
+            setCurrentHabilidadesTecnicasValue(value);
+          }}
+          onBlur={() =>
+            runValidationTasks(
+              "habilidadesTecnicas",
+              currentHabilidadesTecnicasValue
+            )
+          }
+          errorMessage={errors.habilidadesTecnicas?.errorMessage}
+          hasError={errors.habilidadesTecnicas?.hasError}
+          ref={habilidadesTecnicasRef}
+          labelHidden={true}
+          {...getOverrideProps(overrides, "habilidadesTecnicas")}
+        ></TextField>
+      </ArrayField>
       <SwitchField
         label="Disp viajar"
         defaultChecked={false}

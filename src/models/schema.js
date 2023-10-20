@@ -129,6 +129,34 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "correoEmpresa": {
+                    "name": "correoEmpresa",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "correoBDT": {
+                    "name": "correoBDT",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "nombreBDT": {
+                    "name": "nombreBDT",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "nombreEmpresa": {
+                    "name": "nombreEmpresa",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -659,10 +687,11 @@ export const schema = {
                 },
                 "habilidadesTecnicas": {
                     "name": "habilidadesTecnicas",
-                    "isArray": false,
+                    "isArray": true,
                     "type": "String",
                     "isRequired": false,
-                    "attributes": []
+                    "attributes": [],
+                    "isArrayNullable": true
                 },
                 "dispViajar": {
                     "name": "dispViajar",
@@ -811,5 +840,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "2275545252cfd22473ad6edf5d09b4e3"
+    "version": "f5a7b5d0e60150f9e84bfb9974dce65f"
 };

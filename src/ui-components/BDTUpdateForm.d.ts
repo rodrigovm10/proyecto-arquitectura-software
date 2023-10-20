@@ -26,7 +26,7 @@ export declare type BDTUpdateFormInputValues = {
     trabajando?: boolean;
     correo?: string;
     habilidadesBlandas?: string[];
-    habilidadesTecnicas?: string;
+    habilidadesTecnicas?: string[];
     dispViajar?: boolean;
     dispRadicar?: boolean;
     municipio?: string;

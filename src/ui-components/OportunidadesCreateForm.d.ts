@@ -30,6 +30,10 @@ export declare type OportunidadesCreateFormInputValues = {
     numero?: string;
     codigoPostal?: string;
     idstep?: string;
+    correoEmpresa?: string;
+    correoBDT?: string;
+    nombreBDT?: string;
+    nombreEmpresa?: string;
 };
 export declare type OportunidadesCreateFormValidationValues = {
     motivoBDT?: ValidationFunction<string>;
@@ -49,6 +53,10 @@ export declare type OportunidadesCreateFormValidationValues = {
     numero?: ValidationFunction<string>;
     codigoPostal?: ValidationFunction<string>;
     idstep?: ValidationFunction<string>;
+    correoEmpresa?: ValidationFunction<string>;
+    correoBDT?: ValidationFunction<string>;
+    nombreBDT?: ValidationFunction<string>;
+    nombreEmpresa?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type OportunidadesCreateFormOverridesProps = {
@@ -70,6 +78,10 @@ export declare type OportunidadesCreateFormOverridesProps = {
     numero?: PrimitiveOverrideProps<TextFieldProps>;
     codigoPostal?: PrimitiveOverrideProps<TextFieldProps>;
     idstep?: PrimitiveOverrideProps<TextFieldProps>;
+    correoEmpresa?: PrimitiveOverrideProps<TextFieldProps>;
+    correoBDT?: PrimitiveOverrideProps<TextFieldProps>;
+    nombreBDT?: PrimitiveOverrideProps<TextFieldProps>;
+    nombreEmpresa?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type OportunidadesCreateFormProps = React.PropsWithChildren<{
     overrides?: OportunidadesCreateFormOverridesProps | undefined | null;

@@ -25,7 +25,7 @@ export declare type BDTCreateFormInputValues = {
     trabajando?: boolean;
     correo?: string;
     habilidadesBlandas?: string[];
-    habilidadesTecnicas?: string;
+    habilidadesTecnicas?: string[];
     dispViajar?: boolean;
     dispRadicar?: boolean;
     municipio?: string;
