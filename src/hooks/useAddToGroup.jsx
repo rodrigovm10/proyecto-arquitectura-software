@@ -1,6 +1,5 @@
 import { Auth } from 'aws-amplify'
 import { useState } from 'react'
-import { useSession } from './useSession'
 export function useAddToGroup({ nombreDelGrupo }) {
   const [nombreGrupo, setNombreGrupo] = useState(nombreDelGrupo)
 
