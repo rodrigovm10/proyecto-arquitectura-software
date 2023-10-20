@@ -7,7 +7,7 @@ import RegistroInfoPersonal from './RegistroInfoPersonal';
 
 import Swal from 'sweetalert2'
 
-export default function RegistrarBdt({idUser, email}) {
+export default function RegistrarBdt({email}) {
   const [datosInforPersonal, setEDatosInforPersonal] = useState({nombre: '',apellidos: '', curp: '', fechaNacimiento: '',telefono: '',escolaridad: '',genero: '',correo: email,municipio: '',colonia: '',calle: '',codigoPostal: '',});
   const [habilidades, setHabilidades] = useState({
     idioma: [], // Asegúrate de que idioma sea un array vacío por defecto
