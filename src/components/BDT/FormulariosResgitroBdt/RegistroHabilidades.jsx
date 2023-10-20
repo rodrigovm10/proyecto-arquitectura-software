@@ -1,8 +1,8 @@
 import React, { useState,useEffect } from 'react';
 import {Box,Button,Center,FormControl,FormLabel,Grid,HStack,Select,Tag,TagLabel,TagCloseButton,} from '@chakra-ui/react';
-import { idiomas, nivelIdiomas } from '../../../files/Idiomas';
-import { habilidadesBlandas} from '../../../files/HabilidadesBlandas';
-import { habilidadesTecnicas} from '../../../files/HabilidadesTecnicas';
+import { idiomas, nivelIdiomas } from '../../../constants/Idiomas';
+import { habilidadesBlandas} from '../../../constants/HabilidadesBlandas';
+import { habilidadesTecnicas} from '../../../constants/HabilidadesTecnicas';
 
 const RegistroHabilidades = ({habilidades, setHabilidades}) => {
   const [idiomasSeleccionados, setIdiomasSeleccionados] = useState([]);

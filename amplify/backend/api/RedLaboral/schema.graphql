@@ -17,6 +17,10 @@ type Oportunidades @model @auth(rules: [{allow: public}]) {
   numero: String
   codigoPostal: String
   idstep: String
+  correoEmpresa: String
+  correoBDT: String
+  nombreBDT: String
+  nombreEmpresa: String
 }
 
 type Vacante @model @auth(rules: [{allow: public}]) {

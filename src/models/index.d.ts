@@ -29,6 +29,10 @@ type EagerOportunidades = {
   readonly numero?: string | null;
   readonly codigoPostal?: string | null;
   readonly idstep?: string | null;
+  readonly correoEmpresa?: string | null;
+  readonly correoBDT?: string | null;
+  readonly nombreBDT?: string | null;
+  readonly nombreEmpresa?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -56,6 +60,10 @@ type LazyOportunidades = {
   readonly numero?: string | null;
   readonly codigoPostal?: string | null;
   readonly idstep?: string | null;
+  readonly correoEmpresa?: string | null;
+  readonly correoBDT?: string | null;
+  readonly nombreBDT?: string | null;
+  readonly nombreEmpresa?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

@@ -129,6 +129,34 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "correoEmpresa": {
+                    "name": "correoEmpresa",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "correoBDT": {
+                    "name": "correoBDT",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "nombreBDT": {
+                    "name": "nombreBDT",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "nombreEmpresa": {
+                    "name": "nombreEmpresa",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -812,5 +840,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "65e679e7a868b58204987ca9a8a0b062"
+    "version": "f5a7b5d0e60150f9e84bfb9974dce65f"
 };

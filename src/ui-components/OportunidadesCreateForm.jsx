@@ -40,6 +40,10 @@ export default function OportunidadesCreateForm(props) {
     numero: "",
     codigoPostal: "",
     idstep: "",
+    correoEmpresa: "",
+    correoBDT: "",
+    nombreBDT: "",
+    nombreEmpresa: "",
   };
   const [motivoBDT, setMotivoBDT] = React.useState(initialValues.motivoBDT);
   const [motivoEmpresa, setMotivoEmpresa] = React.useState(
@@ -71,6 +75,14 @@ export default function OportunidadesCreateForm(props) {
     initialValues.codigoPostal
   );
   const [idstep, setIdstep] = React.useState(initialValues.idstep);
+  const [correoEmpresa, setCorreoEmpresa] = React.useState(
+    initialValues.correoEmpresa
+  );
+  const [correoBDT, setCorreoBDT] = React.useState(initialValues.correoBDT);
+  const [nombreBDT, setNombreBDT] = React.useState(initialValues.nombreBDT);
+  const [nombreEmpresa, setNombreEmpresa] = React.useState(
+    initialValues.nombreEmpresa
+  );
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setMotivoBDT(initialValues.motivoBDT);
@@ -90,6 +102,10 @@ export default function OportunidadesCreateForm(props) {
     setNumero(initialValues.numero);
     setCodigoPostal(initialValues.codigoPostal);
     setIdstep(initialValues.idstep);
+    setCorreoEmpresa(initialValues.correoEmpresa);
+    setCorreoBDT(initialValues.correoBDT);
+    setNombreBDT(initialValues.nombreBDT);
+    setNombreEmpresa(initialValues.nombreEmpresa);
     setErrors({});
   };
   const validations = {
@@ -110,6 +126,10 @@ export default function OportunidadesCreateForm(props) {
     numero: [],
     codigoPostal: [],
     idstep: [],
+    correoEmpresa: [],
+    correoBDT: [],
+    nombreBDT: [],
+    nombreEmpresa: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -154,6 +174,10 @@ export default function OportunidadesCreateForm(props) {
           numero,
           codigoPostal,
           idstep,
+          correoEmpresa,
+          correoBDT,
+          nombreBDT,
+          nombreEmpresa,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -225,6 +249,10 @@ export default function OportunidadesCreateForm(props) {
               numero,
               codigoPostal,
               idstep,
+              correoEmpresa,
+              correoBDT,
+              nombreBDT,
+              nombreEmpresa,
             };
             const result = onChange(modelFields);
             value = result?.motivoBDT ?? value;
@@ -265,6 +293,10 @@ export default function OportunidadesCreateForm(props) {
               numero,
               codigoPostal,
               idstep,
+              correoEmpresa,
+              correoBDT,
+              nombreBDT,
+              nombreEmpresa,
             };
             const result = onChange(modelFields);
             value = result?.motivoEmpresa ?? value;
@@ -305,6 +337,10 @@ export default function OportunidadesCreateForm(props) {
               numero,
               codigoPostal,
               idstep,
+              correoEmpresa,
+              correoBDT,
+              nombreBDT,
+              nombreEmpresa,
             };
             const result = onChange(modelFields);
             value = result?.status ?? value;
@@ -345,6 +381,10 @@ export default function OportunidadesCreateForm(props) {
               numero,
               codigoPostal,
               idstep,
+              correoEmpresa,
+              correoBDT,
+              nombreBDT,
+              nombreEmpresa,
             };
             const result = onChange(modelFields);
             value = result?.mensaje ?? value;
@@ -385,6 +425,10 @@ export default function OportunidadesCreateForm(props) {
               numero,
               codigoPostal,
               idstep,
+              correoEmpresa,
+              correoBDT,
+              nombreBDT,
+              nombreEmpresa,
             };
             const result = onChange(modelFields);
             value = result?.vacanteID ?? value;
@@ -425,6 +469,10 @@ export default function OportunidadesCreateForm(props) {
               numero,
               codigoPostal,
               idstep,
+              correoEmpresa,
+              correoBDT,
+              nombreBDT,
+              nombreEmpresa,
             };
             const result = onChange(modelFields);
             value = result?.empresaID ?? value;
@@ -465,6 +513,10 @@ export default function OportunidadesCreateForm(props) {
               numero,
               codigoPostal,
               idstep,
+              correoEmpresa,
+              correoBDT,
+              nombreBDT,
+              nombreEmpresa,
             };
             const result = onChange(modelFields);
             value = result?.statusVisible ?? value;
@@ -505,6 +557,10 @@ export default function OportunidadesCreateForm(props) {
               numero,
               codigoPostal,
               idstep,
+              correoEmpresa,
+              correoBDT,
+              nombreBDT,
+              nombreEmpresa,
             };
             const result = onChange(modelFields);
             value = result?.fechEntrevista ?? value;
@@ -545,6 +601,10 @@ export default function OportunidadesCreateForm(props) {
               numero,
               codigoPostal,
               idstep,
+              correoEmpresa,
+              correoBDT,
+              nombreBDT,
+              nombreEmpresa,
             };
             const result = onChange(modelFields);
             value = result?.direccionEmpresaEntrevista ?? value;
@@ -590,6 +650,10 @@ export default function OportunidadesCreateForm(props) {
               numero,
               codigoPostal,
               idstep,
+              correoEmpresa,
+              correoBDT,
+              nombreBDT,
+              nombreEmpresa,
             };
             const result = onChange(modelFields);
             value = result?.horarioEntrevista ?? value;
@@ -632,6 +696,10 @@ export default function OportunidadesCreateForm(props) {
               numero,
               codigoPostal,
               idstep,
+              correoEmpresa,
+              correoBDT,
+              nombreBDT,
+              nombreEmpresa,
             };
             const result = onChange(modelFields);
             value = result?.ocumentacionEntrevistad ?? value;
@@ -674,6 +742,10 @@ export default function OportunidadesCreateForm(props) {
               numero,
               codigoPostal,
               idstep,
+              correoEmpresa,
+              correoBDT,
+              nombreBDT,
+              nombreEmpresa,
             };
             const result = onChange(modelFields);
             value = result?.municipio ?? value;
@@ -714,6 +786,10 @@ export default function OportunidadesCreateForm(props) {
               numero,
               codigoPostal,
               idstep,
+              correoEmpresa,
+              correoBDT,
+              nombreBDT,
+              nombreEmpresa,
             };
             const result = onChange(modelFields);
             value = result?.colonia ?? value;
@@ -754,6 +830,10 @@ export default function OportunidadesCreateForm(props) {
               numero,
               codigoPostal,
               idstep,
+              correoEmpresa,
+              correoBDT,
+              nombreBDT,
+              nombreEmpresa,
             };
             const result = onChange(modelFields);
             value = result?.calle ?? value;
@@ -794,6 +874,10 @@ export default function OportunidadesCreateForm(props) {
               numero: value,
               codigoPostal,
               idstep,
+              correoEmpresa,
+              correoBDT,
+              nombreBDT,
+              nombreEmpresa,
             };
             const result = onChange(modelFields);
             value = result?.numero ?? value;
@@ -834,6 +918,10 @@ export default function OportunidadesCreateForm(props) {
               numero,
               codigoPostal: value,
               idstep,
+              correoEmpresa,
+              correoBDT,
+              nombreBDT,
+              nombreEmpresa,
             };
             const result = onChange(modelFields);
             value = result?.codigoPostal ?? value;
@@ -874,6 +962,10 @@ export default function OportunidadesCreateForm(props) {
               numero,
               codigoPostal,
               idstep: value,
+              correoEmpresa,
+              correoBDT,
+              nombreBDT,
+              nombreEmpresa,
             };
             const result = onChange(modelFields);
             value = result?.idstep ?? value;
@@ -887,6 +979,182 @@ export default function OportunidadesCreateForm(props) {
         errorMessage={errors.idstep?.errorMessage}
         hasError={errors.idstep?.hasError}
         {...getOverrideProps(overrides, "idstep")}
+      ></TextField>
+      <TextField
+        label="Correo empresa"
+        isRequired={false}
+        isReadOnly={false}
+        value={correoEmpresa}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              motivoBDT,
+              motivoEmpresa,
+              status,
+              mensaje,
+              vacanteID,
+              empresaID,
+              statusVisible,
+              fechEntrevista,
+              direccionEmpresaEntrevista,
+              horarioEntrevista,
+              ocumentacionEntrevistad,
+              municipio,
+              colonia,
+              calle,
+              numero,
+              codigoPostal,
+              idstep,
+              correoEmpresa: value,
+              correoBDT,
+              nombreBDT,
+              nombreEmpresa,
+            };
+            const result = onChange(modelFields);
+            value = result?.correoEmpresa ?? value;
+          }
+          if (errors.correoEmpresa?.hasError) {
+            runValidationTasks("correoEmpresa", value);
+          }
+          setCorreoEmpresa(value);
+        }}
+        onBlur={() => runValidationTasks("correoEmpresa", correoEmpresa)}
+        errorMessage={errors.correoEmpresa?.errorMessage}
+        hasError={errors.correoEmpresa?.hasError}
+        {...getOverrideProps(overrides, "correoEmpresa")}
+      ></TextField>
+      <TextField
+        label="Correo bdt"
+        isRequired={false}
+        isReadOnly={false}
+        value={correoBDT}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              motivoBDT,
+              motivoEmpresa,
+              status,
+              mensaje,
+              vacanteID,
+              empresaID,
+              statusVisible,
+              fechEntrevista,
+              direccionEmpresaEntrevista,
+              horarioEntrevista,
+              ocumentacionEntrevistad,
+              municipio,
+              colonia,
+              calle,
+              numero,
+              codigoPostal,
+              idstep,
+              correoEmpresa,
+              correoBDT: value,
+              nombreBDT,
+              nombreEmpresa,
+            };
+            const result = onChange(modelFields);
+            value = result?.correoBDT ?? value;
+          }
+          if (errors.correoBDT?.hasError) {
+            runValidationTasks("correoBDT", value);
+          }
+          setCorreoBDT(value);
+        }}
+        onBlur={() => runValidationTasks("correoBDT", correoBDT)}
+        errorMessage={errors.correoBDT?.errorMessage}
+        hasError={errors.correoBDT?.hasError}
+        {...getOverrideProps(overrides, "correoBDT")}
+      ></TextField>
+      <TextField
+        label="Nombre bdt"
+        isRequired={false}
+        isReadOnly={false}
+        value={nombreBDT}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              motivoBDT,
+              motivoEmpresa,
+              status,
+              mensaje,
+              vacanteID,
+              empresaID,
+              statusVisible,
+              fechEntrevista,
+              direccionEmpresaEntrevista,
+              horarioEntrevista,
+              ocumentacionEntrevistad,
+              municipio,
+              colonia,
+              calle,
+              numero,
+              codigoPostal,
+              idstep,
+              correoEmpresa,
+              correoBDT,
+              nombreBDT: value,
+              nombreEmpresa,
+            };
+            const result = onChange(modelFields);
+            value = result?.nombreBDT ?? value;
+          }
+          if (errors.nombreBDT?.hasError) {
+            runValidationTasks("nombreBDT", value);
+          }
+          setNombreBDT(value);
+        }}
+        onBlur={() => runValidationTasks("nombreBDT", nombreBDT)}
+        errorMessage={errors.nombreBDT?.errorMessage}
+        hasError={errors.nombreBDT?.hasError}
+        {...getOverrideProps(overrides, "nombreBDT")}
+      ></TextField>
+      <TextField
+        label="Nombre empresa"
+        isRequired={false}
+        isReadOnly={false}
+        value={nombreEmpresa}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              motivoBDT,
+              motivoEmpresa,
+              status,
+              mensaje,
+              vacanteID,
+              empresaID,
+              statusVisible,
+              fechEntrevista,
+              direccionEmpresaEntrevista,
+              horarioEntrevista,
+              ocumentacionEntrevistad,
+              municipio,
+              colonia,
+              calle,
+              numero,
+              codigoPostal,
+              idstep,
+              correoEmpresa,
+              correoBDT,
+              nombreBDT,
+              nombreEmpresa: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.nombreEmpresa ?? value;
+          }
+          if (errors.nombreEmpresa?.hasError) {
+            runValidationTasks("nombreEmpresa", value);
+          }
+          setNombreEmpresa(value);
+        }}
+        onBlur={() => runValidationTasks("nombreEmpresa", nombreEmpresa)}
+        errorMessage={errors.nombreEmpresa?.errorMessage}
+        hasError={errors.nombreEmpresa?.hasError}
+        {...getOverrideProps(overrides, "nombreEmpresa")}
       ></TextField>
       <Flex
         justifyContent="space-between"

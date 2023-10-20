@@ -1,11 +1,11 @@
-import { Nav } from "../../pages/Nav";
-import { NavMedium } from "../../pages/NavMedium";
+import { NavMedium } from '../../pages/NavMedium'
+import { Header } from '../../components/Header'
 
 export function Landing() {
   return (
     <>
-      <Nav />
+      <Header />
       <NavMedium />
     </>
-  );
+  )
 }
