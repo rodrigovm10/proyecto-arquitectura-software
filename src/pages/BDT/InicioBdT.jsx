@@ -60,8 +60,10 @@ function InicioBdT() {
         <div>
           {nombreGrupo === 'trabajador' ? (
             existe === "Si" ?
-            <NavegadorBDT existe={existe} />
-           
+            <div>
+              <NavegadorBDT  />
+              <InicioPrincipal existe={existe}/>
+            </div>
               : existe === "No" ?
                 <>
                   <Navigate to="/registro-bdt" />
