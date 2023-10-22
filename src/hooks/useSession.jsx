@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { SessionContext } from '../context/SessionContext'
 import { DataStore } from '@aws-amplify/datastore'
-import { Empresa } from '../models'
+import { BDT } from '../models'
 import { Auth } from 'aws-amplify'
 import { useAddToGroup } from './useAddToGroup'
 import { useNavigate } from 'react-router-dom'
@@ -33,7 +33,7 @@ export function useSession(nombreDelGrupo) {
         email: userData.attributes.email
       }))
       callLambdaToAddToGroup(userData.username)
-      const sub = DataStore.observeQuery(Empresa, c => c.email.eq(userData.attributes.email), { limit: 1 }).subscribe(({ items }) => {
+      const sub = DataStore.observeQuery(BDT, c => c.correo.eq(userData.attributes.email), { limit: 1 }).subscribe(({ items }) => {
         setDataSession(prevDataSession => ({ ...prevDataSession, cuentaExistente: items.length }))
       })
       return () => {

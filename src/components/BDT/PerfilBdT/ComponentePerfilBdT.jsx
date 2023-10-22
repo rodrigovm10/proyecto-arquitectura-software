@@ -85,6 +85,11 @@ const ComponentePerfilBdT = ({ usuario, setUsuario, userID }) => {
             <SituacionActualList usuario={usuario} setUsuario={setUsuario} setSitEdit={setSitEdit} />
           </>
         )}
+      
+      <Flex justify="flex-end" mr="20"mb="20">
+      <Button colorScheme="red" onClick={() => {}}m="2">Eliminar Perfil</Button>
+    </Flex>
+
       </>
     );
   };

@@ -15,7 +15,7 @@ function LoginBdt() {
   return (
     <div>
       <Loading />
-      {dataSession.session && nombreGrupo === 'trabajador' ? <Navigate to='/registro-bdt' /> : <Navigate to='/registro-bdt' />}
+      {dataSession.session && nombreGrupo === 'trabajador' ? <Navigate to='/registro-bdt' /> : <Navigate to='/inicio-bdt' />}
     </div>
   )
 }
