@@ -4,6 +4,8 @@ import { Auth, DataStore } from 'aws-amplify';
 import { NombreGrupo } from '../../hooks/NombreGrupo';
 import { Navigate } from 'react-router-dom';
 import { BDT } from '../../models';
+import NavegadorBDT from '../../components/BDT/inicioBdT/NavegadorBDT'
+import  Loading2  from '../../components/Loading2';
 
 function InicioBdT() {
   const [nombreGrupo, setNombreGrupo] = useState('');
@@ -46,7 +48,11 @@ function InicioBdT() {
       cargar()
     }, []); */
 
-
+    if (!nombreGrupo) {
+      if (session) {
+        return <Loading2 />
+      }
+    }
 
   return (
     <div>
@@ -54,7 +60,8 @@ function InicioBdT() {
         <div>
           {nombreGrupo === 'trabajador' ? (
             existe === "Si" ?
-            <InicioPrincipal existe={existe} />
+            <NavegadorBDT existe={existe} />
+           
               : existe === "No" ?
                 <>
                   <Navigate to="/registro-bdt" />

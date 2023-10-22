@@ -17,6 +17,7 @@ import awsExports from './aws-exports'
 import PerfilBdT from './pages/BDT/PerfilBdT'
 import { LandingEmpresa } from './pages/LandingEmpresa'
 import { SessionProvider } from './context/SessionContext'
+import Loading2 from './components/Loading2'
 
 Amplify.configure(awsExports)
 
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
   {
     path: '/vacante',
     element: <Vacante />
+  },
+  {
+    path: '/loading',
+    element: <Loading2 />
   }
 ])
 

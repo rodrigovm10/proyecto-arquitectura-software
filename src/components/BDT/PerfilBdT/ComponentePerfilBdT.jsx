@@ -1,8 +1,4 @@
 import React, { useState } from "react";
-import { DataStore } from "@aws-amplify/datastore";
-import { BDT } from "../../../models";
-import { useNavigate } from "react-router-dom";
-import Swal from 'sweetalert2';
 import BuscadorDeTrabajo from './BdTList/BuscadorDeTrabajoList'
 import Habilidades from "./BdTList/HabilidadesList";
 import SituacionActualList from "./BdTList/SituacionActualList";
@@ -10,7 +6,7 @@ import UpdateInfoPersonal from "./BdtUpdate/UpdateInfoPersonal";
 import UpdateHabilidades from './BdtUpdate/UpdateHabilidades';
 import UpdateSituacionActual from './BdtUpdate/UpdateSituacionActual';
 import { updateBdT } from "../../../hooks/EditarBdt";
-import { Card, CardHeader, CardBody, CardFooter, Text, Center, Button, Flex, Spacer } from '@chakra-ui/react'
+import {  Text, Button, Flex } from '@chakra-ui/react'
 
 const ComponentePerfilBdT = ({ usuario, setUsuario, userID }) => {
     const [InfoEdit, setInfoEdit] = useState(false);
@@ -37,13 +33,13 @@ const ComponentePerfilBdT = ({ usuario, setUsuario, userID }) => {
 
     return (
       <>
-        <b><Text fontSize='4xl'>Mi perfil</Text></b>
+        <Flex justifyContent={'column'} ml='200' mt='10' ><Text fontSize='4xl'>Mi perfil</Text></Flex>
         {InfoEdit ? (
           // Componente de edición de información personal
           <>
             <UpdateInfoPersonal datosInforPersonal={usuario} setEDatosInforPersonal={setUsuario} />
             <Flex justify="center">
-              <Button colorScheme="blue" onClick={GuardarCambios} m="2">Guardar Info Personal</Button>
+              <Button colorScheme="blue" onClick={GuardarCambios} m="2">Guardar</Button>
               <Button colorScheme="red" onClick={CancelarCambios} m="2">Cancelar</Button>
             </Flex>
           </>
@@ -86,9 +82,20 @@ const ComponentePerfilBdT = ({ usuario, setUsuario, userID }) => {
           </>
         )}
       
-      <Flex justify="flex-end" mr="20"mb="20">
-      <Button colorScheme="red" onClick={() => {}}m="2">Eliminar Perfil</Button>
-    </Flex>
+        <Flex justify="flex-end" mr="20" mb="20" _hover={{ transform: 'scale(1)' }}>
+      <Button 
+          onClick={() => {}}
+          m="2"
+          color="red.500" // Letras rojas
+          bg="transparent" // Sin color de fondo
+          _hover={{
+              backgroundColor: 'red.500', // Cambiar color de fondo a rojo al pasar el ratón
+              color: 'white' // Cambiar color de letras a blanco al pasar el ratón
+          }}
+      >
+          Eliminar Perfil
+      </Button>
+      </Flex>
 
       </>
     );

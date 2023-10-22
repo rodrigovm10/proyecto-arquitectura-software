@@ -1,9 +1,9 @@
-import { Center, Box, Stack, Heading, Text, Grid, GridItem, Tag, TagLabel, Tooltip, Button } from '@chakra-ui/react';
+import { Center, Box, Stack, Heading, Grid, GridItem, Tag, TagLabel, Tooltip, Button, Divider,Flex } from '@chakra-ui/react';
 
-function Habilidades({ usuario, setUsuario,setHabEdit }) {
-  const etiquetas = ['Idiomas', 'Habilidades Tecnicas', 'Habilidadades Blandas'];
+function Habilidades({ usuario, setUsuario, setHabEdit }) {
+  const etiquetas = ['Idiomas', 'Habilidades blandas', 'Habilidades técnicas'];
 
-  const campos = [usuario.idioma, usuario.habilidadesTecnicas, usuario.habilidadesBlandas];
+  const campos = [usuario.idioma, usuario.habilidadesBlandas, usuario.habilidadesTecnicas];
 
   return (
     <Center py={6}>
@@ -13,31 +13,35 @@ function Habilidades({ usuario, setUsuario,setHabEdit }) {
         borderColor="gray.200"
         borderRadius="lg"
         p="4"
-        maxW="md"
-        w="auto"
+        w="800px"
+        _hover={{ transform: 'scale(1.02)' }}
       >
         <Stack mt="6" spacing="3">
-          <Heading size="md">Información Personal</Heading>
-          <Grid templateColumns="repeat(2, 1fr)" gap={4}>
-            {etiquetas.map((etiqueta, index) => (
-              <GridItem key={etiqueta}>
-                <strong>{etiqueta}:</strong>
-                <div>
+          {etiquetas.map((etiqueta, index) => (
+            <div key={etiqueta}>
+              <Heading size="md" mb={2}>{etiqueta}</Heading>
+              <Box maxW="max">
+                <Grid templateColumns="repeat(3, 1fr)" gap={4}>
                   {campos[index].map((item, i) => (
-                    <Tooltip key={i} label={item} fontSize="md" hasArrow>
-                      <Tag size="lg" colorScheme="red" borderRadius="full" mr={2} mb={2}>
-                        <TagLabel>
-                          {item.length > 10 ? `${item.slice(0, 10)}...` : item}
-                        </TagLabel>
-                      </Tag>
-                    </Tooltip>
+                    <GridItem key={i}>
+                      <Tooltip label={item} fontSize="md" hasArrow>
+                        <Tag size="md" borderRadius="full" mr={2} mb={2}>
+                          <TagLabel>
+                            {item.length > 25 ? `${item.slice(0, 25)}...` : item}
+                          </TagLabel>
+                        </Tag>
+                      </Tooltip>
+                    </GridItem>
                   ))}
-                </div>
-              </GridItem>
-            ))}
-          </Grid>
+                </Grid>
+              </Box>
+              {index < etiquetas.length - 1 && <Divider my={4} />}
+            </div>
+          ))}
         </Stack>
-        <Button colorScheme="blue" onClick={() => setHabEdit(true)}>Editar</Button>
+        <Flex justifyContent={'end'}>
+        <Button colorScheme="blue" onClick={() => setHabEdit(true)} mt={4}>Editar</Button>
+        </Flex>
       </Box>
     </Center>
   );

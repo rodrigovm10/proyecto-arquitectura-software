@@ -29,5 +29,7 @@ export const registarBdE = async (datosInforPersonal,habilidades, datosSituacion
 
 
 	})
+    
 );
+console.log(BDT);
 }

@@ -5,7 +5,8 @@ import { NombreGrupo } from "../../hooks/NombreGrupo";
 import { Navigate } from "react-router-dom";
 import { DataStore } from "@aws-amplify/datastore";
 import { BDT } from "../../models";
-
+import NavegadorBDT from "../../components/BDT/inicioBdT/NavegadorBDT";
+import Loading2 from "../../components/Loading2";
 
 
 
@@ -40,6 +41,12 @@ function PerfilBdT() {
 
 
 
+  if (!nombreGrupo) {
+    if (session) {
+      return <Loading2 />
+    }
+  }
+
   return (
     <div>
       {session ? (
@@ -48,7 +55,7 @@ function PerfilBdT() {
             <>
               {userData !== "" && userData !== undefined ? (
                 <>
-                  
+                  <NavegadorBDT setSession={setSession}/>
                   <ComponentePerfilBdT userID={user} usuario={userData} setUsuario={setUserData}  />
                  
                 </>
