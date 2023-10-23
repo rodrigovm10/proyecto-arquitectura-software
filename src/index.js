@@ -8,7 +8,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import LoginEmpresa from './services/LoginEmpresa'
 import { FormEmpresa } from './components/Empresa/FormEmpresa'
 import { RegistroEmpresa } from './pages/RegistroEmpresa'
-import { Vacante } from './pages/Vacante'
+import { FormVacante } from './pages/FormVacante'
 import LoginBdt from './pages/BDT/LoginBdt'
 import InicioBdT from './pages/BDT/InicioBdT'
 import RegistroBdT from './pages/BDT/RegistroBdT'
@@ -17,6 +17,7 @@ import awsExports from './aws-exports'
 import PerfilBdT from './pages/BDT/PerfilBdT'
 import { LandingEmpresa } from './pages/LandingEmpresa'
 import { SessionProvider } from './context/SessionContext'
+import { Vacantes } from './pages/Vacantes/Vacantes'
 
 Amplify.configure(awsExports)
 
@@ -61,8 +62,12 @@ const router = createBrowserRouter([
   },
   //Vacante
   {
-    path: '/vacante',
-    element: <Vacante />
+    path: '/vacantes',
+    element: <Vacantes />
+  },
+  {
+    path: '/registro-vacante',
+    element: <FormVacante />
   }
 ])
 

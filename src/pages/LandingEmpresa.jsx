@@ -1,3 +1,4 @@
+import { Header } from '../components/Header'
 export function LandingEmpresa() {
-  return <p>Hola empresa</p>
+  return <Header nombreDelGrupo={'Empresa'} />
 }

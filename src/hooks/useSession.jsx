@@ -7,7 +7,7 @@ import { useAddToGroup } from './useAddToGroup'
 import { useNavigate } from 'react-router-dom'
 import { DATA_SESSION_STATE_INITIAL } from '../constants/EstadosIniciales'
 
-export function useSession(nombreDelGrupo) {
+export function useSession(nombreDelGrupo = '') {
   const navigate = useNavigate()
   const { dataSession, setDataSession } = useContext(SessionContext)
   const { callLambdaToAddToGroup, nombreGrupo } = useAddToGroup({ nombreDelGrupo })

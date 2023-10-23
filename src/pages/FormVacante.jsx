@@ -2,34 +2,7 @@ import { Header } from '../components/Header'
 import { FormLabel, Input, Heading, Center, Select, Grid, GridItem } from '@chakra-ui/react'
 import { Genero, DiasLaborales, Idiomas, MUNICIPIOS, HabilidadesTecnicas, HabilidadesBlandas, Discapacidades, Prestaciones, Escolaridad, TipoEmpleo, CausaVacante, AreaEmpresa } from '../constants/Datos'
 
-export function Vacante() {
-  {
-    /**const GuardarVacanteEnDataStore = async () => {
-    await DataStore.save(
-      new Vacante({
-        nombreVacante: "Lorem ipsum dolor sit amet",
-        descripcion: "Lorem ipsum dolor sit amet",
-        diasLaborales: "Lorem ipsum dolor sit amet",
-        habilidadesBlandas: [],
-        habilidadesTecnicas: [],
-        generoBDT: "Lorem ipsum dolor sit amet",
-        edadMin: 0,
-        edadMax: 0,
-        area: "Lorem ipsum dolor sit amet",
-        tipoEmpleo: "Lorem ipsum dolor sit amet",
-        dispViajar: true,
-        dispRadicar: true,
-        escolaridad: "Lorem ipsum dolor sit amet",
-        prestaciones: "Lorem ipsum dolor sit amet",
-        direccionEmpresa: "Lorem ipsum dolor sit amet",
-        idioma: "Lorem ipsum dolor sit amet",
-        salarioMax: 0,
-        salarioMin: 0,
-      })
-    );
-  }; */
-  }
-
+export function FormVacante() {
   return (
     <>
       <Header />

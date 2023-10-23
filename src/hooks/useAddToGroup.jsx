@@ -1,7 +1,13 @@
 import { Auth } from 'aws-amplify'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useContext } from 'react'
+import { SessionContext } from '../context/SessionContext'
+
 export function useAddToGroup({ nombreDelGrupo }) {
-  const [nombreGrupo, setNombreGrupo] = useState(nombreDelGrupo)
+  const { nombreGrupo, setNombreGrupo } = useContext(SessionContext)
+  useEffect(() => {
+    setNombreGrupo(nombreDelGrupo)
+  }, [])
 
   const callLambdaToAddToGroup = async username => {
     try {

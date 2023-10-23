@@ -5,7 +5,7 @@ import { DatosEmpresaProvider } from '../context/DataEmpresaContext'
 import { useEffect } from 'react'
 
 export function RegistroEmpresa() {
-  const { dataSession, getDataSession, nombreGrupo } = useSession()
+  const { dataSession, getDataSession, nombreGrupo } = useSession('Empresa')
   console.log(dataSession)
   useEffect(() => {
     getDataSession()
