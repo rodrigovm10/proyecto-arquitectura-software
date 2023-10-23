@@ -41,7 +41,7 @@ function InicioPrincipal() {
       <Divider my={6} />
 
       {/* Explora Conecta */}
-      <Heading size="md" mb={4}>Explora Conecta</Heading>
+      <Heading size="md" mb={4}>Explora Red Laboral</Heading>
       <SimpleGrid columns={3} spacing={6}>
         <Box borderWidth="1px" borderRadius="lg" p={4} boxShadow="sm">
           <Text fontWeight="bold" mb={2}>Buscar empleo</Text>

@@ -3,10 +3,10 @@ import { Auth } from 'aws-amplify'
 export const NombreGrupo = async (username, nombreGrupo, setNombreGrupo) => {
   try {
     await Auth.currentSession().then(data => {
-      var token = data.accessToken.jwtToken
+      var token =  data.idToken.jwtToken
       const requestOptions = {
         method: 'POST',
-        headers: { Authorization: token },
+        headers: {Authorization: 'Bearer ' + token, 'Content-Type': 'application/json'},
         body: JSON.stringify({ groupname: nombreGrupo, username: username, idAplicacion: process.env.REACT_APP_API_USER_GROUP })
       }
       fetch(process.env.REACT_APP_API_REDLABORAL + '/agregar-usuarios', requestOptions)

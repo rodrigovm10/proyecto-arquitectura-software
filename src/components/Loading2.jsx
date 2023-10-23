@@ -4,7 +4,7 @@ import logo from '../img/logo.png';
 
 function Loading2() {
   const [currentMessage, setCurrentMessage] = useState(
-    '¡Bienvenido a Coneecta! Conectamos a personas talentosas con empresas que buscan profesionales.'
+    '¡Bienvenido a Red Laboral! Conectamos a personas talentosas con empresas que buscan profesionales.'
   );
 
   useLayoutEffect(() => {
@@ -39,7 +39,7 @@ function Loading2() {
       justify="center"
       h="100vh"
     >
-      <img src={logo} alt="Coneecta GTO" style={{ width: '15rem' }} />
+      <img src={logo} alt="Red Laboral GTO" style={{ width: '15rem' }} />
       <Box w="60%" pt="1.5rem" textAlign="center">
         <Progress size="xs" isIndeterminate colorScheme="blue" />
         <Flex justify="center" style={{ color: '#7F8C8D' }}>

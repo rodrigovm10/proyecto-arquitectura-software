@@ -63,7 +63,7 @@ type Empresa @model @auth(rules: [{allow: public}, {allow: owner}, {allow: priva
   numero: String
 }
 
-type BDT @model @auth(rules: [{allow: public}, {allow: owner}, {allow: private}, {allow: private, provider: iam}, {allow: groups, groups: ["trabajador"], operations: [read, create, update, delete]}, {allow: groups, groups: ["Empresa"], operations: [read, create, update, delete]}]) {
+type BDT @model @auth(rules: [{allow: public}, {allow: owner}, {allow: private}, {allow: private, provider: iam}]) {
   id: ID!
   nombre: String
   apellidos: String

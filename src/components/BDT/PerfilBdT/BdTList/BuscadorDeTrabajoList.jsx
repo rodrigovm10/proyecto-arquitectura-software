@@ -36,12 +36,12 @@ function BuscadorDeTrabajo({ usuario, setInfoEdit }) {
         <Heading fontSize="xl" mb="4" textAlign="center">Información personal</Heading>
         <Center>
         <Avatar
-          bg="gray.400"
-          color="white"
-          
-          src="#"
-          sx={{ width: '12rem', height: '12rem', fontSize: '12rem' }} // Aumenta el valor de 'fontSize' aquí
-        />
+        bg="gray.400"
+        color="white"
+        alt={usuario.nombre}
+        src="#"
+        sx={{ width: '12rem', height: '12rem', fontSize: '12rem' }} // Aumenta el valor de 'fontSize' aquí
+      />
 
         </Center>
         <Text fontSize="2xl" mt="4" mb="1" textAlign="center">
