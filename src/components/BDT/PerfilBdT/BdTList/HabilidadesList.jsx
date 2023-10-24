@@ -6,7 +6,7 @@ function Habilidades({ usuario, setUsuario, setHabEdit }) {
   const campos = [usuario.idioma, usuario.habilidadesBlandas, usuario.habilidadesTecnicas];
 
   return (
-    <Center py={6}>
+    <Flex py={6} whileHover={{ scale: 1.02 }} ml={'20px'}>
       <Box
         boxShadow="xl"
         borderWidth="2px"
@@ -43,7 +43,7 @@ function Habilidades({ usuario, setUsuario, setHabEdit }) {
         <Button colorScheme="blue" onClick={() => setHabEdit(true)} mt={4}>Editar</Button>
         </Flex>
       </Box>
-    </Center>
+    </Flex>
   );
 }
 

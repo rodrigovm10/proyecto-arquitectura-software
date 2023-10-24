@@ -12,7 +12,6 @@ export const updateBdT = async (usuario) => {
       BDT.copyOf(original, (updated) => {
         updated.nombre = usuario.nombre;
         updated.apellidos = usuario.apellidos;
-        updated.correo = usuario.correo;
         updated.telefono = usuario.telefono;
         updated.genero = usuario.genero;
         updated.municipio = usuario.municipio;

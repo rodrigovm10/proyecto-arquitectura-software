@@ -7,15 +7,14 @@ import { useEffect } from 'react'
 
 function LoginBdt() {
   const { dataSession, getDataSession, nombreGrupo } = useSession('trabajador')
-  console.log(nombreGrupo)
-  console.log(dataSession.session)
+
   useEffect(() => {
     getDataSession()
   })
   return (
     <div>
       <Loading2 />
-      {dataSession.session && nombreGrupo === 'trabajador' ? <Navigate to='/registro-bdt' /> : <Navigate to='/registro-bdt' />}
+      {dataSession.session && nombreGrupo === 'trabajador' ? <Navigate to='/registro-bdt' /> : <Navigate to='/login-bdt' />}
     </div>
   )
 }

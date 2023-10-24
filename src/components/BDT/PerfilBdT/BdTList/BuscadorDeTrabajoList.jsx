@@ -1,4 +1,4 @@
-import { Center, Box, Stack, Heading, Text, Grid, GridItem, Button, Avatar, Divider } from '@chakra-ui/react';
+import { Center, Box, Stack, Heading, Text, Grid, GridItem, Button, Avatar, Divider,Flex } from '@chakra-ui/react';
 
 function BuscadorDeTrabajo({ usuario, setInfoEdit }) {
 
@@ -22,7 +22,7 @@ function BuscadorDeTrabajo({ usuario, setInfoEdit }) {
   const edad = calcularEdad(usuario.fechaNacimiento);
 
   return (
-    <Center py={6}>
+    <Flex py={6} whileHover={{ scale: 1.02 }} ml={'20px'}>
       <Box
         borderWidth="2px"
         borderColor="gray.200"
@@ -32,6 +32,7 @@ function BuscadorDeTrabajo({ usuario, setInfoEdit }) {
         w="auto"
         boxShadow="lg"
         _hover={{ transform: 'scale(1.02)' }}
+        
       >
         <Heading fontSize="xl" mb="4" textAlign="center">Información personal</Heading>
         <Center>
@@ -67,7 +68,7 @@ function BuscadorDeTrabajo({ usuario, setInfoEdit }) {
           </Button>
         </Center>
       </Box>
-    </Center>
+    </Flex>
   );
 }
 

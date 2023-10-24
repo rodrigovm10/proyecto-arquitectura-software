@@ -5,27 +5,23 @@ import { useSession } from '../../hooks/useSession';
 import Loading2 from '../../components/Loading2';
 
 function RegistroBdT() {
-  const { dataSession, getDataSession, nombreGrupo } = useSession();
-  const [loading, setLoading] = useState(true); // Estado para controlar la carga
+  const { dataSession, getDataSession, nombreGrupo } = useSession('trabajador');
+
 
   useEffect(() => {
-    getDataSession()
-      .then(() => {
-        // Una vez que los datos se han cargado, actualiza el estado de carga
-        setLoading(false);
-      });
+    getDataSession();
   }, []);
 
-  if (loading) {
-    // Muestra el componente Loading2 mientras se cargan los datos
-    return <Loading2 />;
+  if (!dataSession) {
+    return <Loading2 />; // Renderiza un componente de carga mientras los datos se están cargando
   }
 
-  // Una vez que los datos se han cargado, muestra las rutas o componentes según las condiciones
   return (
     <div>
       {dataSession.session && nombreGrupo === 'trabajador' && dataSession.cuentaExistente === 1 && <Navigate to='/inicio-bdt' />}
-      {dataSession.session && nombreGrupo === 'trabajador' && dataSession.cuentaExistente === 0 && <RegistrarBdt email={dataSession.email} />}
+      {dataSession.session && nombreGrupo === 'trabajador' && dataSession.cuentaExistente === 0 && 
+      
+      <RegistrarBdt email={dataSession.email} />}
       {dataSession.session && nombreGrupo === 'Empresa' && dataSession.cuentaExistente === 0 && <Navigate to='/login-empresa' />}
       {dataSession.session === false && <Navigate to='/' />}
     </div>

@@ -16,8 +16,9 @@ import { useNavigate } from "react-router-dom";
 
 
 const ComponentePerfilBdT = ({ usuario, setUsuario, userID }) => {
-  console.log(userID);
-console.log(usuario.id);
+  
+  console.log(usuario.habilidadesBlandas);
+
     const navigate = useNavigate();
     const [InfoEdit, setInfoEdit] = useState(false);
     const [habEdit, setHabEdit] = useState(false);
@@ -57,33 +58,20 @@ console.log(usuario.id);
           console.log("Usuario ID:", usuario.id);
           try {
             // Intenta eliminar el registro de DataStore
-            await DataStore.delete(BDT, usuario.id);
-            
+            const bdeToDelete = await DataStore.query(BDT, (c) => c.id.eq(usuario.id));
+            for (let bde of bdeToDelete) {
+              await DataStore.delete(BDT, bde);
+            }
+    
             // Intenta eliminar el correo del usuario
             await deleteUserMail(userID);
-            
+    
             // Ambas operaciones se realizaron con éxito, puedes continuar
             navigate('/');
             await DataStore.clear();
             localStorage.clear();
             sessionStorage.clear();
-          } catch (error) {
-            // Maneja errores de DataStore o deleteUserMail aquí.
-            console.error("Error al eliminar la cuenta:", error);
-          }
-          
-          try {
-            // Intenta eliminar el registro de DataStore
-            await DataStore.delete(DataStore.query(BDT, usuario.id));
-            
-            // Intenta eliminar el correo del usuario
-            await deleteUserMail(userID);
-            
-            // Ambas operaciones se realizaron con éxito, puedes continuar
-            navigate('/');
-            await DataStore.clear();
-            localStorage.clear();
-            sessionStorage.clear();
+            Swal.fire("¡Gracias!", "Tu perfil ha sido eliminado.", "success");
           } catch (error) {
             // Maneja errores de DataStore o deleteUserMail aquí.
             console.error("Error al eliminar la cuenta:", error);
