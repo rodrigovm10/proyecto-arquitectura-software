@@ -19,6 +19,7 @@ import { LandingEmpresa } from './pages/LandingEmpresa'
 import { SessionProvider } from './context/SessionContext'
 import { Vacantes } from './pages/Vacantes/Vacantes'
 import { VacanteDatos } from './pages/Vacantes/VacanteDatos'
+import { DataVacanteProvider } from './context/DataVacanteContext'
 
 Amplify.configure(awsExports)
 
@@ -64,7 +65,11 @@ const router = createBrowserRouter([
   //Vacante
   {
     path: '/registro-vacante',
-    element: <FormVacante />
+    element: (
+      <DataVacanteProvider>
+        <FormVacante />
+      </DataVacanteProvider>
+    )
   },
   {
     path: '/vacantes',
