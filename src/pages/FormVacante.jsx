@@ -1,14 +1,32 @@
 import { Header } from '../components/Header'
-import { FormLabel, Input, Heading, Center, Select, Grid, GridItem } from '@chakra-ui/react'
+import { FormLabel, Input, Heading, Center, Select, Grid, GridItem, FormControl, Stack, StackDivider, Flex } from '@chakra-ui/react'
 import { Genero, DiasLaborales, Idiomas, MUNICIPIOS, HabilidadesTecnicas, HabilidadesBlandas, Discapacidades, Prestaciones, Escolaridad, TipoEmpleo, CausaVacante, AreaEmpresa } from '../constants/Datos'
 
 export function FormVacante() {
   return (
     <>
-      <Header />
-      <Heading as='h3'>
-        <Center>Registro Vacantes</Center>
-      </Heading>
+      <Header nombreDelGrupo={'Empresa'} />
+      <Flex
+        mt='2rem'
+        gap='2rem'
+        mb='2rem'>
+        <FormControl
+          p='6'
+          bg='#fff'
+          rounded='md'
+          boxShadow='dark-lg'
+          m='2rem auto 0'
+          w={{ base: '80%', sm: '80%', md: '70%' }}>
+          <Heading
+            as='h2'
+            size='lg'>
+            <Center>Registro Vacante</Center>
+          </Heading>
+          <Stack
+            divider={<StackDivider />}
+            spacing='4'></Stack>
+        </FormControl>
+      </Flex>
       <Center py={6}>
         <Grid
           templateColumns='repeat(2, 1fr)'

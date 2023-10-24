@@ -6,7 +6,6 @@ export function BotonesForm({ onClick }) {
       justifyContent='center'
       mt='2rem'>
       <ButtonGroup mb='3rem'>
-        <Button colorScheme='red'>Cancelar</Button>
         <Button
           bg='#ea754b'
           color='#fff'

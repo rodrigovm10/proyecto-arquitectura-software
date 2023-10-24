@@ -5,8 +5,6 @@ import { useSession } from '../hooks/useSession'
 export function Nav({ nombreDelGrupo }) {
   const nombreDelGrupoNew = '' || nombreDelGrupo
   const { logOut, dataSession, nombreGrupo } = useSession(nombreDelGrupoNew)
-  console.log(nombreGrupo)
-  console.log(dataSession)
 
   return (
     <Flex>
@@ -20,19 +18,22 @@ export function Nav({ nombreDelGrupo }) {
       <Flex gap={3}>
         <Link
           color='#fff'
-          href='/'>
+          href='/'
+          _hover={{ color: '#ea754b' }}>
           Inicio
         </Link>
         {dataSession.session && nombreGrupo === 'Empresa' && (
           <ButtonGroup>
             <Link
               color='#fff'
-              href='/vacantes'>
+              href='/vacantes'
+              _hover={{ color: '#ea754b' }}>
               Vacantes
             </Link>
             <Link
               color='#fff'
-              onClick={logOut}>
+              onClick={logOut}
+              _hover={{ color: '#ea754b' }}>
               Logout
             </Link>
           </ButtonGroup>
@@ -41,12 +42,14 @@ export function Nav({ nombreDelGrupo }) {
           <ButtonGroup>
             <Link
               color='#fff'
-              href='/login-bdt'>
+              href='/login-bdt'
+              _hover={{ color: '#ea754b' }}>
               Buscadores de Trabajo
             </Link>
             <Link
               color='#fff'
-              href='/login-empresa'>
+              href='/login-empresa'
+              _hover={{ color: '#ea754b' }}>
               Empresas
             </Link>
           </ButtonGroup>
@@ -60,7 +63,8 @@ export function Nav({ nombreDelGrupo }) {
             </Link>
             <Link
               color='#fff'
-              onClick={logOut}>
+              onClick={logOut}
+              _hover={{ color: '#ea754b' }}>
               Logout
             </Link>
           </ButtonGroup>

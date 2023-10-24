@@ -32,6 +32,26 @@ export function useSession(nombreDelGrupo = '') {
         idOwner: userData.username,
         email: userData.attributes.email
       }))
+      const sub = DataStore.observeQuery(Empresa, c => c.email.eq(userData.attributes.email), { limit: 1 }).subscribe(({ items }) => {
+        setDataSession(prevDataSession => ({ ...prevDataSession, cuentaExistente: items.length }))
+      })
+      return () => {
+        sub.unsubscribe()
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  async function saveDataIntoGroups() {
+    try {
+      const userData = await Auth.currentAuthenticatedUser()
+      setDataSession(prevDataSession => ({
+        ...prevDataSession,
+        session: true,
+        idOwner: userData.username,
+        email: userData.attributes.email
+      }))
       callLambdaToAddToGroup(userData.username)
       const sub = DataStore.observeQuery(Empresa, c => c.email.eq(userData.attributes.email), { limit: 1 }).subscribe(({ items }) => {
         setDataSession(prevDataSession => ({ ...prevDataSession, cuentaExistente: items.length }))
@@ -44,5 +64,5 @@ export function useSession(nombreDelGrupo = '') {
     }
   }
 
-  return { dataSession, setDataSession, getDataSession, logOut, nombreGrupo }
+  return { dataSession, setDataSession, getDataSession, logOut, nombreGrupo, saveDataIntoGroups }
 }

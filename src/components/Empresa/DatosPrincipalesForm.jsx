@@ -1,4 +1,4 @@
-import { Box, Flex, FormHelperText, FormLabel, Input } from '@chakra-ui/react'
+import { Box, Flex, FormHelperText, FormLabel, Heading, Input } from '@chakra-ui/react'
 import { DATOS_PRINCIPALES } from '../../constants/FormEmpresa'
 import { useRegister } from '../../hooks/useRegister'
 
@@ -10,6 +10,12 @@ export function DatosPrincipalesForm() {
       gap={2}
       direction='column'
       justify='space-between'>
+      <Heading
+        as='h3'
+        size='md'
+        m='1rem 0'>
+        Datos principales
+      </Heading>
       {DATOS_PRINCIPALES.map(campo => (
         <Box
           key={campo.id}

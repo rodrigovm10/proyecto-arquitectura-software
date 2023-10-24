@@ -5,10 +5,10 @@ import { Loading } from '../components/Loading'
 import { useEffect } from 'react'
 
 function LoginEmpresa() {
-  const { dataSession, getDataSession, nombreGrupo } = useSession('Empresa')
+  const { dataSession, nombreGrupo, saveDataIntoGroups } = useSession('Empresa')
 
   useEffect(() => {
-    getDataSession()
+    saveDataIntoGroups()
   })
 
   return (
