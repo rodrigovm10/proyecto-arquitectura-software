@@ -34,18 +34,20 @@ function BuscadorDeTrabajo({ usuario, setInfoEdit }) {
   const edad = calcularEdad(usuario.fechaNacimiento);
 
   return (
-    <Flex py={6} whileHover={{ scale: 1.02 }} ml={"20px"}>
-      <Box
-        borderWidth="2px"
-        borderColor="gray.200"
-        borderRadius="lg"
-        p="4"
-        maxW="md"
-        w="auto"
-        boxShadow="lg"
-        _hover={{ transform: "scale(1.02)" }}
-      >
-        <Heading fontSize="xl" mb="4" textAlign="center">
+    <Flex
+      boxShadow="xl"
+      borderWidth="2px"
+      borderColor="gray.200"
+      borderRadius="lg"
+      flexDirection="column"
+      p="4"
+      ml={"20px"}
+      mb="5"
+      width={{ sm: "80%", md: "40%", lg: "30%" }}
+      _hover={{ transform: "scale(1.02)" }}
+    >
+      <>
+        <Heading fontSize="xl" mb="4" textAlign="center" p="4">
           Información personal
         </Heading>
         <Center>
@@ -54,10 +56,10 @@ function BuscadorDeTrabajo({ usuario, setInfoEdit }) {
             color="white"
             alt={usuario.nombre}
             src="#"
-            sx={{ width: "12rem", height: "12rem", fontSize: "12rem" }} // Aumenta el valor de 'fontSize' aquí
+            sx={{ width: "12rem", height: "12rem", fontSize: "12rem" }}
           />
         </Center>
-        <Text fontSize="2xl" mt="4" mb="1" textAlign="center">
+        <Text fontSize="2xl" mt="4" mb="2" textAlign="center">
           {nombreCompleto}
         </Text>
         <Text fontSize="lg" color="gray.600" textAlign="center" mb="4">
@@ -74,12 +76,12 @@ function BuscadorDeTrabajo({ usuario, setInfoEdit }) {
         <Text fontSize="lg" color="gray.600" textAlign="center" mb="4">
           {usuario.curp}
         </Text>
-        <Center mb="4" justifyContent={"end"}>
+        <Center mb="4" justifyContent={"end"} p="4">
           <Button colorScheme="blue" onClick={() => setInfoEdit(true)}>
             Editar
           </Button>
         </Center>
-      </Box>
+      </>
     </Flex>
   );
 }
