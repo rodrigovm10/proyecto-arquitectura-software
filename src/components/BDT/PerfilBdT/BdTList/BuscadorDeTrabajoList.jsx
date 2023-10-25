@@ -1,7 +1,18 @@
-import { Center, Box, Stack, Heading, Text, Grid, GridItem, Button, Avatar, Divider,Flex } from '@chakra-ui/react';
+import {
+  Center,
+  Box,
+  Stack,
+  Heading,
+  Text,
+  Grid,
+  GridItem,
+  Button,
+  Avatar,
+  Divider,
+  Flex,
+} from "@chakra-ui/react";
 
 function BuscadorDeTrabajo({ usuario, setInfoEdit }) {
-
   const nombreCompleto = `${usuario.nombre} ${usuario.apellidos}`;
   const direccionCompleta = `${usuario.municipio}, ${usuario.colonia}, ${usuario.calle}, ${usuario.codigoPostal}`;
 
@@ -12,7 +23,8 @@ function BuscadorDeTrabajo({ usuario, setInfoEdit }) {
     let edad = fechaActual.getFullYear() - fechaNac.getFullYear();
     if (
       fechaActual.getMonth() < fechaNac.getMonth() ||
-      (fechaActual.getMonth() === fechaNac.getMonth() && fechaActual.getDate() < fechaNac.getDate())
+      (fechaActual.getMonth() === fechaNac.getMonth() &&
+        fechaActual.getDate() < fechaNac.getDate())
     ) {
       edad--;
     }
@@ -22,7 +34,7 @@ function BuscadorDeTrabajo({ usuario, setInfoEdit }) {
   const edad = calcularEdad(usuario.fechaNacimiento);
 
   return (
-    <Flex py={6} whileHover={{ scale: 1.02 }} ml={'20px'}>
+    <Flex py={6} whileHover={{ scale: 1.02 }} ml={"20px"}>
       <Box
         borderWidth="2px"
         borderColor="gray.200"
@@ -31,19 +43,19 @@ function BuscadorDeTrabajo({ usuario, setInfoEdit }) {
         maxW="md"
         w="auto"
         boxShadow="lg"
-        _hover={{ transform: 'scale(1.02)' }}
-        
+        _hover={{ transform: "scale(1.02)" }}
       >
-        <Heading fontSize="xl" mb="4" textAlign="center">Información personal</Heading>
+        <Heading fontSize="xl" mb="4" textAlign="center">
+          Información personal
+        </Heading>
         <Center>
-        <Avatar
-        bg="gray.400"
-        color="white"
-        alt={usuario.nombre}
-        src="#"
-        sx={{ width: '12rem', height: '12rem', fontSize: '12rem' }} // Aumenta el valor de 'fontSize' aquí
-      />
-
+          <Avatar
+            bg="gray.400"
+            color="white"
+            alt={usuario.nombre}
+            src="#"
+            sx={{ width: "12rem", height: "12rem", fontSize: "12rem" }} // Aumenta el valor de 'fontSize' aquí
+          />
         </Center>
         <Text fontSize="2xl" mt="4" mb="1" textAlign="center">
           {nombreCompleto}
@@ -62,7 +74,7 @@ function BuscadorDeTrabajo({ usuario, setInfoEdit }) {
         <Text fontSize="lg" color="gray.600" textAlign="center" mb="4">
           {usuario.curp}
         </Text>
-        <Center mb="4" justifyContent={'end'}>
+        <Center mb="4" justifyContent={"end"}>
           <Button colorScheme="blue" onClick={() => setInfoEdit(true)}>
             Editar
           </Button>
