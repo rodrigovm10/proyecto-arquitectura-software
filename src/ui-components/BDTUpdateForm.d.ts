@@ -33,6 +33,8 @@ export declare type BDTUpdateFormInputValues = {
     colonia?: string;
     calle?: string;
     codigoPostal?: number;
+    imagenBDTUrl?: string;
+    pdfImagenUrl?: string;
 };
 export declare type BDTUpdateFormValidationValues = {
     nombre?: ValidationFunction<string>;
@@ -54,6 +56,8 @@ export declare type BDTUpdateFormValidationValues = {
     colonia?: ValidationFunction<string>;
     calle?: ValidationFunction<string>;
     codigoPostal?: ValidationFunction<number>;
+    imagenBDTUrl?: ValidationFunction<string>;
+    pdfImagenUrl?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type BDTUpdateFormOverridesProps = {
@@ -77,6 +81,8 @@ export declare type BDTUpdateFormOverridesProps = {
     colonia?: PrimitiveOverrideProps<TextFieldProps>;
     calle?: PrimitiveOverrideProps<TextFieldProps>;
     codigoPostal?: PrimitiveOverrideProps<TextFieldProps>;
+    imagenBDTUrl?: PrimitiveOverrideProps<TextFieldProps>;
+    pdfImagenUrl?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type BDTUpdateFormProps = React.PropsWithChildren<{
     overrides?: BDTUpdateFormOverridesProps | undefined | null;

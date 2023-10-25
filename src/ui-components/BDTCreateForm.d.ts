@@ -32,6 +32,8 @@ export declare type BDTCreateFormInputValues = {
     colonia?: string;
     calle?: string;
     codigoPostal?: number;
+    imagenBDTUrl?: string;
+    pdfImagenUrl?: string;
 };
 export declare type BDTCreateFormValidationValues = {
     nombre?: ValidationFunction<string>;
@@ -53,6 +55,8 @@ export declare type BDTCreateFormValidationValues = {
     colonia?: ValidationFunction<string>;
     calle?: ValidationFunction<string>;
     codigoPostal?: ValidationFunction<number>;
+    imagenBDTUrl?: ValidationFunction<string>;
+    pdfImagenUrl?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type BDTCreateFormOverridesProps = {
@@ -76,6 +80,8 @@ export declare type BDTCreateFormOverridesProps = {
     colonia?: PrimitiveOverrideProps<TextFieldProps>;
     calle?: PrimitiveOverrideProps<TextFieldProps>;
     codigoPostal?: PrimitiveOverrideProps<TextFieldProps>;
+    imagenBDTUrl?: PrimitiveOverrideProps<TextFieldProps>;
+    pdfImagenUrl?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type BDTCreateFormProps = React.PropsWithChildren<{
     overrides?: BDTCreateFormOverridesProps | undefined | null;

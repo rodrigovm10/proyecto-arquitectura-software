@@ -190,27 +190,38 @@ const ComponentePerfilBdT = ({ usuario, setUsuario, userID }) => {
           )}
         </div>
       </Grid>
-
       <Wrap justify="center"></Wrap>
-      <Flex
-        justify="flex-end"
-        mr="20"
-        mb="20"
-        _hover={{ transform: "scale(1)" }}
-      >
-        <Button
-          onClick={eliminarPerfil}
-          m="2"
-          color="red.500"
-          bg="transparent"
-          _hover={{
-            backgroundColor: "red.500",
-            color: "white",
-          }}
-        >
-          Eliminar Perfil
-        </Button>
-      </Flex>
+      <Flex justify="flex-end" mr="20" mb="20" _hover={{ transform: "scale(1)" }}>
+  <a href={usuario.pdfImagenUrl} download="nombre-del-archivo.pdf">
+    <Button
+      id="button-download"
+      m="2"
+      color="blue.500"
+      bg="transparent"
+      _hover={{
+        backgroundColor: "blue.500",
+        color:"white",
+      }}
+    >
+      Descargar PDF
+    </Button>
+  </a>
+  <Button
+    onClick={eliminarPerfil}
+    m="2"
+    color="red.500"
+    bg="transparent"
+    _hover={{
+      backgroundColor: "red.500",
+      color:"white",
+    }}
+  >
+    Eliminar Perfil
+  </Button>
+</Flex>
+<Wrap justify="center"></Wrap>
+
+
     </>
   );
 };

@@ -215,6 +215,8 @@ type EagerBDT = {
   readonly colonia?: string | null;
   readonly calle?: string | null;
   readonly codigoPostal?: number | null;
+  readonly imagenBDTUrl?: string | null;
+  readonly pdfImagenUrl?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -244,6 +246,8 @@ type LazyBDT = {
   readonly colonia?: string | null;
   readonly calle?: string | null;
   readonly codigoPostal?: number | null;
+  readonly imagenBDTUrl?: string | null;
+  readonly pdfImagenUrl?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

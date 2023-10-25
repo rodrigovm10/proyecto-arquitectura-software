@@ -4,7 +4,8 @@ import { registarBdE } from '../../../hooks/RegistroBdt';
 import RegistroHabilidades from './RegistroHabilidades';
 import RegistroSituacionActual from './RegistroSituacionActual';
 import RegistroInfoPersonal from './RegistroInfoPersonal';
-
+import FilesBDT from './FilesBDT';
+import { Storage } from 'aws-amplify';
 import Swal from 'sweetalert2'
 
 export default function RegistrarBdt({email}) {
@@ -17,7 +18,9 @@ export default function RegistrarBdt({email}) {
 
   const [datosSituacion, setDatosSituacion] = useState({buscasEmpleo: "", trabajando: "",dispViaja: "", dispRadicar: "",})
   
+  const [files, setFiles]=useState({imagenBDTUrl:null,	pdfImagenUrl:null})
 
+  console.log(files.imagenBDTUrl);
   const handleSubmit = async () => {
     // Verifica si algún campo en datosInforPersonal está vacío
     const datosInforPersonalIsEmpty = Object.values(datosInforPersonal).some(value => value === '');
@@ -28,7 +31,7 @@ export default function RegistrarBdt({email}) {
     // Verifica si algún campo en datosSituacion está vacío
     const datosSituacionIsEmpty = Object.values(datosSituacion).some(value => value === '');
   
-    if (datosInforPersonalIsEmpty || habilidadesIsEmpty || datosSituacionIsEmpty) {
+    if (datosInforPersonalIsEmpty || habilidadesIsEmpty || datosSituacionIsEmpty || !files) {
       // Muestra una alerta o swal si alguno de los campos está vacío
       // Por ejemplo, puedes usar la librería SweetAlert2 para mostrar una alerta
       Swal.fire({
@@ -39,7 +42,8 @@ export default function RegistrarBdt({email}) {
     } else {
       // Todos los campos están completos, procede con el registro en la base de datos
       console.log("Situación", datosSituacion);
-      await registarBdE(datosInforPersonal, habilidades, datosSituacion);
+      console.log('files',files.imagenBDTUrl);
+      await registarBdE(datosInforPersonal, habilidades, datosSituacion, files);//
     }
   }
 
@@ -53,6 +57,9 @@ export default function RegistrarBdt({email}) {
       </div>
       <div>
         <RegistroSituacionActual datosSituacion={datosSituacion} setDatosSituacion={setDatosSituacion}/>
+      </div>
+      <div>
+        <FilesBDT files={files} setFiles={setFiles} />
       </div>
       <Center>
         <ButtonGroup>

@@ -68,5 +68,36 @@
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
     }
+  },
+  "parameters": {
+    "AMPLIFY_storage_redlaboral913971a0_bucketName": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "redlaboral913971a0"
+        }
+      ]
+    },
+    "AMPLIFY_storage_redlaboral913971a0_region": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "redlaboral913971a0"
+        }
+      ]
+    }
+  },
+  "storage": {
+    "redlaboral913971a0": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "S3",
+      "serviceType": "imported"
+    },
+    "s33d3f857e": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "S3"
+    }
   }
 }

@@ -735,6 +735,20 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "imagenBDTUrl": {
+                    "name": "imagenBDTUrl",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "pdfImagenUrl": {
+                    "name": "pdfImagenUrl",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -812,5 +826,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "f5a7b5d0e60150f9e84bfb9974dce65f"
+    "version": "1604ffda84deac3fd3638f365d878c8e"
 };

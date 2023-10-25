@@ -53,7 +53,7 @@ function BuscadorDeTrabajo({ usuario, setInfoEdit }) {
             bg="gray.400"
             color="white"
             alt={usuario.nombre}
-            src="#"
+            src={usuario.imagenBDTUrl}
             sx={{ width: "8rem", height: "8rem", fontSize: "8rem" }}
           />
         </Center>
