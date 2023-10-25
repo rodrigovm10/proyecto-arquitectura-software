@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Box, Button, Center, FormControl, FormLabel, Grid, HStack, Select, Tag, TagLabel, TagCloseButton } from '@chakra-ui/react'
-import { idiomas, nivelIdiomas } from '../../../../constants/Idiomas'
+import { Idiomas, NivelIdiomas } from '../../../../constants/Datos'
 import { habilidadesBlandas } from '../../../../constants/HabilidadesBlandas'
 import { habilidadesTecnicas } from '../../../../constants/HabilidadesTecnicas'
 
@@ -120,7 +120,7 @@ const RegistroHabilidades = ({ habilidades, setHabilidades }) => {
               onChange={IdiomaChange}
               value={idiomaSeleccionado}>
               <option value=''>Seleccionar idioma</option>
-              {idiomas.map(idioma => (
+              {Idiomas.map(idioma => (
                 <option
                   key={idioma}
                   value={idioma}>
@@ -135,7 +135,7 @@ const RegistroHabilidades = ({ habilidades, setHabilidades }) => {
               onChange={NivelChange}
               value={nivelSeleccionado}>
               <option value=''>Seleccionar nivel</option>
-              {nivelIdiomas.map(nivel => (
+              {NivelIdiomas.map(nivel => (
                 <option
                   key={nivel}
                   value={nivel}>

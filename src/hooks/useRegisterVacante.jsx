@@ -5,18 +5,19 @@ import { DATOS_VACANTE_STATE_INITIAL_ERRORS } from '../constants/EstadosIniciale
 export function useRegisterVacante() {
   const { datosVacante, setDatosVacante } = useContext(DataVacanteContext)
   const [errors, setErrors] = useState(DATOS_VACANTE_STATE_INITIAL_ERRORS)
+  const [stringToSave, setStringToSave] = useState('')
 
   const handleInputChange = e => {
     const { value, name } = e.target
-    let newValue
-    name === 'rfc' ? (newValue = transformToUppercase({ value })) : (newValue = '')
+    if (name === 'prestaciones' || name === 'habilidadesTecnicas' || name === 'habilidadesBlandas') {
+      setStringToSave(value)
+      return
+    }
 
-    setDatosVacante(prevDatosEmpresa => ({
-      ...prevDatosEmpresa,
-      [name]: value,
-      rfc: newValue
+    setDatosVacante(prevDatosVacante => ({
+      ...prevDatosVacante,
+      [name]: value
     }))
-    console.log(datosVacante)
     inputValidation({ value, name })
   }
 
@@ -29,12 +30,23 @@ export function useRegisterVacante() {
     setErrors(prevErrors => ({ ...prevErrors, [name]: false }))
   }
 
-  const transformToUppercase = ({ value }) => {
-    const newValue = value.toUpperCase()
-    return newValue
+  const handleClickSave = ({ name, value }) => {
+    if (datosVacante.prestaciones.includes(value)) return
+
+    setDatosVacante(prevDatosVacante => ({
+      ...prevDatosVacante,
+      [name]: [...prevDatosVacante[name], value]
+    }))
+    setStringToSave('')
   }
 
-  const selectValidation = () => {}
+  const handleClickDelete = ({ name, value }) => {
+    const newArr = datosVacante[name].filter(valueArr => valueArr !== value)
+    setDatosVacante(prevDatosVacante => ({
+      ...prevDatosVacante,
+      [name]: newArr
+    }))
+  }
 
-  return { datosVacante, errors, setDatosVacante, handleInputChange }
+  return { datosVacante, errors, setDatosVacante, handleInputChange, handleClickSave, stringToSave, handleClickDelete }
 }

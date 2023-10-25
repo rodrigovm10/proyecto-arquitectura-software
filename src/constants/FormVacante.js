@@ -2,7 +2,7 @@ export const DATOS_PRINCIPALES = [
   {
     id: 1,
     campo: 'Nombre Vacante',
-    nombre: 'nombreVacante',
+    nombre: 'nombre',
     type: 'text',
     placeholder: 'Desarrollador web...',
     length: 100,
@@ -28,68 +28,32 @@ export const DATOS_PRINCIPALES = [
     length: 100,
     helperText: 'Ingrese el número de plazas disponibles para esta vacante.',
     errorMessage: 'El número de plazas es obligatorio.'
-  },
-  {
-    id: 4,
-    campo: 'Jornada Laboral',
-    nombre: 'jornadaLaboral',
-    type: 'text',
-    placeholder: 'Tiempo completo...',
-    length: 100,
-    helperText: 'Ingrese la jornada laboral para esta vacante.',
-    errorMessage: 'La jornada laboral es obligatoria.'
   }
 ]
 
 export const DATOS_REQUISITOS = [
   {
     id: 1,
-    campo: 'Experiencia Laboral',
-    nombre: 'experienciaLaboral',
+    campo: 'Edad Mínima',
+    nombre: 'edadMin',
     type: 'text',
-    placeholder: '3 años en desarrollo web...',
-    length: 100,
-    helperText: 'Ingrese los requisitos de experiencia laboral para esta vacante.',
-    errorMessage: 'Los requisitos de experiencia laboral son obligatorios.'
-  },
-  {
-    id: 2,
-    campo: 'Idiomas',
-    nombre: 'idiomas',
-    type: 'text',
-    placeholder: 'Inglés avanzado...',
-    length: 100,
-    helperText: 'Ingrese los idiomas requeridos para esta vacante.',
-    errorMessage: 'Los idiomas son obligatorios.'
-  },
-  {
-    id: 3,
-    campo: 'Edad',
-    nombre: 'edad',
-    type: 'text',
+    min: 18,
+    max: 99,
     placeholder: '25-35 años...',
     length: 100,
     helperText: 'Ingrese los requisitos de edad para esta vacante.',
     errorMessage: 'Los requisitos de edad son obligatorios.'
   },
   {
-    id: 4,
-    campo: 'Género',
-    nombre: 'genero',
+    id: 2,
+    campo: 'Edad Máxima',
+    nombre: 'edadMax',
     type: 'text',
+    min: 18,
+    max: 99,
     placeholder: 'Indistinto...',
     length: 100,
     helperText: 'Ingrese los requisitos de género para esta vacante.',
     errorMessage: 'Los requisitos de género son obligatorios.'
-  },
-  {
-    id: 5,
-    campo: 'Escolaridad',
-    nombre: 'escolaridad',
-    type: 'text',
-    placeholder: 'Licenciatura en Informática...',
-    length: 100,
-    helperText: 'Ingrese los requisitos de escolaridad para esta vacante.',
-    errorMessage: 'Los requisitos de escolaridad son obligatorios.'
   }
 ]

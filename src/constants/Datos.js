@@ -4,6 +4,8 @@ export const DiasLaborales = ['Lunes a viernes', 'Lunes a sabado', 'Lunes a domi
 
 export const Idiomas = ['Español', 'Inglés', 'Francés', 'Alemán', 'Italiano', 'Portugués', 'Chino (Mandarín)']
 
+export const NivelIdiomas = ['Nativo', 'Principiante', 'Básico', 'Pre-Intermedio', 'Intermedio', 'Intermedio-Alto', 'Avanzado']
+
 export const HabilidadesBlandas = [
   'Comunicación efectiva',
   'Trabajo en equipo',
@@ -80,7 +82,7 @@ export const Discapacidades = [
   'Discapacidad visual'
 ]
 
-export const TipoEmpleo = ['Fines de semana', 'Medio tiempo (4 hrs)', 'Por tarea completada/destajo', 'Temporal', 'Tiempo completo (8 hrs)', 'Turno nocturno', 'Turnos rotativos/jornadas rotativas']
+export const TipoContrato = ['Contrato por tiempo determinado', 'Contrato por tiempo indeterminado', 'Contrato para becario/practicante']
 
 export const Escolaridad = ['Sin estudios', 'Sabe leer y escribir', 'Primaria', 'Secundaria', 'Bachillerato', 'Bachillerato Técnico', 'Técnico Superior Universitario', 'Licenciatura/Ingeniería', 'Posgrado', 'Maestría', 'Doctorado']
 

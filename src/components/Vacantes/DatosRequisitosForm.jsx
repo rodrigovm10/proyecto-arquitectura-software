@@ -1,7 +1,7 @@
-import { Box, Flex, FormHelperText, FormLabel, Grid, GridItem, Heading, Input, Select } from '@chakra-ui/react'
+import { Box, Button, Flex, FormHelperText, FormLabel, Grid, GridItem, Heading, Input, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Select } from '@chakra-ui/react'
 import { DATOS_REQUISITOS } from '../../constants/FormVacante'
 import { useRegisterVacante } from '../../hooks/useRegisterVacante'
-import { EXPERIENCIA_LABORAL, Idiomas } from '../../constants/Datos'
+import { EXPERIENCIA_LABORAL, Idiomas, Genero, NivelIdiomas, Escolaridad } from '../../constants/Datos'
 
 export function DatosRequisitosForm() {
   const { datosVacante, errors, handleInputChange } = useRegisterVacante()
@@ -13,63 +13,125 @@ export function DatosRequisitosForm() {
       justify='space-between'>
       <Heading
         as='h3'
-        size='md'
-        m='1rem 0 0'>
+        size='md'>
         Requisitos
       </Heading>
-      {DATOS_REQUISITOS.map(dato => {
-        const { id, campo, nombre, length, type, placeholder } = dato
-        return (
-          <Box
-            key={id}
-            flex='1'>
-            <FormLabel>{campo}</FormLabel>
-            <Input
-              isInvalid={errors[nombre]}
-              maxLength={length}
-              type={type}
-              placeholder={placeholder}
-              focusBorderColor='#ea754b'
-              name={nombre}
-              value={datosVacante[nombre]}
-              onChange={handleInputChange}
-            />
-            {errors[campo.nombre] && <FormHelperText>{campo.errorMessage}</FormHelperText>}
-          </Box>
-        )
-      })}
       <Grid
         templateColumns='repeat(2, 1fr)'
-        columnGap='1rem'>
+        gap='1rem'>
+        {DATOS_REQUISITOS.map(dato => {
+          const { id, campo, min, max, nombre } = dato
+          return (
+            <Box key={id}>
+              <FormLabel>{campo}</FormLabel>
+              <NumberInput
+                focusBorderColor='#ea754b'
+                name={nombre}
+                defaultValue={min}
+                min={min}
+                max={max}
+                value={datosVacante[nombre]}
+                onChange={handleInputChange}>
+                <NumberInputField />
+                <NumberInputStepper>
+                  <NumberIncrementStepper />
+                  <NumberDecrementStepper />
+                </NumberInputStepper>
+              </NumberInput>
+            </Box>
+          )
+        })}
         <GridItem>
-          <FormLabel>Dias laborales</FormLabel>
-          <Select placeholder='Lunes - Viernes'>
+          <FormLabel>Género</FormLabel>
+          <Select
+            placeholder='Ingrese el género requerido'
+            focusBorderColor='#ea754b'
+            name='genero'
+            value={datosVacante.genero}
+            onChange={handleInputChange}>
+            {Genero.map((genero, i) => (
+              <option
+                value={genero}
+                key={i}>
+                {genero}
+              </option>
+            ))}
+          </Select>
+        </GridItem>
+        <GridItem>
+          <FormLabel>Experiencia laboral</FormLabel>
+          <Select
+            placeholder='Ingrese la experencia laboral requerida'
+            focusBorderColor='#ea754b'
+            name='experienciaLaboral'
+            value={datosVacante.experienciaLaboral}
+            onChange={handleInputChange}>
             {EXPERIENCIA_LABORAL.map((experiencia, i) => (
               <option
-                name='diasLaborales'
-                value={datosVacante.experiencia}
-                onChange={handleInputChange}
+                value={experiencia}
                 key={i}>
                 {experiencia}
               </option>
             ))}
           </Select>
         </GridItem>
-        <GridItem>
-          <FormLabel>Modalidad</FormLabel>
-          <Select placeholder='Inglés'>
-            {Idiomas.map((idioma, i) => (
+        <GridItem gridColumn='1 / 3'>
+          <FormLabel>Escolaridad</FormLabel>
+          <Select
+            placeholder='Ingrese la escolaridad requerida'
+            focusBorderColor='#ea754b'
+            name='escolaridad'
+            value={datosVacante.escolaridad}
+            onChange={handleInputChange}>
+            {Escolaridad.map((escolaridad, i) => (
               <option
-                name='idiomas'
-                value={idioma.idioma}
-                onChange={handleInputChange}
-                key={i}>
-                {idioma}
+                key={i}
+                value={escolaridad}>
+                {escolaridad}
               </option>
             ))}
           </Select>
         </GridItem>
       </Grid>
+      <Flex gap='1rem'>
+        <Box flex='2'>
+          <FormLabel>Idiomas</FormLabel>
+          <Select
+            placeholder='Ingresa el idioma requerido'
+            focusBorderColor='#ea754b'
+            name='idioma'
+            value={datosVacante.idioma}
+            onChange={handleInputChange}>
+            {Idiomas.map((idioma, i) => (
+              <option
+                value={idioma}
+                key={i}>
+                {idioma}
+              </option>
+            ))}
+          </Select>
+        </Box>
+        <Box flex='2'>
+          <FormLabel>Nivel de idioma</FormLabel>
+          <Select
+            placeholder='Ingrese el nivel de idioma requerido'
+            focusBorderColor='#ea754b'
+            name='nivelIdioma'
+            value={datosVacante.nivelIdioma}
+            onChange={handleInputChange}>
+            {NivelIdiomas.map((nivelIdioma, i) => (
+              <option
+                value={nivelIdioma}
+                key={i}>
+                {nivelIdioma}
+              </option>
+            ))}
+          </Select>
+        </Box>
+        <Box alignSelf='end'>
+          <Button colorScheme='facebook'>Agregar idioma</Button>
+        </Box>
+      </Flex>
     </Flex>
   )
 }

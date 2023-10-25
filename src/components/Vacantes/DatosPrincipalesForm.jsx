@@ -1,5 +1,5 @@
 import { FormLabel, Input, Heading, Select, Flex, Box, FormHelperText, Grid, GridItem } from '@chakra-ui/react'
-import { AreaEmpresa, DiasLaborales } from '../../constants/Datos'
+import { AreaEmpresa, DiasLaborales, TipoContrato } from '../../constants/Datos'
 import { useRegisterVacante } from '../../hooks/useRegisterVacante'
 import { DATOS_PRINCIPALES } from '../../constants/FormVacante'
 import { MODALIDAD } from '../../constants/Datos'
@@ -40,44 +40,71 @@ export function DatosPrincipalesForm() {
           </Box>
         )
       })}
-      <Box>
-        <FormLabel>Área</FormLabel>
-        <Select placeholder='Seleccione el Área de la empresa'>
-          {AreaEmpresa.map((area, i) => (
-            <option
-              key={i}
-              value={area}>
-              {area}
-            </option>
-          ))}
-        </Select>
-      </Box>
       <Grid
         templateColumns='repeat(2, 1fr)'
-        columnGap='1rem'>
+        gap='1rem'>
         <GridItem>
-          <FormLabel>Días laborales</FormLabel>
-          <Select placeholder='Lunes - Viernes'>
-            {MODALIDAD.map((modalidad, i) => (
+          <FormLabel>Área</FormLabel>
+          <Select
+            placeholder='Seleccione el Área de la empresa'
+            name='area'
+            focusBorderColor='#ea754b'
+            onChange={handleInputChange}
+            value={datosVacante.area}>
+            {AreaEmpresa.map((area, i) => (
               <option
-                name='diasLaborales'
-                value={datosVacante.modalidad}
-                onChange={handleInputChange}
+                value={area}
                 key={i}>
-                {
-                modalidad}
+                {area}
+              </option>
+            ))}
+          </Select>
+        </GridItem>
+        <GridItem>
+          <FormLabel>Tipo de Contrato</FormLabel>
+          <Select
+            placeholder='Seleccione el tipo de contrato'
+            name='tipoContrato'
+            focusBorderColor='#ea754b'
+            onChange={handleInputChange}
+            value={datosVacante.tipoContrato}>
+            {TipoContrato.map((tipo, i) => (
+              <option
+                value={tipo}
+                key={i}>
+                {tipo}
               </option>
             ))}
           </Select>
         </GridItem>
         <GridItem>
           <FormLabel>Modalidad</FormLabel>
-          <Select placeholder='Híbrida'>
+          <Select
+            placeholder='Seleccione la modalidad'
+            name='modalidad'
+            focusBorderColor='#ea754b'
+            onChange={handleInputChange}
+            value={datosVacante.modalidad}>
+            {MODALIDAD.map((modalidad, i) => (
+              <option
+                value={modalidad}
+                key={i}>
+                {modalidad}
+              </option>
+            ))}
+          </Select>
+        </GridItem>
+        <GridItem>
+          <FormLabel>Días laborales</FormLabel>
+          <Select
+            placeholder='Seleccione los días laborales'
+            name='diasLaborales'
+            focusBorderColor='#ea754b'
+            value={datosVacante.diaslaborales}
+            onChange={handleInputChange}>
             {DiasLaborales.map((diaslaborales, i) => (
               <option
-                name='diasLaborales'
-                value={datosVacante.diaslaborales}
-                onChange={handleInputChange}
+                value={diaslaborales}
                 key={i}>
                 {diaslaborales}
               </option>
