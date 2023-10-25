@@ -2,38 +2,7 @@ export const Genero = ['Masculino', 'Femenino', 'Prefiero no decirlo']
 
 export const DiasLaborales = ['Lunes a viernes', 'Lunes a sabado', 'Lunes a domingo', 'Solo fines de semana']
 
-export const Idiomas = [
-  'Español',
-  'Inglés',
-  'Francés',
-  'Alemán',
-  'Italiano',
-  'Portugués',
-  'Chino (Mandarín)',
-  'Japonés',
-  'Coreano',
-  'Ruso',
-  'Árabe',
-  'Hindi',
-  'Bengalí',
-  'Turco',
-  'Urdu',
-  'Holandés',
-  'Griego',
-  'Sueco',
-  'Noruego',
-  'Danés',
-  'Finlandés',
-  'Polaco',
-  'Húngaro',
-  'Hebreo',
-  'Indonesio',
-  'Tailandés',
-  'Ucraniano',
-  'Rumano',
-  'Checo',
-  'Eslovaco'
-]
+export const Idiomas = ['Español', 'Inglés', 'Francés', 'Alemán', 'Italiano', 'Portugués', 'Chino (Mandarín)']
 
 export const HabilidadesBlandas = [
   'Comunicación efectiva',
@@ -204,3 +173,7 @@ export const MUNICIPIOS = [
   'Xichú',
   'Yuriria'
 ]
+
+export const EXPERIENCIA_LABORAL = ['Sin experiencia laboral', 'Menos de 6 meses', '6 meses - 1 año', '1 año - 2 años', '2 años - 3 años', '3 años - 5 años', '5 años - 7 años', '7 años - 10 años', 'Más de 10 años']
+
+export const MODALIDAD = ['Híbrida', 'Presencial', 'Virtual']

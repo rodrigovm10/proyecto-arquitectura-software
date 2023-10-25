@@ -3,6 +3,7 @@ import { FormLabel, Input, Heading, Center, Select, Grid, GridItem, FormControl,
 import { Genero, DiasLaborales, Idiomas, MUNICIPIOS, HabilidadesTecnicas, HabilidadesBlandas, Discapacidades, Prestaciones, Escolaridad, TipoEmpleo, CausaVacante, AreaEmpresa } from '../constants/Datos'
 import { useRegisterVacante } from '../hooks/useRegisterVacante'
 import { DatosPrincipalesForm } from '../components/Vacantes/DatosPrincipalesForm'
+import { DatosRequisitosForm } from '../components/Vacantes/DatosRequisitosForm'
 
 export function FormVacante() {
   const { datosVacante, errors, handleInputChange } = useRegisterVacante()
@@ -29,6 +30,7 @@ export function FormVacante() {
             divider={<StackDivider />}
             spacing='4'>
             <DatosPrincipalesForm />
+            <DatosRequisitosForm />
           </Stack>
         </FormControl>
       </Flex>

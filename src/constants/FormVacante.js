@@ -38,26 +38,6 @@ export const DATOS_PRINCIPALES = [
     length: 100,
     helperText: 'Ingrese la jornada laboral para esta vacante.',
     errorMessage: 'La jornada laboral es obligatoria.'
-  },
-  {
-    id: 5,
-    campo: 'Modalidad',
-    nombre: 'modalidad',
-    type: 'text',
-    placeholder: 'Presencial...',
-    length: 100,
-    helperText: 'Ingrese la modalidad de trabajo para esta vacante.',
-    errorMessage: 'La modalidad es obligatoria.'
-  },
-  {
-    id: 6,
-    campo: 'Área',
-    nombre: 'area',
-    type: 'text',
-    placeholder: 'Desarrollo de software...',
-    length: 100,
-    helperText: 'Ingrese el área de trabajo para esta vacante.',
-    errorMessage: 'El área es obligatoria.'
   }
 ]
 
