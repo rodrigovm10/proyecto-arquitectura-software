@@ -41,9 +41,7 @@ function BuscadorDeTrabajo({ usuario, setInfoEdit }) {
       borderRadius="lg"
       flexDirection="column"
       p="4"
-      ml={"20px"}
       mb="5"
-      width={{ sm: "80%", md: "40%", lg: "30%" }}
       _hover={{ transform: "scale(1.02)" }}
     >
       <>
@@ -56,7 +54,7 @@ function BuscadorDeTrabajo({ usuario, setInfoEdit }) {
             color="white"
             alt={usuario.nombre}
             src="#"
-            sx={{ width: "12rem", height: "12rem", fontSize: "12rem" }}
+            sx={{ width: "8rem", height: "8rem", fontSize: "8rem" }}
           />
         </Center>
         <Text fontSize="2xl" mt="4" mb="2" textAlign="center">

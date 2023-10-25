@@ -38,8 +38,6 @@ export default function SituacionActualList({
       borderRadius="lg"
       flexDirection="column"
       p="4"
-      ml={"20px"}
-      width={{ sm: "80%", md: "40%", lg: "30%" }}
       _hover={{ transform: "scale(1.02)" }}
     >
       <Heading size="md">Situacion Actual</Heading>

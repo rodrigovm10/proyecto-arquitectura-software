@@ -35,9 +35,6 @@ function Habilidades({ usuario, setUsuario, setHabEdit }) {
       flexDirection="column"
       p="4"
       mb="4"
-      ml={"20px"}
-      width={{ sm: "80%", md: "45%", lg: "55%", xs: "70%" }}
-      background="red"
       _hover={{ transform: "scale(1.02)" }}
     >
       <Stack mt="3" spacing="3">
@@ -47,7 +44,15 @@ function Habilidades({ usuario, setUsuario, setHabEdit }) {
               {etiqueta}
             </Heading>
             <Box maxW="max">
-              <SimpleGrid columns={columns} gap={4}>
+              <SimpleGrid
+                templateColumns={{
+                  base: "repeat(1, 1fr)", // col-xs-12
+                  sm: "repeat(2, 1fr)", // col-sm-6
+                  md: "repeat(3, 1fr)", // col-md-4
+                  lg: "repeat(3, 1fr)", // col-lg-3
+                }}
+                gap={4}
+              >
                 {campos[index].map((item, i) => (
                   <GridItem key={i}>
                     <Tooltip label={item} fontSize="md" hasArrow>

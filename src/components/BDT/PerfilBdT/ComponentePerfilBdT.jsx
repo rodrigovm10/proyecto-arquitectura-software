@@ -6,7 +6,15 @@ import UpdateInfoPersonal from "./BdtUpdate/UpdateInfoPersonal";
 import UpdateHabilidades from "./BdtUpdate/UpdateHabilidades";
 import UpdateSituacionActual from "./BdtUpdate/UpdateSituacionActual";
 import { updateBdT } from "../../../hooks/EditarBdt";
-import { Text, Button, Flex, Wrap, Center, WrapItem } from "@chakra-ui/react";
+import {
+  Text,
+  Button,
+  Flex,
+  Wrap,
+  Center,
+  WrapItem,
+  Grid,
+} from "@chakra-ui/react";
 import { deleteUserMail } from "../../../hooks/DeleteUsuario";
 import Swal from "sweetalert2";
 import { BDT } from "../../../models";
@@ -87,89 +95,102 @@ const ComponentePerfilBdT = ({ usuario, setUsuario, userID }) => {
       <Text fontSize="4xl" ml="170">
         Mi perfil
       </Text>
-      <Wrap justify="left">
-        {InfoEdit ? (
-          // Componente de edición de información personal
-          <>
-            <UpdateInfoPersonal
-              datosInforPersonal={usuario}
-              setEDatosInforPersonal={setUsuario}
-            />
-            <Flex justify="center">
-              <Button colorScheme="blue" onClick={GuardarCambios} m="2">
-                Guardar
-              </Button>
-              <Button colorScheme="red" onClick={CancelarCambios} m="2">
-                Cancelar
-              </Button>
-            </Flex>
-          </>
-        ) : (
-          // Componente de visualización de información personal
-          <>
-            <BuscadorDeTrabajo
-              usuario={usuario}
-              setUsuario={setUsuario}
-              setInfoEdit={setInfoEdit}
-            />
-          </>
-        )}
+      <Grid
+        templateColumns={{
+          base: "repeat(1, 1fr)", // col-xs-12
+          sm: "repeat(1, 1fr)", // col-sm-6
+          md: "repeat(2, 1fr)", // col-md-4
+          lg: "repeat(2, 1fr)", // col-lg-3
+        }}
+        gap={10}
+        p={8}
+      >
+        <div>
+          {InfoEdit ? (
+            // Componente de edición de información personal
+            <>
+              <UpdateInfoPersonal
+                datosInforPersonal={usuario}
+                setEDatosInforPersonal={setUsuario}
+              />
+              <Flex justify="center">
+                <Button colorScheme="blue" onClick={GuardarCambios} m="2">
+                  Guardar
+                </Button>
+                <Button colorScheme="red" onClick={CancelarCambios} m="2">
+                  Cancelar
+                </Button>
+              </Flex>
+            </>
+          ) : (
+            // Componente de visualización de información personal
+            <>
+              <BuscadorDeTrabajo
+                usuario={usuario}
+                setUsuario={setUsuario}
+                setInfoEdit={setInfoEdit}
+              />
+            </>
+          )}
+        </div>
+        <div>
+          {habEdit ? (
+            // Componente de edición de habilidades
+            <>
+              <UpdateHabilidades
+                habilidades={usuario}
+                setHabilidades={setUsuario}
+              />
+              <Flex justify="center">
+                <Button colorScheme="blue" onClick={GuardarCambios} m="2">
+                  Guardar
+                </Button>
+                <Button colorScheme="red" onClick={CancelarCambios} m="2">
+                  Cancelar
+                </Button>
+              </Flex>
+            </>
+          ) : (
+            // Componente de visualización de habilidades
+            <>
+              <Habilidades
+                usuario={usuario}
+                setUsuario={setUsuario}
+                setHabEdit={setHabEdit}
+              />
+            </>
+          )}
+        </div>
+        <div>
+          {sitEdit ? (
+            // Componente de edición de situación actual
+            <>
+              <UpdateSituacionActual
+                datosSituacion={usuario}
+                setDatosSituacion={setUsuario}
+              />
+              <Flex justify="center">
+                <Button colorScheme="blue" onClick={GuardarCambios} m="2">
+                  Guardar
+                </Button>
+                <Button colorScheme="red" onClick={CancelarCambios} m="2">
+                  Cancelar
+                </Button>
+              </Flex>
+            </>
+          ) : (
+            // Componente de visualización de situación actual
+            <>
+              <SituacionActualList
+                usuario={usuario}
+                setUsuario={setUsuario}
+                setSitEdit={setSitEdit}
+              />
+            </>
+          )}
+        </div>
+      </Grid>
 
-        {habEdit ? (
-          // Componente de edición de habilidades
-          <>
-            <UpdateHabilidades
-              habilidades={usuario}
-              setHabilidades={setUsuario}
-            />
-            <Flex justify="center">
-              <Button colorScheme="blue" onClick={GuardarCambios} m="2">
-                Guardar
-              </Button>
-              <Button colorScheme="red" onClick={CancelarCambios} m="2">
-                Cancelar
-              </Button>
-            </Flex>
-          </>
-        ) : (
-          // Componente de visualización de habilidades
-          <>
-            <Habilidades
-              usuario={usuario}
-              setUsuario={setUsuario}
-              setHabEdit={setHabEdit}
-            />
-          </>
-        )}
-      </Wrap>
-      <Wrap>
-        {sitEdit ? (
-          // Componente de edición de situación actual
-          <>
-            <UpdateSituacionActual
-              datosSituacion={usuario}
-              setDatosSituacion={setUsuario}
-            />
-            <Flex justify="center">
-              <Button colorScheme="blue" onClick={GuardarCambios} m="2">
-                Guardar
-              </Button>
-              <Button colorScheme="red" onClick={CancelarCambios} m="2">
-                Cancelar
-              </Button>
-            </Flex>
-          </>
-        ) : (
-          // Componente de visualización de situación actual
-          <>
-            <SituacionActualList
-              usuario={usuario}
-              setUsuario={setUsuario}
-              setSitEdit={setSitEdit}
-            />
-          </>
-        )}
-      </Wrap>
       <Wrap justify="center"></Wrap>
       <Flex
         justify="flex-end"
