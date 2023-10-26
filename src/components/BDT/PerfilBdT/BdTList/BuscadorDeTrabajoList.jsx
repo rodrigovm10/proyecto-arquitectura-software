@@ -60,18 +60,24 @@ function BuscadorDeTrabajo({ usuario, setInfoEdit }) {
         <Text fontSize="2xl" mt="4" mb="2" textAlign="center">
           {nombreCompleto}
         </Text>
-        <Text fontSize="lg" color="gray.600" textAlign="center" mb="4">
+        <Text fontSize="lg" mt="4" mb="2" textAlign="center">
+          {usuario.escolaridad}
+        </Text>
+        <Text fontSize="lg"  textAlign="center" mb="4">
           {usuario.genero} - {edad} años
         </Text>
         <Divider borderColor="gray.200" my="1rem" />
-        <Text fontSize="lg" color="gray.600" textAlign="center" mb="2">
+        <Text fontSize="lg"  textAlign="center" mb="2">
           {usuario.telefono}
         </Text>
-        <Text fontSize="lg" color="gray.600" textAlign="center" mb="4">
+        <Text fontSize="lg"  textAlign="center" mb="4">
           {usuario.correo}
         </Text>
+        <Text fontSize="lg"  textAlign="center" mb="4">
+          {direccionCompleta}
+        </Text>
         <Divider borderColor="gray.200" my="1rem" />
-        <Text fontSize="lg" color="gray.600" textAlign="center" mb="4">
+        <Text fontSize="lg" textAlign="center" mb="4">
           {usuario.curp}
         </Text>
         <Center mb="4" justifyContent={"end"} p="4">

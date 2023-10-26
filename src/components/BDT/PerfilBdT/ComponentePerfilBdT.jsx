@@ -6,15 +6,7 @@ import UpdateInfoPersonal from "./BdtUpdate/UpdateInfoPersonal";
 import UpdateHabilidades from "./BdtUpdate/UpdateHabilidades";
 import UpdateSituacionActual from "./BdtUpdate/UpdateSituacionActual";
 import { updateBdT } from "../../../hooks/EditarBdt";
-import {
-  Text,
-  Button,
-  Flex,
-  Wrap,
-  Center,
-  WrapItem,
-  Grid,
-} from "@chakra-ui/react";
+import {Text,Button,Flex,Wrap,Center,WrapItem,Grid,} from "@chakra-ui/react";
 import { deleteUserMail } from "../../../hooks/DeleteUsuario";
 import Swal from "sweetalert2";
 import { BDT } from "../../../models";
@@ -30,21 +22,55 @@ const ComponentePerfilBdT = ({ usuario, setUsuario, userID }) => {
   const [sitEdit, setSitEdit] = useState(false);
   const [originalUsuario, setOriginalUsuario] = useState(usuario);
 
+  const [updateKey, setUpdateKey] = useState(0); // Estado para forzar la recarga
+
   // Función de guardado genérica
-  const GuardarCambios = () => {
-    console.log(usuario.idioma);
-    updateBdT(usuario); // Llama a la función de actualización con el usuario actual
-    setInfoEdit(false);
-    setHabEdit(false);
-    setSitEdit(false);
+  const GuardarCambios = (section) => {
+    // Revertir los cambios solo para la sección especificada
+    switch (section) {
+      case "info":
+        updateBdT(usuario)
+        setUsuario(originalUsuario);
+        setInfoEdit(false);
+        break;
+      case "hab":
+        updateBdT(usuario)
+        setUsuario(originalUsuario);
+        setHabEdit(false);
+        break;
+      case "sit":
+        updateBdT(usuario)
+        setUsuario(originalUsuario);
+        setSitEdit(false);
+        break;
+      default:
+        break;
+    };
+     // Incrementar el estado updateKey para forzar la recarga
+     setUpdateKey((prevKey) => prevKey + 1);
+     updateBdT(usuario);
   };
 
-  const CancelarCambios = () => {
-    setUsuario(originalUsuario);
-    setInfoEdit(false);
-    setHabEdit(false);
-    setSitEdit(false);
+  const CancelarCambios = (section) => {
+    // Revertir los cambios solo para la sección especificada
+    switch (section) {
+      case 'info':
+        setUsuario(originalUsuario);
+        setInfoEdit(false);
+        break;
+      case 'hab':
+        setUsuario(originalUsuario);
+        setHabEdit(false);
+        break;
+      case 'sit':
+        setUsuario(originalUsuario);
+        setSitEdit(false);
+        break;
+      default:
+        break;
+    }
   };
+  
   const eliminarPerfil = async () => {
     try {
       // Muestra un SweetAlert de confirmación
@@ -114,10 +140,10 @@ const ComponentePerfilBdT = ({ usuario, setUsuario, userID }) => {
                 setEDatosInforPersonal={setUsuario}
               />
               <Flex justify="center">
-                <Button colorScheme="blue" onClick={GuardarCambios} m="2">
+                <Button colorScheme="blue" onClick={() => GuardarCambios('info')} m="2">
                   Guardar
                 </Button>
-                <Button colorScheme="red" onClick={CancelarCambios} m="2">
+                <Button colorScheme="red" onClick={() => CancelarCambios('info')} m="2">
                   Cancelar
                 </Button>
               </Flex>
@@ -142,10 +168,10 @@ const ComponentePerfilBdT = ({ usuario, setUsuario, userID }) => {
                 setHabilidades={setUsuario}
               />
               <Flex justify="center">
-                <Button colorScheme="blue" onClick={GuardarCambios} m="2">
+                <Button colorScheme="blue"  onClick={() => GuardarCambios('hab')} m="2">
                   Guardar
                 </Button>
-                <Button colorScheme="red" onClick={CancelarCambios} m="2">
+                <Button colorScheme="red" onClick={() => CancelarCambios('hab')} m="2">
                   Cancelar
                 </Button>
               </Flex>
@@ -170,10 +196,10 @@ const ComponentePerfilBdT = ({ usuario, setUsuario, userID }) => {
                 setDatosSituacion={setUsuario}
               />
               <Flex justify="center">
-                <Button colorScheme="blue" onClick={GuardarCambios} m="2">
+                <Button colorScheme="blue"  onClick={() => GuardarCambios('sit')} m="2">
                   Guardar
                 </Button>
-                <Button colorScheme="red" onClick={CancelarCambios} m="2">
+                <Button colorScheme="red"  onClick={() => CancelarCambios('sit')} m="2">
                   Cancelar
                 </Button>
               </Flex>
@@ -193,11 +219,7 @@ const ComponentePerfilBdT = ({ usuario, setUsuario, userID }) => {
       <Wrap justify="center"></Wrap>
       <Flex justify="flex-end" mr="20" mb="20" _hover={{ transform: "scale(1)" }}>
   <a href={usuario.pdfImagenUrl} download="nombre-del-archivo.pdf">
-    <Button
-      id="button-download"
-      m="2"
-      color="blue.500"
-      bg="transparent"
+    <Button id="button-download" m="2"color="blue.500"bg="transparent"
       _hover={{
         backgroundColor: "blue.500",
         color:"white",
@@ -206,11 +228,7 @@ const ComponentePerfilBdT = ({ usuario, setUsuario, userID }) => {
       Descargar PDF
     </Button>
   </a>
-  <Button
-    onClick={eliminarPerfil}
-    m="2"
-    color="red.500"
-    bg="transparent"
+  <Button onClick={eliminarPerfil} m="2" color="red.500" bg="transparent"
     _hover={{
       backgroundColor: "red.500",
       color:"white",
