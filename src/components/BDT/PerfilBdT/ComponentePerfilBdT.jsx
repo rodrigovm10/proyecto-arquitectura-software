@@ -1,28 +1,29 @@
-import React, { useState } from "react";
+import  { useState, useEffect } from "react";
 import BuscadorDeTrabajo from "./BdTList/BuscadorDeTrabajoList";
 import Habilidades from "./BdTList/HabilidadesList";
 import SituacionActualList from "./BdTList/SituacionActualList";
 import UpdateInfoPersonal from "./BdtUpdate/UpdateInfoPersonal";
 import UpdateHabilidades from "./BdtUpdate/UpdateHabilidades";
 import UpdateSituacionActual from "./BdtUpdate/UpdateSituacionActual";
-import { updateBdT } from "../../../hooks/EditarBdt";
-import {Text,Button,Flex,Wrap,Center,WrapItem,Grid,} from "@chakra-ui/react";
+import { updateBdT, updateBdTHab, updateBdTSit } from "../../../hooks/EditarBdt";
 import { deleteUserMail } from "../../../hooks/DeleteUsuario";
 import Swal from "sweetalert2";
 import { BDT } from "../../../models";
 import { DataStore } from "aws-amplify";
 import { useNavigate } from "react-router-dom";
-
-const ComponentePerfilBdT = ({ usuario, setUsuario, userID }) => {
-  console.log(usuario.habilidadesBlandas);
-
+import { Popover, PopoverContent,PopoverTrigger, PopoverArrow, PopoverCloseButton, PopoverHeader, PopoverBody,Link,Text,Button,Flex,Wrap,Center,WrapItem,Grid,} from "@chakra-ui/react";
+import { PdfEditModal } from "./BdtUpdate/FilesEdit";
+import { sendBajaLogica } from "../../../hooks/useSendEmail";
+const ComponentePerfilBdT = ({ email,usuario, setUsuario, userID }) => {
   const navigate = useNavigate();
   const [InfoEdit, setInfoEdit] = useState(false);
   const [habEdit, setHabEdit] = useState(false);
   const [sitEdit, setSitEdit] = useState(false);
   const [originalUsuario, setOriginalUsuario] = useState(usuario);
-
+  const [isEditingPdf, setIsEditingPdf] = useState(false);
   const [updateKey, setUpdateKey] = useState(0); // Estado para forzar la recarga
+
+
 
   // Función de guardado genérica
   const GuardarCambios = (section) => {
@@ -34,12 +35,17 @@ const ComponentePerfilBdT = ({ usuario, setUsuario, userID }) => {
         setInfoEdit(false);
         break;
       case "hab":
-        updateBdT(usuario)
+        updateBdTHab(usuario)
         setUsuario(originalUsuario);
         setHabEdit(false);
         break;
       case "sit":
-        updateBdT(usuario)
+        console.log(usuario.buscaEmpleo);
+        updateBdTSit(usuario)
+        if (usuario.buscaEmpleo === false) {
+         // sendBajaLogica(usuario,email);
+        }
+        
         setUsuario(originalUsuario);
         setSitEdit(false);
         break;
@@ -69,6 +75,16 @@ const ComponentePerfilBdT = ({ usuario, setUsuario, userID }) => {
       default:
         break;
     }
+  };
+
+  
+
+  const openPdfEditModal = () => {
+    setIsEditingPdf(true);
+  };
+
+  const closePdfEditModal = () => {
+    setIsEditingPdf(false);
   };
   
   const eliminarPerfil = async () => {
@@ -136,6 +152,7 @@ const ComponentePerfilBdT = ({ usuario, setUsuario, userID }) => {
             // Componente de edición de información personal
             <>
               <UpdateInfoPersonal
+                key={`info-${updateKey}`}
                 datosInforPersonal={usuario}
                 setEDatosInforPersonal={setUsuario}
               />
@@ -164,6 +181,7 @@ const ComponentePerfilBdT = ({ usuario, setUsuario, userID }) => {
             // Componente de edición de habilidades
             <>
               <UpdateHabilidades
+               key={`hab-${updateKey}`}
                 habilidades={usuario}
                 setHabilidades={setUsuario}
               />
@@ -192,6 +210,7 @@ const ComponentePerfilBdT = ({ usuario, setUsuario, userID }) => {
             // Componente de edición de situación actual
             <>
               <UpdateSituacionActual
+               key={`sit-${updateKey}`}
                 datosSituacion={usuario}
                 setDatosSituacion={setUsuario}
               />
@@ -207,37 +226,52 @@ const ComponentePerfilBdT = ({ usuario, setUsuario, userID }) => {
           ) : (
             // Componente de visualización de situación actual
             <>
-              <SituacionActualList
-                usuario={usuario}
-                setUsuario={setUsuario}
-                setSitEdit={setSitEdit}
-              />
+              <SituacionActualList usuario={usuario} setUsuario={setUsuario} setSitEdit={setSitEdit} />
             </>
           )}
         </div>
       </Grid>
       <Wrap justify="center"></Wrap>
       <Flex justify="flex-end" mr="20" mb="20" _hover={{ transform: "scale(1)" }}>
-  <a href={usuario.pdfImagenUrl} download="nombre-del-archivo.pdf">
-    <Button id="button-download" m="2"color="blue.500"bg="transparent"
-      _hover={{
-        backgroundColor: "blue.500",
-        color:"white",
-      }}
-    >
-      Descargar PDF
-    </Button>
-  </a>
-  <Button onClick={eliminarPerfil} m="2" color="red.500" bg="transparent"
-    _hover={{
-      backgroundColor: "red.500",
-      color:"white",
-    }}
-  >
-    Eliminar Perfil
-  </Button>
-</Flex>
-<Wrap justify="center"></Wrap>
+      <Popover>
+        <PopoverTrigger>
+          <Button
+            colorScheme="blue"
+            m="2"
+            onClick={openPdfEditModal} // Abre el modal de edición del PDF al hacer clic en el botón
+          >
+            C.V
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent>
+          <PopoverArrow />
+          <PopoverCloseButton />
+          <PopoverHeader>Opciones de PDF</PopoverHeader>
+          <PopoverBody>
+            <a href={usuario.pdfImagenUrl} download="nombre-del-archivo.pdf" >
+              Descargar
+            </a>
+            
+            {isEditingPdf && (
+              <PdfEditModal
+                pdfUrl={usuario.pdfImagenUrl}
+                onSave={closePdfEditModal}
+                usuario={usuario}
+              />
+            )}
+          </PopoverBody>
+        </PopoverContent>
+      </Popover>
+      <Button onClick={eliminarPerfil} m="2" color="red.500" bg="transparent"
+        _hover={{
+          backgroundColor: "red.500",
+          color:"white",
+        }}
+      >
+        Eliminar Perfil
+      </Button>
+    </Flex>
+    <Wrap justify="center"></Wrap>
 
 
     </>

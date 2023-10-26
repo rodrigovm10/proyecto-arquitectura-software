@@ -15,6 +15,7 @@ import {
 import { idiomas, nivelIdiomas } from "../../../../constants/Idiomas";
 import { habilidadesBlandas } from "../../../../constants/HabilidadesBlandas";
 import { habilidadesTecnicas } from "../../../../constants/HabilidadesTecnicas";
+import Swal from "sweetalert2";
 
 const RegistroHabilidades = ({ habilidades, setHabilidades }) => {
   const [idiomasSeleccionados, setIdiomasSeleccionados] = useState([]);
@@ -69,57 +70,67 @@ const RegistroHabilidades = ({ habilidades, setHabilidades }) => {
     const updatedHabilidadesTecnicas = [...habilidadesTecnicasSeleccionadas];
     updatedHabilidadesTecnicas.splice(index, 1);
     setHabilidadesTecnicasSeleccionadas(updatedHabilidadesTecnicas);
-  };
-  const concatenarIdioma = () => {
+  }; const concatenarIdioma = () => {
     if (idiomaSeleccionado && nivelSeleccionado) {
       const idiomaConcatenado = `${idiomaSeleccionado}/${nivelSeleccionado}`;
-      setIdiomasSeleccionados([...idiomasSeleccionados, idiomaConcatenado]);
-      setIdiomaSeleccionado("");
-      setNivelSeleccionado("");
+      if (!idiomasSeleccionados.includes(idiomaConcatenado)) {
+        setIdiomasSeleccionados([...idiomasSeleccionados, idiomaConcatenado]);
+        setIdiomaSeleccionado('');
+        setNivelSeleccionado('');
 
-      // Actualiza el estado de habilidades con el nuevo idioma
-      setHabilidades((prevHabilidades) => ({
-        ...prevHabilidades,
-        idioma: [...prevHabilidades.idioma, idiomaConcatenado],
-      }));
+        // Actualiza el estado de habilidades con el nuevo idioma
+        setHabilidades((prevHabilidades) => ({
+          ...prevHabilidades,
+          idioma: [...prevHabilidades.idioma, idiomaConcatenado],
+        }));
+      } else {
+        // Muestra una alerta de SweetAlert si el idioma ya existe
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Este idioma ya ha sido agregado.',
+        });
+      }
     }
   };
 
   const concatenarHabilidadBlanda = () => {
     if (habilidadBlandaSeleccionada) {
-      setHabilidadesBlandasSeleccionadas([
-        ...habilidadesBlandasSeleccionadas,
-        habilidadBlandaSeleccionada,
-      ]);
-      setHabilidadBlandaSeleccionada("");
-
-      // Actualiza el estado de habilidades con la nueva habilidad blanda
-      setHabilidades((prevHabilidades) => ({
-        ...prevHabilidades,
-        habilidadesBlandas: [
-          ...prevHabilidades.habilidadesBlandas,
-          habilidadBlandaSeleccionada,
-        ],
-      }));
+      if (!habilidadesBlandasSeleccionadas.includes(habilidadBlandaSeleccionada)) {
+        setHabilidadesBlandasSeleccionadas([...habilidadesBlandasSeleccionadas, habilidadBlandaSeleccionada]);
+        setHabilidadBlandaSeleccionada('');
+        setHabilidades((prevHabilidades) => ({
+          ...prevHabilidades,
+          habilidadesBlandas: [...prevHabilidades.habilidadesBlandas, habilidadBlandaSeleccionada],
+        }));
+      } else {
+        // Muestra una alerta de SweetAlert si la habilidad blanda ya existe
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Esta habilidad blanda ya ha sido agregada.',
+        });
+      }
     }
   };
 
   const concatenarHabilidadTecnica = () => {
     if (habilidadTecnicaSeleccionada) {
-      setHabilidadesTecnicasSeleccionadas([
-        ...habilidadesTecnicasSeleccionadas,
-        habilidadTecnicaSeleccionada,
-      ]);
-      setHabilidadTecnicaSeleccionada("");
-
-      // Actualiza el estado de habilidades con la nueva habilidad técnica
-      setHabilidades((prevHabilidades) => ({
-        ...prevHabilidades,
-        habilidadesTecnicas: [
-          ...prevHabilidades.habilidadesTecnicas,
-          habilidadTecnicaSeleccionada,
-        ],
-      }));
+      if (!habilidadesTecnicasSeleccionadas.includes(habilidadTecnicaSeleccionada)) {
+        setHabilidadesTecnicasSeleccionadas([...habilidadesTecnicasSeleccionadas, habilidadTecnicaSeleccionada]);
+        setHabilidadTecnicaSeleccionada('');
+        setHabilidades((prevHabilidades) => ({
+          ...prevHabilidades,
+          habilidadesTecnicas: [...prevHabilidades.habilidadesTecnicas, habilidadTecnicaSeleccionada],
+        }));
+      } else {
+        // Muestra una alerta de SweetAlert si la habilidad técnica ya existe
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Esta habilidad técnica ya ha sido agregada.',
+        });
+      }
     }
   };
 
@@ -197,7 +208,8 @@ const RegistroHabilidades = ({ habilidades, setHabilidades }) => {
                   size="md"
                   borderRadius="full"
                   variant="solid"
-                  colorScheme="green"
+                  borderColor="gray.200"
+                  style={{ maxWidth: "100%" }} 
                 >
                   <TagLabel>{idioma}</TagLabel>
                   <TagCloseButton onClick={() => removeIdioma(index)} />
@@ -239,7 +251,8 @@ const RegistroHabilidades = ({ habilidades, setHabilidades }) => {
                     size="md"
                     borderRadius="full"
                     variant="solid"
-                    colorScheme="blue"
+                    borderColor="gray.200"
+                    style={{ maxWidth: "100%" }} 
                   >
                     <TagLabel>{habilidad}</TagLabel>
                     <TagCloseButton
@@ -284,7 +297,8 @@ const RegistroHabilidades = ({ habilidades, setHabilidades }) => {
                     size="md"
                     borderRadius="full"
                     variant="solid"
-                    colorScheme="purple"
+                    borderColor="gray.200"
+                    style={{ maxWidth: "100%" }} 
                   >
                     <TagLabel>{habilidad}</TagLabel>
                     <TagCloseButton

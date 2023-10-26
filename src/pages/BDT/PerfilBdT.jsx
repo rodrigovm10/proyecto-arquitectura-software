@@ -15,6 +15,7 @@ function PerfilBdT() {
   const [session, setSession] = useState("");
   const [userData, setUserData] = useState("");
   const [user, setUser] = useState("")
+  const [email, setEmail]=useState("")
 
 
   //BDE
@@ -25,6 +26,7 @@ function PerfilBdT() {
           .then(async (user) => {
             await setSession(true);
             await NombreGrupo(user.username, "trabajador", setNombreGrupo)
+            await setEmail(user.attributes.email);
             await setUser(user.username);  // establecer user.username en el estado del usuario
             const sub = DataStore.observeQuery(BDT, c => c.correo.eq(user.attributes.email), { limit: 1 })
               .subscribe(({ items }) => { setUserData(items[0]); });
@@ -56,7 +58,7 @@ function PerfilBdT() {
               {userData !== "" && userData !== undefined ? (
                 <>
                   <NavegadorBDT setSession={setSession}/>
-                  <ComponentePerfilBdT userID={user} usuario={userData} setUsuario={setUserData}  />
+                  <ComponentePerfilBdT email={email} userID={user} usuario={userData} setUsuario={setUserData}  />
                  
                 </>
               ) : (

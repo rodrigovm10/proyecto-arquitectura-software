@@ -25,25 +25,28 @@ type Oportunidades @model @auth(rules: [{allow: public}]) {
 
 type Vacante @model @auth(rules: [{allow: public}]) {
   id: ID!
-  nombreVacante: String
+  nombre: String
   descripcion: String
+  numeroPlazas: String
+  area: String
+  tipoContrato: String
+  modalidad: String
   diasLaborales: String
+  edadMin: String
+  edadMax: String
+  genero: String
+  experienciaLaboral: String
+  escolaridad: String
+  idioma: [String]
+  nivelIdioma: [String]
+  prestaciones: [String]
   habilidadesBlandas: [String]
   habilidadesTecnicas: [String]
-  generoBDT: String
-  edadMin: Int
-  edadMax: Int
-  area: String
-  tipoEmpleo: String
-  dispViajar: Boolean
-  dispRadicar: Boolean
-  escolaridad: String
-  prestaciones: String
-  direccionEmpresa: String
-  Idioma: [String]
-  salarioMax: Int
-  salarioMin: Int
-  direccionVacante: String
+  emailEmpresa: String
+  visible: Boolean
+  ubicacion: String
+  nombreEmpresa: String
+  empresaID: ID! @index(name: "byEmpresa")
 }
 
 type Empresa @model @auth(rules: [{allow: public}, {allow: owner}, {allow: private}, {allow: private, provider: iam}, {allow: groups, groups: ["Empresa"], operations: [read, create, update, delete]}, {allow: groups, groups: ["trabajador"], operations: [read, create, update, delete]}]) {
@@ -61,6 +64,7 @@ type Empresa @model @auth(rules: [{allow: public}, {allow: owner}, {allow: priva
   sector: String
   tipoSucursal: String
   numero: String
+  Vacantes: [Vacante] @hasMany(indexName: "byEmpresa", fields: ["id"])
 }
 
 type BDT @model @auth(rules: [{allow: public}, {allow: owner}, {allow: private}, {allow: private, provider: iam}]) {

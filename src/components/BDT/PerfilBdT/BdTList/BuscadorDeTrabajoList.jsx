@@ -1,20 +1,14 @@
-import {
-  Center,
-  Box,
-  Stack,
-  Heading,
-  Text,
-  Grid,
-  GridItem,
-  Button,
-  Avatar,
-  Divider,
-  Flex,
-} from "@chakra-ui/react";
-
+import {Center,Box, Stack,Heading,Text, Grid, GridItem,Button, Avatar, Divider,Flex} from "@chakra-ui/react";
+ // Importa el ícono de edición
+import { useState } from 'react'; // Importa useState
+import {  IconButton } from "@chakra-ui/react";
+import { EditIcon } from "@chakra-ui/icons";
+import {ImageEditModal} from '../BdtUpdate/FilesEdit'
 function BuscadorDeTrabajo({ usuario, setInfoEdit }) {
   const nombreCompleto = `${usuario.nombre} ${usuario.apellidos}`;
   const direccionCompleta = `${usuario.municipio}, ${usuario.colonia}, ${usuario.calle}, ${usuario.codigoPostal}`;
+  const [showEditIcon, setShowEditIcon] = useState(false); // Estado para mostrar/ocultar el ícono de edición
+
 
   function calcularEdad(fechaNacimiento) {
     const partes = fechaNacimiento.split("-");
@@ -49,13 +43,32 @@ function BuscadorDeTrabajo({ usuario, setInfoEdit }) {
           Información personal
         </Heading>
         <Center>
-          <Avatar
-            bg="gray.400"
-            color="white"
-            alt={usuario.nombre}
-            src={usuario.imagenBDTUrl}
-            sx={{ width: "8rem", height: "8rem", fontSize: "8rem" }}
-          />
+        <Box
+            position="relative"
+            cursor="pointer"
+            onMouseEnter={() => setShowEditIcon(true)}
+            onMouseLeave={() => setShowEditIcon(false)}
+            _hover={{ opacity: showEditIcon ? 1 : 0.8 }}
+          >
+            <Avatar
+              bg="gray.400"
+              color="white"
+              alt={usuario.nombre}
+              src={usuario.imagenBDTUrl}
+              sx={{ width: "8rem", height: "8rem", fontSize: "8rem" }}
+            />
+            {showEditIcon && (
+              <ImageEditModal
+                imageUrl={usuario.imagenBDTUrl}
+                usuario={usuario}
+                onSave={(newImageUrl) => {
+                  setInfoEdit(true);
+                }}
+              />
+                
+            )}
+          </Box>
+
         </Center>
         <Text fontSize="2xl" mt="4" mb="2" textAlign="center">
           {nombreCompleto}

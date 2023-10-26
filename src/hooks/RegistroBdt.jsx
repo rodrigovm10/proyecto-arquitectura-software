@@ -17,7 +17,7 @@ export const registarBdE = async (datosInforPersonal,habilidades, datosSituacion
         "municipio": datosInforPersonal.municipio,
         "colonia": datosInforPersonal.colonia,
         "calle": datosInforPersonal.calle,
-        "codigoPostal": Number(datosInforPersonal.codigoPostal),
+        "codigoPostal":parseInt(datosInforPersonal.codigoPostal, 10),
         "idioma": habilidades.idioma,
         "habilidadesBlandas": habilidades.habilidadesBlandas,
         "habilidadesTecnicas":habilidades.habilidadesTecnicas,

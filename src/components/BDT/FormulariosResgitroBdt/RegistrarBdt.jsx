@@ -7,7 +7,7 @@ import RegistroInfoPersonal from './RegistroInfoPersonal';
 import FilesBDT from './FilesBDT';
 import { Storage } from 'aws-amplify';
 import Swal from 'sweetalert2'
-
+import { registroCompleto } from '../../../hooks/useSendEmail';
 export default function RegistrarBdt({email}) {
   const [datosInforPersonal, setEDatosInforPersonal] = useState({nombre: '',apellidos: '', curp: '', fechaNacimiento: '',telefono: '',escolaridad: '',genero: '',correo: email,municipio: '',colonia: '',calle: '',codigoPostal: '',});
   const [habilidades, setHabilidades] = useState({
@@ -22,6 +22,7 @@ export default function RegistrarBdt({email}) {
 
   console.log(files.imagenBDTUrl);
   const handleSubmit = async () => {
+    registroCompleto(datosInforPersonal,email)
     // Verifica si algún campo en datosInforPersonal está vacío
     const datosInforPersonalIsEmpty = Object.values(datosInforPersonal).some(value => value === '');
   

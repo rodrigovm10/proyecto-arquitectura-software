@@ -6,7 +6,8 @@ export const updateBdT = async (usuario) => {
   try {
     // Se consulta el usuario original desde el DataStore
     const original = await DataStore.query(BDT, usuario.id);
-
+    console.log(usuario.codigoPostal);
+    console.log(usuario.habilidadesBlandas);
     // Se guarda el usuario actualizado en el DataStore
     await DataStore.save(
       BDT.copyOf(original, (updated) => {
@@ -21,9 +22,43 @@ export const updateBdT = async (usuario) => {
         updated.curp = usuario.curp;
         updated.codigoPostal = Number(usuario.codigoPostal);
         updated.escolaridad = usuario.escolaridad;
+    
+      })
+    );
+  } catch (error) {
+    console.error("Error al actualizar el usuario:", error);
+  }
+}
+
+export const updateBdTHab = async (usuario) => {
+  try {
+    // Se consulta el usuario original desde el DataStore
+    const original = await DataStore.query(BDT, usuario.id);
+    console.log(usuario.codigoPostal);
+    console.log(usuario.habilidadesBlandas);
+    // Se guarda el usuario actualizado en el DataStore
+    await DataStore.save(
+      BDT.copyOf(original, (updated) => {
+      
         updated.idioma = usuario.idioma;
-        updated.habilidadesBlandas=usuario.habilidadesBlandas;
-        updated.habilidadesTecnicas=usuario.habilidadesTecnicas;
+        updated.habilidadesBlandas=usuario.habilidadesBlandas
+        updated.habilidadesTecnicas=usuario.habilidadesTecnicas
+      })
+    );
+  } catch (error) {
+    console.error("Error al actualizar el usuario:", error);
+  }
+}
+
+export const updateBdTSit = async (usuario) => {
+  try {
+    // Se consulta el usuario original desde el DataStore
+    const original = await DataStore.query(BDT, usuario.id);
+    console.log(usuario.codigoPostal);
+    console.log(usuario.habilidadesBlandas);
+    // Se guarda el usuario actualizado en el DataStore
+    await DataStore.save(
+      BDT.copyOf(original, (updated) => {
         updated.buscaEmpleo = usuario.buscaEmpleo === "true" || usuario.buscaEmpleo === true;
         updated.trabajando = usuario.trabajando === "true" || usuario.trabajando === true;
         updated.dispViajar = usuario.dispViajar === "true" || usuario.dispViajar === true;
