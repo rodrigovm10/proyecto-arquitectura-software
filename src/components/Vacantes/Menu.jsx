@@ -1,11 +1,9 @@
-import { MenuButton, MenuList, MenuItem, IconButton, Menu, Button, useDisclosure } from '@chakra-ui/react'
+import { MenuButton, MenuList, MenuItem, IconButton, Menu, Button } from '@chakra-ui/react'
 import { DotsVertical, Edit, Delete, Circle } from '../../assets/Icons'
-import { AlertaEliminar } from '../AlertaEliminar'
-import { AlertaBaja } from '../AlertaBaja'
+import { useAlerts } from '../../hooks/useAlerts'
 
-export function MenuVacante() {
-  const { isOpen: isOpenDelete, onOpen: onOpenDelete, onClose: onCloseDelete } = useDisclosure()
-  const { isOpen: isOpenDown, onOpen: onOpenDown, onClose: onCloseDown } = useDisclosure()
+export function MenuVacante({ vacanteId, visible = '' }) {
+  const { deleteAlert, updateAlert, updateVisibleAlert } = useAlerts()
 
   return (
     <Menu>
@@ -17,28 +15,29 @@ export function MenuVacante() {
       />
       <MenuList>
         <MenuItem icon={<Edit />}>Editar</MenuItem>
-        <MenuItem
-          icon={<Circle />}
-          as={Button}
-          onClick={onOpenDown}>
-          Dar de baja
-        </MenuItem>
+        {visible ? (
+          <MenuItem
+            icon={<Circle />}
+            as={Button}
+            onClick={() => updateAlert({ id: vacanteId, visible: false })}>
+            Dar de baja
+          </MenuItem>
+        ) : (
+          <MenuItem
+            icon={<Circle />}
+            as={Button}
+            onClick={() => updateVisibleAlert({ id: vacanteId, visible: true })}>
+            Dar de alta
+          </MenuItem>
+        )}
+
         <MenuItem
           as={Button}
           icon={<Delete />}
-          onClick={onOpenDelete}>
+          onClick={() => deleteAlert({ id: vacanteId })}>
           Eliminar
         </MenuItem>
       </MenuList>
-      <AlertaBaja
-        isOpen={isOpenDown}
-        onClose={onCloseDown}
-      />{' '}
-      <AlertaEliminar
-        isOpen={isOpenDelete}
-        onClose={onCloseDelete}
-      />{' '}
-      {/* Renderiza la alerta condicionalmente */}
     </Menu>
   )
 }

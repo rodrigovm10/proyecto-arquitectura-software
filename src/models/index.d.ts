@@ -1,6 +1,6 @@
 import { ModelInit, MutableModel, __modelMeta__, ManagedIdentifier } from "@aws-amplify/datastore";
 // @ts-ignore
-import { LazyLoading, LazyLoadingDisabled } from "@aws-amplify/datastore";
+import { LazyLoading, LazyLoadingDisabled, AsyncCollection } from "@aws-amplify/datastore";
 
 
 
@@ -80,25 +80,30 @@ type EagerVacante = {
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly nombreVacante?: string | null;
+  readonly nombre?: string | null;
   readonly descripcion?: string | null;
+  readonly numeroPlazas?: string | null;
+  readonly area?: string | null;
+  readonly tipoContrato?: string | null;
+  readonly modalidad?: string | null;
   readonly diasLaborales?: string | null;
+  readonly edadMin?: string | null;
+  readonly edadMax?: string | null;
+  readonly genero?: string | null;
+  readonly experienciaLaboral?: string | null;
+  readonly escolaridad?: string | null;
+  readonly idioma?: (string | null)[] | null;
+  readonly nivelIdioma?: (string | null)[] | null;
+  readonly prestaciones?: (string | null)[] | null;
   readonly habilidadesBlandas?: (string | null)[] | null;
   readonly habilidadesTecnicas?: (string | null)[] | null;
-  readonly generoBDT?: string | null;
-  readonly edadMin?: number | null;
-  readonly edadMax?: number | null;
-  readonly area?: string | null;
-  readonly tipoEmpleo?: string | null;
-  readonly dispViajar?: boolean | null;
-  readonly dispRadicar?: boolean | null;
-  readonly escolaridad?: string | null;
-  readonly prestaciones?: string | null;
-  readonly direccionEmpresa?: string | null;
-  readonly Idioma?: (string | null)[] | null;
-  readonly salarioMax?: number | null;
-  readonly salarioMin?: number | null;
-  readonly direccionVacante?: string | null;
+  readonly emailEmpresa?: string | null;
+  readonly visible?: boolean | null;
+  readonly ubicacion?: string | null;
+  readonly nombreEmpresa?: string | null;
+  readonly empresaID: string;
+  readonly salarioMin?: string | null;
+  readonly salarioMax?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -109,25 +114,30 @@ type LazyVacante = {
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly nombreVacante?: string | null;
+  readonly nombre?: string | null;
   readonly descripcion?: string | null;
+  readonly numeroPlazas?: string | null;
+  readonly area?: string | null;
+  readonly tipoContrato?: string | null;
+  readonly modalidad?: string | null;
   readonly diasLaborales?: string | null;
+  readonly edadMin?: string | null;
+  readonly edadMax?: string | null;
+  readonly genero?: string | null;
+  readonly experienciaLaboral?: string | null;
+  readonly escolaridad?: string | null;
+  readonly idioma?: (string | null)[] | null;
+  readonly nivelIdioma?: (string | null)[] | null;
+  readonly prestaciones?: (string | null)[] | null;
   readonly habilidadesBlandas?: (string | null)[] | null;
   readonly habilidadesTecnicas?: (string | null)[] | null;
-  readonly generoBDT?: string | null;
-  readonly edadMin?: number | null;
-  readonly edadMax?: number | null;
-  readonly area?: string | null;
-  readonly tipoEmpleo?: string | null;
-  readonly dispViajar?: boolean | null;
-  readonly dispRadicar?: boolean | null;
-  readonly escolaridad?: string | null;
-  readonly prestaciones?: string | null;
-  readonly direccionEmpresa?: string | null;
-  readonly Idioma?: (string | null)[] | null;
-  readonly salarioMax?: number | null;
-  readonly salarioMin?: number | null;
-  readonly direccionVacante?: string | null;
+  readonly emailEmpresa?: string | null;
+  readonly visible?: boolean | null;
+  readonly ubicacion?: string | null;
+  readonly nombreEmpresa?: string | null;
+  readonly empresaID: string;
+  readonly salarioMin?: string | null;
+  readonly salarioMax?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -157,6 +167,7 @@ type EagerEmpresa = {
   readonly sector?: string | null;
   readonly tipoSucursal?: string | null;
   readonly numero?: string | null;
+  readonly Vacantes?: (Vacante | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -180,6 +191,7 @@ type LazyEmpresa = {
   readonly sector?: string | null;
   readonly tipoSucursal?: string | null;
   readonly numero?: string | null;
+  readonly Vacantes: AsyncCollection<Vacante>;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -215,6 +227,8 @@ type EagerBDT = {
   readonly colonia?: string | null;
   readonly calle?: string | null;
   readonly codigoPostal?: number | null;
+  readonly imagenBDTUrl?: string | null;
+  readonly pdfImagenUrl?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -244,6 +258,8 @@ type LazyBDT = {
   readonly colonia?: string | null;
   readonly calle?: string | null;
   readonly codigoPostal?: number | null;
+  readonly imagenBDTUrl?: string | null;
+  readonly pdfImagenUrl?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

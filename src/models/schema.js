@@ -209,8 +209,8 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "nombreVacante": {
-                    "name": "nombreVacante",
+                "nombre": {
+                    "name": "nombre",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
@@ -223,12 +223,99 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "numeroPlazas": {
+                    "name": "numeroPlazas",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "area": {
+                    "name": "area",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "tipoContrato": {
+                    "name": "tipoContrato",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "modalidad": {
+                    "name": "modalidad",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "diasLaborales": {
                     "name": "diasLaborales",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
                     "attributes": []
+                },
+                "edadMin": {
+                    "name": "edadMin",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "edadMax": {
+                    "name": "edadMax",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "genero": {
+                    "name": "genero",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "experienciaLaboral": {
+                    "name": "experienciaLaboral",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "escolaridad": {
+                    "name": "escolaridad",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "idioma": {
+                    "name": "idioma",
+                    "isArray": true,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true
+                },
+                "nivelIdioma": {
+                    "name": "nivelIdioma",
+                    "isArray": true,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true
+                },
+                "prestaciones": {
+                    "name": "prestaciones",
+                    "isArray": true,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true
                 },
                 "habilidadesBlandas": {
                     "name": "habilidadesBlandas",
@@ -246,100 +333,50 @@ export const schema = {
                     "attributes": [],
                     "isArrayNullable": true
                 },
-                "generoBDT": {
-                    "name": "generoBDT",
+                "emailEmpresa": {
+                    "name": "emailEmpresa",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "edadMin": {
-                    "name": "edadMin",
-                    "isArray": false,
-                    "type": "Int",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "edadMax": {
-                    "name": "edadMax",
-                    "isArray": false,
-                    "type": "Int",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "area": {
-                    "name": "area",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "tipoEmpleo": {
-                    "name": "tipoEmpleo",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "dispViajar": {
-                    "name": "dispViajar",
+                "visible": {
+                    "name": "visible",
                     "isArray": false,
                     "type": "Boolean",
                     "isRequired": false,
                     "attributes": []
                 },
-                "dispRadicar": {
-                    "name": "dispRadicar",
-                    "isArray": false,
-                    "type": "Boolean",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "escolaridad": {
-                    "name": "escolaridad",
+                "ubicacion": {
+                    "name": "ubicacion",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "prestaciones": {
-                    "name": "prestaciones",
+                "nombreEmpresa": {
+                    "name": "nombreEmpresa",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "direccionEmpresa": {
-                    "name": "direccionEmpresa",
+                "empresaID": {
+                    "name": "empresaID",
                     "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "Idioma": {
-                    "name": "Idioma",
-                    "isArray": true,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isArrayNullable": true
-                },
-                "salarioMax": {
-                    "name": "salarioMax",
-                    "isArray": false,
-                    "type": "Int",
-                    "isRequired": false,
+                    "type": "ID",
+                    "isRequired": true,
                     "attributes": []
                 },
                 "salarioMin": {
                     "name": "salarioMin",
                     "isArray": false,
-                    "type": "Int",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "direccionVacante": {
-                    "name": "direccionVacante",
+                "salarioMax": {
+                    "name": "salarioMax",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
@@ -370,11 +407,41 @@ export const schema = {
                     "properties": {}
                 },
                 {
+                    "type": "key",
+                    "properties": {
+                        "name": "byEmpresa",
+                        "fields": [
+                            "empresaID"
+                        ]
+                    }
+                },
+                {
                     "type": "auth",
                     "properties": {
                         "rules": [
                             {
                                 "allow": "public",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
+                            },
+                            {
+                                "provider": "userPools",
+                                "ownerField": "owner",
+                                "allow": "owner",
+                                "identityClaim": "cognito:username",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
+                            },
+                            {
+                                "allow": "private",
                                 "operations": [
                                     "create",
                                     "update",
@@ -487,6 +554,22 @@ export const schema = {
                     "type": "String",
                     "isRequired": false,
                     "attributes": []
+                },
+                "Vacantes": {
+                    "name": "Vacantes",
+                    "isArray": true,
+                    "type": {
+                        "model": "Vacante"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true,
+                    "association": {
+                        "connectionType": "HAS_MANY",
+                        "associatedWith": [
+                            "empresaID"
+                        ]
+                    }
                 },
                 "createdAt": {
                     "name": "createdAt",
@@ -735,6 +818,20 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "imagenBDTUrl": {
+                    "name": "imagenBDTUrl",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "pdfImagenUrl": {
+                    "name": "pdfImagenUrl",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -802,34 +899,6 @@ export const schema = {
                                     "delete",
                                     "read"
                                 ]
-                            },
-                            {
-                                "groupClaim": "cognito:groups",
-                                "provider": "userPools",
-                                "allow": "groups",
-                                "groups": [
-                                    "trabajador"
-                                ],
-                                "operations": [
-                                    "read",
-                                    "create",
-                                    "update",
-                                    "delete"
-                                ]
-                            },
-                            {
-                                "groupClaim": "cognito:groups",
-                                "provider": "userPools",
-                                "allow": "groups",
-                                "groups": [
-                                    "Empresa"
-                                ],
-                                "operations": [
-                                    "read",
-                                    "create",
-                                    "update",
-                                    "delete"
-                                ]
                             }
                         ]
                     }
@@ -840,5 +909,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "f5a7b5d0e60150f9e84bfb9974dce65f"
+    "version": "b5d8109273888d8208e615934fc731bb"
 };

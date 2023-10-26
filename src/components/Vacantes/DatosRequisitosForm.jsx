@@ -1,10 +1,11 @@
-import { Box, Button, Flex, FormHelperText, FormLabel, Grid, GridItem, Heading, Input, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Select } from '@chakra-ui/react'
+import { Box, Button, Flex, FormLabel, Grid, GridItem, Heading, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Select } from '@chakra-ui/react'
 import { DATOS_REQUISITOS } from '../../constants/FormVacante'
 import { useRegisterVacante } from '../../hooks/useRegisterVacante'
 import { EXPERIENCIA_LABORAL, Idiomas, Genero, NivelIdiomas, Escolaridad } from '../../constants/Datos'
+import { Tags } from './Tags'
 
 export function DatosRequisitosForm() {
-  const { datosVacante, errors, handleInputChange } = useRegisterVacante()
+  const { datosVacante, handleNumberChange, handleInputChange, handleClickSave, stringToSave, secondStringToSave } = useRegisterVacante()
 
   return (
     <Flex
@@ -31,7 +32,7 @@ export function DatosRequisitosForm() {
                 min={min}
                 max={max}
                 value={datosVacante[nombre]}
-                onChange={handleInputChange}>
+                onChange={value => handleNumberChange({ value, name: nombre })}>
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -100,7 +101,7 @@ export function DatosRequisitosForm() {
             placeholder='Ingresa el idioma requerido'
             focusBorderColor='#ea754b'
             name='idioma'
-            value={datosVacante.idioma}
+            value={stringToSave}
             onChange={handleInputChange}>
             {Idiomas.map((idioma, i) => (
               <option
@@ -117,7 +118,7 @@ export function DatosRequisitosForm() {
             placeholder='Ingrese el nivel de idioma requerido'
             focusBorderColor='#ea754b'
             name='nivelIdioma'
-            value={datosVacante.nivelIdioma}
+            value={secondStringToSave}
             onChange={handleInputChange}>
             {NivelIdiomas.map((nivelIdioma, i) => (
               <option
@@ -129,9 +130,19 @@ export function DatosRequisitosForm() {
           </Select>
         </Box>
         <Box alignSelf='end'>
-          <Button colorScheme='facebook'>Agregar idioma</Button>
+          <Button
+            colorScheme='facebook'
+            onClick={() => {
+              handleClickSave({ name: 'idiomaConNivel', value: stringToSave })
+            }}>
+            Agregar idioma
+          </Button>
         </Box>
       </Flex>
+      <Tags
+        array={datosVacante.idiomaConNivel}
+        arrayName='idiomaConNivel'
+      />
     </Flex>
   )
 }

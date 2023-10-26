@@ -76,7 +76,7 @@ const router = createBrowserRouter([
     element: <Vacantes />
   },
   {
-    path: '/vacantes/:id',
+    path: '/vacantes/vacante/:id',
     element: <VacanteDatos />
   }
 ])

@@ -2,15 +2,21 @@ import { useEffect } from 'react'
 import { Header } from '../../components/Header'
 import { useSession } from '../../hooks/useSession'
 import { Box, Card, CardBody, CardHeader, Flex, Grid, Heading, Stack, StackDivider, Text } from '@chakra-ui/react'
-import { vacanteEjemplo } from '../../mockups/vacante'
 import { TagsDatosVacante } from '../../components/Vacantes/TagsDatosVacante'
 import { MenuVacante } from '../../components/Vacantes/Menu'
+import { useParams } from 'react-router-dom'
+import { useManageVacantes } from '../../hooks/useManageVacantes'
 
 export function VacanteDatos() {
+  const { id } = useParams()
   const { getDataSession } = useSession('Empresa')
+  const { listVacante, vacante } = useManageVacantes()
+
   useEffect(() => {
+    listVacante(id)
     getDataSession()
   }, [])
+
   return (
     <Box>
       <Header nombreDelGrupo={'Empresa'} />
@@ -20,17 +26,17 @@ export function VacanteDatos() {
         justifyContent='center'>
         <Card boxShadow='2xl'>
           <CardHeader>
-            <Flex>
+            <Flex justifyContent='space-between'>
               <Box>
                 <Heading
                   color='#000'
                   as='h2'
                   size='lg'>
-                  {vacanteEjemplo.nombreVacante}
+                  {vacante.nombre}
                 </Heading>
-                <Text>{vacanteEjemplo.descripcion}</Text>
+                <Text>{vacante.descripcion}</Text>
               </Box>
-              <MenuVacante />
+              <MenuVacante vacanteId={id} visible={vacante.visible} />
             </Flex>
           </CardHeader>
           <CardBody>
@@ -49,22 +55,25 @@ export function VacanteDatos() {
                   columnGap='4rem'
                   rowGap='1rem'>
                   <Text>
-                    <strong>Dirección de la vacante:</strong> {vacanteEjemplo.direccionEmpresa}
+                    <strong>Dirección de la vacante:</strong> {vacante.ubicacion}
                   </Text>
                   <Text>
-                    <strong>Número de plazas:</strong> {vacanteEjemplo.numeroPlazas}
+                    <strong>Número de plazas:</strong> {vacante.numeroPlazas}
                   </Text>
                   <Text>
-                    <strong>Jornada laboral:</strong> {vacanteEjemplo.jornadaLaboral}
+                    <strong>Tipo de contrato:</strong> {vacante.tipoContrato}
                   </Text>
                   <Text>
-                    <strong>Modalidad:</strong> {vacanteEjemplo.modalidad}
+                    <strong>Modalidad:</strong> {vacante.modalidad}
                   </Text>
                   <Text>
-                    <strong>Días laborales:</strong> {vacanteEjemplo.diasLaborales}
+                    <strong>Días laborales:</strong> {vacante.diasLaborales}
                   </Text>
                   <Text>
-                    <strong>Área:</strong> {vacanteEjemplo.area}
+                    <strong>Área:</strong> {vacante.area}
+                  </Text>
+                  <Text>
+                    <strong>Salario:</strong> ${vacante.salarioMin} - ${vacante.salarioMax}
                   </Text>
                 </Grid>
               </Box>
@@ -80,33 +89,34 @@ export function VacanteDatos() {
                   columnGap='4rem'
                   roGap='1rem'>
                   <Text>
-                    <strong>Experiencia laboral:</strong> {vacanteEjemplo.experienciaLaboral}
+                    <strong>Experiencia laboral:</strong> {vacante.experienciaLaboral}
                   </Text>
                   <Text>
-                    <strong>Género:</strong> {vacanteEjemplo.generoBDT}
+                    <strong>Género:</strong> {vacante.genero}
+                  </Text>
+                  <TagsDatosVacante
+                    titulo={'Idiomas'}
+                    tags={vacante.idioma}
+                  />
+                  <Text>
+                    <strong>Escolaridad:</strong> {vacante.escolaridad}
                   </Text>
                   <Text>
-                    <strong>Idiomas:</strong> {vacanteEjemplo.Idioma.map(idioma => idioma + ' - ')}
-                  </Text>
-                  <Text>
-                    <strong>Escolaridad:</strong> {vacanteEjemplo.escolaridad}
-                  </Text>
-                  <Text>
-                    <strong>Edad:</strong> {vacanteEjemplo.edadMin} años a {vacanteEjemplo.edadMax} años
+                    <strong>Edad:</strong> {vacante.edadMin} años a {vacante.edadMax} años
                   </Text>
                 </Grid>
               </Box>
               <TagsDatosVacante
                 titulo={'Prestaciones'}
-                tags={vacanteEjemplo.prestaciones}
+                tags={vacante.prestaciones}
               />
               <TagsDatosVacante
                 titulo={'Habilidades blandas'}
-                tags={vacanteEjemplo.habilidadesBlandas}
+                tags={vacante.habilidadesBlandas}
               />
               <TagsDatosVacante
                 titulo={'Habilidades técnicas'}
-                tags={vacanteEjemplo.habilidadesTecnicas}
+                tags={vacante.habilidadesTecnicas}
               />
             </Stack>
           </CardBody>

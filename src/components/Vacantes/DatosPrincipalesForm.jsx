@@ -1,11 +1,11 @@
-import { FormLabel, Input, Heading, Select, Flex, Box, FormHelperText, Grid, GridItem } from '@chakra-ui/react'
+import { FormLabel, Input, Heading, Select, Flex, Box, FormHelperText, Grid, GridItem, NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper } from '@chakra-ui/react'
 import { AreaEmpresa, DiasLaborales, TipoContrato } from '../../constants/Datos'
 import { useRegisterVacante } from '../../hooks/useRegisterVacante'
-import { DATOS_PRINCIPALES } from '../../constants/FormVacante'
+import { DATOS_PRINCIPALES, DATOS_SALARIO } from '../../constants/FormVacante'
 import { MODALIDAD } from '../../constants/Datos'
 
 export function DatosPrincipalesForm() {
-  const { datosVacante, errors, handleInputChange } = useRegisterVacante()
+  const { datosVacante, errors, handleInputChange, handleNumberChange } = useRegisterVacante()
 
   return (
     <Flex
@@ -111,6 +111,28 @@ export function DatosPrincipalesForm() {
             ))}
           </Select>
         </GridItem>
+
+        {DATOS_SALARIO.map(dato => {
+          const { id, campo, min, nombre } = dato
+          return (
+            <GridItem key={id}>
+              <FormLabel>{campo}</FormLabel>
+              <NumberInput
+                focusBorderColor='#ea754b'
+                name={nombre}
+                defaultValue={min}
+                min={min}
+                value={datosVacante[nombre]}
+                onChange={value => handleNumberChange({ value, name: nombre })}>
+                <NumberInputField />
+                <NumberInputStepper>
+                  <NumberIncrementStepper />
+                  <NumberDecrementStepper />
+                </NumberInputStepper>
+              </NumberInput>
+            </GridItem>
+          )
+        })}
       </Grid>
     </Flex>
   )

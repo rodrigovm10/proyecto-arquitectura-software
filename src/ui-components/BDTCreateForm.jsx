@@ -209,6 +209,8 @@ export default function BDTCreateForm(props) {
     colonia: "",
     calle: "",
     codigoPostal: "",
+    imagenBDTUrl: "",
+    pdfImagenUrl: "",
   };
   const [nombre, setNombre] = React.useState(initialValues.nombre);
   const [apellidos, setApellidos] = React.useState(initialValues.apellidos);
@@ -243,6 +245,12 @@ export default function BDTCreateForm(props) {
   const [codigoPostal, setCodigoPostal] = React.useState(
     initialValues.codigoPostal
   );
+  const [imagenBDTUrl, setImagenBDTUrl] = React.useState(
+    initialValues.imagenBDTUrl
+  );
+  const [pdfImagenUrl, setPdfImagenUrl] = React.useState(
+    initialValues.pdfImagenUrl
+  );
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setNombre(initialValues.nombre);
@@ -267,6 +275,8 @@ export default function BDTCreateForm(props) {
     setColonia(initialValues.colonia);
     setCalle(initialValues.calle);
     setCodigoPostal(initialValues.codigoPostal);
+    setImagenBDTUrl(initialValues.imagenBDTUrl);
+    setPdfImagenUrl(initialValues.pdfImagenUrl);
     setErrors({});
   };
   const [currentIdiomaValue, setCurrentIdiomaValue] = React.useState("");
@@ -297,6 +307,8 @@ export default function BDTCreateForm(props) {
     colonia: [],
     calle: [],
     codigoPostal: [],
+    imagenBDTUrl: [],
+    pdfImagenUrl: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -343,6 +355,8 @@ export default function BDTCreateForm(props) {
           colonia,
           calle,
           codigoPostal,
+          imagenBDTUrl,
+          pdfImagenUrl,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -416,6 +430,8 @@ export default function BDTCreateForm(props) {
               colonia,
               calle,
               codigoPostal,
+              imagenBDTUrl,
+              pdfImagenUrl,
             };
             const result = onChange(modelFields);
             value = result?.nombre ?? value;
@@ -458,6 +474,8 @@ export default function BDTCreateForm(props) {
               colonia,
               calle,
               codigoPostal,
+              imagenBDTUrl,
+              pdfImagenUrl,
             };
             const result = onChange(modelFields);
             value = result?.apellidos ?? value;
@@ -500,6 +518,8 @@ export default function BDTCreateForm(props) {
               colonia,
               calle,
               codigoPostal,
+              imagenBDTUrl,
+              pdfImagenUrl,
             };
             const result = onChange(modelFields);
             value = result?.curp ?? value;
@@ -542,6 +562,8 @@ export default function BDTCreateForm(props) {
               colonia,
               calle,
               codigoPostal,
+              imagenBDTUrl,
+              pdfImagenUrl,
             };
             const result = onChange(modelFields);
             value = result?.fechaNacimiento ?? value;
@@ -584,6 +606,8 @@ export default function BDTCreateForm(props) {
               colonia,
               calle,
               codigoPostal,
+              imagenBDTUrl,
+              pdfImagenUrl,
             };
             const result = onChange(modelFields);
             value = result?.telefono ?? value;
@@ -626,6 +650,8 @@ export default function BDTCreateForm(props) {
               colonia,
               calle,
               codigoPostal,
+              imagenBDTUrl,
+              pdfImagenUrl,
             };
             const result = onChange(modelFields);
             value = result?.escolaridad ?? value;
@@ -668,6 +694,8 @@ export default function BDTCreateForm(props) {
               colonia,
               calle,
               codigoPostal,
+              imagenBDTUrl,
+              pdfImagenUrl,
             };
             const result = onChange(modelFields);
             value = result?.genero ?? value;
@@ -706,6 +734,8 @@ export default function BDTCreateForm(props) {
               colonia,
               calle,
               codigoPostal,
+              imagenBDTUrl,
+              pdfImagenUrl,
             };
             const result = onChange(modelFields);
             values = result?.idioma ?? values;
@@ -773,6 +803,8 @@ export default function BDTCreateForm(props) {
               colonia,
               calle,
               codigoPostal,
+              imagenBDTUrl,
+              pdfImagenUrl,
             };
             const result = onChange(modelFields);
             value = result?.buscaEmpleo ?? value;
@@ -815,6 +847,8 @@ export default function BDTCreateForm(props) {
               colonia,
               calle,
               codigoPostal,
+              imagenBDTUrl,
+              pdfImagenUrl,
             };
             const result = onChange(modelFields);
             value = result?.trabajando ?? value;
@@ -857,6 +891,8 @@ export default function BDTCreateForm(props) {
               colonia,
               calle,
               codigoPostal,
+              imagenBDTUrl,
+              pdfImagenUrl,
             };
             const result = onChange(modelFields);
             value = result?.correo ?? value;
@@ -895,6 +931,8 @@ export default function BDTCreateForm(props) {
               colonia,
               calle,
               codigoPostal,
+              imagenBDTUrl,
+              pdfImagenUrl,
             };
             const result = onChange(modelFields);
             values = result?.habilidadesBlandas ?? values;
@@ -966,6 +1004,8 @@ export default function BDTCreateForm(props) {
               colonia,
               calle,
               codigoPostal,
+              imagenBDTUrl,
+              pdfImagenUrl,
             };
             const result = onChange(modelFields);
             values = result?.habilidadesTecnicas ?? values;
@@ -1041,6 +1081,8 @@ export default function BDTCreateForm(props) {
               colonia,
               calle,
               codigoPostal,
+              imagenBDTUrl,
+              pdfImagenUrl,
             };
             const result = onChange(modelFields);
             value = result?.dispViajar ?? value;
@@ -1083,6 +1125,8 @@ export default function BDTCreateForm(props) {
               colonia,
               calle,
               codigoPostal,
+              imagenBDTUrl,
+              pdfImagenUrl,
             };
             const result = onChange(modelFields);
             value = result?.dispRadicar ?? value;
@@ -1125,6 +1169,8 @@ export default function BDTCreateForm(props) {
               colonia,
               calle,
               codigoPostal,
+              imagenBDTUrl,
+              pdfImagenUrl,
             };
             const result = onChange(modelFields);
             value = result?.municipio ?? value;
@@ -1167,6 +1213,8 @@ export default function BDTCreateForm(props) {
               colonia: value,
               calle,
               codigoPostal,
+              imagenBDTUrl,
+              pdfImagenUrl,
             };
             const result = onChange(modelFields);
             value = result?.colonia ?? value;
@@ -1209,6 +1257,8 @@ export default function BDTCreateForm(props) {
               colonia,
               calle: value,
               codigoPostal,
+              imagenBDTUrl,
+              pdfImagenUrl,
             };
             const result = onChange(modelFields);
             value = result?.calle ?? value;
@@ -1255,6 +1305,8 @@ export default function BDTCreateForm(props) {
               colonia,
               calle,
               codigoPostal: value,
+              imagenBDTUrl,
+              pdfImagenUrl,
             };
             const result = onChange(modelFields);
             value = result?.codigoPostal ?? value;
@@ -1268,6 +1320,94 @@ export default function BDTCreateForm(props) {
         errorMessage={errors.codigoPostal?.errorMessage}
         hasError={errors.codigoPostal?.hasError}
         {...getOverrideProps(overrides, "codigoPostal")}
+      ></TextField>
+      <TextField
+        label="Imagen bdt url"
+        isRequired={false}
+        isReadOnly={false}
+        value={imagenBDTUrl}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              nombre,
+              apellidos,
+              curp,
+              fechaNacimiento,
+              telefono,
+              escolaridad,
+              genero,
+              idioma,
+              buscaEmpleo,
+              trabajando,
+              correo,
+              habilidadesBlandas,
+              habilidadesTecnicas,
+              dispViajar,
+              dispRadicar,
+              municipio,
+              colonia,
+              calle,
+              codigoPostal,
+              imagenBDTUrl: value,
+              pdfImagenUrl,
+            };
+            const result = onChange(modelFields);
+            value = result?.imagenBDTUrl ?? value;
+          }
+          if (errors.imagenBDTUrl?.hasError) {
+            runValidationTasks("imagenBDTUrl", value);
+          }
+          setImagenBDTUrl(value);
+        }}
+        onBlur={() => runValidationTasks("imagenBDTUrl", imagenBDTUrl)}
+        errorMessage={errors.imagenBDTUrl?.errorMessage}
+        hasError={errors.imagenBDTUrl?.hasError}
+        {...getOverrideProps(overrides, "imagenBDTUrl")}
+      ></TextField>
+      <TextField
+        label="Pdf imagen url"
+        isRequired={false}
+        isReadOnly={false}
+        value={pdfImagenUrl}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              nombre,
+              apellidos,
+              curp,
+              fechaNacimiento,
+              telefono,
+              escolaridad,
+              genero,
+              idioma,
+              buscaEmpleo,
+              trabajando,
+              correo,
+              habilidadesBlandas,
+              habilidadesTecnicas,
+              dispViajar,
+              dispRadicar,
+              municipio,
+              colonia,
+              calle,
+              codigoPostal,
+              imagenBDTUrl,
+              pdfImagenUrl: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.pdfImagenUrl ?? value;
+          }
+          if (errors.pdfImagenUrl?.hasError) {
+            runValidationTasks("pdfImagenUrl", value);
+          }
+          setPdfImagenUrl(value);
+        }}
+        onBlur={() => runValidationTasks("pdfImagenUrl", pdfImagenUrl)}
+        errorMessage={errors.pdfImagenUrl?.errorMessage}
+        hasError={errors.pdfImagenUrl?.hasError}
+        {...getOverrideProps(overrides, "pdfImagenUrl")}
       ></TextField>
       <Flex
         justifyContent="space-between"

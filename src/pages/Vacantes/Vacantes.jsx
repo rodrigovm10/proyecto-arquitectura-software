@@ -5,12 +5,18 @@ import { Flex, Grid, GridItem, Heading, Select, Stack, Text } from '@chakra-ui/r
 import { SinVacantes } from '../../components/Vacantes/SinVacantes'
 import { Vacante } from '../../components/Vacantes/Vacante'
 import { ButtonVacante } from '../../components/ButtonVacante'
+import { useManageVacantes } from '../../hooks/useManageVacantes'
 
 export function Vacantes() {
+  const { listVacantes, vacantesVisibles, vacantesNoVisibles, listVacantesNoVisibles, isVacanteVisible, handleChangeVacanteStatus } = useManageVacantes()
   const { getDataSession } = useSession('Empresa')
+
   useEffect(() => {
     getDataSession()
-  }, [])
+
+    if (isVacanteVisible) listVacantes()
+    else listVacantesNoVisibles()
+  }, [isVacanteVisible])
 
   return (
     <>
@@ -30,7 +36,7 @@ export function Vacantes() {
               fontSize='md'
               as='i'
               opacity='0.8'>
-              3 resultados
+              {isVacanteVisible ? `${vacantesVisibles.length} resultados` : `${vacantesNoVisibles.length} resultados`}
             </Text>
           </GridItem>
           <GridItem>
@@ -40,8 +46,9 @@ export function Vacantes() {
               gap='1rem'
               mr='2rem'>
               <ButtonVacante w='10rem'>Crear una vacante</ButtonVacante>
-
-              <Select w='12rem'>
+              <Select
+                w='12rem'
+                onChange={handleChangeVacanteStatus}>
                 <option value='activas'>Vacantes activas</option>
                 <option value='inactivas'>Vacantes inactivas</option>
               </Select>
@@ -49,8 +56,7 @@ export function Vacantes() {
           </GridItem>
         </Grid>
       </Stack>
-      {/*<SinVacantes />*/}
-      <Vacante />
+      {isVacanteVisible ? vacantesVisibles.length ? <Vacante vacantes={vacantesVisibles} /> : <SinVacantes /> : vacantesNoVisibles.length ? <Vacante vacantes={vacantesNoVisibles} /> : <SinVacantes />}
     </>
   )
 }

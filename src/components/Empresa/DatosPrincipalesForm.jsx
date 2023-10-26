@@ -1,6 +1,7 @@
-import { Box, Flex, FormHelperText, FormLabel, Heading, Input } from '@chakra-ui/react'
+import { Box, Flex, FormHelperText, FormLabel, Heading, Input, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper } from '@chakra-ui/react'
 import { DATOS_PRINCIPALES } from '../../constants/FormEmpresa'
 import { useRegister } from '../../hooks/useRegister'
+import { DATOS_SALARIO } from '../../constants/FormVacante'
 
 export function DatosPrincipalesForm() {
   const { datosEmpresa, handleInputChange, errors } = useRegister()
@@ -34,6 +35,7 @@ export function DatosPrincipalesForm() {
           {errors[campo.nombre] && <FormHelperText>{campo.errorMessage}</FormHelperText>}
         </Box>
       ))}
+      
     </Flex>
   )
 }

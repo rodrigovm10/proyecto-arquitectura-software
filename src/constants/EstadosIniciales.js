@@ -50,10 +50,13 @@ export const DATOS_VACANTE_STATE_INITIAL = {
   escolaridad: '',
   idioma: '',
   nivelIdioma: '',
+  salarioMin: '',
+  salarioMax: '',
   idiomaConNivel: [],
   prestaciones: [],
   habilidadesBlandas: [],
   habilidadesTecnicas: [],
+  ubicacion: '',
   emailEmpresa: '',
   nombreEmpresa: ''
 }
