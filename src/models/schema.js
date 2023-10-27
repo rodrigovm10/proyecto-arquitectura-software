@@ -382,6 +382,14 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "idiomaConNivel": {
+                    "name": "idiomaConNivel",
+                    "isArray": true,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -909,5 +917,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "b5d8109273888d8208e615934fc731bb"
+    "version": "efe3f88621ddd14897fb375b55d0e1a6"
 };

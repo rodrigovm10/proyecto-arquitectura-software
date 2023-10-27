@@ -6,6 +6,7 @@ import { SinVacantes } from '../../components/Vacantes/SinVacantes'
 import { Vacante } from '../../components/Vacantes/Vacante'
 import { ButtonVacante } from '../../components/ButtonVacante'
 import { useManageVacantes } from '../../hooks/useManageVacantes'
+import { Footer } from '../../landing/Footer'
 
 export function Vacantes() {
   const { listVacantes, vacantesVisibles, vacantesNoVisibles, listVacantesNoVisibles, isVacanteVisible, handleChangeVacanteStatus } = useManageVacantes()
@@ -45,7 +46,7 @@ export function Vacantes() {
               alignItems='end'
               gap='1rem'
               mr='2rem'>
-              <ButtonVacante w='10rem'>Crear una vacante</ButtonVacante>
+              <ButtonVacante to='/registro-vacante'>Crear una vacante</ButtonVacante>
               <Select
                 w='12rem'
                 onChange={handleChangeVacanteStatus}>
@@ -57,6 +58,7 @@ export function Vacantes() {
         </Grid>
       </Stack>
       {isVacanteVisible ? vacantesVisibles.length ? <Vacante vacantes={vacantesVisibles} /> : <SinVacantes /> : vacantesNoVisibles.length ? <Vacante vacantes={vacantesNoVisibles} /> : <SinVacantes />}
+      <Footer />
     </>
   )
 }

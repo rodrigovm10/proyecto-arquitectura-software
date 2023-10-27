@@ -12,16 +12,28 @@ import { useManageVacantes } from '../hooks/useManageVacantes'
 import { basicAlert } from '../utilities/Alerts'
 import { useEffect } from 'react'
 import { DATOS_VACANTE_STATE_INITIAL } from '../constants/EstadosIniciales'
+import { useParams } from 'react-router-dom'
+import { useAlerts } from '../hooks/useAlerts'
 import { Footer } from '../landing/Footer'
 
-export function FormVacante() {
-  const { dataSession, getDataSession, setDataSession } = useSession('Empresa')
-  const { datosVacante, somePropertyIsNull } = useRegisterVacante()
-  const { saveVacanteOnDataStore } = useManageVacantes({ emailEmpresa: dataSession.email })
+export function FormVacanteEdit() {
+  const { id } = useParams()
+  const { getDataSession, setDataSession } = useSession('Empresa')
+  const { datosVacante, somePropertyIsNull, setDatosVacante } = useRegisterVacante()
+  const { updateVacante, listVacante, vacante, isVacanteLoaded } = useManageVacantes()
+  const { updateVacanteAlert } = useAlerts()
 
   useEffect(() => {
+    listVacante(id)
+  }, [])
+
+  useEffect(() => {
+    if (!isVacanteLoaded) return
+    setDatosVacante(vacante)
+    console.log(vacante)
+    console.log(datosVacante)
     getDataSession()
-  }, [datosVacante])
+  }, [isVacanteLoaded, vacante])
 
   const handleSubmitForm = e => {
     e.preventDefault()
@@ -29,9 +41,9 @@ export function FormVacante() {
       basicAlert({ title: 'Error al guardar vacante', icon: 'error', text: 'No puede almacenar una vacante con campos vacíos.' })
       return
     }
-    saveVacanteOnDataStore({ datosVacante, email: dataSession.email, idOwner: dataSession.idOwner })
+    updateVacante({ id, newVacante: datosVacante })
+    updateVacanteAlert({ id })
     setDataSession(DATOS_VACANTE_STATE_INITIAL)
-    console.log(datosVacante)
   }
 
   return (
@@ -51,7 +63,7 @@ export function FormVacante() {
           <Heading
             as='h2'
             size='lg'>
-            <Center>Registro Vacante</Center>
+            <Center>Editar vacante</Center>
           </Heading>
           <Stack
             divider={<StackDivider />}
@@ -67,7 +79,7 @@ export function FormVacante() {
       <BotonesForm
         onClick={handleSubmitForm}
         botonCancelar={true}
-        url={'/vacantes'}
+        url={`/vacantes/vacante/${id}`}
       />
       <Footer />
     </>

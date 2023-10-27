@@ -49,6 +49,7 @@ type Vacante @model @auth(rules: [{allow: public}, {allow: owner}, {allow: priva
   empresaID: ID! @index(name: "byEmpresa")
   salarioMin: String
   salarioMax: String
+  idiomaConNivel: [String]
 }
 
 type Empresa @model @auth(rules: [{allow: public}, {allow: owner}, {allow: private}, {allow: private, provider: iam}, {allow: groups, groups: ["Empresa"], operations: [read, create, update, delete]}, {allow: groups, groups: ["trabajador"], operations: [read, create, update, delete]}]) {

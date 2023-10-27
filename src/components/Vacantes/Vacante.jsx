@@ -13,7 +13,7 @@ export function Vacante({ vacantes }) {
       mt='2rem'
       flexDirection='column'
       gap='2rem'
-      mb='2rem'>
+      mb='5rem'>
       {vacantes.map((vacante, i) => {
         const { nombre, area, diasLaborales, escolaridad, salarioMin, salarioMax, modalidad } = vacante
         return (

@@ -1,6 +1,5 @@
-import { Box, Button, Flex, Heading, Image } from '@chakra-ui/react'
+import { Box, Flex, Heading, Image } from '@chakra-ui/react'
 import logo from '../../img/logo.png'
-import { Link } from 'react-router-dom'
 import { ButtonVacante } from '../ButtonVacante'
 
 export function SinVacantes() {
@@ -10,6 +9,7 @@ export function SinVacantes() {
       alignItems='center'
       flexDirection='column'
       mt='5rem'
+      mb='5rem'
       gap='1rem'>
       <Box>
         <Image

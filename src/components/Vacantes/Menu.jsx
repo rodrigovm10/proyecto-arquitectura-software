@@ -1,10 +1,11 @@
 import { MenuButton, MenuList, MenuItem, IconButton, Menu, Button } from '@chakra-ui/react'
 import { DotsVertical, Edit, Delete, Circle } from '../../assets/Icons'
 import { useAlerts } from '../../hooks/useAlerts'
+import { useNavigate } from 'react-router-dom'
 
 export function MenuVacante({ vacanteId, visible = '' }) {
   const { deleteAlert, updateAlert, updateVisibleAlert } = useAlerts()
-
+  const navigate = useNavigate()
   return (
     <Menu>
       <MenuButton
@@ -14,7 +15,12 @@ export function MenuVacante({ vacanteId, visible = '' }) {
         variant='outline'
       />
       <MenuList>
-        <MenuItem icon={<Edit />}>Editar</MenuItem>
+        <MenuItem
+          icon={<Edit />}
+          as={Button}
+          onClick={() => navigate(`/vacantes/vacante/editar-vacante/${vacanteId}`)}>
+          Editar
+        </MenuItem>
         {visible ? (
           <MenuItem
             icon={<Circle />}

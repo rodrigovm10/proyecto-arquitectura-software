@@ -122,7 +122,7 @@ export function DatosPrincipalesForm() {
                 name={nombre}
                 defaultValue={min}
                 min={min}
-                value={datosVacante[nombre]}
+                value={datosVacante[nombre] ? parseFloat(datosVacante[nombre]) : min}
                 onChange={value => handleNumberChange({ value, name: nombre })}>
                 <NumberInputField />
                 <NumberInputStepper>

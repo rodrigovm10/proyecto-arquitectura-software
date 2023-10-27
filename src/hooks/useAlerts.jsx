@@ -71,5 +71,17 @@ export function useAlerts() {
     })
   }
 
-  return { basicAlert, deleteAlert, updateAlert: updateNoVisibleAlert, updateVisibleAlert }
+  const updateVacanteAlert = ({ id }) => {
+    Swal.fire({
+      title: 'Vacante actualizada',
+      icon: 'success',
+      text: 'La vacante ha sido actualizada'
+    }).then(result => {
+      if (result.isConfirmed) {
+        navigate(`/vacantes/vacante/${id}`)
+      }
+    })
+  }
+
+  return { basicAlert, deleteAlert, updateAlert: updateNoVisibleAlert, updateVisibleAlert, updateVacanteAlert }
 }

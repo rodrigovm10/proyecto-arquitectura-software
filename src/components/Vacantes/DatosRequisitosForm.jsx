@@ -31,7 +31,7 @@ export function DatosRequisitosForm() {
                 defaultValue={min}
                 min={min}
                 max={max}
-                value={datosVacante[nombre]}
+                value={datosVacante[nombre] ? parseFloat(datosVacante[nombre]) : min}
                 onChange={value => handleNumberChange({ value, name: nombre })}>
                 <NumberInputField />
                 <NumberInputStepper>

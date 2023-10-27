@@ -10,6 +10,7 @@ export function useManageVacantes() {
   const [vacantesNoVisibles, setVacantesNoVisibles] = useState([])
   const [vacante, setVacante] = useState({})
   const [isVacanteVisible, setIsVacanteVisible] = useState(true)
+  const [isVacanteLoaded, setIsVacanteLoaded] = useState(false)
 
   const navigate = useNavigate()
 
@@ -44,6 +45,7 @@ export function useManageVacantes() {
       escolaridad,
       idioma: idiomaConNivel,
       nivelIdioma: idiomaConNivel,
+      idiomaConNivel,
       prestaciones,
       habilidadesBlandas,
       habilidadesTecnicas,
@@ -55,6 +57,7 @@ export function useManageVacantes() {
     })
     try {
       await DataStore.save(vacante)
+      console.log(vacante)
       basicAlert({ title: 'Vacante guardada con exito', icon: 'success', text: 'La vacante ha sido creada con exito, podrá visualizarla en su apartado de vacantes.' })
       navigate('/vacantes')
       console.log(vacante)
@@ -82,7 +85,10 @@ export function useManageVacantes() {
     try {
       const newVacante = await DataStore.query(Vacante, c => c.id.eq(id))
       setVacante(newVacante[0])
-    } catch (err) {}
+      setIsVacanteLoaded(true)
+    } catch (err) {
+      setIsVacanteLoaded(true)
+    }
   }
 
   async function deleteVacante(id) {
@@ -107,6 +113,55 @@ export function useManageVacantes() {
     }
   }
 
+  async function updateVacante({ id, newVacante }) {
+    try {
+      const vacante = await DataStore.query(Vacante, id)
+
+      const actualizaciones = {}
+
+      for (const key in newVacante) {
+        if (Array.isArray(newVacante[key]) && Array.isArray(vacante[key])) {
+          if (!arraysAreEqual(newVacante[key], vacante[key])) {
+            actualizaciones[key] = newVacante[key]
+          }
+        } else {
+          if (newVacante[key] !== vacante[key]) {
+            actualizaciones[key] = newVacante[key]
+          }
+        }
+      }
+
+      if (Object.keys(actualizaciones).length > 0) {
+        await DataStore.save(
+          Vacante.copyOf(vacante, updatedItem => {
+            Object.assign(updatedItem, actualizaciones)
+          })
+        )
+
+        console.log('Registro actualizado con éxito.')
+      } else {
+        console.log('No se realizaron cambios en el registro.')
+      }
+    } catch (error) {
+      console.error('Error al actualizar el registro:', error)
+    }
+  }
+
+  function arraysAreEqual(arr1, arr2) {
+    if (!Array.isArray(arr1) || !Array.isArray(arr2)) {
+      return false
+    }
+    if (arr1.length !== arr2.length) {
+      return false
+    }
+    for (let i = 0; i < arr1.length; i++) {
+      if (arr1[i] !== arr2[i]) {
+        return false
+      }
+    }
+    return true
+  }
+
   async function listVacantesNoVisibles() {
     try {
       const newVacantes = await DataStore.query(Vacante, c => c.and(c => [c.visible.eq(false), c.numeroPlazas.gt(0)]), {
@@ -117,5 +172,5 @@ export function useManageVacantes() {
     } catch (error) {}
   }
 
-  return { saveVacanteOnDataStore, listVacantes, vacantesNoVisibles, vacantesVisibles, listVacantesNoVisibles, handleChangeVacanteStatus, isVacanteVisible, listVacante, vacante, deleteVacante, updateStatusVacante }
+  return { saveVacanteOnDataStore, listVacantes, vacantesNoVisibles, vacantesVisibles, listVacantesNoVisibles, handleChangeVacanteStatus, isVacanteVisible, listVacante, vacante, deleteVacante, updateStatusVacante, isVacanteLoaded, updateVacante }
 }

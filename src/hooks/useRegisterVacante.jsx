@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { DataVacanteContext } from '../context/DataVacanteContext'
 import { DATOS_VACANTE_STATE_INITIAL_ERRORS } from '../constants/EstadosIniciales'
 import { basicAlert } from '../utilities/Alerts'

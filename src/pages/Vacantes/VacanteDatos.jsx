@@ -1,14 +1,18 @@
 import { useEffect } from 'react'
 import { Header } from '../../components/Header'
 import { useSession } from '../../hooks/useSession'
-import { Box, Card, CardBody, CardHeader, Flex, Grid, Heading, Stack, StackDivider, Text } from '@chakra-ui/react'
+import { Box, Button, Card, CardBody, CardHeader, Flex, Grid, Heading, Stack, StackDivider, Text } from '@chakra-ui/react'
 import { TagsDatosVacante } from '../../components/Vacantes/TagsDatosVacante'
 import { MenuVacante } from '../../components/Vacantes/Menu'
 import { useParams } from 'react-router-dom'
 import { useManageVacantes } from '../../hooks/useManageVacantes'
+import { Footer } from '../../landing/Footer'
+import { useNavigate } from 'react-router-dom'
+import { ButtonVacante } from '../../components/ButtonVacante'
 
 export function VacanteDatos() {
   const { id } = useParams()
+  const navigate = useNavigate()
   const { getDataSession } = useSession('Empresa')
   const { listVacante, vacante } = useManageVacantes()
 
@@ -23,6 +27,7 @@ export function VacanteDatos() {
       <Flex
         mt='2rem'
         mx='8rem'
+        mb='2rem'
         justifyContent='center'>
         <Card boxShadow='2xl'>
           <CardHeader>
@@ -36,7 +41,10 @@ export function VacanteDatos() {
                 </Heading>
                 <Text>{vacante.descripcion}</Text>
               </Box>
-              <MenuVacante vacanteId={id} visible={vacante.visible} />
+              <MenuVacante
+                vacanteId={id}
+                visible={vacante.visible}
+              />
             </Flex>
           </CardHeader>
           <CardBody>
@@ -87,7 +95,7 @@ export function VacanteDatos() {
                 <Grid
                   templateColumns='repeat(2, 1fr)'
                   columnGap='4rem'
-                  roGap='1rem'>
+                  rowGap='1rem'>
                   <Text>
                     <strong>Experiencia laboral:</strong> {vacante.experienciaLaboral}
                   </Text>
@@ -122,6 +130,16 @@ export function VacanteDatos() {
           </CardBody>
         </Card>
       </Flex>
+      <Flex
+        justifyContent='center'
+        alignItems='start'>
+        <ButtonVacante
+          mb='2rem'
+          to='/vacantes'>
+          Volver a las vacantes
+        </ButtonVacante>
+      </Flex>
+      <Footer />
     </Box>
   )
 }
