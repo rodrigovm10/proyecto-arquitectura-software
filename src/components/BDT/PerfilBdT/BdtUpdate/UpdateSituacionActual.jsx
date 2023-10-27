@@ -1,11 +1,20 @@
 import { useState, useEffect } from "react";
 import {Box,Center,Card,Radio,RadioGroup,FormControl,FormLabel, HStack,Switch} from "@chakra-ui/react";
-
+import Swal from "sweetalert2";
 function UpdateSituacionActual({ datosSituacion, setDatosSituacion }) {
   const handleChange = (event, value) => {
     setDatosSituacion((prev) => ({ ...prev, [event]: value }));
-  };
 
+    if (event === "buscaEmpleo" && !value) {
+      Swal.fire({
+        icon: "warning",
+        title: "¡Advertencia!",
+        text: "Ya no serás recomendado para empresas.",
+        showCancelButton: false,
+        confirmButtonText: "OK",
+      });
+    }
+  };
   return (
     <Center py={6}>
       <Box boxShadow="xl" borderWidth="2px" borderColor="gray.200" borderRadius="lg" p={16} maxW="md">
@@ -13,7 +22,7 @@ function UpdateSituacionActual({ datosSituacion, setDatosSituacion }) {
           <Card variant="outlined">
             <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
               <Box spacing={2} className="m-4 text-center">
-                <FormControl display="flex" alignItems="center" justifyContent="space-between" mb={6}>
+              <FormControl display="flex" alignItems="center" justifyContent="space-between" mb={6}>
                   <FormLabel as="legend" className="d-flex justify-content-center" mb="0">
                     ¿Buscas empleo?
                   </FormLabel>

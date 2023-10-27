@@ -21,6 +21,7 @@ import { Vacantes } from './pages/Vacantes/Vacantes'
 import { VacanteDatos } from './pages/Vacantes/VacanteDatos'
 import { DataVacanteProvider } from './context/DataVacanteContext'
 import { FormVacanteEdit } from './pages/FormVacanteEdit'
+import Loading2 from './components/Loading2'
 
 Amplify.configure(awsExports)
 
@@ -88,6 +89,10 @@ const router = createBrowserRouter([
         <FormVacanteEdit />
       </DataVacanteProvider>
     )
+  },
+  {
+    path: '/loading',
+    element: <Loading2 />
   }
 ])
 

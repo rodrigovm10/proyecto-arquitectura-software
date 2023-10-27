@@ -102,9 +102,12 @@ type EagerVacante = {
   readonly ubicacion?: string | null;
   readonly nombreEmpresa?: string | null;
   readonly empresaID: string;
+<<<<<<< HEAD
   readonly salarioMin?: string | null;
   readonly salarioMax?: string | null;
   readonly idiomaConNivel?: (string | null)[] | null;
+=======
+>>>>>>> mario
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -137,9 +140,12 @@ type LazyVacante = {
   readonly ubicacion?: string | null;
   readonly nombreEmpresa?: string | null;
   readonly empresaID: string;
+<<<<<<< HEAD
   readonly salarioMin?: string | null;
   readonly salarioMax?: string | null;
   readonly idiomaConNivel?: (string | null)[] | null;
+=======
+>>>>>>> mario
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

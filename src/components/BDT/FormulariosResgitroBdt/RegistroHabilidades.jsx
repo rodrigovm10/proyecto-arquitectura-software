@@ -3,7 +3,7 @@ import { Box, Button, Center, FormControl, FormLabel, Grid, HStack, Select, Tag,
 import { Idiomas, NivelIdiomas } from '../../../constants/Datos'
 import { habilidadesBlandas } from '../../../constants/HabilidadesBlandas'
 import { habilidadesTecnicas } from '../../../constants/HabilidadesTecnicas'
-
+import Swal from 'sweetalert2'
 const RegistroHabilidades = ({ habilidades, setHabilidades }) => {
   const [idiomasSeleccionados, setIdiomasSeleccionados] = useState([])
   const [idiomaSeleccionado, setIdiomaSeleccionado] = useState('')
@@ -33,62 +33,118 @@ const RegistroHabilidades = ({ habilidades, setHabilidades }) => {
     const updatedIdiomas = [...idiomasSeleccionados]
     updatedIdiomas.splice(index, 1)
     setIdiomasSeleccionados(updatedIdiomas)
+
+    // Actualiza el estado de habilidades con el nuevo array de idiomas
+    setHabilidades(prevHabilidades => ({
+      ...prevHabilidades,
+      idioma: updatedIdiomas
+    }))
   }
 
   const removeHabilidadBlanda = index => {
     const updatedHabilidadesBlandas = [...habilidadesBlandasSeleccionadas]
     updatedHabilidadesBlandas.splice(index, 1)
     setHabilidadesBlandasSeleccionadas(updatedHabilidadesBlandas)
+
+    // Actualiza el estado de habilidades con el nuevo array de habilidades blandas
+    setHabilidades(prevHabilidades => ({
+      ...prevHabilidades,
+      habilidadesBlandas: updatedHabilidadesBlandas
+    }))
   }
 
   const removeHabilidadTecnica = index => {
     const updatedHabilidadesTecnicas = [...habilidadesTecnicasSeleccionadas]
     updatedHabilidadesTecnicas.splice(index, 1)
     setHabilidadesTecnicasSeleccionadas(updatedHabilidadesTecnicas)
+
+    // Actualiza el estado de habilidades con el nuevo array de habilidades Tecnicas
+    setHabilidades(prevHabilidades => ({
+      ...prevHabilidades,
+      habilidadesTecnicas: updatedHabilidadesTecnicas
+    }))
   }
   const concatenarIdioma = () => {
     if (idiomaSeleccionado && nivelSeleccionado) {
       const idiomaConcatenado = `${idiomaSeleccionado}/${nivelSeleccionado}`
-      setIdiomasSeleccionados([...idiomasSeleccionados, idiomaConcatenado])
-      setIdiomaSeleccionado('')
-      setNivelSeleccionado('')
+      // Verificar si el idioma ya existe en la lista
+      if (!idiomasSeleccionados.includes(idiomaConcatenado)) {
+        setIdiomasSeleccionados([...idiomasSeleccionados, idiomaConcatenado])
+        setIdiomaSeleccionado('')
+        setNivelSeleccionado('')
 
-      // Actualiza el estado de habilidades con el nuevo idioma
-      setHabilidades(prevHabilidades => ({
-        ...prevHabilidades,
-        idioma: [...prevHabilidades.idioma, idiomaConcatenado]
-      }))
+        // Actualiza el estado de habilidades con el nuevo idioma
+        setHabilidades(prevHabilidades => ({
+          ...prevHabilidades,
+          idioma: [...prevHabilidades.idioma, idiomaConcatenado]
+        }))
+      } else {
+        // Muestra una alerta de SweetAlert si el idioma ya existe
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Este idioma ya ha sido agregado.'
+        })
+      }
     }
   }
 
   const concatenarHabilidadBlanda = () => {
     if (habilidadBlandaSeleccionada) {
-      setHabilidadesBlandasSeleccionadas([...habilidadesBlandasSeleccionadas, habilidadBlandaSeleccionada])
-      setHabilidadBlandaSeleccionada('')
+      // Verificar si la habilidad blanda ya existe en la lista
+      if (!habilidadesBlandasSeleccionadas.includes(habilidadBlandaSeleccionada)) {
+        setHabilidadesBlandasSeleccionadas([...habilidadesBlandasSeleccionadas, habilidadBlandaSeleccionada])
+        setHabilidadBlandaSeleccionada('')
 
-      // Actualiza el estado de habilidades con la nueva habilidad blanda
-      setHabilidades(prevHabilidades => ({
-        ...prevHabilidades,
-        habilidadesBlandas: [...prevHabilidades.habilidadesBlandas, habilidadBlandaSeleccionada]
-      }))
+        // Actualiza el estado de habilidades con la nueva habilidad blanda
+        setHabilidades(prevHabilidades => ({
+          ...prevHabilidades,
+          habilidadesBlandas: [...prevHabilidades.habilidadesBlandas, habilidadBlandaSeleccionada]
+        }))
+      } else {
+        // Muestra una alerta de SweetAlert si la habilidad blanda ya existe
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Esta habilidad blanda ya ha sido agregada.'
+        })
+      }
     }
   }
 
   const concatenarHabilidadTecnica = () => {
     if (habilidadTecnicaSeleccionada) {
-      setHabilidadesTecnicasSeleccionadas([...habilidadesTecnicasSeleccionadas, habilidadTecnicaSeleccionada])
-      setHabilidadTecnicaSeleccionada('')
+      // Verificar si la habilidad técnica ya existe en la lista
+      if (!habilidadesTecnicasSeleccionadas.includes(habilidadTecnicaSeleccionada)) {
+        setHabilidadesTecnicasSeleccionadas([...habilidadesTecnicasSeleccionadas, habilidadTecnicaSeleccionada])
+        setHabilidadTecnicaSeleccionada('')
 
-      // Actualiza el estado de habilidades con la nueva habilidad técnica
-      setHabilidades(prevHabilidades => ({
-        ...prevHabilidades,
-        habilidadesTecnicas: [...prevHabilidades.habilidadesTecnicas, habilidadTecnicaSeleccionada]
-      }))
+        // Actualiza el estado de habilidades con la nueva habilidad técnica
+        setHabilidades(prevHabilidades => ({
+          ...prevHabilidades,
+          habilidadesTecnicas: [...prevHabilidades.habilidadesTecnicas, habilidadTecnicaSeleccionada]
+        }))
+      } else {
+        // Muestra una alerta de SweetAlert si la habilidad técnica ya existe
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Esta habilidad técnica ya ha sido agregada.'
+        })
+      }
     }
   }
 
   return (
-    <Center py={6}>
+    <Center
+      templateColumns={{
+        base: 'repeat(1, 1fr)', // col-xs-12
+        sm: 'repeat(1, 1fr)', // col-sm-6
+        md: 'repeat(2, 1fr)', // col-md-4
+        lg: 'repeat(1, 1fr)' // col-lg-3
+      }}
+      justifyItems='center'
+      alignItems='center'>
       <Box
         boxShadow='xl'
         borderWidth='2px'
@@ -105,7 +161,7 @@ const RegistroHabilidades = ({ habilidades, setHabilidades }) => {
               onChange={IdiomaChange}
               value={idiomaSeleccionado}>
               <option value=''>Seleccionar idioma</option>
-              {Idiomas.map(idioma => (
+              {idiomas.map(idioma => (
                 <option
                   key={idioma}
                   value={idioma}>
@@ -120,7 +176,7 @@ const RegistroHabilidades = ({ habilidades, setHabilidades }) => {
               onChange={NivelChange}
               value={nivelSeleccionado}>
               <option value=''>Seleccionar nivel</option>
-              {NivelIdiomas.map(nivel => (
+              {nivelIdiomas.map(nivel => (
                 <option
                   key={nivel}
                   value={nivel}>
@@ -133,21 +189,27 @@ const RegistroHabilidades = ({ habilidades, setHabilidades }) => {
             <Button onClick={concatenarIdioma}>Agregar idioma</Button>
           </Box>
           <Box gridColumn='span 2'>
-            <Center>
-              <HStack spacing={4}>
-                {idiomasSeleccionados.map((idioma, index) => (
-                  <Tag
-                    key={index}
-                    size='md'
-                    borderRadius='full'
-                    variant='solid'
-                    colorScheme='green'>
-                    <TagLabel>{idioma}</TagLabel>
-                    <TagCloseButton onClick={() => removeIdioma(index)} />
-                  </Tag>
-                ))}
-              </HStack>
-            </Center>
+            <Grid
+              templateColumns={{
+                base: 'repeat(3, 1fr)', // col-xs-12
+                sm: 'repeat(3, 1fr)', // col-sm-6
+                md: 'repeat(3, 1fr)', // col-md-4
+                lg: 'repeat(3, 1fr)' // col-lg-3
+              }}
+              gap={5}>
+              {idiomasSeleccionados.map((idioma, index) => (
+                <Tag
+                  key={index}
+                  size='md'
+                  borderRadius='full'
+                  variant='solid'
+                  borderColor='gray.200'
+                  style={{ maxWidth: '150px' }}>
+                  <TagLabel>{idioma}</TagLabel>
+                  <TagCloseButton onClick={() => removeIdioma(index)} />
+                </Tag>
+              ))}
+            </Grid>
           </Box>
           <FormControl>
             <FormLabel>Selecciona una habilidad blanda</FormLabel>
@@ -168,21 +230,29 @@ const RegistroHabilidades = ({ habilidades, setHabilidades }) => {
             <Button onClick={concatenarHabilidadBlanda}>Agregar</Button>
           </Box>
           <Box gridColumn='span 2'>
-            <Center>
-              <HStack spacing={4}>
+            <Grid
+              templateColumns={{
+                base: 'repeat(3, 1fr)', // col-xs-12
+                sm: 'repeat(3, 1fr)', // col-sm-6
+                md: 'repeat(3, 1fr)', // col-md-4
+                lg: 'repeat(3, 1fr)' // col-lg-3
+              }}
+              gap={5}>
+              <>
                 {habilidadesBlandasSeleccionadas.map((habilidad, index) => (
                   <Tag
                     key={index}
                     size='md'
                     borderRadius='full'
                     variant='solid'
-                    colorScheme='blue'>
+                    borderColor='gray.200'
+                    style={{ maxWidth: '150px' }}>
                     <TagLabel>{habilidad}</TagLabel>
                     <TagCloseButton onClick={() => removeHabilidadBlanda(index)} />
                   </Tag>
                 ))}
-              </HStack>
-            </Center>
+              </>
+            </Grid>
           </Box>
           <FormControl>
             <FormLabel>Selecciona una habilidad técnica</FormLabel>
@@ -203,21 +273,29 @@ const RegistroHabilidades = ({ habilidades, setHabilidades }) => {
             <Button onClick={concatenarHabilidadTecnica}>Agregar</Button>
           </Box>
           <Box gridColumn='span 2'>
-            <Center>
-              <HStack spacing={4}>
+            <Grid
+              templateColumns={{
+                base: 'repeat(3, 1fr)', // col-xs-12
+                sm: 'repeat(3, 1fr)', // col-sm-6
+                md: 'repeat(3, 1fr)', // col-md-4
+                lg: 'repeat(3, 1fr)' // col-lg-3
+              }}
+              gap={5}>
+              <>
                 {habilidadesTecnicasSeleccionadas.map((habilidad, index) => (
                   <Tag
                     key={index}
                     size='md'
                     borderRadius='full'
                     variant='solid'
-                    colorScheme='purple'>
+                    borderColor='gray.200'
+                    style={{ maxWidth: '150px' }}>
                     <TagLabel>{habilidad}</TagLabel>
                     <TagCloseButton onClick={() => removeHabilidadTecnica(index)} />
                   </Tag>
                 ))}
-              </HStack>
-            </Center>
+              </>
+            </Grid>
           </Box>
         </Grid>
       </Box>

@@ -1,17 +1,19 @@
 import { useContext } from 'react'
 import { SessionContext } from '../context/SessionContext'
 import { DataStore } from '@aws-amplify/datastore'
-import { Empresa } from '../models'
 import { BDT } from '../models'
+import { Empresa } from '../models'
 import { Auth } from 'aws-amplify'
 import { useAddToGroup } from './useAddToGroup'
 import { useNavigate } from 'react-router-dom'
 import { DATA_SESSION_STATE_INITIAL } from '../constants/EstadosIniciales'
 
-export function useSession(nombreDelGrupo = '') {
+export function useSession(nombreDelGrupo) {
   const navigate = useNavigate()
   const { dataSession, setDataSession } = useContext(SessionContext)
-  const { callLambdaToAddToGroup, nombreGrupo } = useAddToGroup({ nombreDelGrupo })
+  const { callLambdaToAddToGroup, nombreGrupo } = useAddToGroup({
+    nombreDelGrupo
+  })
 
   async function logOut() {
     try {

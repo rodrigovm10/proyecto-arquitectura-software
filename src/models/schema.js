@@ -366,6 +366,7 @@ export const schema = {
                     "isArray": false,
                     "type": "ID",
                     "isRequired": true,
+<<<<<<< HEAD
                     "attributes": []
                 },
                 "salarioMin": {
@@ -380,6 +381,8 @@ export const schema = {
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
+=======
+>>>>>>> mario
                     "attributes": []
                 },
                 "idiomaConNivel": {
@@ -917,5 +920,9 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.4.4",
+<<<<<<< HEAD
     "version": "efe3f88621ddd14897fb375b55d0e1a6"
+=======
+    "version": "16ef65d73716743ee3fabed3b7fd41bd"
+>>>>>>> mario
 };

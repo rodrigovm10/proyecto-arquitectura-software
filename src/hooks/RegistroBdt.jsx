@@ -1,7 +1,7 @@
 import { DataStore } from '@aws-amplify/datastore';
 import { BDT } from '../models';
 
-export const registarBdE = async (datosInforPersonal,habilidades, datosSituacion,  email) =>{
+export const registarBdE = async (datosInforPersonal,habilidades, datosSituacion,files,  email) =>{
 
 
     await DataStore.save(
@@ -17,7 +17,7 @@ export const registarBdE = async (datosInforPersonal,habilidades, datosSituacion
         "municipio": datosInforPersonal.municipio,
         "colonia": datosInforPersonal.colonia,
         "calle": datosInforPersonal.calle,
-        "codigoPostal": Number(datosInforPersonal.codigoPostal),
+        "codigoPostal":parseInt(datosInforPersonal.codigoPostal, 10),
         "idioma": habilidades.idioma,
         "habilidadesBlandas": habilidades.habilidadesBlandas,
         "habilidadesTecnicas":habilidades.habilidadesTecnicas,
@@ -25,9 +25,13 @@ export const registarBdE = async (datosInforPersonal,habilidades, datosSituacion
         "trabajando": datosSituacion.trabajando  === "false" || datosSituacion.trabajando  === false ? false : true,
         "dispRadicar": datosSituacion.dispRadicar  === "false" || datosSituacion.dispRadicar  === false ? false : true,
         "dispViajar": datosSituacion.dispViaja === "false"  || datosSituacion.dispViaja === false ? false : true,
-
+        "imagenBDTUrl":files.imagenBDTUrl,
+        "pdfImagenUrl":files.pdfImagenUrl
+        
 
 
 	})
+    
 );
+console.log(BDT);
 }
