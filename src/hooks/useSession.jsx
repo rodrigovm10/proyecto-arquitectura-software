@@ -77,7 +77,7 @@ export function useSession(nombreDelGrupo) {
         email: userData.attributes.email
       }))
       callLambdaToAddToGroup(userData.username)
-      const sub = DataStore.observeQuery(BDT, c => c.email.eq(userData.attributes.email), { limit: 1 }).subscribe(({ items }) => {
+      const sub = DataStore.observeQuery(BDT, c => c.correo.eq(userData.attributes.email), { limit: 1 }).subscribe(({ items }) => {
         setDataSession(prevDataSession => ({ ...prevDataSession, cuentaExistente: items.length }))
       })
       return () => {
@@ -108,5 +108,5 @@ export function useSession(nombreDelGrupo) {
     }
   }
 
-  return { dataSession, setDataSession, getDataSession, logOut, nombreGrupo, saveDataIntoGroups }
+  return { dataSession, setDataSession, getDataSession, logOut, nombreGrupo, saveDataIntoGroups, saveDataIntoGroupsBDT, getDataSessionBDT }
 }

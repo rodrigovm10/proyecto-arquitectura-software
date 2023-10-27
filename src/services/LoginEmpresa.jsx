@@ -9,7 +9,7 @@ function LoginEmpresa() {
 
   useEffect(() => {
     saveDataIntoGroups()
-  })
+  }, [])
 
   return (
     <div>
