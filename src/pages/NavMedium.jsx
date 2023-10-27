@@ -15,9 +15,6 @@ import {
   Center,
   StackDivider,
 } from "@chakra-ui/react";
-import bdt from "../../src/img/bdt.jpg";
-import negocio from "../../src/img/negocio.jpg";
-import solucion from "../../src/img/solucion.png";
 
 export function NavMedium() {
   const isSmallScreen = window.innerWidth <= 768;
