@@ -5,10 +5,10 @@ import { useSession } from '../../hooks/useSession'
 import Loading2 from '../../components/Loading2'
 
 function RegistroBdT() {
-  const { dataSession, getDataSession, nombreGrupo } = useSession('trabajador')
+  const { dataSession, getDataSessionBDT, nombreGrupo } = useSession('trabajador')
 
   useEffect(() => {
-    getDataSession()
+    getDataSessionBDT()
   }, [])
 
   if (!dataSession) {

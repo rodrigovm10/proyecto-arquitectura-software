@@ -97,7 +97,7 @@ export function useSession(nombreDelGrupo) {
         idOwner: userData.username,
         email: userData.attributes.email
       }))
-      const sub = DataStore.observeQuery(BDT, c => c.email.eq(userData.attributes.email), { limit: 1 }).subscribe(({ items }) => {
+      const sub = DataStore.observeQuery(BDT, c => c.correo.eq(userData.attributes.email), { limit: 1 }).subscribe(({ items }) => {
         setDataSession(prevDataSession => ({ ...prevDataSession, cuentaExistente: items.length }))
       })
       return () => {
