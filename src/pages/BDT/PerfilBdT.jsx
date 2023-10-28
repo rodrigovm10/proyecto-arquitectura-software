@@ -52,11 +52,7 @@ function PerfilBdT() {
             <>
               {userData !== '' && userData !== undefined ? (
                 <>
-<<<<<<< Updated upstream
                   <NavegadorBDT setSession={setSession} />
-=======
-                  <Header setSession={setSession} />
->>>>>>> Stashed changes
                   <ComponentePerfilBdT
                     email={email}
                     userID={user}
