@@ -6,8 +6,8 @@ import NavegadorBDT from '../components/BDT/inicioBdT/NavegadorBDT'
 export default function LandingEmpresa() {
   return (
     <>
-      {/* <Header nombreDelGrupo={'trabajador'} /> */}
-      <NavegadorBDT />
+      <Header nombreDelGrupo={'trabajador'} />
+      {/* <NavegadorBDT /> */}
       <InicioBdt />
       <Footer />
     </>

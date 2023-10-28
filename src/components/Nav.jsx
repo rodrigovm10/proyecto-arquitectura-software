@@ -1,8 +1,10 @@
 import { Flex, Spacer, Link, Image, ButtonGroup } from '@chakra-ui/react'
 import logo from '../img/logo.png'
 import { useSession } from '../hooks/useSession'
+import { MoonIcon, SunIcon } from '@chakra-ui/icons'
 
 export function Nav({ nombreDelGrupo }) {
+  // const { colorMode, toggleColorMode } = useColorMode()
   const nombreDelGrupoNew = '' || nombreDelGrupo
   const { logOut, dataSession, nombreGrupo } = useSession(nombreDelGrupoNew)
 
@@ -72,4 +74,77 @@ export function Nav({ nombreDelGrupo }) {
       </Flex>
     </Flex>
   )
+}
+{
+  /* <Box>
+  <Flex
+    
+    p={3}
+    justifyContent='space-between'
+    alignItems='center'>
+    <Box>
+      <RouterLink to='/inicio-bde'>
+        <img
+          src={logo}
+          alt='Red Laboral'
+          style={{ width: '10rem' }}
+        />
+      </RouterLink>
+    </Box>
+    <Flex alignItems='center'>
+      <RouterLink
+        to='/inicio-bdt'
+        style={{ marginLeft: '1rem' }}>
+        Inicio
+      </RouterLink>
+      <RouterLink
+        to='/buscar-empleo'
+        style={{ marginLeft: '1rem' }}>
+        Buscar empleo
+      </RouterLink>
+      <RouterLink
+        to='/oportunidades-laborales'
+        style={{ marginLeft: '1rem' }}>
+        Oportunidades laborales
+      </RouterLink>
+      <Menu>
+        <Button
+          onClick={toggleColorMode}
+          mr='2'
+          ml='2'>
+          {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+        </Button>
+        <MenuButton
+          as={Button}
+          rounded={'full'}
+          variant={'link'}
+          cursor={'pointer'}>
+          <Avatar
+            size={'sm'}
+            src={'https://avatars.dicebear.com/api/male/username.svg'}
+          />
+        </MenuButton>
+        <MenuList alignItems={'center'}>
+          <br />
+          <Center>
+            <Avatar
+              size={'2xl'}
+              src={'https://avatars.dicebear.com/api/male/username.svg'}
+            />
+          </Center>
+          <br />
+          <Center>
+            <p>{localStorage.nombreNav === undefined ? bde : localStorage.nombreNav}</p>
+          </Center>
+          <br />
+          <MenuDivider />
+          <RouterLink to='/perfil-bdt'>
+            <MenuItem>Perfil</MenuItem>
+          </RouterLink>
+          <MenuItem onClick={logOut}>Cerrar Sesión</MenuItem>
+        </MenuList>
+      </Menu>
+    </Flex>
+  </Flex>
+</Box> */
 }

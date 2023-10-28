@@ -137,8 +137,6 @@ export function useManageVacantes() {
             Object.assign(updatedItem, actualizaciones)
           })
         )
-
-        console.log('Registro actualizado con éxito.')
       } else {
         console.log('No se realizaron cambios en el registro.')
       }
