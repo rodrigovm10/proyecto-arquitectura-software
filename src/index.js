@@ -23,6 +23,7 @@ import { VacanteDatos } from './pages/Vacantes/VacanteDatos'
 import { DataVacanteProvider } from './context/DataVacanteContext'
 import { FormVacanteEdit } from './pages/FormVacanteEdit'
 import Loading2 from './components/Loading2'
+import { BuscarEmpleo } from './pages/BDT/BuscarEmpleo'
 
 Amplify.configure(awsExports)
 
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
   {
     path: '/inicio-bdt',
     element: <LandingBdt />
+  },
+  {
+    path: 'buscar-empleo',
+    element: <BuscarEmpleo />
   },
   //Vacante
   {

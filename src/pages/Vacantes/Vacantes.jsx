@@ -57,7 +57,17 @@ export function Vacantes() {
           </GridItem>
         </Grid>
       </Stack>
-      {isVacanteVisible ? vacantesVisibles.length ? <Vacante vacantes={vacantesVisibles} /> : <SinVacantes /> : vacantesNoVisibles.length ? <Vacante vacantes={vacantesNoVisibles} /> : <SinVacantes />}
+      {isVacanteVisible ? (
+        vacantesVisibles.length ? (
+          <Vacante vacantes={vacantesVisibles} />
+        ) : (
+          <SinVacantes>Aún no has registrado ninguna vacante</SinVacantes>
+        )
+      ) : vacantesNoVisibles.length ? (
+        <Vacante vacantes={vacantesNoVisibles} />
+      ) : (
+        <SinVacantes>Aún no has registrado ninguna vacante</SinVacantes>
+      )}
       <Footer />
     </>
   )

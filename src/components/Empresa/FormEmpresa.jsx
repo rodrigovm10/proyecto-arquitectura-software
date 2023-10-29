@@ -7,12 +7,26 @@ import { BotonesForm } from '../BotonesForm'
 import { guardarEmpresaEnDataStore } from '../../services/CrearEmpresas'
 import { useRegister } from '../../hooks/useRegister'
 import { Header } from '../Header'
+import { Footer } from '../../landing/Footer'
+import { basicAlert } from '../../utilities/Alerts'
+import { useSession } from '../../hooks/useSession'
+import { useEffect } from 'react'
 
 export function FormEmpresa({ email }) {
-  const { datosEmpresa, errors } = useRegister()
+  const { getDataSession } = useSession('Empresa')
+  const { datosEmpresa, somePropertyIsNull } = useRegister()
+
+  useEffect(() => {
+    console.log(datosEmpresa)
+    getDataSession()
+  }, [])
 
   const handleSubmitForm = e => {
     e.preventDefault()
+    if (somePropertyIsNull(datosEmpresa)) {
+      basicAlert({ title: 'Error al guardar la empresa', icon: 'error', text: 'No puede registrar empresas con campos vacíos.' })
+      return
+    }
     guardarEmpresaEnDataStore({ datosEmpresa, email })
     console.log(datosEmpresa)
   }
@@ -27,7 +41,6 @@ export function FormEmpresa({ email }) {
         <FormControl
           onSubmit={handleSubmitForm}
           p='6'
-          bg='#fff'
           rounded='md'
           boxShadow='dark-lg'
           m='2rem auto 0'
@@ -49,6 +62,8 @@ export function FormEmpresa({ email }) {
       </Flex>
 
       <BotonesForm onClick={handleSubmitForm} />
+
+      <Footer />
     </>
   )
 }

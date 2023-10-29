@@ -10,7 +10,7 @@ export function useRegister() {
     const { value, name } = e.target
     let newValue
     name === 'rfc' ? (newValue = transformToUppercase({ value })) : (newValue = '')
-
+    console.log(name)
     setDatosEmpresa(prevDatosEmpresa => ({
       ...prevDatosEmpresa,
       [name]: value,
@@ -34,7 +34,17 @@ export function useRegister() {
     return newValue
   }
 
-  const selectValidation = () => {}
-
-  return { datosEmpresa, errors, setDatosEmpresa, handleInputChange }
+  const somePropertyIsNull = object => {
+    for (const property in object) {
+      if (property === 'emailEmpresa' || property === 'idioma' || property === 'nombreEmpresa' || property === 'ubicacion') return false
+      if (object.hasOwnProperty(property)) {
+        const valor = object[property]
+        if (valor === null || valor === undefined || valor === '' || property.length === 0) {
+          return true
+        }
+      }
+    }
+    return false
+  }
+  return { datosEmpresa, errors, setDatosEmpresa, somePropertyIsNull, handleInputChange }
 }

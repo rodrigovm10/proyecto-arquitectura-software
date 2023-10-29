@@ -34,7 +34,6 @@ export function VacanteDatos() {
             <Flex justifyContent='space-between'>
               <Box>
                 <Heading
-                  color='#000'
                   as='h2'
                   size='lg'>
                   {vacante.nombre}

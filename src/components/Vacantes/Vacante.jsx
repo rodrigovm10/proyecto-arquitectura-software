@@ -31,7 +31,6 @@ export function Vacante({ vacantes }) {
             _hover={{ transform: 'scale(1.05)' }}>
             <CardHeader>
               <Heading
-                color='#000'
                 as='h3'
                 size='md'>
                 {nombre}

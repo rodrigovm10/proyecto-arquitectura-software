@@ -21,6 +21,7 @@ export function FormVacante() {
 
   useEffect(() => {
     getDataSession()
+    console.log(dataSession)
   }, [datosVacante])
 
   const handleSubmitForm = e => {
@@ -43,7 +44,6 @@ export function FormVacante() {
         mb='2rem'>
         <FormControl
           p='6'
-          bg='#fff'
           rounded='md'
           boxShadow='dark-lg'
           m='2rem auto 0'

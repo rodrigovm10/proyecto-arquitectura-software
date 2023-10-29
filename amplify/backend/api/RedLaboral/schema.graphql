@@ -27,13 +27,13 @@ type Vacante @model @auth(rules: [{allow: public}, {allow: owner}, {allow: priva
   id: ID!
   nombre: String
   descripcion: String
-  numeroPlazas: String
+  numeroPlazas: Int
   area: String
   tipoContrato: String
   modalidad: String
   diasLaborales: String
-  edadMin: String
-  edadMax: String
+  edadMin: Int
+  edadMax: Int
   genero: String
   experienciaLaboral: String
   escolaridad: String
@@ -47,8 +47,8 @@ type Vacante @model @auth(rules: [{allow: public}, {allow: owner}, {allow: priva
   ubicacion: String
   nombreEmpresa: String
   empresaID: ID! @index(name: "byEmpresa")
-  salarioMin: String
-  salarioMax: String
+  salarioMin: Float
+  salarioMax: Float
   idiomaConNivel: [String]
 }
 
@@ -58,15 +58,15 @@ type Empresa @model @auth(rules: [{allow: public}, {allow: owner}, {allow: priva
   razonSocial: String
   rfc: String
   email: String
-  telefono: String
+  telefono: Int
   municipio: String
-  codigoPostal: String
+  codigoPostal: Int
   colonia: String
   calle: String
   actividad: String
   sector: String
   tipoSucursal: String
-  numero: String
+  numero: Int
   Vacantes: [Vacante] @hasMany(indexName: "byEmpresa", fields: ["id"])
 }
 

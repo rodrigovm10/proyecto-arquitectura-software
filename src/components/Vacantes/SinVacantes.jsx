@@ -2,7 +2,7 @@ import { Box, Flex, Heading, Image } from '@chakra-ui/react'
 import logo from '../../img/logo.png'
 import { ButtonVacante } from '../ButtonVacante'
 
-export function SinVacantes() {
+export function SinVacantes({ children, hasButton = true }) {
   return (
     <Flex
       justifyContent='center'
@@ -23,9 +23,9 @@ export function SinVacantes() {
         fontWeight={400}
         as='h3'
         size='md'>
-        Aún no has registrado ninguna vacante
+        {children}
       </Heading>
-      <ButtonVacante>Crear una vacante</ButtonVacante>
+      {hasButton && <ButtonVacante>Crear una vacante</ButtonVacante>}
     </Flex>
   )
 }
