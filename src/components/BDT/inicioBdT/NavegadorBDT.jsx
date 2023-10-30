@@ -61,7 +61,6 @@ function NavegadorBDT({ setSession }) {
   return (
     <Box>
       <Flex
-        bg={useColorModeValue("")}
         p={3}
         justifyContent="space-between"
         alignItems="center"
