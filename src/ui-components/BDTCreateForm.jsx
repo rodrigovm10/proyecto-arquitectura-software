@@ -581,13 +581,9 @@ export default function BDTCreateForm(props) {
         label="Telefono"
         isRequired={false}
         isReadOnly={false}
-        type="number"
-        step="any"
         value={telefono}
         onChange={(e) => {
-          let value = isNaN(parseInt(e.target.value))
-            ? e.target.value
-            : parseInt(e.target.value);
+          let { value } = e.target;
           if (onChange) {
             const modelFields = {
               nombre,

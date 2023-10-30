@@ -2,11 +2,13 @@
   "resourceName": "s3575ad62a",
   "policyUUID": "575ad62a",
   "bucketName": "redlaboral10b5a9ed92cc458980629d9423a95443",
-  "storageAccess": "auth",
-  "guestAccess": [],
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
   "authAccess": [
-    "CREATE_AND_UPDATE",
     "READ",
+    "CREATE_AND_UPDATE",
     "DELETE"
   ],
   "triggerFunction": "NONE",

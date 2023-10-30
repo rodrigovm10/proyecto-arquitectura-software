@@ -77,6 +77,22 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_S3Trigger110393e5_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "S3Trigger110393e5"
+        }
+      ]
+    },
+    "AMPLIFY_function_S3Trigger110393e5_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "S3Trigger110393e5"
+        }
+      ]
+    },
     "AMPLIFY_storage_redlaboral913971a0_bucketName": {
       "usedBy": [
         {

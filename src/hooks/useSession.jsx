@@ -11,9 +11,7 @@ import { DATA_SESSION_STATE_INITIAL } from '../constants/EstadosIniciales'
 export function useSession(nombreDelGrupo) {
   const navigate = useNavigate()
   const { dataSession, setDataSession } = useContext(SessionContext)
-  const { callLambdaToAddToGroup, nombreGrupo } = useAddToGroup({
-    nombreDelGrupo
-  })
+  const { callLambdaToAddToGroup, nombreGrupo } = useAddToGroup(nombreDelGrupo)
 
   async function logOut() {
     try {
@@ -55,10 +53,12 @@ export function useSession(nombreDelGrupo) {
         idOwner: userData.username,
         email: userData.attributes.email
       }))
-      callLambdaToAddToGroup(userData.username)
+
+      await callLambdaToAddToGroup(userData.username)
       const sub = DataStore.observeQuery(Empresa, c => c.email.eq(userData.attributes.email), { limit: 1 }).subscribe(({ items }) => {
         setDataSession(prevDataSession => ({ ...prevDataSession, cuentaExistente: items.length }))
       })
+      console.log(dataSession)
       return () => {
         sub.unsubscribe()
       }

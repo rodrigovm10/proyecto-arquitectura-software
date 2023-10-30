@@ -1,24 +1,19 @@
 import { useEffect } from 'react'
 import { Header } from '../../components/Header'
-import { useSession } from '../../hooks/useSession'
-import { Box, Button, Card, CardBody, CardHeader, Flex, Grid, Heading, Stack, StackDivider, Text } from '@chakra-ui/react'
+import { Box, Card, CardBody, CardHeader, Flex, Grid, Heading, Stack, StackDivider, Text } from '@chakra-ui/react'
 import { TagsDatosVacante } from '../../components/Vacantes/TagsDatosVacante'
 import { MenuVacante } from '../../components/Vacantes/Menu'
 import { useParams } from 'react-router-dom'
 import { useManageVacantes } from '../../hooks/useManageVacantes'
 import { Footer } from '../../landing/Footer'
-import { useNavigate } from 'react-router-dom'
 import { ButtonVacante } from '../../components/ButtonVacante'
 
 export function VacanteDatos() {
   const { id } = useParams()
-  const navigate = useNavigate()
-  const { getDataSession } = useSession('Empresa')
   const { listVacante, vacante } = useManageVacantes()
 
   useEffect(() => {
     listVacante(id)
-    getDataSession()
   }, [])
 
   return (

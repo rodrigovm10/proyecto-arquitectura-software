@@ -11,28 +11,25 @@ import { useSession } from '../hooks/useSession'
 import { useManageVacantes } from '../hooks/useManageVacantes'
 import { basicAlert } from '../utilities/Alerts'
 import { useEffect } from 'react'
-import { DATOS_VACANTE_STATE_INITIAL } from '../constants/EstadosIniciales'
 import { Footer } from '../landing/Footer'
 import { DatosUbicacionForm } from '../components/Vacantes/DatosUbicacionForm'
 
 export function FormVacante() {
-  const { dataSession, getDataSession, setDataSession } = useSession('Empresa')
-  const { datosVacante, somePropertyIsNull } = useRegisterVacante()
-  const { saveVacanteOnDataStore } = useManageVacantes({ emailEmpresa: dataSession.email })
+  const { dataSession } = useSession('Empresa')
+  const { datosVacante, setDatosVacante, somePropertyIsNull } = useRegisterVacante()
+  const { saveVacanteOnDataStore } = useManageVacantes()
 
   useEffect(() => {
-    getDataSession()
     console.log(dataSession)
-  }, [datosVacante])
+  }, [])
 
   const handleSubmitForm = e => {
     e.preventDefault()
     if (somePropertyIsNull(datosVacante)) {
       basicAlert({ title: 'Error al guardar vacante', icon: 'error', text: 'No puede almacenar una vacante con campos vacíos.' })
+      saveVacanteOnDataStore(datosVacante, setDatosVacante)
       return
     }
-    saveVacanteOnDataStore({ datosVacante, email: dataSession.email, idOwner: dataSession.idOwner })
-    setDataSession(DATOS_VACANTE_STATE_INITIAL)
     console.log(datosVacante)
   }
 

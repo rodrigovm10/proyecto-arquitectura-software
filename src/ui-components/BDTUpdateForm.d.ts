@@ -27,7 +27,7 @@ export declare type BDTUpdateFormInputValues = {
     apellidos?: string;
     curp?: string;
     fechaNacimiento?: string;
-    telefono?: number;
+    telefono?: string;
     escolaridad?: string;
     genero?: string;
     idioma?: string[];
@@ -50,7 +50,7 @@ export declare type BDTUpdateFormValidationValues = {
     apellidos?: ValidationFunction<string>;
     curp?: ValidationFunction<string>;
     fechaNacimiento?: ValidationFunction<string>;
-    telefono?: ValidationFunction<number>;
+    telefono?: ValidationFunction<string>;
     escolaridad?: ValidationFunction<string>;
     genero?: ValidationFunction<string>;
     idioma?: ValidationFunction<string>;

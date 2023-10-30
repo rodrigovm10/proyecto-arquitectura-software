@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import { Header } from '../../components/Header'
-import { useSession } from '../../hooks/useSession'
 import { Flex, Grid, GridItem, Heading, Select, Stack, Text } from '@chakra-ui/react'
 import { SinVacantes } from '../../components/Vacantes/SinVacantes'
 import { Vacante } from '../../components/Vacantes/Vacante'
@@ -10,11 +9,8 @@ import { Footer } from '../../landing/Footer'
 
 export function Vacantes() {
   const { listVacantes, vacantesVisibles, vacantesNoVisibles, listVacantesNoVisibles, isVacanteVisible, handleChangeVacanteStatus } = useManageVacantes()
-  const { getDataSession } = useSession('Empresa')
 
   useEffect(() => {
-    getDataSession()
-
     if (isVacanteVisible) listVacantes()
     else listVacantesNoVisibles()
   }, [isVacanteVisible])

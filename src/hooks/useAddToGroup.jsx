@@ -1,9 +1,8 @@
 import { Auth } from 'aws-amplify'
-import { useEffect, useState } from 'react'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { SessionContext } from '../context/SessionContext'
 
-export function useAddToGroup({ nombreDelGrupo }) {
+export function useAddToGroup(nombreDelGrupo) {
   const { nombreGrupo, setNombreGrupo } = useContext(SessionContext)
   useEffect(() => {
     setNombreGrupo(nombreDelGrupo)
@@ -16,7 +15,7 @@ export function useAddToGroup({ nombreDelGrupo }) {
       const requestOptions = {
         method: 'POST',
         headers: { Authorization: 'Bearer ' + token, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ groupname: nombreGrupo, username: username, idAplicacion: process.env.REACT_APP_API_USER_GROUP })
+        body: JSON.stringify({ groupname: nombreDelGrupo, username: username, idAplicacion: process.env.REACT_APP_API_USER_GROUP })
       }
       console.log(requestOptions)
 
@@ -24,6 +23,7 @@ export function useAddToGroup({ nombreDelGrupo }) {
       const responseData = await response.json()
 
       const body = JSON.parse(responseData.body)
+      console.log(body)
       setNombreGrupo(body.GroupName)
     } catch (error) {
       console.error('Error al realizar la operación:', error)
