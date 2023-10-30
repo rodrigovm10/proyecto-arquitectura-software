@@ -71,7 +71,6 @@ export function NavMedium() {
           alignItems="center"
           justifyContent="center"
           bg="transparent"
-          p="4"
         >
           <Stack direction="row" pb="5" pt="5">
             <a href="https://www.vivaaerobus.com/" target="_blank">
@@ -185,7 +184,6 @@ export function NavMedium() {
           alignItems="center"
           justifyContent="center"
           bg="transparent"
-          p="4"
         >
           <Stack direction="row" pb="5" pt="5">
             <a href="https://www.vivaaerobus.com/" target="_blank">
