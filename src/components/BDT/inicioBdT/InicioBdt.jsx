@@ -4,9 +4,6 @@ import {
   Text,
   Stack,
   Flex,
-  Button,
-  WrapItem,
-  Wrap,
   CardBody,
   CardHeader,
   Card,
@@ -15,7 +12,6 @@ import {
 } from "@chakra-ui/react";
 
 export function InicioBdt() {
-  const isSmallScreen = window.innerWidth <= 768;
   return (
     <>
       <Box
@@ -40,7 +36,7 @@ export function InicioBdt() {
       <Flex
         flexDirection={{ base: "column", md: "row" }}
         flexWrap="wrap"
-        bg="#F9F5F6"
+        bg="transparent"
         p="5"
       >
         <Box
@@ -54,10 +50,10 @@ export function InicioBdt() {
           <Stack direction="row">
             <Image
               p="10"
-              borderRadius={5}
+              borderRadius="60px"
               objectFit="cover"
               src="https://media.istockphoto.com/id/1428698219/es/foto/feliz-joven-empresaria-hablando-por-tel%C3%A9fono-en-un-almac%C3%A9n.jpg?s=612x612&w=0&k=20&c=jbrDrttkbVtpE1NrPirmqDv10tCv0AkolMs4HrYN0Zs="
-              alt="Dan Abramov"
+              alt=""
             />
           </Stack>
         </Box>
@@ -67,19 +63,13 @@ export function InicioBdt() {
           flexDirection="column"
           alignItems="left"
           justifyContent="center"
-          bg="transparent"
         >
-          <Stack direction="column" pb="9" pt="5">
-            <Text className="Text">Trabajador</Text>
+          <Stack direction="column" pt="5">
+            <Text className="Text">Bienvenidos</Text>
             <Text className="Text">Únete a la plataforma Red Laboral.</Text>
             <Text fontWeight="bold">
               INICIA LA BÚSQUEDA DE TU TRABAJO IDEAL
             </Text>
-            <Wrap spacing={4}>
-              <WrapItem>
-                <Button colorScheme="facebook">Iniciar sesión</Button>
-              </WrapItem>
-            </Wrap>
           </Stack>
         </Box>
       </Flex>
@@ -113,7 +103,7 @@ export function InicioBdt() {
         <Card>
           <CardHeader>
             <Heading size="md" alignItems="center">
-              Crea tu cuenta y CV gratis
+              Carga tu CV gratis
             </Heading>
           </CardHeader>
           <CardBody>

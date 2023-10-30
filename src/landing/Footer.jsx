@@ -1,55 +1,42 @@
-import { Flex, Link, Image } from "@chakra-ui/react";
+import { Grid, Link, Image, Flex } from "@chakra-ui/react";
 import logo from "../img/logo.png";
 import { Facebook, Instagram, X } from "../assets/Icons";
 
 export function Footer() {
   return (
     <>
-      <Flex
-        as="footer"
+      <Grid
+        templateColumns={{
+          base: "repeat(1, 1fr)",
+          md: "repeat(3, 1fr)",
+          lg: "repeat(4, 1fr)",
+        }}
+        gap={6}
         width="100%"
-        justify="space-between"
         backgroundColor="#181c24"
         padding="1rem"
       >
         {/**logo */}
-        <Flex
-          width="30%"
-          color="white"
-          align="left"
-          justify="left"
-          flexDirection="column"
-        >
+        <Flex color="white" flexDirection="column">
           <Link href="/">
-            <Image src={logo} width={200} />
+            <Image src={logo} width={{ base: "150px", md: "200px" }} />
           </Link>
-          <p align="left">
+          <p>
             Únete a nuestra comunidad de red de trabajo. Enlazamos empresas y
             profesionales a través de una plataforma sencilla y amigable.
           </p>
         </Flex>
 
         {/**Nav */}
-        <Flex
-          width="20%"
-          textColor={"white"}
-          align="left"
-          justify="space-between"
-          direction="column"
-        >
+        <Flex direction="column" textColor={"white"}>
           <h2>Navegación</h2>
           <Link href="/">Inicio</Link>
           <Link href="/login-bdt">Buscadores de trabajo</Link>
           <Link href="/login-empresa">Empresas</Link>
         </Flex>
+
         {/**Enlaces*/}
-        <Flex
-          textColor={"white"}
-          width="25%"
-          align="left"
-          justify="space-between"
-          direction="column"
-        >
+        <Flex direction="column" textColor={"white"}>
           <h2>Legal</h2>
           <Link href="/" style={{ textDecoration: "underline" }}>
             Términos y condiciones de usuarios
@@ -64,38 +51,24 @@ export function Footer() {
             Aviso de privacidad de empresas
           </Link>
         </Flex>
-        {/**Contact */}
-        <Flex
-          textColor={"white"}
-          width="25%"
-          align="left"
-          justify="space-between"
-          direction="column"
-        >
-          <h2>Contacto</h2>
-          <p href="/">León Gto, NY 10012, US</p>
-          <p href="/">redlaboral@gmail.com</p>
-          <p href="/">+ 01 123 675 78</p>
-          <p href="/">+ 477 688 89 09</p>
-        </Flex>
-      </Flex>
 
-      <Flex
-        as="footer"
-        width="100%"
-        justify="end"
-        backgroundColor="#181c24"
-        padding="1rem"
-      >
-        <Flex width="50%" color="white" align="left" justify="left">
-          @ Derechos reservados por Red Laboral
+        {/**Contact */}
+        <Flex direction="column" textColor={"white"}>
+          <h2>Contacto</h2>
+          <p>León Gto, NY 10012, US</p>
+          <p>redlaboral@gmail.com</p>
+          <p>+ 01 123 675 78</p>
+          <p>+ 477 688 89 09</p>
         </Flex>
-        <Flex width="50%" color="white" align="" justify="end" mr="250">
+        {/**Derechos */}
+        <Flex color="white">@ Derechos reservados por Red Laboral</Flex>
+        {/**Redes */}
+        <Flex color="white" justify="end">
           <Facebook />
           <Instagram />
           <X />
         </Flex>
-      </Flex>
+      </Grid>
     </>
   );
 }
