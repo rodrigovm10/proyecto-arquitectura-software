@@ -16,6 +16,7 @@ import {
   useColorMode,
   IconButton,
   Center,
+  ButtonGroup,
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { Link as RouterLink } from "react-router-dom";
@@ -76,17 +77,15 @@ function NavegadorBDT({ setSession }) {
       <Spacer />
       <Flex gap={3} alignItems="center">
         {isLargeScreen ? (
-          <>
-            <Link as={RouterLink} to="/inicio-bdt">
+          <ButtonGroup>
+            <RouterLink color="#fff" to="/inicio-bdt">
               Inicio
-            </Link>
-            <Link as={RouterLink} to="/buscar-empleo">
-              Buscar empleo
-            </Link>
-            <Link as={RouterLink} to="/oportunidades-laborales">
+            </RouterLink>
+            <RouterLink to="/buscar-empleo">Buscar empleo</RouterLink>
+            <RouterLink to="/oportunidades-laborales">
               Oportunidades laborales
-            </Link>
-          </>
+            </RouterLink>
+          </ButtonGroup>
         ) : (
           <Menu>
             <MenuButton
@@ -97,9 +96,13 @@ function NavegadorBDT({ setSession }) {
               variant="outline"
             />
             <MenuList>
-              <MenuItem as={RouterLink} to="/inicio-bdt" color="grey">
+              <RouterLink
+                color="#fff"
+                to="/inicio-bdt"
+                _hover={{ color: "#ea754b" }}
+              >
                 Inicio
-              </MenuItem>
+              </RouterLink>
               <MenuItem as={RouterLink} to="/buscar-empleo" color="grey">
                 Buscar empleo
               </MenuItem>
