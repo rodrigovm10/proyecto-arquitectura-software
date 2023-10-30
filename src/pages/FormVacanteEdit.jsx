@@ -18,7 +18,6 @@ import { Footer } from '../landing/Footer'
 
 export function FormVacanteEdit() {
   const { id } = useParams()
-  const { getDataSession, setDataSession } = useSession('Empresa')
   const { datosVacante, somePropertyIsNull, setDatosVacante } = useRegisterVacante()
   const { updateVacante, listVacante, vacante, isVacanteLoaded } = useManageVacantes()
   const { updateVacanteAlert } = useAlerts()
@@ -32,7 +31,6 @@ export function FormVacanteEdit() {
     setDatosVacante(vacante)
     console.log(vacante)
     console.log(datosVacante)
-    getDataSession()
   }, [isVacanteLoaded, vacante])
 
   const handleSubmitForm = e => {
@@ -43,7 +41,7 @@ export function FormVacanteEdit() {
     }
     updateVacante({ id, newVacante: datosVacante })
     updateVacanteAlert({ id })
-    setDataSession(DATOS_VACANTE_STATE_INITIAL)
+    setDatosVacante(DATOS_VACANTE_STATE_INITIAL)
   }
 
   return (

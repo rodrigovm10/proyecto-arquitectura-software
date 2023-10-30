@@ -11,18 +11,19 @@ export const guardarEmpresaEnDataStore = async ({ datosEmpresa, email }) => {
     email,
     telefono: parseInt(telefono),
     municipio,
-    codigoPostal,
-    colonia: parseInt(colonia),
+    codigoPostal: parseInt(codigoPostal),
+    colonia,
     calle,
     actividad,
     sector,
     tipoSucursal
   })
+  console.log(empresa)
   try {
     await DataStore.save(empresa)
     console.log(empresa)
     console.log('guardo')
   } catch (e) {
-    console.log(e)
+    throw new Error('Error al guardar empresa')
   }
 }

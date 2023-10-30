@@ -1,12 +1,18 @@
-import { Box, Card, CardBody, CardHeader, Flex, Grid, Heading, Stack, StackDivider, Text } from '@chakra-ui/react'
+import { Box, Button, Card, CardBody, CardHeader, Flex, Grid, Heading, Stack, StackDivider, Text } from '@chakra-ui/react'
 import { TagsDatosVacante } from './TagsDatosVacante'
+import { useAlerts } from '../../hooks/useAlerts'
 
 export function DatosVacanteBDT({ vacante }) {
+  const { applicationSubmissionAlert } = useAlerts()
+  const handleClickApplicationSubmission = () => {
+    applicationSubmissionAlert()
+  }
   return (
-    <Flex
-      justifyContent='center'
-      overflowY='scroll'>
-      <Card boxShadow='2xl'>
+    <Flex justifyContent='center'>
+      <Card
+        boxShadow='2xl'
+        h='40rem'
+        overflowY='scroll'>
         <CardHeader>
           <Flex justifyContent='space-between'>
             <Box>
@@ -18,6 +24,13 @@ export function DatosVacanteBDT({ vacante }) {
               <Text>{vacante.descripcion}</Text>
             </Box>
           </Flex>
+          <Button
+            bg='#ea754b'
+            color='#fff'
+            _hover={{ bg: '#ff964f' }}
+            onClick={handleClickApplicationSubmission}>
+            Postularse
+          </Button>
         </CardHeader>
         <CardBody>
           <Stack
@@ -53,7 +66,10 @@ export function DatosVacanteBDT({ vacante }) {
                   <strong>Área:</strong> {vacante.area}
                 </Text>
                 <Text>
-                  <strong>Salario:</strong> ${vacante.salarioMin} - ${vacante.salarioMax}
+                  <strong>Salario:</strong> ${vacante.salarioMin} - ${vacante.salarioMax} - {vacante.periodoPago}
+                </Text>
+                <Text>
+                  <strong>Jornada laboral:</strong> {vacante.jornadaLaboral}
                 </Text>
               </Grid>
             </Box>

@@ -83,5 +83,22 @@ export function useAlerts() {
     })
   }
 
-  return { basicAlert, deleteAlert, updateAlert: updateNoVisibleAlert, updateVisibleAlert, updateVacanteAlert }
+  const applicationSubmissionAlert = () => {
+    Swal.fire({
+      title: '¿Estás seguro de postularte a esta vacante?',
+      text: 'Una vez postulado será avisado a la empresa en cuestión. Podrás ver esta y otras postulaciones en la sección de "Oportunidades laborales".',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, postularse'
+    }).then(result => {
+      if (result.isConfirmed) {
+        // updateStatusVacante({ id, visible })
+        Swal.fire('Postulado(a)', 'Has sido postulado(a) exitosamente.', 'success')
+      }
+    })
+  }
+
+  return { basicAlert, deleteAlert, updateAlert: updateNoVisibleAlert, updateVisibleAlert, updateVacanteAlert, applicationSubmissionAlert }
 }

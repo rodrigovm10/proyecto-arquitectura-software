@@ -1,5 +1,5 @@
 import { FormLabel, Input, Heading, Select, Flex, Box, FormHelperText, Grid, GridItem, NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper } from '@chakra-ui/react'
-import { AreaEmpresa, DiasLaborales, TipoContrato } from '../../constants/Datos'
+import { AreaEmpresa, DiasLaborales, JORNADA_LABORAL, PERIODO_PAGO, TipoContrato } from '../../constants/Datos'
 import { useRegisterVacante } from '../../hooks/useRegisterVacante'
 import { DATOS_PRINCIPALES, DATOS_SALARIO } from '../../constants/FormVacante'
 import { MODALIDAD } from '../../constants/Datos'
@@ -41,12 +41,12 @@ export function DatosPrincipalesForm() {
         )
       })}
       <Grid
-        templateColumns='repeat(2, 1fr)'
+        templateColumns={{ sm: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)' }}
         gap='1rem'>
         <GridItem>
           <FormLabel>Área</FormLabel>
           <Select
-            placeholder='Seleccione el Área de la empresa'
+            placeholder='Seleccione el área de la empresa'
             name='area'
             focusBorderColor='#ea754b'
             onChange={handleInputChange}
@@ -56,6 +56,23 @@ export function DatosPrincipalesForm() {
                 value={area}
                 key={i}>
                 {area}
+              </option>
+            ))}
+          </Select>
+        </GridItem>
+        <GridItem>
+          <FormLabel>Periodo de pago</FormLabel>
+          <Select
+            placeholder='Seleccione el periodo de pago'
+            name='periodoPago'
+            focusBorderColor='#ea754b'
+            onChange={handleInputChange}
+            value={datosVacante.periodoPago}>
+            {PERIODO_PAGO.map((periodo, i) => (
+              <option
+                value={periodo}
+                key={i}>
+                {periodo}
               </option>
             ))}
           </Select>
@@ -73,6 +90,23 @@ export function DatosPrincipalesForm() {
                 value={tipo}
                 key={i}>
                 {tipo}
+              </option>
+            ))}
+          </Select>
+        </GridItem>
+        <GridItem>
+          <FormLabel>Jornada laboral</FormLabel>
+          <Select
+            placeholder='Seleccione la jornada laboral'
+            name='jornadaLaboral'
+            focusBorderColor='#ea754b'
+            onChange={handleInputChange}
+            value={datosVacante.jornadaLaboral}>
+            {JORNADA_LABORAL.map((jornada, i) => (
+              <option
+                value={jornada}
+                key={i}>
+                {jornada}
               </option>
             ))}
           </Select>

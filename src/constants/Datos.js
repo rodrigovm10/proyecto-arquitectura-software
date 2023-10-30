@@ -111,6 +111,10 @@ export const Prestaciones = [
 
 export const CausaVacante = ['Empresa nueva', 'Necesidades temporales de mano de obra', 'Puesto de nueva creación', 'Reposición del personal']
 
+export const JORNADA_LABORAL = ['Por horas', 'Por tarea completada/destajo', 'Fines de semana', 'Turno nocturno', 'Medio tiempo (4 hrs)', 'Tiempo completo (8 hrs)', 'Turnos rotativos/Jornadas rotativas']
+
+export const PERIODO_PAGO = ['Por tarea completada/destajo', 'Semanal', 'Decenal', 'Catorcenal', 'Quincenal', 'Mensual']
+
 export const AreaEmpresa = [
   'Administración',
   'Asuntos jurídicos',

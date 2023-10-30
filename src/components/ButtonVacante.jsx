@@ -10,7 +10,8 @@ export function ButtonVacante({ children, to, mb = '0' }) {
       color='white'
       onClick={() => navigate(to)}
       mb={mb}
-      bg='#ea754b'>
+      bg='#ea754b'
+      _hover={{ bg: '#ff964f' }}>
       {children}
     </Button>
   )

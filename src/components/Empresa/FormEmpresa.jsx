@@ -9,17 +9,9 @@ import { useRegister } from '../../hooks/useRegister'
 import { Header } from '../Header'
 import { Footer } from '../../landing/Footer'
 import { basicAlert } from '../../utilities/Alerts'
-import { useSession } from '../../hooks/useSession'
-import { useEffect } from 'react'
 
 export function FormEmpresa({ email }) {
-  const { getDataSession } = useSession('Empresa')
   const { datosEmpresa, somePropertyIsNull } = useRegister()
-
-  useEffect(() => {
-    console.log(datosEmpresa)
-    getDataSession()
-  }, [])
 
   const handleSubmitForm = e => {
     e.preventDefault()

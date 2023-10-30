@@ -16,7 +16,9 @@ export function DatosHabilidadesTecnicasForm() {
         size='md'>
         Habilidades técnicas
       </Heading>
-      <Flex gap='2rem'>
+      <Flex
+        gap='2rem'
+        flexDirection={{ base: 'column', sm: 'column', md: 'row' }}>
         <Box flex='2'>
           <Box>
             <FormLabel>Habilidades técnicas</FormLabel>
@@ -35,9 +37,12 @@ export function DatosHabilidadesTecnicasForm() {
             </Select>
           </Box>
         </Box>
-        <Box alignSelf='end'>
+        <Box
+          alignSelf='end'
+          w={{ base: '100%', sm: '100%', md: 'auto' }}>
           <Button
             colorScheme='facebook'
+            w={{ base: '100%', sm: '100%', md: 'auto' }}
             onClick={() => {
               handleClickSave({ name: 'habilidadesTecnicas', value: stringToSave })
             }}>

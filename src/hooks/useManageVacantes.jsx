@@ -3,9 +3,11 @@ import { Empresa, Vacante } from '../models'
 import { useState } from 'react'
 import { basicAlert } from '../utilities/Alerts'
 import { useNavigate } from 'react-router-dom'
+import { DATOS_VACANTE_STATE_INITIAL } from '../constants/EstadosIniciales'
+import { useSession } from './useSession'
 
 export function useManageVacantes() {
-  const [empresa, setEmpresa] = useState()
+  const { dataSession } = useSession('Empresa')
   const [vacantesVisibles, setVacantesVisibles] = useState([])
   const [vacantesNoVisibles, setVacantesNoVisibles] = useState([])
   const [vacante, setVacante] = useState({})
@@ -20,14 +22,41 @@ export function useManageVacantes() {
     setIsVacanteVisible(value === 'activas')
   }
 
-  async function saveVacanteOnDataStore({ datosVacante, email, idOwner }) {
-    getEmpresa({ emailEmpresa: email })
-    console.log(datosVacante)
-    console.log(email)
-    console.log(idOwner)
-    const { nombre, descripcion, numeroPlazas, area, tipoContrato, modalidad, diasLaborales, edadMin, edadMax, genero, experienciaLaboral, escolaridad, idiomaConNivel, prestaciones, habilidadesBlandas, habilidadesTecnicas, salarioMin, salarioMax } =
-      datosVacante
-
+  async function saveVacanteOnDataStore(datosVacante, setDatosVacante) {
+    const empresa = await getEmpresa({ emailEmpresa: dataSession.email })
+    console.log('Empresa: ', empresa)
+    const {
+      nombre,
+      descripcion,
+      numeroPlazas,
+      area,
+      tipoContrato,
+      modalidad,
+      diasLaborales,
+      edadMin,
+      edadMax,
+      genero,
+      experienciaLaboral,
+      escolaridad,
+      idiomaConNivel,
+      prestaciones,
+      habilidadesBlandas,
+      habilidadesTecnicas,
+      salarioMin,
+      salarioMax,
+      isCheck,
+      municipio,
+      colonia,
+      calle,
+      numero,
+      periodoPago,
+      jornadaLaboral
+    } = datosVacante
+    console.log(isCheck)
+    let ubicacion = ''
+    let newMunicipio = ''
+    !isCheck ? (ubicacion = `${empresa.municipio} ${empresa.colonia} ${empresa.calle} ${empresa.numero}`) : (ubicacion = `${municipio} ${colonia} ${calle} ${numero}`)
+    !isCheck ? (newMunicipio = empresa.municipio) : (newMunicipio = municipio)
     const vacante = new Vacante({
       nombre,
       descripcion,
@@ -41,6 +70,8 @@ export function useManageVacantes() {
       genero,
       salarioMin: parseFloat(salarioMin),
       salarioMax: parseFloat(salarioMax),
+      periodoPago,
+      jornadaLaboral,
       experienciaLaboral,
       escolaridad,
       idioma: idiomaConNivel,
@@ -50,8 +81,9 @@ export function useManageVacantes() {
       habilidadesBlandas,
       habilidadesTecnicas,
       visible: true,
-      ubicacion: empresa.municipio + empresa.colonia + empresa.calle + empresa.numero,
-      emailEmpresa: empresa.email,
+      ubicacion,
+      municipio: newMunicipio,
+      emailEmpresa: dataSession.email,
       nombreEmpresa: empresa.nombreComercial,
       empresaID: empresa.id
     })
@@ -59,6 +91,7 @@ export function useManageVacantes() {
       await DataStore.save(vacante)
       console.log(vacante)
       basicAlert({ title: 'Vacante guardada con exito', icon: 'success', text: 'La vacante ha sido creada con exito, podrá visualizarla en su apartado de vacantes.' })
+      setDatosVacante(DATOS_VACANTE_STATE_INITIAL)
       navigate('/vacantes')
       console.log(vacante)
       console.log('guardo')
@@ -68,8 +101,8 @@ export function useManageVacantes() {
   }
 
   async function getEmpresa({ emailEmpresa }) {
-    const empresa = await DataStore.query(Empresa, c => c.email.eq(emailEmpresa))
-    setEmpresa(empresa[0])
+    const newEmpresa = await DataStore.query(Empresa, c => c.email.eq(emailEmpresa))
+    return newEmpresa[0]
   }
 
   async function listVacantes() {
