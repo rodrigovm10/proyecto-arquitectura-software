@@ -18,12 +18,12 @@ export function DatosRequisitosForm() {
         Requisitos
       </Heading>
       <Grid
-        templateColumns='repeat(2, 1fr)'
+        templateColumns={{ sm: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)' }}
         gap='1rem'>
         {DATOS_REQUISITOS.map(dato => {
           const { id, campo, min, max, nombre } = dato
           return (
-            <Box key={id}>
+            <GridItem key={id}>
               <FormLabel>{campo}</FormLabel>
               <NumberInput
                 focusBorderColor='#ea754b'
@@ -39,7 +39,7 @@ export function DatosRequisitosForm() {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
-            </Box>
+            </GridItem>
           )
         })}
         <GridItem>
@@ -76,7 +76,7 @@ export function DatosRequisitosForm() {
             ))}
           </Select>
         </GridItem>
-        <GridItem gridColumn='1 / 3'>
+        <GridItem gridColumn={{ base: 'auto', sm: 'auto', md: '1 / 3' }}>
           <FormLabel>Escolaridad</FormLabel>
           <Select
             placeholder='Ingrese la escolaridad requerida'
@@ -94,7 +94,9 @@ export function DatosRequisitosForm() {
           </Select>
         </GridItem>
       </Grid>
-      <Flex gap='1rem'>
+      <Flex
+        gap='1rem'
+        flexDirection={{ base: 'column', sm: 'column', md: 'row' }}>
         <Box flex='2'>
           <FormLabel>Idiomas</FormLabel>
           <Select
@@ -129,8 +131,11 @@ export function DatosRequisitosForm() {
             ))}
           </Select>
         </Box>
-        <Box alignSelf='end'>
+        <Box
+          alignSelf='end'
+          w={{ base: '100%', sm: '100%', md: 'auto' }}>
           <Button
+            w={{ base: '100%', sm: '100%', md: 'auto' }}
             colorScheme='facebook'
             onClick={() => {
               handleClickSave({ name: 'idiomaConNivel', value: stringToSave })

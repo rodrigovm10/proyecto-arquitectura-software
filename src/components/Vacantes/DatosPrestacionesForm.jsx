@@ -16,7 +16,9 @@ export function DatosPrestacionesForm() {
         size='md'>
         Prestaciones
       </Heading>
-      <Flex gap='2rem'>
+      <Flex
+        gap='2rem'
+        flexDirection={{ base: 'column', sm: 'column', md: 'row' }}>
         <Box flex='2'>
           <FormLabel>Prestaciones</FormLabel>
           <Select
@@ -34,16 +36,17 @@ export function DatosPrestacionesForm() {
             ))}
           </Select>
         </Box>
-        <Box alignSelf='end'>
-          <Box alignSelf='end'>
-            <Button
-              colorScheme='facebook'
-              onClick={() => {
-                handleClickSave({ name: 'prestaciones', value: stringToSave })
-              }}>
-              Agregar prestación
-            </Button>
-          </Box>
+        <Box
+          alignSelf='end'
+          w={{ base: '100%', sm: '100%', md: 'auto' }}>
+          <Button
+            colorScheme='facebook'
+            w={{ base: '100%', sm: '100%', md: 'auto' }}
+            onClick={() => {
+              handleClickSave({ name: 'prestaciones', value: stringToSave })
+            }}>
+            Agregar prestación
+          </Button>
         </Box>
       </Flex>
       <Tags

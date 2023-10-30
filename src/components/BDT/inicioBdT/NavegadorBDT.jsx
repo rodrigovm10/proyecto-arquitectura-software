@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react'
-import { Box, Flex, Avatar, Button, Menu, MenuButton, MenuList, MenuItem, MenuDivider, useDisclosure, useColorModeValue, useColorMode, Center } from '@chakra-ui/react'
+import { Box, Flex, Avatar, Button, Menu, MenuButton, MenuList, MenuItem, MenuDivider, useDisclosure, useColorModeValue, useColorMode, Center, Text } from '@chakra-ui/react'
 import { MoonIcon, SunIcon } from '@chakra-ui/icons'
 import { Link as RouterLink } from 'react-router-dom'
 import { Auth, DataStore } from 'aws-amplify'
 import { BDT } from '../../../models'
 import logo from '../../../img/logo.png'
 import { useNavigate } from 'react-router-dom'
+import { useSession } from '../../../hooks/useSession'
+import { DATA_SESSION_STATE_INITIAL } from '../../../constants/EstadosIniciales'
 
 function NavegadorBDT({ setSession }) {
+  const { setDataSession } = useSession('trabajador')
   const { colorMode, toggleColorMode } = useColorMode()
   const navigate = useNavigate()
   const [bde, setBde] = useState('Usuario')
@@ -35,6 +38,7 @@ function NavegadorBDT({ setSession }) {
       await DataStore.clear()
       localStorage.clear()
       sessionStorage.clear()
+      setDataSession(DATA_SESSION_STATE_INITIAL)
       setSession(false)
       navigate('/')
     } catch (error) {
@@ -62,17 +66,17 @@ function NavegadorBDT({ setSession }) {
           <RouterLink
             to='/inicio-bdt'
             style={{ marginLeft: '1rem' }}>
-            Inicio
+            <Text _hover={{ color: '#ea754b' }}>Inicio</Text>
           </RouterLink>
           <RouterLink
             to='/buscar-empleo'
             style={{ marginLeft: '1rem' }}>
-            Buscar empleo
+            <Text _hover={{ color: '#ea754b' }}>Buscar empleo</Text>
           </RouterLink>
           <RouterLink
             to='/oportunidades-laborales'
             style={{ marginLeft: '1rem' }}>
-            Oportunidades laborales
+            <Text _hover={{ color: '#ea754b' }}>Oportunidades laborales</Text>
           </RouterLink>
           <Menu>
             <Button

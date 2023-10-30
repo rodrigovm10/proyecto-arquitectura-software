@@ -25,9 +25,35 @@ export function useManageVacantes() {
     console.log(datosVacante)
     console.log(email)
     console.log(idOwner)
-    const { nombre, descripcion, numeroPlazas, area, tipoContrato, modalidad, diasLaborales, edadMin, edadMax, genero, experienciaLaboral, escolaridad, idiomaConNivel, prestaciones, habilidadesBlandas, habilidadesTecnicas, salarioMin, salarioMax } =
-      datosVacante
-
+    const {
+      nombre,
+      descripcion,
+      numeroPlazas,
+      area,
+      tipoContrato,
+      modalidad,
+      diasLaborales,
+      edadMin,
+      edadMax,
+      genero,
+      experienciaLaboral,
+      escolaridad,
+      idiomaConNivel,
+      prestaciones,
+      habilidadesBlandas,
+      habilidadesTecnicas,
+      salarioMin,
+      salarioMax,
+      isCheck,
+      municipio,
+      colonia,
+      calle,
+      numero,
+      periodoPago,
+      jornadaLaboral
+    } = datosVacante
+    let ubicacion = ''
+    isCheck ? (ubicacion = `${empresa.municipio} ${empresa.colonia} ${empresa.calle} ${empresa.numero}`) : (ubicacion = `${municipio} ${colonia} ${calle} ${numero}`)
     const vacante = new Vacante({
       nombre,
       descripcion,
@@ -41,6 +67,8 @@ export function useManageVacantes() {
       genero,
       salarioMin: parseFloat(salarioMin),
       salarioMax: parseFloat(salarioMax),
+      periodoPago,
+      jornadaLaboral,
       experienciaLaboral,
       escolaridad,
       idioma: idiomaConNivel,
@@ -50,7 +78,8 @@ export function useManageVacantes() {
       habilidadesBlandas,
       habilidadesTecnicas,
       visible: true,
-      ubicacion: empresa.municipio + empresa.colonia + empresa.calle + empresa.numero,
+      ubicacion,
+      municipio,
       emailEmpresa: empresa.email,
       nombreEmpresa: empresa.nombreComercial,
       empresaID: empresa.id

@@ -13,6 +13,7 @@ import { basicAlert } from '../utilities/Alerts'
 import { useEffect } from 'react'
 import { DATOS_VACANTE_STATE_INITIAL } from '../constants/EstadosIniciales'
 import { Footer } from '../landing/Footer'
+import { DatosUbicacionForm } from '../components/Vacantes/DatosUbicacionForm'
 
 export function FormVacante() {
   const { dataSession, getDataSession, setDataSession } = useSession('Empresa')
@@ -58,6 +59,7 @@ export function FormVacante() {
             spacing='4'>
             <DatosPrincipalesForm />
             <DatosRequisitosForm />
+            <DatosUbicacionForm />
             <DatosPrestacionesForm />
             <DatosHabilidadesBlandasForm />
             <DatosHabilidadesTecnicasForm />

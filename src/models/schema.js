@@ -390,6 +390,27 @@ export const schema = {
                     "attributes": [],
                     "isArrayNullable": true
                 },
+                "municipio": {
+                    "name": "municipio",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "jornadaLaboral": {
+                    "name": "jornadaLaboral",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "periodoPago": {
+                    "name": "periodoPago",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -721,7 +742,7 @@ export const schema = {
                 "telefono": {
                     "name": "telefono",
                     "isArray": false,
-                    "type": "String",
+                    "type": "Int",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -917,5 +938,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "2e71933e50c90e75656bdd6f00a4e902"
+    "version": "284a6b2daea6ba8069cdee8aa1cc237b"
 };

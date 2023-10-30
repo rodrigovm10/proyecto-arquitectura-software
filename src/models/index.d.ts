@@ -105,6 +105,9 @@ type EagerVacante = {
   readonly salarioMin?: number | null;
   readonly salarioMax?: number | null;
   readonly idiomaConNivel?: (string | null)[] | null;
+  readonly municipio?: string | null;
+  readonly jornadaLaboral?: string | null;
+  readonly periodoPago?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -140,6 +143,9 @@ type LazyVacante = {
   readonly salarioMin?: number | null;
   readonly salarioMax?: number | null;
   readonly idiomaConNivel?: (string | null)[] | null;
+  readonly municipio?: string | null;
+  readonly jornadaLaboral?: string | null;
+  readonly periodoPago?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -214,7 +220,7 @@ type EagerBDT = {
   readonly apellidos?: string | null;
   readonly curp?: string | null;
   readonly fechaNacimiento?: string | null;
-  readonly telefono?: string | null;
+  readonly telefono?: number | null;
   readonly escolaridad?: string | null;
   readonly genero?: string | null;
   readonly idioma?: (string | null)[] | null;
@@ -245,7 +251,7 @@ type LazyBDT = {
   readonly apellidos?: string | null;
   readonly curp?: string | null;
   readonly fechaNacimiento?: string | null;
-  readonly telefono?: string | null;
+  readonly telefono?: number | null;
   readonly escolaridad?: string | null;
   readonly genero?: string | null;
   readonly idioma?: (string | null)[] | null;

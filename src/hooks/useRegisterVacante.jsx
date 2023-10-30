@@ -15,9 +15,12 @@ export function useRegisterVacante() {
       setStringToSave(value)
       return
     }
-    if (name === 'nivelIdioma') {
-      setSecondStringToSave(value)
-    }
+    if (name)
+      if (name === 'nivelIdioma') {
+        setSecondStringToSave(value)
+      }
+
+    console.log(name)
 
     setDatosVacante(prevDatosVacante => ({
       ...prevDatosVacante,

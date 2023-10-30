@@ -18,73 +18,77 @@ export function VacanteBDT({ vacantes }) {
       m='1rem 4rem 2rem'
       gap='2rem'>
       <GridItem>
-        {vacantes.map(vacante => {
-          const { nombre, nombreEmpresa, area, diasLaborales, escolaridad, salarioMin, salarioMax, modalidad, id } = vacante
-          return (
-            <Card
-              onClick={() => handleClickOpenVacante(vacante)}
-              borderColor='transparent transparent transparent #ea754b'
-              borderWidth='0.2rem'
-              boxShadow='xl'
-              cursor='pointer'
-              key={id}
-              borderRadius='sm'
-              p='2'
-              transition='transform 0.3s'
-              _hover={{ transform: 'scale(1.05)' }}>
-              <CardHeader>
-                <Heading
-                  as='h3'
-                  size='md'
-                  p='0'>
-                  {nombre}
-                </Heading>
-              </CardHeader>
-              <CardBody>
-                <Stack>
-                  <Flex
-                    gap='1rem'
-                    alignItems='center'>
-                    <LiaAddressCardSolid />
-                    <Text>{area}</Text>
-                  </Flex>
-                  <Flex
-                    gap='1rem'
-                    alignItems='center'>
-                    <LiaMoneyBillWaveAltSolid />
-                    <Text>{`$${salarioMin} - $${salarioMax}`}</Text>
-                  </Flex>
-                  <Flex
-                    gap='1rem'
-                    alignItems='center'>
-                    <LiaClockSolid />
-                    <Text>{modalidad}</Text>
-                  </Flex>
-                  <Flex
-                    gap='1rem'
-                    alignItems='center'>
-                    <LiaCalendarCheckSolid />
-                    <Text>{diasLaborales}</Text>
-                  </Flex>
-                  <Flex
-                    gap='1rem'
-                    alignItems='center'>
-                    <LiaSchoolSolid />
-                    <Text>{escolaridad}</Text>
-                  </Flex>
+        <Flex
+          gap='2rem'
+          flexDir='column'>
+          {vacantes.map(vacante => {
+            const { nombre, nombreEmpresa, area, diasLaborales, escolaridad, salarioMin, salarioMax, modalidad, id } = vacante
+            return (
+              <Card
+                onClick={() => handleClickOpenVacante(vacante)}
+                borderColor='transparent transparent transparent #ea754b'
+                borderWidth='0.2rem'
+                boxShadow='xl'
+                cursor='pointer'
+                key={id}
+                borderRadius='sm'
+                p='2'
+                transition='transform 0.3s'
+                _hover={{ transform: 'scale(1.05)' }}>
+                <CardHeader>
                   <Heading
                     as='h3'
                     size='md'
                     p='0'>
-                    {nombreEmpresa}
+                    {nombre}
                   </Heading>
-                </Stack>
-              </CardBody>
-            </Card>
-          )
-        })}
+                </CardHeader>
+                <CardBody>
+                  <Stack>
+                    <Flex
+                      gap='1rem'
+                      alignItems='center'>
+                      <LiaAddressCardSolid />
+                      <Text>{area}</Text>
+                    </Flex>
+                    <Flex
+                      gap='1rem'
+                      alignItems='center'>
+                      <LiaMoneyBillWaveAltSolid />
+                      <Text>{`$${salarioMin} - $${salarioMax}`}</Text>
+                    </Flex>
+                    <Flex
+                      gap='1rem'
+                      alignItems='center'>
+                      <LiaClockSolid />
+                      <Text>{modalidad}</Text>
+                    </Flex>
+                    <Flex
+                      gap='1rem'
+                      alignItems='center'>
+                      <LiaCalendarCheckSolid />
+                      <Text>{diasLaborales}</Text>
+                    </Flex>
+                    <Flex
+                      gap='1rem'
+                      alignItems='center'>
+                      <LiaSchoolSolid />
+                      <Text>{escolaridad}</Text>
+                    </Flex>
+                    <Heading
+                      as='h3'
+                      size='md'
+                      p='0'>
+                      {nombreEmpresa}
+                    </Heading>
+                  </Stack>
+                </CardBody>
+              </Card>
+            )
+          })}
+        </Flex>
       </GridItem>
-      {isVacanteSelected ? <DatosVacanteBDT vacante={vacanteSelected} /> : <SinVacantes hasButton={false}>Selecciona una vacante para visualizar su información</SinVacantes>}
+      <GridItem alignSelf='start'>{isVacanteSelected ? <DatosVacanteBDT vacante={vacanteSelected} /> : <SinVacantes hasButton={false}>Selecciona una vacante para visualizar su información</SinVacantes>}</GridItem>
     </Grid>
   )
 }

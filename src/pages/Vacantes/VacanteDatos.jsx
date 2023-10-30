@@ -25,8 +25,8 @@ export function VacanteDatos() {
     <Box>
       <Header nombreDelGrupo={'Empresa'} />
       <Flex
+        mx={{ base: '2rem', sm: '4rem', md: '8rem' }}
         mt='2rem'
-        mx='8rem'
         mb='2rem'
         justifyContent='center'>
         <Card boxShadow='2xl'>
@@ -58,7 +58,7 @@ export function VacanteDatos() {
                   Detalles de la vacante
                 </Heading>
                 <Grid
-                  templateColumns='repeat(2, 1fr)'
+                  templateColumns={{ sm: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)' }}
                   columnGap='4rem'
                   rowGap='1rem'>
                   <Text>
@@ -80,7 +80,10 @@ export function VacanteDatos() {
                     <strong>Área:</strong> {vacante.area}
                   </Text>
                   <Text>
-                    <strong>Salario:</strong> ${vacante.salarioMin} - ${vacante.salarioMax}
+                    <strong>Salario:</strong> ${vacante.salarioMin} - ${vacante.salarioMax} - {vacante.periodoPago}
+                  </Text>
+                  <Text>
+                    <strong>Jornada laboral:</strong> {vacante.jornadaLaboral}
                   </Text>
                 </Grid>
               </Box>
@@ -92,7 +95,7 @@ export function VacanteDatos() {
                   Requisitos
                 </Heading>
                 <Grid
-                  templateColumns='repeat(2, 1fr)'
+                  templateColumns={{ sm: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)' }}
                   columnGap='4rem'
                   rowGap='1rem'>
                   <Text>
@@ -101,10 +104,7 @@ export function VacanteDatos() {
                   <Text>
                     <strong>Género:</strong> {vacante.genero}
                   </Text>
-                  <TagsDatosVacante
-                    titulo={'Idiomas'}
-                    tags={vacante.idioma}
-                  />
+
                   <Text>
                     <strong>Escolaridad:</strong> {vacante.escolaridad}
                   </Text>
@@ -113,6 +113,10 @@ export function VacanteDatos() {
                   </Text>
                 </Grid>
               </Box>
+              <TagsDatosVacante
+                titulo={'Idiomas'}
+                tags={vacante.idioma}
+              />
               <TagsDatosVacante
                 titulo={'Prestaciones'}
                 tags={vacante.prestaciones}

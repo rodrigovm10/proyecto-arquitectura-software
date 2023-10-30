@@ -1,15 +1,16 @@
-import { Box, Checkbox, Flex, FormHelperText, FormLabel, Grid, GridItem, HStack, Heading, Input, Select, Stack, Text } from '@chakra-ui/react'
+import { Checkbox, Flex, FormHelperText, FormLabel, Grid, GridItem, Heading, Input, Select, Stack, Text } from '@chakra-ui/react'
 import { useRegisterVacante } from '../../hooks/useRegisterVacante'
 import { MUNICIPIOS } from '../../constants/Datos'
 import { DATOS_UBICACION } from '../../constants/FormVacante'
 import { useState } from 'react'
 
 export function DatosUbicacionForm() {
-  const { datosVacante, errors, handleInputChange } = useRegisterVacante()
+  const { datosVacante, errors, handleInputChange, setDatosVacante } = useRegisterVacante()
 
   const [isCheck, setIsCheck] = useState(false)
   const handleCheckboxChange = () => {
     setIsCheck(!isCheck)
+    setDatosVacante(prevDatosVacante => ({ ...prevDatosVacante, isCheck }))
   }
 
   return (
@@ -41,8 +42,7 @@ export function DatosUbicacionForm() {
       </Stack>
       {!isCheck && (
         <Grid
-          templateRows={{ base: 'repeat(4, 1fr)', sm: 'repeat(2, 1fr)' }}
-          templateColumns={{ base: 'repeat(1, 1fr)', sm: 'repeat(2, 1fr)' }}
+          templateColumns={{ sm: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)' }}
           gap={2}>
           <GridItem>
             <FormLabel>Municipio</FormLabel>

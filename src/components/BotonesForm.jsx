@@ -22,7 +22,7 @@ export function BotonesForm({ botonCancelar = false, onClick, url }) {
         <Button
           bg='#ea754b'
           color='#fff'
-          _hover={{ bg: 'rgb(234, 117, 90)' }}
+          _hover={{ bg: '#ff964f' }}
           type='submit'
           onClick={onClick}>
           Guardar
