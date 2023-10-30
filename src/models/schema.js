@@ -390,6 +390,27 @@ export const schema = {
                     "attributes": [],
                     "isArrayNullable": true
                 },
+                "municipio": {
+                    "name": "municipio",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "jornadaLaboral": {
+                    "name": "jornadaLaboral",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "periodoPago": {
+                    "name": "periodoPago",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -917,5 +938,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "8348bb1a4485c4b8aacf9a59d1ea4185"
+    "version": "284a6b2daea6ba8069cdee8aa1cc237b"
 };

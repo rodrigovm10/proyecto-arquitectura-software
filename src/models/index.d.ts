@@ -105,6 +105,9 @@ type EagerVacante = {
   readonly salarioMin?: number | null;
   readonly salarioMax?: number | null;
   readonly idiomaConNivel?: (string | null)[] | null;
+  readonly municipio?: string | null;
+  readonly jornadaLaboral?: string | null;
+  readonly periodoPago?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -140,6 +143,9 @@ type LazyVacante = {
   readonly salarioMin?: number | null;
   readonly salarioMax?: number | null;
   readonly idiomaConNivel?: (string | null)[] | null;
+  readonly municipio?: string | null;
+  readonly jornadaLaboral?: string | null;
+  readonly periodoPago?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

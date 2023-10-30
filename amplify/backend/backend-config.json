@@ -69,32 +69,55 @@
       "service": "Cognito"
     }
   },
+  "function": {
+    "S3Trigger110393e5": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
   "parameters": {
-    "AMPLIFY_storage_redlaboral913971a0_bucketName": {
+    "AMPLIFY_function_S3Trigger110393e5_deploymentBucketName": {
       "usedBy": [
         {
-          "category": "storage",
-          "resourceName": "redlaboral913971a0"
+          "category": "function",
+          "resourceName": "S3Trigger110393e5"
         }
       ]
     },
-    "AMPLIFY_storage_redlaboral913971a0_region": {
+    "AMPLIFY_function_S3Trigger110393e5_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "S3Trigger110393e5"
+        }
+      ]
+    },
+    "AMPLIFY_storage_redlaboralc3e6ad68_bucketName": {
       "usedBy": [
         {
           "category": "storage",
-          "resourceName": "redlaboral913971a0"
+          "resourceName": "redlaboralc3e6ad68"
+        }
+      ]
+    },
+    "AMPLIFY_storage_redlaboralc3e6ad68_region": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "redlaboralc3e6ad68"
         }
       ]
     }
   },
   "storage": {
-    "redlaboral913971a0": {
+    "redlaboralc3e6ad68": {
       "dependsOn": [],
       "providerPlugin": "awscloudformation",
       "service": "S3",
       "serviceType": "imported"
     },
-    "s33d3f857e": {
+    "s3575ad62a": {
       "dependsOn": [],
       "providerPlugin": "awscloudformation",
       "service": "S3"
