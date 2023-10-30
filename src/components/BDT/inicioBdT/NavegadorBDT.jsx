@@ -61,10 +61,11 @@ function NavegadorBDT({ setSession }) {
   return (
     <Box>
       <Flex
-        bg={useColorModeValue("gray.100", "gray.900")}
+        bg={useColorModeValue("")}
         p={3}
         justifyContent="space-between"
         alignItems="center"
+        color="white"
       >
         <Box>
           <RouterLink to="/inicio-bde">

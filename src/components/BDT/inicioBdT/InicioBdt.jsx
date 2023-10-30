@@ -68,7 +68,7 @@ export function InicioBdt() {
             <Text className="Text">Bienvenidos</Text>
             <Text className="Text">Únete a la plataforma Red Laboral.</Text>
             <Text fontWeight="bold">
-              INICIA LA BÚSQUEDA DE TU TRABAJO IDEAL
+              EMPRENDE TU CAMINO HACIA EL EMPLEO PERFECTO. ¡Te esperamos!
             </Text>
           </Stack>
         </Box>
