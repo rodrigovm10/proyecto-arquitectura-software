@@ -108,7 +108,7 @@ function NavegadorBDT({ setSession }) {
                 />
               </Center>
               <br />
-              <Center>
+              <Center color="grey">
                 <p>
                   {localStorage.nombreNav === undefined
                     ? bde
@@ -118,9 +118,11 @@ function NavegadorBDT({ setSession }) {
               <br />
               <MenuDivider />
               <RouterLink to="/perfil-bdt">
-                <MenuItem>Perfil</MenuItem>
+                <MenuItem color="grey">Perfil</MenuItem>
               </RouterLink>
-              <MenuItem onClick={logOut}>Cerrar Sesión</MenuItem>
+              <MenuItem onClick={logOut} color="grey">
+                Cerrar Sesión
+              </MenuItem>
             </MenuList>
           </Menu>
         </Flex>

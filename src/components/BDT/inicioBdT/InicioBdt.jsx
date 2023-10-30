@@ -108,7 +108,7 @@ export function InicioBdt() {
         <Card>
           <CardHeader>
             <Heading size="md" alignItems="center">
-              Crea tu cuenta y CV gratis
+              Carga tu CV gratis
             </Heading>
           </CardHeader>
           <CardBody>
