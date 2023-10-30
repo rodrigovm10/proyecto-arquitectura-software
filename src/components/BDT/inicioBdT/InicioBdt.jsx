@@ -30,15 +30,14 @@ export function InicioBdt() {
         font-family: 'Montserrat', sans-serif;
         font-size: 18px;
       }
+      .Texto {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 22px;
+      }
     `}
         </style>
       </Box>
-      <Flex
-        flexDirection={{ base: "column", md: "row" }}
-        flexWrap="wrap"
-        bg="transparent"
-        p="5"
-      >
+      <Flex flexDirection={{ base: "column", md: "row" }} flexWrap="wrap" p="5">
         <Box
           flex={{ base: "1", md: "1/2" }}
           bg="transparent"
@@ -50,10 +49,10 @@ export function InicioBdt() {
           <Stack direction="row">
             <Image
               p="10"
-              borderRadius="60px"
+              borderRadius="5rem"
               objectFit="cover"
               src="https://media.istockphoto.com/id/1428698219/es/foto/feliz-joven-empresaria-hablando-por-tel%C3%A9fono-en-un-almac%C3%A9n.jpg?s=612x612&w=0&k=20&c=jbrDrttkbVtpE1NrPirmqDv10tCv0AkolMs4HrYN0Zs="
-              alt=""
+              alt="Dan Abramov"
             />
           </Stack>
         </Box>
@@ -63,27 +62,20 @@ export function InicioBdt() {
           flexDirection="column"
           alignItems="left"
           justifyContent="center"
+          bg="transparent"
         >
-          <Stack direction="column" pt="5">
-            <Text className="Text">Bienvenidos</Text>
-            <Text className="Text">Únete a la plataforma Red Laboral.</Text>
-            <Text fontWeight="bold">
-              EMPRENDE TU CAMINO HACIA EL EMPLEO PERFECTO. ¡Te esperamos!
+          <Stack direction="column" pb="9" pt="5">
+            <Text className="Texto">¡Bienvenido!</Text>
+            <Text className="Texto">Únete a la plataforma Red Laboral.</Text>
+            <Text fontWeight="bold" fontSize="3xl">
+              Encuentra el trabajo que quieres
             </Text>
           </Stack>
         </Box>
       </Flex>
 
-      <Box
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-        pt="3rem"
-        pb="1rem"
-      ></Box>
-
       <Box display="flex" alignItems="center" justifyContent="center">
-        <Text as="i" textAlign="center" fontSize="xl">
+        <Text as="i" textAlign="center" fontSize="2xl">
           Comienza tu historia de éxito
         </Text>
       </Box>

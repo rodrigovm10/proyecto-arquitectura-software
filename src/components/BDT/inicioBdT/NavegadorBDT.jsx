@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
-  Box,
+  useBreakpointValue,
   Flex,
   Avatar,
   Button,
@@ -9,12 +9,15 @@ import {
   MenuList,
   MenuItem,
   MenuDivider,
-  useDisclosure,
+  Link,
+  Image,
+  Spacer,
   useColorModeValue,
   useColorMode,
+  IconButton,
   Center,
 } from "@chakra-ui/react";
-import { MoonIcon, SunIcon } from "@chakra-ui/icons";
+import { MoonIcon, SunIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { Link as RouterLink } from "react-router-dom";
 import { Auth, DataStore } from "aws-amplify";
 import { BDT } from "../../../models";
@@ -57,75 +60,113 @@ function NavegadorBDT({ setSession }) {
       console.log("error signing out: ", error);
     }
   }
+  const isLargeScreen = useBreakpointValue({ base: false, md: true });
 
   return (
-    <Box>
-      <Flex
-        p={3}
-        justifyContent="space-between"
-        alignItems="center"
-        color="white"
-      >
-        <Box>
-          <RouterLink to="/inicio-bde">
-            <img src={logo} alt="Red Laboral" style={{ width: "10rem" }} />
-          </RouterLink>
-        </Box>
-        <Flex alignItems="center">
-          <RouterLink to="/inicio-bdt" style={{ marginLeft: "1rem" }}>
-            Inicio
-          </RouterLink>
-          <RouterLink to="/buscar-empleo" style={{ marginLeft: "1rem" }}>
-            Buscar empleo
-          </RouterLink>
-          <RouterLink
-            to="/oportunidades-laborales"
-            style={{ marginLeft: "1rem" }}
-          >
-            Oportunidades laborales
-          </RouterLink>
+    <Flex
+      bg={useColorModeValue("#181c24", "#181c24")}
+      p={3}
+      justifyContent="space-between"
+      alignItems="center"
+      color="white"
+    >
+      <Link href="/">
+        <Image src={logo} width={200} />
+      </Link>
+      <Spacer />
+      <Flex gap={3} alignItems="center">
+        {isLargeScreen ? (
+          <>
+            <Link as={RouterLink} to="/inicio-bdt">
+              Inicio
+            </Link>
+            <Link as={RouterLink} to="/buscar-empleo">
+              Buscar empleo
+            </Link>
+            <Link as={RouterLink} to="/oportunidades-laborales">
+              Oportunidades laborales
+            </Link>
+          </>
+        ) : (
           <Menu>
-            <Button onClick={toggleColorMode} mr="2" ml="2">
-              {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
-            </Button>
             <MenuButton
-              as={Button}
-              rounded={"full"}
-              variant={"link"}
-              cursor={"pointer"}
-            >
-              <Avatar
-                size={"sm"}
-                src={"https://avatars.dicebear.com/api/male/username.svg"}
-              />
-            </MenuButton>
-            <MenuList alignItems={"center"}>
-              <br />
-              <Center>
-                <Avatar
-                  size={"2xl"}
-                  src={"https://avatars.dicebear.com/api/male/username.svg"}
-                />
-              </Center>
-              <br />
-              <Center>
-                <p>
-                  {localStorage.nombreNav === undefined
-                    ? bde
-                    : localStorage.nombreNav}
-                </p>
-              </Center>
-              <br />
-              <MenuDivider />
-              <RouterLink to="/perfil-bdt">
-                <MenuItem>Perfil</MenuItem>
-              </RouterLink>
-              <MenuItem onClick={logOut}>Cerrar Sesión</MenuItem>
+              backgroundColor="#181c24"
+              as={IconButton}
+              aria-label="Options"
+              icon={<HamburgerIcon color="white" />}
+              variant="outline"
+            />
+            <MenuList>
+              <MenuItem as={RouterLink} to="/inicio-bdt" color="grey">
+                Inicio
+              </MenuItem>
+              <MenuItem as={RouterLink} to="/buscar-empleo" color="grey">
+                Buscar empleo
+              </MenuItem>
+              <MenuItem
+                as={RouterLink}
+                to="/oportunidades-laborales"
+                color="grey"
+              >
+                Oportunidades laborales
+              </MenuItem>
             </MenuList>
           </Menu>
-        </Flex>
+        )}
+        {colorMode === "light" ? (
+          <MoonIcon
+            cursor="pointer"
+            onClick={toggleColorMode}
+            color="#fff"
+            margin="0 1rem"
+          />
+        ) : (
+          <SunIcon
+            marginRight="1rem"
+            cursor="pointer"
+            onClick={toggleColorMode}
+          />
+        )}
+        <Menu>
+          <MenuButton
+            as={Button}
+            rounded={"full"}
+            variant={"link"}
+            cursor={"pointer"}
+          >
+            <Avatar
+              size={"sm"}
+              src={"https://avatars.dicebear.com/api/male/username.svg"}
+            />
+          </MenuButton>
+          <MenuList alignItems={"center"}>
+            <br />
+            <Center>
+              <Avatar
+                size={"2xl"}
+                src={"https://avatars.dicebear.com/api/male/username.svg"}
+              />
+            </Center>
+            <br />
+            <Center color="grey">
+              <p>
+                {localStorage.nombreNav === undefined
+                  ? bde
+                  : localStorage.nombreNav}
+              </p>
+            </Center>
+            <br />
+            <MenuDivider />
+            <RouterLink to="/perfil-bdt">
+              <MenuItem color="grey">Perfil</MenuItem>
+            </RouterLink>
+            <MenuItem onClick={logOut} color="grey">
+              Cerrar Sesión
+            </MenuItem>
+          </MenuList>
+        </Menu>
       </Flex>
-    </Box>
+    </Flex>
   );
 }
 
