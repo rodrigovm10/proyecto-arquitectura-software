@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
 import {
   Box,
@@ -14,6 +13,7 @@ import {
   useColorModeValue,
   useColorMode,
   Center,
+  Text,
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { Link as RouterLink } from "react-router-dom";
@@ -21,29 +21,14 @@ import { Auth, DataStore } from "aws-amplify";
 import { BDT } from "../../../models";
 import logo from "../../../img/logo.png";
 import { useNavigate } from "react-router-dom";
+import { useSession } from "../../../hooks/useSession";
+import { DATA_SESSION_STATE_INITIAL } from "../../../constants/EstadosIniciales";
 
 function NavegadorBDT({ setSession }) {
+  const { setDataSession } = useSession("trabajador");
   const { colorMode, toggleColorMode } = useColorMode();
   const navigate = useNavigate();
   const [bde, setBde] = useState("Usuario");
-=======
-import React, { useState, useEffect } from 'react'
-import { Box, Flex, Avatar, Button, Menu, MenuButton, MenuList, MenuItem, MenuDivider, useDisclosure, useColorModeValue, useColorMode, Center, Text } from '@chakra-ui/react'
-import { MoonIcon, SunIcon } from '@chakra-ui/icons'
-import { Link as RouterLink } from 'react-router-dom'
-import { Auth, DataStore } from 'aws-amplify'
-import { BDT } from '../../../models'
-import logo from '../../../img/logo.png'
-import { useNavigate } from 'react-router-dom'
-import { useSession } from '../../../hooks/useSession'
-import { DATA_SESSION_STATE_INITIAL } from '../../../constants/EstadosIniciales'
-
-function NavegadorBDT({ setSession }) {
-  const { setDataSession } = useSession('trabajador')
-  const { colorMode, toggleColorMode } = useColorMode()
-  const navigate = useNavigate()
-  const [bde, setBde] = useState('Usuario')
->>>>>>> b3b2aac560fcc8b7b1f31ac59f4e57ec233af386
 
   useEffect(() => {
     async function cargar() {
@@ -66,13 +51,13 @@ function NavegadorBDT({ setSession }) {
 
   async function logOut() {
     try {
-      await Auth.signOut({ global: true })
-      await DataStore.clear()
-      localStorage.clear()
-      sessionStorage.clear()
-      setDataSession(DATA_SESSION_STATE_INITIAL)
-      setSession(false)
-      navigate('/')
+      await Auth.signOut({ global: true });
+      await DataStore.clear();
+      localStorage.clear();
+      sessionStorage.clear();
+      setDataSession(DATA_SESSION_STATE_INITIAL);
+      setSession(false);
+      navigate("/");
     } catch (error) {
       console.log("error signing out: ", error);
     }
@@ -91,36 +76,18 @@ function NavegadorBDT({ setSession }) {
             <img src={logo} alt="Red Laboral" style={{ width: "10rem" }} />
           </RouterLink>
         </Box>
-<<<<<<< HEAD
         <Flex alignItems="center">
           <RouterLink to="/inicio-bdt" style={{ marginLeft: "1rem" }}>
-            Inicio
+            <Text _hover={{ color: "#ea754b" }}>Inicio</Text>
           </RouterLink>
           <RouterLink to="/buscar-empleo" style={{ marginLeft: "1rem" }}>
-            Buscar empleo
+            <Text _hover={{ color: "#ea754b" }}>Buscar empleo</Text>
           </RouterLink>
           <RouterLink
             to="/oportunidades-laborales"
             style={{ marginLeft: "1rem" }}
           >
-            Oportunidades laborales
-=======
-        <Flex alignItems='center'>
-          <RouterLink
-            to='/inicio-bdt'
-            style={{ marginLeft: '1rem' }}>
-            <Text _hover={{ color: '#ea754b' }}>Inicio</Text>
-          </RouterLink>
-          <RouterLink
-            to='/buscar-empleo'
-            style={{ marginLeft: '1rem' }}>
-            <Text _hover={{ color: '#ea754b' }}>Buscar empleo</Text>
-          </RouterLink>
-          <RouterLink
-            to='/oportunidades-laborales'
-            style={{ marginLeft: '1rem' }}>
-            <Text _hover={{ color: '#ea754b' }}>Oportunidades laborales</Text>
->>>>>>> b3b2aac560fcc8b7b1f31ac59f4e57ec233af386
+            <Text _hover={{ color: "#ea754b" }}>Oportunidades laborales</Text>
           </RouterLink>
           <Menu>
             <Button onClick={toggleColorMode} mr="2" ml="2">
