@@ -7,9 +7,8 @@
 /* eslint-disable */
 import * as React from "react";
 import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
-import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { Empresa } from "../models";
-import { fetchByPath, validateField } from "./utils";
+import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { DataStore } from "aws-amplify";
 export default function EmpresaCreateForm(props) {
   const {
@@ -322,9 +321,13 @@ export default function EmpresaCreateForm(props) {
         label="Telefono"
         isRequired={false}
         isReadOnly={false}
+        type="number"
+        step="any"
         value={telefono}
         onChange={(e) => {
-          let { value } = e.target;
+          let value = isNaN(parseInt(e.target.value))
+            ? e.target.value
+            : parseInt(e.target.value);
           if (onChange) {
             const modelFields = {
               nombreComercial,
@@ -394,9 +397,13 @@ export default function EmpresaCreateForm(props) {
         label="Codigo postal"
         isRequired={false}
         isReadOnly={false}
+        type="number"
+        step="any"
         value={codigoPostal}
         onChange={(e) => {
-          let { value } = e.target;
+          let value = isNaN(parseInt(e.target.value))
+            ? e.target.value
+            : parseInt(e.target.value);
           if (onChange) {
             const modelFields = {
               nombreComercial,
@@ -610,9 +617,13 @@ export default function EmpresaCreateForm(props) {
         label="Numero"
         isRequired={false}
         isReadOnly={false}
+        type="number"
+        step="any"
         value={numero}
         onChange={(e) => {
-          let { value } = e.target;
+          let value = isNaN(parseInt(e.target.value))
+            ? e.target.value
+            : parseInt(e.target.value);
           if (onChange) {
             const modelFields = {
               nombreComercial,

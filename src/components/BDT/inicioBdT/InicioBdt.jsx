@@ -37,12 +37,7 @@ export function InicioBdt() {
     `}
         </style>
       </Box>
-      <Flex
-        flexDirection={{ base: "column", md: "row" }}
-        flexWrap="wrap"
-        bg="#F9F5F6"
-        p="5"
-      >
+      <Flex flexDirection={{ base: "column", md: "row" }} flexWrap="wrap" p="5">
         <Box
           flex={{ base: "1", md: "1/2" }}
           bg="transparent"

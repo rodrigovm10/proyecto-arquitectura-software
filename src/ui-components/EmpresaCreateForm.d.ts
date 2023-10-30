@@ -6,7 +6,16 @@
 
 import * as React from "react";
 import { GridProps, TextFieldProps } from "@aws-amplify/ui-react";
-import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
+export declare type EscapeHatchProps = {
+    [elementHierarchy: string]: Record<string, unknown>;
+} | null;
+export declare type VariantValues = {
+    [key: string]: string;
+};
+export declare type Variant = {
+    variantValues: VariantValues;
+    overrides: EscapeHatchProps;
+};
 export declare type ValidationResponse = {
     hasError: boolean;
     errorMessage?: string;
@@ -17,30 +26,30 @@ export declare type EmpresaCreateFormInputValues = {
     razonSocial?: string;
     rfc?: string;
     email?: string;
-    telefono?: string;
+    telefono?: number;
     municipio?: string;
-    codigoPostal?: string;
+    codigoPostal?: number;
     colonia?: string;
     calle?: string;
     actividad?: string;
     sector?: string;
     tipoSucursal?: string;
-    numero?: string;
+    numero?: number;
 };
 export declare type EmpresaCreateFormValidationValues = {
     nombreComercial?: ValidationFunction<string>;
     razonSocial?: ValidationFunction<string>;
     rfc?: ValidationFunction<string>;
     email?: ValidationFunction<string>;
-    telefono?: ValidationFunction<string>;
+    telefono?: ValidationFunction<number>;
     municipio?: ValidationFunction<string>;
-    codigoPostal?: ValidationFunction<string>;
+    codigoPostal?: ValidationFunction<number>;
     colonia?: ValidationFunction<string>;
     calle?: ValidationFunction<string>;
     actividad?: ValidationFunction<string>;
     sector?: ValidationFunction<string>;
     tipoSucursal?: ValidationFunction<string>;
-    numero?: ValidationFunction<string>;
+    numero?: ValidationFunction<number>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type EmpresaCreateFormOverridesProps = {

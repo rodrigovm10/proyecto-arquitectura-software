@@ -6,7 +6,16 @@
 
 import * as React from "react";
 import { GridProps, SwitchFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
-import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
+export declare type EscapeHatchProps = {
+    [elementHierarchy: string]: Record<string, unknown>;
+} | null;
+export declare type VariantValues = {
+    [key: string]: string;
+};
+export declare type Variant = {
+    variantValues: VariantValues;
+    overrides: EscapeHatchProps;
+};
 export declare type ValidationResponse = {
     hasError: boolean;
     errorMessage?: string;
@@ -17,7 +26,7 @@ export declare type BDTCreateFormInputValues = {
     apellidos?: string;
     curp?: string;
     fechaNacimiento?: string;
-    telefono?: string;
+    telefono?: number;
     escolaridad?: string;
     genero?: string;
     idioma?: string[];
@@ -40,7 +49,7 @@ export declare type BDTCreateFormValidationValues = {
     apellidos?: ValidationFunction<string>;
     curp?: ValidationFunction<string>;
     fechaNacimiento?: ValidationFunction<string>;
-    telefono?: ValidationFunction<string>;
+    telefono?: ValidationFunction<number>;
     escolaridad?: ValidationFunction<string>;
     genero?: ValidationFunction<string>;
     idioma?: ValidationFunction<string>;
