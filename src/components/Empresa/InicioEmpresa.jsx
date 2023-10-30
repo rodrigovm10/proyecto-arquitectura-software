@@ -79,7 +79,6 @@ export function InicioEmpresa() {
             <Text fontWeight="bold" fontSize="2xl">
               Crea tus vacantes
             </Text>
-
             <ButtonGroup gap="4">
               <Link to="/vacantes">
                 <Button colorScheme="facebook">Vacantes</Button>
