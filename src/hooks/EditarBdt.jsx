@@ -13,7 +13,7 @@ export const updateBdT = async (usuario) => {
       BDT.copyOf(original, (updated) => {
         updated.nombre = usuario.nombre;
         updated.apellidos = usuario.apellidos;
-        updated.telefono =  parseInt(usuario.telefono, 10);
+        updated.telefono =  usuario.telefono;
         updated.genero = usuario.genero;
         updated.municipio = usuario.municipio;
         updated.colonia = usuario.colonia;

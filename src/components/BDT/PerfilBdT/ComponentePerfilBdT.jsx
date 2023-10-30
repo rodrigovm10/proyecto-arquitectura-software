@@ -13,7 +13,7 @@ import { DataStore } from "aws-amplify";
 import { useNavigate } from "react-router-dom";
 import { Popover, PopoverContent,PopoverTrigger, PopoverArrow, PopoverCloseButton, PopoverHeader, PopoverBody,Link,Text,Button,Flex,Wrap,Center,WrapItem,Grid,} from "@chakra-ui/react";
 import { PdfEditModal } from "./BdtUpdate/FilesEdit";
-import { sendBajaLogica } from "../../../hooks/useSendEmail";
+import { sendBajaLogica, sendBajaFisica } from "../../../hooks/useSendEmail";
 const ComponentePerfilBdT = ({ email,usuario, setUsuario, userID }) => {
   const navigate = useNavigate();
   const [InfoEdit, setInfoEdit] = useState(false);
@@ -43,7 +43,7 @@ const ComponentePerfilBdT = ({ email,usuario, setUsuario, userID }) => {
         console.log(usuario.buscaEmpleo);
         updateBdTSit(usuario)
         if (usuario.buscaEmpleo === false) {
-         // sendBajaLogica(usuario,email);
+         sendBajaLogica(usuario,email);
         }
         
         setUsuario(originalUsuario);
@@ -116,11 +116,13 @@ const ComponentePerfilBdT = ({ email,usuario, setUsuario, userID }) => {
           await deleteUserMail(userID);
 
           // Ambas operaciones se realizaron con éxito, puedes continuar
+          sendBajaFisica(usuario, email);
           navigate("/");
           await DataStore.clear();
           localStorage.clear();
           sessionStorage.clear();
           Swal.fire("¡Gracias!", "Tu perfil ha sido eliminado.", "success");
+          
         } catch (error) {
           // Maneja errores de DataStore o deleteUserMail aquí.
           console.error("Error al eliminar la cuenta:", error);
