@@ -28,10 +28,10 @@ export function DatosRequisitosForm() {
               <NumberInput
                 focusBorderColor='#ea754b'
                 name={nombre}
-                defaultValue={min}
-                min={min}
+                // defaultValue={min}
+                min={0}
                 max={max}
-                value={datosVacante[nombre] ? parseFloat(datosVacante[nombre]) : min}
+                value={datosVacante[nombre] ? parseFloat(datosVacante[nombre]) : 0}
                 onChange={value => handleNumberChange({ value, name: nombre })}>
                 <NumberInputField />
                 <NumberInputStepper>
