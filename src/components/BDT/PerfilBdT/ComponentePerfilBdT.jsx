@@ -1,20 +1,40 @@
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import BuscadorDeTrabajo from "./BdTList/BuscadorDeTrabajoList";
 import Habilidades from "./BdTList/HabilidadesList";
 import SituacionActualList from "./BdTList/SituacionActualList";
 import UpdateInfoPersonal from "./BdtUpdate/UpdateInfoPersonal";
 import UpdateHabilidades from "./BdtUpdate/UpdateHabilidades";
 import UpdateSituacionActual from "./BdtUpdate/UpdateSituacionActual";
-import { updateBdT, updateBdTHab, updateBdTSit } from "../../../hooks/EditarBdt";
+import {
+  updateBdT,
+  updateBdTHab,
+  updateBdTSit,
+} from "../../../hooks/EditarBdt";
 import { deleteUserMail } from "../../../hooks/DeleteUsuario";
 import Swal from "sweetalert2";
 import { BDT } from "../../../models";
 import { DataStore } from "aws-amplify";
 import { useNavigate } from "react-router-dom";
-import { Popover, PopoverContent,PopoverTrigger, PopoverArrow, PopoverCloseButton, PopoverHeader, PopoverBody,Link,Text,Button,Flex,Wrap,Center,WrapItem,Grid,} from "@chakra-ui/react";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+  PopoverArrow,
+  PopoverCloseButton,
+  PopoverHeader,
+  PopoverBody,
+  Link,
+  Text,
+  Button,
+  Flex,
+  Wrap,
+  Center,
+  WrapItem,
+  Grid,
+} from "@chakra-ui/react";
 import { PdfEditModal } from "./BdtUpdate/FilesEdit";
 import { sendBajaLogica, sendBajaFisica } from "../../../hooks/useSendEmail";
-const ComponentePerfilBdT = ({ email,usuario, setUsuario, userID }) => {
+const ComponentePerfilBdT = ({ email, usuario, setUsuario, userID }) => {
   const navigate = useNavigate();
   const [InfoEdit, setInfoEdit] = useState(false);
   const [habEdit, setHabEdit] = useState(false);
@@ -23,52 +43,50 @@ const ComponentePerfilBdT = ({ email,usuario, setUsuario, userID }) => {
   const [isEditingPdf, setIsEditingPdf] = useState(false);
   const [updateKey, setUpdateKey] = useState(0); // Estado para forzar la recarga
 
-
-
   // Función de guardado genérica
   const GuardarCambios = (section) => {
     // Revertir los cambios solo para la sección especificada
     switch (section) {
       case "info":
-        updateBdT(usuario)
+        updateBdT(usuario);
         setUsuario(originalUsuario);
         setInfoEdit(false);
         break;
       case "hab":
-        updateBdTHab(usuario)
+        updateBdTHab(usuario);
         setUsuario(originalUsuario);
         setHabEdit(false);
         break;
       case "sit":
         console.log(usuario.buscaEmpleo);
-        updateBdTSit(usuario)
+        updateBdTSit(usuario);
         if (usuario.buscaEmpleo === false) {
-         sendBajaLogica(usuario,email);
+          sendBajaLogica(usuario, email);
         }
-        
+
         setUsuario(originalUsuario);
         setSitEdit(false);
         break;
       default:
         break;
-    };
-     // Incrementar el estado updateKey para forzar la recarga
-     setUpdateKey((prevKey) => prevKey + 1);
-     updateBdT(usuario);
+    }
+    // Incrementar el estado updateKey para forzar la recarga
+    setUpdateKey((prevKey) => prevKey + 1);
+    updateBdT(usuario);
   };
 
   const CancelarCambios = (section) => {
     // Revertir los cambios solo para la sección especificada
     switch (section) {
-      case 'info':
+      case "info":
         setUsuario(originalUsuario);
         setInfoEdit(false);
         break;
-      case 'hab':
+      case "hab":
         setUsuario(originalUsuario);
         setHabEdit(false);
         break;
-      case 'sit':
+      case "sit":
         setUsuario(originalUsuario);
         setSitEdit(false);
         break;
@@ -77,8 +95,6 @@ const ComponentePerfilBdT = ({ email,usuario, setUsuario, userID }) => {
     }
   };
 
-  
-
   const openPdfEditModal = () => {
     setIsEditingPdf(true);
   };
@@ -86,7 +102,7 @@ const ComponentePerfilBdT = ({ email,usuario, setUsuario, userID }) => {
   const closePdfEditModal = () => {
     setIsEditingPdf(false);
   };
-  
+
   const eliminarPerfil = async () => {
     try {
       // Muestra un SweetAlert de confirmación
@@ -122,7 +138,6 @@ const ComponentePerfilBdT = ({ email,usuario, setUsuario, userID }) => {
           localStorage.clear();
           sessionStorage.clear();
           Swal.fire("¡Gracias!", "Tu perfil ha sido eliminado.", "success");
-          
         } catch (error) {
           // Maneja errores de DataStore o deleteUserMail aquí.
           console.error("Error al eliminar la cuenta:", error);
@@ -159,10 +174,18 @@ const ComponentePerfilBdT = ({ email,usuario, setUsuario, userID }) => {
                 setEDatosInforPersonal={setUsuario}
               />
               <Flex justify="center">
-                <Button colorScheme="blue" onClick={() => GuardarCambios('info')} m="2">
+                <Button
+                  colorScheme="blue"
+                  onClick={() => GuardarCambios("info")}
+                  m="2"
+                >
                   Guardar
                 </Button>
-                <Button colorScheme="red" onClick={() => CancelarCambios('info')} m="2">
+                <Button
+                  colorScheme="red"
+                  onClick={() => CancelarCambios("info")}
+                  m="2"
+                >
                   Cancelar
                 </Button>
               </Flex>
@@ -183,15 +206,23 @@ const ComponentePerfilBdT = ({ email,usuario, setUsuario, userID }) => {
             // Componente de edición de habilidades
             <>
               <UpdateHabilidades
-               key={`hab-${updateKey}`}
+                key={`hab-${updateKey}`}
                 habilidades={usuario}
                 setHabilidades={setUsuario}
               />
               <Flex justify="center">
-                <Button colorScheme="blue"  onClick={() => GuardarCambios('hab')} m="2">
+                <Button
+                  colorScheme="blue"
+                  onClick={() => GuardarCambios("hab")}
+                  m="2"
+                >
                   Guardar
                 </Button>
-                <Button colorScheme="red" onClick={() => CancelarCambios('hab')} m="2">
+                <Button
+                  colorScheme="red"
+                  onClick={() => CancelarCambios("hab")}
+                  m="2"
+                >
                   Cancelar
                 </Button>
               </Flex>
@@ -212,15 +243,23 @@ const ComponentePerfilBdT = ({ email,usuario, setUsuario, userID }) => {
             // Componente de edición de situación actual
             <>
               <UpdateSituacionActual
-               key={`sit-${updateKey}`}
+                key={`sit-${updateKey}`}
                 datosSituacion={usuario}
                 setDatosSituacion={setUsuario}
               />
               <Flex justify="center">
-                <Button colorScheme="blue"  onClick={() => GuardarCambios('sit')} m="2">
+                <Button
+                  colorScheme="blue"
+                  onClick={() => GuardarCambios("sit")}
+                  m="2"
+                >
                   Guardar
                 </Button>
-                <Button colorScheme="red"  onClick={() => CancelarCambios('sit')} m="2">
+                <Button
+                  colorScheme="red"
+                  onClick={() => CancelarCambios("sit")}
+                  m="2"
+                >
                   Cancelar
                 </Button>
               </Flex>
@@ -228,54 +267,73 @@ const ComponentePerfilBdT = ({ email,usuario, setUsuario, userID }) => {
           ) : (
             // Componente de visualización de situación actual
             <>
-              <SituacionActualList usuario={usuario} setUsuario={setUsuario} setSitEdit={setSitEdit} />
+              <SituacionActualList
+                usuario={usuario}
+                setUsuario={setUsuario}
+                setSitEdit={setSitEdit}
+              />
             </>
           )}
         </div>
       </Grid>
       <Wrap justify="center"></Wrap>
-      <Flex justify="flex-end" mr="20" mb="20" _hover={{ transform: "scale(1)" }}>
-      <Popover>
-        <PopoverTrigger>
-          <Button
-            colorScheme="blue"
-            m="2"
-            onClick={openPdfEditModal} // Abre el modal de edición del PDF al hacer clic en el botón
-          >
-            C.V
-          </Button>
-        </PopoverTrigger>
-        <PopoverContent>
-          <PopoverArrow />
-          <PopoverCloseButton />
-          <PopoverHeader>Opciones de PDF</PopoverHeader>
-          <PopoverBody>
-            <a href={usuario.pdfImagenUrl} download="nombre-del-archivo.pdf" >
-              Descargar
-            </a>
-            
-            {isEditingPdf && (
-              <PdfEditModal
-                pdfUrl={usuario.pdfImagenUrl}
-                onSave={closePdfEditModal}
-                usuario={usuario}
-              />
-            )}
-          </PopoverBody>
-        </PopoverContent>
-      </Popover>
-      <Button onClick={eliminarPerfil} m="2" color="red.500" bg="transparent"
-        _hover={{
-          backgroundColor: "red.500",
-          color:"white",
-        }}
+      <Flex
+        justify="flex-end"
+        mr="20"
+        mb="20"
+        _hover={{ transform: "scale(1)" }}
       >
-        Eliminar Perfil
-      </Button>
-    </Flex>
-    <Wrap justify="center"></Wrap>
-
-
+        <Popover>
+          <PopoverTrigger>
+            <Button
+              colorScheme="blue"
+              m="2"
+              onClick={openPdfEditModal} // Abre el modal de edición del PDF al hacer clic en el botón
+            >
+              C.V
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent>
+            <PopoverArrow />
+            <PopoverCloseButton />
+            <PopoverHeader>Opciones de PDF</PopoverHeader>
+            <PopoverBody>
+              <Flex flexDirection="row" gap={195}>
+                <Flex>
+                  <a
+                    href={usuario.pdfImagenUrl}
+                    download="nombre-del-archivo.pdf"
+                  >
+                    Descargar
+                  </a>
+                </Flex>
+                <Flex>
+                  {isEditingPdf && (
+                    <PdfEditModal
+                      pdfUrl={usuario.pdfImagenUrl}
+                      onSave={closePdfEditModal}
+                      usuario={usuario}
+                    />
+                  )}
+                </Flex>
+              </Flex>
+            </PopoverBody>
+          </PopoverContent>
+        </Popover>
+        <Button
+          onClick={eliminarPerfil}
+          m="2"
+          color="red.500"
+          bg="transparent"
+          _hover={{
+            backgroundColor: "red.500",
+            color: "white",
+          }}
+        >
+          Eliminar Perfil
+        </Button>
+      </Flex>
+      <Wrap justify="center"></Wrap>
     </>
   );
 };
