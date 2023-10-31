@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Text, Center } from '@chakra-ui/react';
+import { Box, Text, Center, Heading } from '@chakra-ui/react';
 import { Storage } from 'aws-amplify';
 
 export default function FilesBDT({ files, setFiles }) {
@@ -47,6 +47,9 @@ export default function FilesBDT({ files, setFiles }) {
         p="4"
         maxW="md"
       >
+        <Heading fontSize="xl" mb="4" textAlign="center" p="4">
+          Archivos
+        </Heading>
         <Text fontSize="xl" mb={4}>Subir una foto:</Text>
         <input type="file" accept="image/*" onChange={handleImageUpload} />
         

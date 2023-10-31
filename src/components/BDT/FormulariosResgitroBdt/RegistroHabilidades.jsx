@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Box, Button, Center, FormControl, FormLabel, Grid, HStack, Select, Tag, TagLabel, TagCloseButton } from '@chakra-ui/react'
+import { Box, Button, Center, FormControl, FormLabel, Grid, Select, Tag, TagLabel, TagCloseButton, Heading } from '@chakra-ui/react'
 import { Idiomas, NivelIdiomas } from '../../../constants/Datos'
 import { habilidadesBlandas } from '../../../constants/HabilidadesBlandas'
 import { habilidadesTecnicas } from '../../../constants/HabilidadesTecnicas'
@@ -152,6 +152,9 @@ const RegistroHabilidades = ({ habilidades, setHabilidades }) => {
         borderRadius='lg'
         p='4'
         maxW='md'>
+        <Heading fontSize="xl" mb="4" textAlign="center" p="4">
+          Habilidades
+        </Heading>
         <Grid
           templateColumns='repeat(2, 1fr)'
           gap={4}>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FormControl, FormLabel, Grid, Input, Select, Center, Box } from '@chakra-ui/react';
+import { FormControl, FormLabel, Grid, Input, Select, Center, Box, Heading } from '@chakra-ui/react';
 import { Escolaridad,Genero } from '../../../constants/Datos';
 
 export default function RegistroInfoPersonal({ datosInforPersonal, setEDatosInforPersonal }) {
@@ -72,6 +72,9 @@ export default function RegistroInfoPersonal({ datosInforPersonal, setEDatosInfo
         p="4"
         maxW="md"
       >
+        <Heading fontSize="xl" mb="4" textAlign="center" p="4">
+          Situación Actual
+        </Heading>
         <Grid templateColumns="repeat(2, 1fr)" gap={4}>
           {attributes.map((attribute, index) => (
             <FormControl key={attribute}>

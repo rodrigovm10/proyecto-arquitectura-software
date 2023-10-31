@@ -9,6 +9,7 @@ import { Storage } from 'aws-amplify'
 import Swal from 'sweetalert2'
 import { registroCompleto } from '../../../hooks/useSendEmail';
 import NavegadorBDT from '../inicioBdT/NavegadorBDT';
+import { Footer } from '../../../landing/Footer'
 export default function RegistrarBdt({email}) {
   const [datosInforPersonal, setEDatosInforPersonal] = useState({nombre: '',apellidos: '', curp: '', fechaNacimiento: '',telefono: '',escolaridad: '',genero: '',correo: email,municipio: '',colonia: '',calle: '',codigoPostal: '',});
   const [habilidades, setHabilidades] = useState({
@@ -32,7 +33,7 @@ export default function RegistrarBdt({email}) {
     // Verifica si algún campo en datosSituacion está vacío
     const datosSituacionIsEmpty = Object.values(datosSituacion).some(value => value === '')
 
-    if (datosInforPersonalIsEmpty || habilidadesIsEmpty || datosSituacionIsEmpty || !files) {
+    if (datosInforPersonalIsEmpty || habilidadesIsEmpty || datosSituacionIsEmpty || !files.pdfImagenUrl) {
       // Muestra una alerta o swal si alguno de los campos está vacío
       // Por ejemplo, puedes usar la librería SweetAlert2 para mostrar una alerta
       Swal.fire({
@@ -84,6 +85,7 @@ export default function RegistrarBdt({email}) {
         </ButtonGroup>
       </Center>
       <br />
+      <Footer/>
     </div>
   )
 }
