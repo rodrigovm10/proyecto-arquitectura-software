@@ -27,6 +27,8 @@ function BuscadorDeTrabajo({ usuario, setInfoEdit }) {
 
   const edad = calcularEdad(usuario.fechaNacimiento);
 
+  const imagenSrc = usuario.imagenBDTUrl ? usuario.imagenBDTUrl : `name=${usuario.nombre}`;
+
   return (
     <Flex
       boxShadow="xl"
@@ -50,13 +52,15 @@ function BuscadorDeTrabajo({ usuario, setInfoEdit }) {
             onMouseLeave={() => setShowEditIcon(false)}
             _hover={{ opacity: showEditIcon ? 1 : 0.8 }}
           >
-            <Avatar
-              bg="gray.400"
-              color="white"
-              alt={usuario.nombre}
-              src={usuario.imagenBDTUrl}
-              sx={{ width: "8rem", height: "8rem", fontSize: "8rem" }}
-            />
+          <Avatar
+            bg="gray.400"
+            color="white"
+            name={usuario.imagenBDTUrl ? usuario.nombre : usuario.nombre}
+            alt={usuario.nombre}
+            src={usuario.imagenBDTUrl || ''}
+            sx={{ width: "8rem", height: "8rem", fontSize: "2rem" }}
+          />
+
             {showEditIcon && (
               <ImageEditModal
                 imageUrl={usuario.imagenBDTUrl}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FormControl, FormLabel, Grid, Input, Select, Center, Box, Heading } from '@chakra-ui/react';
-import { Escolaridad,Genero } from '../../../constants/Datos';
+import { Escolaridad,Genero, MUNICIPIOS } from '../../../constants/Datos';
 
 export default function RegistroInfoPersonal({ datosInforPersonal, setEDatosInforPersonal }) {
   const initialFormData = {
@@ -11,7 +11,6 @@ export default function RegistroInfoPersonal({ datosInforPersonal, setEDatosInfo
     telefono: '', // Cambiado a string para manejar números
     escolaridad: '',
     genero: '',
-   
     municipio: '',
     colonia: '',
     calle: '',
@@ -117,7 +116,20 @@ export default function RegistroInfoPersonal({ datosInforPersonal, setEDatosInfo
                   </option>
                 ))}
               </Select>
-              ) : (
+              ): attribute === 'municipio' ?(
+                <Select
+                name="municipio"
+                value={formData.municipio}
+                onChange={handleChange}
+              >
+                <option value="">Género </option>
+                {MUNICIPIOS.map((municipio, index) => (
+                  <option key={index} value={municipio}>
+                    {municipio}
+                  </option>
+                ))}
+              </Select>
+              )  : (
                 <Input
                   type={
                     attribute === 'telefono' || attribute === 'codigoPostal'
