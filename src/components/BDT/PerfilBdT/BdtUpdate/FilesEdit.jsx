@@ -24,7 +24,7 @@ export function ImageEditModal({ imageUrl, onSave, usuario }) {
         const fileName = 'img/' + selectedFile.name;
         await Storage.put(fileName, selectedFile, { level: 'public', type: selectedFile.type });
   
-        const imagenBDTUrl = `https://redlaboral19257eadb6ca46f884138dce31d01e60230004-dev.s3.amazonaws.com/${fileName}`;
+        const imagenBDTUrl = `https://redlaboral19257eadb6ca46f884138dce31d01e60230004-dev.s3.amazonaws.com/public/${fileName}`;
   
         if (usuario) { // Check if 'usuario' is defined
           const original = await DataStore.query(BDT, usuario.id);
@@ -103,7 +103,7 @@ export function PdfEditModal({ pdfUrl, onSave, usuario }) {
         const pdfFileName = 'pdf/' + selectedPdf.name;
         await Storage.put(pdfFileName, selectedPdf, { level: 'public', type: selectedPdf.type });
   
-        const pdfUrl = `https://redlaboral19257eadb6ca46f884138dce31d01e60230004-dev.s3.amazonaws.com/${pdfFileName}`;
+        const pdfUrl = `https://redlaboral19257eadb6ca46f884138dce31d01e60230004-dev.s3.amazonaws.com/public/${pdfFileName}`;
   
         if (usuario) { // Verifica si 'usuario' está definido
           const original = await DataStore.query(BDT, usuario.id);

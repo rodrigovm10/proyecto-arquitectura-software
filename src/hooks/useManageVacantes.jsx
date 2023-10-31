@@ -103,15 +103,18 @@ export function useManageVacantes() {
   async function listVacantes({ emailEmpresa = '' }) {
     try {
       let newVacantes
+      console.log(emailEmpresa)
       if (emailEmpresa) {
+        console.log('entre')
         newVacantes = await DataStore.query(Vacante, c => c.and(c => [c.visible.eq(true), c.numeroPlazas.gt(0), c.emailEmpresa.eq(emailEmpresa)]), {
           sort: s => s.createdAt(SortDirection.DESCENDING)
         })
+        setVacantesVisibles(newVacantes)
+        return
       }
       newVacantes = await DataStore.query(Vacante, c => c.and(c => [c.visible.eq(true), c.numeroPlazas.gt(0)]), {
         sort: s => s.createdAt(SortDirection.DESCENDING)
       })
-
       setVacantesVisibles(newVacantes)
     } catch (err) {
       throw new Error('Error al obtener vacantes', err)
