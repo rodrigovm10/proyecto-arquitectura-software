@@ -6,14 +6,16 @@ import { Vacante } from '../../components/Vacantes/Vacante'
 import { ButtonVacante } from '../../components/ButtonVacante'
 import { useManageVacantes } from '../../hooks/useManageVacantes'
 import { Footer } from '../../landing/Footer'
+import { useSession } from '../../hooks/useSession'
 
 export function Vacantes() {
   const { listVacantes, vacantesVisibles, vacantesNoVisibles, listVacantesNoVisibles, isVacanteVisible, handleChangeVacanteStatus } = useManageVacantes()
+  const { dataSession } = useSession('Empresa')
 
   useEffect(() => {
-    if (isVacanteVisible) listVacantes()
-    else listVacantesNoVisibles()
-  }, [isVacanteVisible])
+    if (isVacanteVisible) listVacantes({ emailEmpresa: dataSession.email })
+    else listVacantesNoVisibles({ emailEmpresa: dataSession.email })
+  }, [])
 
   return (
     <>

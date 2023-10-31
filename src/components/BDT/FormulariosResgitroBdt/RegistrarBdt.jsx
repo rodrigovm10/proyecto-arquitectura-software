@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import {Box,Center,Button,ButtonGroup,} from '@chakra-ui/react';
-import { registarBdE } from '../../../hooks/RegistroBdt';
-import RegistroHabilidades from './RegistroHabilidades';
-import RegistroSituacionActual from './RegistroSituacionActual';
-import RegistroInfoPersonal from './RegistroInfoPersonal';
-import FilesBDT from './FilesBDT';
-import { Storage } from 'aws-amplify';
+import React, { useState } from 'react'
+import { Box, Center, Button, ButtonGroup } from '@chakra-ui/react'
+import { registarBdE } from '../../../hooks/RegistroBdt'
+import RegistroHabilidades from './RegistroHabilidades'
+import RegistroSituacionActual from './RegistroSituacionActual'
+import RegistroInfoPersonal from './RegistroInfoPersonal'
+import FilesBDT from './FilesBDT'
+import { Storage } from 'aws-amplify'
 import Swal from 'sweetalert2'
 import { registroCompleto } from '../../../hooks/useSendEmail';
 import NavegadorBDT from '../inicioBdT/NavegadorBDT';
@@ -17,13 +17,12 @@ export default function RegistrarBdt({email}) {
     habilidadesTecnicas: []
   })
 
-  const [datosSituacion, setDatosSituacion] = useState({buscasEmpleo: "", trabajando: "",dispViaja: "", dispRadicar: "",})
-  
-  const [files, setFiles]=useState({imagenBDTUrl:null,	pdfImagenUrl:null})
+  const [datosSituacion, setDatosSituacion] = useState({ buscasEmpleo: '', trabajando: '', dispViaja: '', dispRadicar: '' })
 
+  const [files, setFiles] = useState({ imagenBDTUrl: null, pdfImagenUrl: null })
 
   const handleSubmit = async () => {
-    registroCompleto(datosInforPersonal,email)
+    registroCompleto(datosInforPersonal, email)
     // Verifica si algún campo en datosInforPersonal está vacío
     const datosInforPersonalIsEmpty = Object.values(datosInforPersonal).some(value => value === '')
 
@@ -31,8 +30,8 @@ export default function RegistrarBdt({email}) {
     const habilidadesIsEmpty = Object.values(habilidades).some(value => Array.isArray(value) && value.length === 0)
 
     // Verifica si algún campo en datosSituacion está vacío
-    const datosSituacionIsEmpty = Object.values(datosSituacion).some(value => value === '');
-  
+    const datosSituacionIsEmpty = Object.values(datosSituacion).some(value => value === '')
+
     if (datosInforPersonalIsEmpty || habilidadesIsEmpty || datosSituacionIsEmpty || !files) {
       // Muestra una alerta o swal si alguno de los campos está vacío
       // Por ejemplo, puedes usar la librería SweetAlert2 para mostrar una alerta
@@ -70,7 +69,10 @@ export default function RegistrarBdt({email}) {
         />
       </div>
       <div>
-        <FilesBDT files={files} setFiles={setFiles} />
+        <FilesBDT
+          files={files}
+          setFiles={setFiles}
+        />
       </div>
       <Center>
         <ButtonGroup>

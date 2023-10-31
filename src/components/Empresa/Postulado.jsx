@@ -1,16 +1,17 @@
 import { Card, CardBody, CardHeader, Flex, Grid, GridItem, Heading, Stack, Text } from '@chakra-ui/react'
-import { LiaAddressCardSolid, LiaCalendarCheckSolid, LiaClockSolid, LiaMoneyBillWaveAltSolid, LiaSchoolSolid } from 'react-icons/lia'
-import { SinVacantes } from './SinVacantes'
 import { useState } from 'react'
-import { DatosVacanteBDT } from './DatosVacanteBDT'
+import { LiaAddressCardSolid, LiaCalendarCheckSolid, LiaClockSolid, LiaMailBulkSolid, LiaMoneyBillWaveAltSolid, LiaSchoolSolid } from 'react-icons/lia'
+import { SinVacantes } from '../Vacantes/SinVacantes'
+import { DatosPostulado } from './DatosPostulado'
+import { Email } from '../../assets/Icons'
 
-export function VacanteBDT({ vacantes }) {
-  const [isVacanteSelected, setIsVacanteSelected] = useState(false)
-  const [vacanteSelected, setVacanteSelected] = useState()
+export function Postulado({ postulados }) {
+  const [isPostuladoSelected, setIsPostuladoSelected] = useState(false)
+  const [postuladoSelected, setPostuladoSelected] = useState()
 
-  const handleClickOpenVacante = vacante => {
-    setVacanteSelected(vacante)
-    setIsVacanteSelected(true)
+  const handleClickOpenVacante = oportunidad => {
+    setPostuladoSelected(oportunidad)
+    setIsPostuladoSelected(true)
   }
   return (
     <Grid
@@ -21,11 +22,11 @@ export function VacanteBDT({ vacantes }) {
         <Flex
           gap='2rem'
           flexDir='column'>
-          {vacantes?.map(vacante => {
-            const { nombre, nombreEmpresa, area, diasLaborales, escolaridad, salarioMin, salarioMax, modalidad, id } = vacante
+          {postulados?.map(postulado => {
+            const { nombre, area, diasLaborales, escolaridad, salarioMin, salarioMax, modalidad, id, nombreBDT, emailBDT } = postulado
             return (
               <Card
-                onClick={() => handleClickOpenVacante(vacante)}
+                onClick={() => handleClickOpenVacante(postulado)}
                 borderColor='transparent transparent transparent #ea754b'
                 borderWidth='0.2rem'
                 boxShadow='xl'
@@ -40,11 +41,24 @@ export function VacanteBDT({ vacantes }) {
                     as='h3'
                     size='md'
                     p='0'>
-                    {nombre}
+                    {nombreBDT}
                   </Heading>
+                  <Text fontWeight='bold'>Información del usuario: </Text>
                 </CardHeader>
                 <CardBody>
                   <Stack>
+                    <Flex
+                      gap='1rem'
+                      alignItems='center'>
+                      <LiaMailBulkSolid />
+                      <Text>{emailBDT}</Text>
+                    </Flex>
+                    <Heading
+                      as='h3'
+                      size='md'
+                      p='0'>
+                      {nombre}
+                    </Heading>
                     <Flex
                       gap='1rem'
                       alignItems='center'>
@@ -75,12 +89,6 @@ export function VacanteBDT({ vacantes }) {
                       <LiaSchoolSolid />
                       <Text>{escolaridad}</Text>
                     </Flex>
-                    <Heading
-                      as='h3'
-                      size='md'
-                      p='0'>
-                      {nombreEmpresa}
-                    </Heading>
                   </Stack>
                 </CardBody>
               </Card>
@@ -88,7 +96,7 @@ export function VacanteBDT({ vacantes }) {
           })}
         </Flex>
       </GridItem>
-      <GridItem alignSelf='start'>{isVacanteSelected ? <DatosVacanteBDT vacante={vacanteSelected} /> : <SinVacantes hasButton={false}>Selecciona una vacante para visualizar su información</SinVacantes>}</GridItem>
+      <GridItem alignSelf='start'>{isPostuladoSelected ? <DatosPostulado postulado={postuladoSelected} /> : <SinVacantes hasButton={false}>Selecciona al usuario para ver su información e información de la vacante</SinVacantes>}</GridItem>
     </Grid>
   )
 }

@@ -1,10 +1,42 @@
+import { useState,useEffect } from 'react'
 import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom'
 import { useManageVacantes } from './useManageVacantes'
-
+import { useJobsApplications } from './useJobsApplications'
+import { correoBdtPostulacion, correoEmpresaPostulacion } from './useSendEmail'
+import { useSession } from '../hooks/useSession'
+import { BDT } from '../models'
+import { DataStore } from 'aws-amplify'
 export function useAlerts() {
   const { deleteVacante, updateStatusVacante } = useManageVacantes()
+  const { saveOportunidadesOnDataStore } = useJobsApplications()
+  const { dataSession, nombreGrupo, getDataSessionBDT } = useSession('trabajador')
+  const [bdt, setBdt ]= useState({});
+  
+  useEffect(() => {
+    getDataSessionBDT();
+  }, []);
 
+  async function getBDT({ emailBDT }) {
+    const newBDT = await DataStore.query(BDT, c => c.correo.eq(emailBDT));
+    return newBDT[0];
+  }
+
+  useEffect(() => {
+    async function fetchBDT() {
+      const bdtData  = await getBDT({ emailBDT: dataSession.email });
+      
+      if (bdtData ) {
+        const bdtobj = bdtData ; 
+        setBdt(bdtobj); 
+      
+      }
+    }
+    fetchBDT();
+  }, [dataSession.email]);
+
+  console.log(bdt);
+  
   const navigate = useNavigate()
   const basicAlert = ({ title, icon, text }) => {
     Swal.fire({
@@ -38,6 +70,7 @@ export function useAlerts() {
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
+      cancelButtonText: 'Cancelar',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Sí, dar de baja'
     }).then(result => {
@@ -58,6 +91,7 @@ export function useAlerts() {
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
+      cancelButtonText: 'Cancelar',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Sí, dar de alta'
     }).then(result => {
@@ -83,19 +117,22 @@ export function useAlerts() {
     })
   }
 
-  const applicationSubmissionAlert = () => {
+  const applicationSubmissionAlert = ({ vacante }) => {
     Swal.fire({
       title: '¿Estás seguro de postularte a esta vacante?',
       text: 'Una vez postulado será avisado a la empresa en cuestión. Podrás ver esta y otras postulaciones en la sección de "Oportunidades laborales".',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
+      cancelButtonText: 'Cancelar',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Sí, postularse'
     }).then(result => {
       if (result.isConfirmed) {
-        // updateStatusVacante({ id, visible })
         Swal.fire('Postulado(a)', 'Has sido postulado(a) exitosamente.', 'success')
+        saveOportunidadesOnDataStore({ vacante })
+        correoBdtPostulacion(vacante, bdt)
+        correoEmpresaPostulacion(vacante, bdt)
       }
     })
   }

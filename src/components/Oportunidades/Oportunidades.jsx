@@ -1,16 +1,15 @@
 import { Grid, GridItem, Heading, Stack, Text } from '@chakra-ui/react'
-import { useManageVacantes } from '../../hooks/useManageVacantes'
+import { useJobsApplications } from '../../hooks/useJobsApplications'
 import { useEffect } from 'react'
-import { VacanteBDT } from './VacanteBDT'
-import { Filtros } from './Filtros'
 import { useSession } from '../../hooks/useSession'
+import { Oportunidad } from './Oportunidad'
 
-export function VacantesBDT() {
-  const { listVacantes, vacantesVisibles } = useManageVacantes()
+export function Oportunidades() {
+  const { listOportunidadesBDT, oportunidades } = useJobsApplications()
   const { dataSession } = useSession()
 
   useEffect(() => {
-    listVacantes({ emailEmpresa: dataSession.email })
+    listOportunidadesBDT({ emailBDT: dataSession.email })
   }, [])
 
   return (
@@ -21,26 +20,25 @@ export function VacantesBDT() {
         <Heading
           as='h2'
           size='2xl'>
-          Vacantes
+          Oportunidades laborales
         </Heading>
         <Text
           fontSize='xl'
           mb='2rem'>
-          En esta sección podrás visualizar las vacantes y postularte a ellas
+          En esta sección podrás visualizar las vacantes a las que estas postulado
         </Text>
-        <Filtros />
         <Grid mt='2rem'>
           <GridItem>
             <Text
               fontSize='md'
               as='i'
               opacity='0.8'>
-              {`${vacantesVisibles.length} resultados`}
+              {`${oportunidades?.length} resultados`}
             </Text>
           </GridItem>
         </Grid>
       </Stack>
-      <VacanteBDT vacantes={vacantesVisibles} />
+      <Oportunidad oportunidades={oportunidades} />
     </>
   )
 }

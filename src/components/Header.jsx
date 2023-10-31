@@ -2,7 +2,7 @@ import { Box } from '@chakra-ui/react'
 import { Nav } from './Nav'
 import NavegadorBDT from './BDT/inicioBdT/NavegadorBDT'
 
-export function Header({ nombreDelGrupo, setSession }) {
+export function Header({ nombreDelGrupo = 'Empresa', setSession }) {
   return (
     <Box>
       <Box

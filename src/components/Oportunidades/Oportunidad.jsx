@@ -1,16 +1,16 @@
 import { Card, CardBody, CardHeader, Flex, Grid, GridItem, Heading, Stack, Text } from '@chakra-ui/react'
-import { LiaAddressCardSolid, LiaCalendarCheckSolid, LiaClockSolid, LiaMoneyBillWaveAltSolid, LiaSchoolSolid } from 'react-icons/lia'
-import { SinVacantes } from './SinVacantes'
 import { useState } from 'react'
-import { DatosVacanteBDT } from './DatosVacanteBDT'
+import { LiaAddressCardSolid, LiaCalendarCheckSolid, LiaClockSolid, LiaMoneyBillWaveAltSolid, LiaSchoolSolid } from 'react-icons/lia'
+import { SinVacantes } from '../Vacantes/SinVacantes'
+import { DatosOportunidad } from './DatosOportunidad'
 
-export function VacanteBDT({ vacantes }) {
-  const [isVacanteSelected, setIsVacanteSelected] = useState(false)
-  const [vacanteSelected, setVacanteSelected] = useState()
+export function Oportunidad({ oportunidades }) {
+  const [isOportunidadSelected, setIsOportunidadSelected] = useState(false)
+  const [oportunidadSelected, setOportunidadSelected] = useState()
 
-  const handleClickOpenVacante = vacante => {
-    setVacanteSelected(vacante)
-    setIsVacanteSelected(true)
+  const handleClickOpenVacante = oportunidad => {
+    setOportunidadSelected(oportunidad)
+    setIsOportunidadSelected(true)
   }
   return (
     <Grid
@@ -21,11 +21,11 @@ export function VacanteBDT({ vacantes }) {
         <Flex
           gap='2rem'
           flexDir='column'>
-          {vacantes?.map(vacante => {
-            const { nombre, nombreEmpresa, area, diasLaborales, escolaridad, salarioMin, salarioMax, modalidad, id } = vacante
+          {oportunidades?.map(oportunidad => {
+            const { nombre, nombreEmpresa, area, diasLaborales, escolaridad, salarioMin, salarioMax, modalidad, id } = oportunidad
             return (
               <Card
-                onClick={() => handleClickOpenVacante(vacante)}
+                onClick={() => handleClickOpenVacante(oportunidad)}
                 borderColor='transparent transparent transparent #ea754b'
                 borderWidth='0.2rem'
                 boxShadow='xl'
@@ -88,7 +88,7 @@ export function VacanteBDT({ vacantes }) {
           })}
         </Flex>
       </GridItem>
-      <GridItem alignSelf='start'>{isVacanteSelected ? <DatosVacanteBDT vacante={vacanteSelected} /> : <SinVacantes hasButton={false}>Selecciona una vacante para visualizar su información</SinVacantes>}</GridItem>
+      <GridItem alignSelf='start'>{isOportunidadSelected ? <DatosOportunidad oportunidad={oportunidadSelected} /> : <SinVacantes hasButton={false}>Selecciona una oportunidad para visualizar su información</SinVacantes>}</GridItem>
     </Grid>
   )
 }
