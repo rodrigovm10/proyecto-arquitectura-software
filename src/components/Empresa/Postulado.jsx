@@ -1,6 +1,6 @@
 import { Card, CardBody, CardHeader, Flex, Grid, GridItem, Heading, Stack, Text } from '@chakra-ui/react'
 import { useState } from 'react'
-import { LiaAddressCardSolid, LiaCalendarCheckSolid, LiaClockSolid, LiaMailBulkSolid, LiaMoneyBillWaveAltSolid, LiaSchoolSolid } from 'react-icons/lia'
+import { LiaAddressCardSolid, LiaCalendarCheckSolid, LiaClockSolid, LiaMailBulkSolid, LiaMoneyBillWaveAltSolid, LiaPhoneAltSolid, LiaSchoolSolid } from 'react-icons/lia'
 import { SinVacantes } from '../Vacantes/SinVacantes'
 import { DatosPostulado } from './DatosPostulado'
 import { Email } from '../../assets/Icons'
@@ -23,7 +23,7 @@ export function Postulado({ postulados }) {
           gap='2rem'
           flexDir='column'>
           {postulados?.map(postulado => {
-            const { nombre, area, diasLaborales, escolaridad, salarioMin, salarioMax, modalidad, id, nombreBDT, emailBDT } = postulado
+            const { nombre, area, diasLaborales, escolaridad, salarioMin, salarioMax, modalidad, id, nombreBDT, emailBDT, apellidosBDT, telefonoBDT } = postulado
             return (
               <Card
                 onClick={() => handleClickOpenVacante(postulado)}
@@ -41,9 +41,8 @@ export function Postulado({ postulados }) {
                     as='h3'
                     size='md'
                     p='0'>
-                    {nombreBDT}
+                    Usuario: {nombreBDT} {apellidosBDT}
                   </Heading>
-                  <Text fontWeight='bold'>Información del usuario: </Text>
                 </CardHeader>
                 <CardBody>
                   <Stack>
@@ -52,6 +51,12 @@ export function Postulado({ postulados }) {
                       alignItems='center'>
                       <LiaMailBulkSolid />
                       <Text>{emailBDT}</Text>
+                    </Flex>
+                    <Flex
+                      gap='1rem'
+                      alignItems='center'>
+                      <LiaPhoneAltSolid />
+                      <Text>{telefonoBDT}</Text>
                     </Flex>
                     <Heading
                       as='h3'

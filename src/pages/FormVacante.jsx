@@ -27,7 +27,6 @@ export function FormVacante() {
       return
     }
     saveVacanteOnDataStore(datosVacante, setDatosVacante)
-    console.log(datosVacante)
   }
 
   return (

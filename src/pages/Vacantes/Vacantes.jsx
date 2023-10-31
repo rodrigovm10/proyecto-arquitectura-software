@@ -15,7 +15,7 @@ export function Vacantes() {
   useEffect(() => {
     if (isVacanteVisible) listVacantes({ emailEmpresa: dataSession.email })
     else listVacantesNoVisibles({ emailEmpresa: dataSession.email })
-  }, [])
+  }, [isVacanteVisible])
 
   return (
     <>
@@ -56,15 +56,15 @@ export function Vacantes() {
         </Grid>
       </Stack>
       {isVacanteVisible ? (
-        vacantesVisibles.length ? (
+        vacantesVisibles?.length ? (
           <Vacante vacantes={vacantesVisibles} />
         ) : (
           <SinVacantes>Aún no has registrado ninguna vacante</SinVacantes>
         )
-      ) : vacantesNoVisibles.length ? (
+      ) : vacantesNoVisibles?.length ? (
         <Vacante vacantes={vacantesNoVisibles} />
       ) : (
-        <SinVacantes>Aún no has registrado ninguna vacante</SinVacantes>
+        <SinVacantes>No hay vacantes inactivas</SinVacantes>
       )}
       <Footer />
     </>

@@ -324,7 +324,7 @@ export function useManageVacantes() {
       const newVacantes = await DataStore.query(Vacante, c => c.and(c => [c.visible.eq(false), c.numeroPlazas.gt(0), c.emailEmpresa.eq(emailEmpresa)]), {
         sort: s => s.createdAt(SortDirection.DESCENDING)
       })
-
+      console.log(newVacantes)
       setVacantesNoVisibles(newVacantes)
     } catch (error) {
       throw new Error('Error al listar las vacantes no visibles', error)
