@@ -1,7 +1,14 @@
-import { Button, Container, Flex, Heading, Image, Center } from '@chakra-ui/react';
-import { ArrowBackIcon } from '@chakra-ui/icons'; // Importa el ícono de flecha hacia atrás
+import {
+  Button,
+  Container,
+  Flex,
+  Heading,
+  Image,
+  Center,
+} from "@chakra-ui/react";
+import { ArrowBackIcon } from "@chakra-ui/icons"; // Importa el ícono de flecha hacia atrás
 
-import logo from '../img/logo.png';
+import logo from "../img/logo-sinfondo.png";
 
 function Error() {
   const goBack = () => {
@@ -10,10 +17,10 @@ function Error() {
 
   return (
     <Flex direction="column" align="center" justify="center" minH="100vh">
-        <Center>
-      <Container>
-        <Image src={logo} alt="Coneecta GTO" />
-      </Container>
+      <Center>
+        <Container>
+          <Image src={logo} alt="Coneecta GTO" />
+        </Container>
       </Center>
       <Heading as="h1" size="2xl" color="gray.500" textAlign="center" mt={8}>
         Error 404
