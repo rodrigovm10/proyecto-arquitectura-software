@@ -1,12 +1,7 @@
-import { Box, Button, Card, CardBody, CardHeader, Flex, Grid, Heading, Stack, StackDivider, Text } from '@chakra-ui/react'
-import { TagsDatosVacante } from './TagsDatosVacante'
-import { useAlerts } from '../../hooks/useAlerts'
+import { Box, Card, CardBody, CardHeader, Flex, Grid, Heading, Stack, StackDivider, Text } from '@chakra-ui/react'
+import { TagsDatosVacante } from '../Vacantes/TagsDatosVacante'
 
-export function DatosVacanteBDT({ vacante }) {
-  const { applicationSubmissionAlert } = useAlerts()
-  const handleClickApplicationSubmission = () => {
-    applicationSubmissionAlert({ vacante })
-  }
+export function DatosPostulado({ postulado }) {
   return (
     <Flex justifyContent='center'>
       <Card
@@ -19,18 +14,17 @@ export function DatosVacanteBDT({ vacante }) {
               <Heading
                 as='h2'
                 size='lg'>
-                {vacante.nombre}
+                {postulado.nombre}
               </Heading>
-              <Text>{vacante.descripcion}</Text>
+              <Text>{postulado.descripcion}</Text>
             </Box>
           </Flex>
-          <Button
-            bg='#ea754b'
-            color='#fff'
-            _hover={{ bg: '#ff964f' }}
-            onClick={handleClickApplicationSubmission}>
-            Postularse
-          </Button>
+          <Heading
+            as='h3'
+            size='sm'
+            color='#ea754b'>
+            Postulado(a)
+          </Heading>
         </CardHeader>
         <CardBody>
           <Stack
@@ -41,35 +35,35 @@ export function DatosVacanteBDT({ vacante }) {
                 color='#ea754b'
                 as='h3'
                 size='md'>
-                Detalles de la vacante
+                Detalles del postulado
               </Heading>
               <Grid
                 templateColumns='repeat(2, 1fr)'
                 columnGap='4rem'
                 rowGap='1rem'>
                 <Text>
-                  <strong>Dirección de la vacante:</strong> {vacante.ubicacion}
+                  <strong>Dirección de la vacante:</strong> {postulado.ubicacion}
                 </Text>
                 <Text>
-                  <strong>Número de plazas:</strong> {vacante.numeroPlazas}
+                  <strong>Número de plazas:</strong> {postulado.numeroPlazas}
                 </Text>
                 <Text>
-                  <strong>Tipo de contrato:</strong> {vacante.tipoContrato}
+                  <strong>Tipo de contrato:</strong> {postulado.tipoContrato}
                 </Text>
                 <Text>
-                  <strong>Modalidad:</strong> {vacante.modalidad}
+                  <strong>Modalidad:</strong> {postulado.modalidad}
                 </Text>
                 <Text>
-                  <strong>Días laborales:</strong> {vacante.diasLaborales}
+                  <strong>Días laborales:</strong> {postulado.diasLaborales}
                 </Text>
                 <Text>
-                  <strong>Área:</strong> {vacante.area}
+                  <strong>Área:</strong> {postulado.area}
                 </Text>
                 <Text>
-                  <strong>Salario:</strong> ${vacante.salarioMin} - ${vacante.salarioMax} - {vacante.periodoPago}
+                  <strong>Salario:</strong> ${postulado.salarioMin} - ${postulado.salarioMax} - {postulado.periodoPago}
                 </Text>
                 <Text>
-                  <strong>Jornada laboral:</strong> {vacante.jornadaLaboral}
+                  <strong>Jornada laboral:</strong> {postulado.jornadaLaboral}
                 </Text>
               </Grid>
             </Box>
@@ -85,34 +79,34 @@ export function DatosVacanteBDT({ vacante }) {
                 columnGap='4rem'
                 rowGap='1rem'>
                 <Text>
-                  <strong>Experiencia laboral:</strong> {vacante.experienciaLaboral}
+                  <strong>Experiencia laboral:</strong> {postulado.experienciaLaboral}
                 </Text>
                 <Text>
-                  <strong>Género:</strong> {vacante.genero}
+                  <strong>Género:</strong> {postulado.genero}
                 </Text>
                 <TagsDatosVacante
                   titulo={'Idiomas'}
-                  tags={vacante.idioma}
+                  tags={postulado.idioma}
                 />
                 <Text>
-                  <strong>Escolaridad:</strong> {vacante.escolaridad}
+                  <strong>Escolaridad:</strong> {postulado.escolaridad}
                 </Text>
                 <Text>
-                  <strong>Edad:</strong> {vacante.edadMin} años a {vacante.edadMax} años
+                  <strong>Edad:</strong> {postulado.edadMin} años a {postulado.edadMax} años
                 </Text>
               </Grid>
             </Box>
             <TagsDatosVacante
               titulo={'Prestaciones'}
-              tags={vacante.prestaciones}
+              tags={postulado.prestaciones}
             />
             <TagsDatosVacante
               titulo={'Habilidades blandas'}
-              tags={vacante.habilidadesBlandas}
+              tags={postulado.habilidadesBlandas}
             />
             <TagsDatosVacante
               titulo={'Habilidades técnicas'}
-              tags={vacante.habilidadesTecnicas}
+              tags={postulado.habilidadesTecnicas}
             />
           </Stack>
         </CardBody>

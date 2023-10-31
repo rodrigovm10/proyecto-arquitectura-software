@@ -128,10 +128,11 @@ export const schema = {
                 },
                 "habilidadesTecnicas": {
                     "name": "habilidadesTecnicas",
-                    "isArray": false,
+                    "isArray": true,
                     "type": "String",
                     "isRequired": false,
-                    "attributes": []
+                    "attributes": [],
+                    "isArrayNullable": true
                 },
                 "emailEmpresa": {
                     "name": "emailEmpresa",
@@ -143,7 +144,7 @@ export const schema = {
                 "visible": {
                     "name": "visible",
                     "isArray": false,
-                    "type": "String",
+                    "type": "Boolean",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -171,16 +172,17 @@ export const schema = {
                 "salarioMin": {
                     "name": "salarioMin",
                     "isArray": false,
-                    "type": "String",
+                    "type": "Float",
                     "isRequired": false,
                     "attributes": []
                 },
                 "idiomaConNivel": {
                     "name": "idiomaConNivel",
-                    "isArray": false,
+                    "isArray": true,
                     "type": "String",
                     "isRequired": false,
-                    "attributes": []
+                    "attributes": [],
+                    "isArrayNullable": true
                 },
                 "municipio": {
                     "name": "municipio",
@@ -224,6 +226,62 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
+                "empresaID": {
+                    "name": "empresaID",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "periodoPago": {
+                    "name": "periodoPago",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "apellidosBDT": {
+                    "name": "apellidosBDT",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "imagenBDTUrl": {
+                    "name": "imagenBDTUrl",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "pdfImagenUrl": {
+                    "name": "pdfImagenUrl",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "escolaridadBDT": {
+                    "name": "escolaridadBDT",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "telefonoBDT": {
+                    "name": "telefonoBDT",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "generoBDT": {
+                    "name": "generoBDT",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -263,6 +321,15 @@ export const schema = {
                         "name": "byVacante",
                         "fields": [
                             "vacanteID"
+                        ]
+                    }
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byEmpresa",
+                        "fields": [
+                            "empresaID"
                         ]
                     }
                 },
@@ -727,6 +794,22 @@ export const schema = {
                         ]
                     }
                 },
+                "Oportunidades": {
+                    "name": "Oportunidades",
+                    "isArray": true,
+                    "type": {
+                        "model": "Oportunidades"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true,
+                    "association": {
+                        "connectionType": "HAS_MANY",
+                        "associatedWith": [
+                            "empresaID"
+                        ]
+                    }
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -1081,5 +1164,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "b911aacf1202be039701f866c5ae2f96"
+    "version": "05884d0b73eeb014f85f394fef888029"
 };

@@ -1,9 +1,11 @@
 import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom'
 import { useManageVacantes } from './useManageVacantes'
+import { useJobsApplications } from './useJobsApplications'
 
 export function useAlerts() {
   const { deleteVacante, updateStatusVacante } = useManageVacantes()
+  const { saveOportunidadesOnDataStore } = useJobsApplications()
 
   const navigate = useNavigate()
   const basicAlert = ({ title, icon, text }) => {
@@ -38,6 +40,7 @@ export function useAlerts() {
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
+      cancelButtonText: 'Cancelar',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Sí, dar de baja'
     }).then(result => {
@@ -58,6 +61,7 @@ export function useAlerts() {
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
+      cancelButtonText: 'Cancelar',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Sí, dar de alta'
     }).then(result => {
@@ -83,19 +87,20 @@ export function useAlerts() {
     })
   }
 
-  const applicationSubmissionAlert = () => {
+  const applicationSubmissionAlert = ({ vacante }) => {
     Swal.fire({
       title: '¿Estás seguro de postularte a esta vacante?',
       text: 'Una vez postulado será avisado a la empresa en cuestión. Podrás ver esta y otras postulaciones en la sección de "Oportunidades laborales".',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
+      cancelButtonText: 'Cancelar',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Sí, postularse'
     }).then(result => {
       if (result.isConfirmed) {
-        // updateStatusVacante({ id, visible })
         Swal.fire('Postulado(a)', 'Has sido postulado(a) exitosamente.', 'success')
+        saveOportunidadesOnDataStore({ vacante })
       }
     })
   }

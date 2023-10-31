@@ -24,7 +24,6 @@ export function useManageVacantes() {
 
   async function saveVacanteOnDataStore(datosVacante, setDatosVacante) {
     const empresa = await getEmpresa({ emailEmpresa: dataSession.email })
-    console.log('Empresa: ', empresa)
     const {
       nombre,
       descripcion,
@@ -52,7 +51,6 @@ export function useManageVacantes() {
       periodoPago,
       jornadaLaboral
     } = datosVacante
-    console.log(isCheck)
     let ubicacion = ''
     let newMunicipio = ''
     !isCheck ? (ubicacion = `${empresa.municipio} ${empresa.colonia} ${empresa.calle} ${empresa.numero}`) : (ubicacion = `${municipio} ${colonia} ${calle} ${numero}`)
@@ -89,12 +87,9 @@ export function useManageVacantes() {
     })
     try {
       await DataStore.save(vacante)
-      console.log(vacante)
       basicAlert({ title: 'Vacante guardada con exito', icon: 'success', text: 'La vacante ha sido creada con exito, podrá visualizarla en su apartado de vacantes.' })
       setDatosVacante(DATOS_VACANTE_STATE_INITIAL)
       navigate('/vacantes')
-      console.log(vacante)
-      console.log('guardo')
     } catch (e) {
       console.log(e)
     }
@@ -105,13 +100,37 @@ export function useManageVacantes() {
     return newEmpresa[0]
   }
 
-  async function listVacantes() {
+  async function listVacantes({ emailEmpresa = '' }) {
     try {
-      const newVacantes = await DataStore.query(Vacante, c => c.and(c => [c.visible.eq(true), c.numeroPlazas.gt(0)]), {
+      let newVacantes
+      if (emailEmpresa) {
+        newVacantes = await DataStore.query(Vacante, c => c.and(c => [c.visible.eq(true), c.numeroPlazas.gt(0), c.emailEmpresa.eq(emailEmpresa)]), {
+          sort: s => s.createdAt(SortDirection.DESCENDING)
+        })
+      }
+      newVacantes = await DataStore.query(Vacante, c => c.and(c => [c.visible.eq(true), c.numeroPlazas.gt(0)]), {
         sort: s => s.createdAt(SortDirection.DESCENDING)
       })
-      setVacantesVisibles(newVacantes) // Establece el estado con el nuevo array directamente
-    } catch (err) {}
+      console.log(newVacantes)
+      setVacantesVisibles(newVacantes)
+    } catch (err) {
+      throw new Error('Error al obtener vacantes', err)
+    }
+  }
+
+  async function listVacantesFiltros({ emailEmpresa, municipio, area, salarioMin, salarioMax }) {
+    let newVacantes
+    try {
+      if (municipio !== 'Todos') {
+        newVacantes = await DataStore.query(Vacante, c => c.and(c => [c.visible.eq(true), c.numeroPlazas.gt(0), c.emailEmpresa.eq(emailEmpresa), c.municipio.eq(municipio)]), {
+          sort: s => s.createdAt(SortDirection.DESCENDING)
+        })
+      }
+
+      setVacantesVisibles(newVacantes)
+    } catch (e) {
+      throw new Error('Error al obtener vacantes', e)
+    }
   }
 
   async function listVacante(id) {
@@ -193,9 +212,9 @@ export function useManageVacantes() {
     return true
   }
 
-  async function listVacantesNoVisibles() {
+  async function listVacantesNoVisibles({ emailEmpresa }) {
     try {
-      const newVacantes = await DataStore.query(Vacante, c => c.and(c => [c.visible.eq(false), c.numeroPlazas.gt(0)]), {
+      const newVacantes = await DataStore.query(Vacante, c => c.and(c => [c.visible.eq(false), c.numeroPlazas.gt(0), c.emailEmpresa.eq(emailEmpresa)]), {
         sort: s => s.createdAt(SortDirection.DESCENDING)
       })
 

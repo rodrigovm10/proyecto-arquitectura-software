@@ -8,15 +8,18 @@ export function useRegister() {
 
   const handleInputChange = e => {
     const { value, name } = e.target
-    let newValue
-    name === 'rfc' ? (newValue = transformToUppercase({ value })) : (newValue = '')
-    console.log(name)
+    if (name === 'rfc') {
+      let newValue
+      newValue = transformToUppercase({ value })
+      setDatosEmpresa(prevDatosEmpresa => ({
+        ...prevDatosEmpresa,
+        rfc: newValue
+      }))
+    }
     setDatosEmpresa(prevDatosEmpresa => ({
       ...prevDatosEmpresa,
-      [name]: value,
-      rfc: newValue
+      [name]: value
     }))
-    console.log(datosEmpresa)
     inputValidation({ value, name })
   }
 

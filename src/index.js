@@ -10,7 +10,6 @@ import { FormEmpresa } from './components/Empresa/FormEmpresa'
 import { RegistroEmpresa } from './pages/RegistroEmpresa'
 import { FormVacante } from './pages/FormVacante'
 import LoginBdt from './pages/BDT/LoginBdt'
-import InicioBdT from './pages/BDT/InicioBdT'
 import LandingBdt from '../src/pages/LandingBdt'
 import RegistroBdT from './pages/BDT/RegistroBdT'
 import { Amplify } from 'aws-amplify'
@@ -24,6 +23,8 @@ import { DataVacanteProvider } from './context/DataVacanteContext'
 import { FormVacanteEdit } from './pages/FormVacanteEdit'
 import Error from './components/Error'
 import { BuscarEmpleo } from './pages/BDT/BuscarEmpleo'
+import { OportunidadesLaborales } from './pages/BDT/OportunidadesLaborales'
+import { VacantesPostulados } from './pages/Empresa/VacantesPostulados'
 
 Amplify.configure(awsExports)
 
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
     path: '/inicio-empresa',
     element: <LandingEmpresa />
   },
+  {
+    path: '/postulados',
+    element: <VacantesPostulados />
+  },
   //BDT
   {
     path: '/login-bdt',
@@ -67,6 +72,10 @@ const router = createBrowserRouter([
     element: <LandingBdt />
   },
   {
+    path: '/oportunidades-laborales',
+    element: <OportunidadesLaborales />
+  },
+  {
     path: 'buscar-empleo',
     element: <BuscarEmpleo />
   },
@@ -79,7 +88,6 @@ const router = createBrowserRouter([
       </DataVacanteProvider>
     )
   },
-
   {
     path: '/vacantes',
     element: <Vacantes />
