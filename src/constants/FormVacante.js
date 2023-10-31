@@ -72,7 +72,7 @@ export const DATOS_SALARIO = [
   },
   {
     id: 2,
-    campo: 'Salario máxmio',
+    campo: 'Salario máximo',
     nombre: 'salarioMax',
     type: 'text',
     min: 0,
