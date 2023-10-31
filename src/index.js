@@ -22,8 +22,7 @@ import { Vacantes } from './pages/Vacantes/Vacantes'
 import { VacanteDatos } from './pages/Vacantes/VacanteDatos'
 import { DataVacanteProvider } from './context/DataVacanteContext'
 import { FormVacanteEdit } from './pages/FormVacanteEdit'
-import Loading2 from './components/Loading2'
-import { BuscarEmpleo } from './pages/BDT/BuscarEmpleo'
+import Error from './components/Error'
 
 Amplify.configure(awsExports)
 
@@ -97,8 +96,8 @@ const router = createBrowserRouter([
     )
   },
   {
-    path: '/loading',
-    element: <Loading2 />
+    path: '/error',
+    element: <Error />
   }
 ])
 

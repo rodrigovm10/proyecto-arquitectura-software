@@ -12,7 +12,7 @@ export default function FilesBDT({ files, setFiles }) {
       const fileName = 'img/' + file.name; 
       await Storage.put(fileName, file, { level: 'public', type: file.type });
 
-      const imageUrl = `https://redlaboral.s3.amazonaws.com/public/${fileName}`;
+      const imageUrl = `https://redlaboral19257eadb6ca46f884138dce31d01e60230004-dev.s3.amazonaws.com/public/${fileName}`;
       setFiles({ ...files, imagenBDTUrl: imageUrl });
     } catch (error) {
       console.error('Error uploading image:', error);
@@ -28,7 +28,7 @@ export default function FilesBDT({ files, setFiles }) {
       const fileName = 'pdf/' + file.name; 
       await Storage.put(fileName, file, { level: 'public', type: file.type });
 
-      const pdfUrl = `https://redlaboral.s3.amazonaws.com/public/${fileName}`;
+      const pdfUrl = `https://redlaboral19257eadb6ca46f884138dce31d01e60230004-dev.s3.amazonaws.com/public/${fileName}`;
       setFiles({ ...files, 	pdfImagenUrl: pdfUrl });
 
       console.log('Uploaded PDF URL:', pdfUrl);

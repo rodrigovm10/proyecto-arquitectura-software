@@ -78,6 +78,7 @@
   },
   "parameters": {
     "AMPLIFY_function_S3Trigger110393e5_deploymentBucketName": {
+<<<<<<< HEAD
       "usedBy": [
         {
           "category": "function",
@@ -94,18 +95,36 @@
       ]
     },
     "AMPLIFY_storage_redlaboral913971a0_bucketName": {
+=======
+>>>>>>> mario
       "usedBy": [
         {
-          "category": "storage",
-          "resourceName": "redlaboral913971a0"
+          "category": "function",
+          "resourceName": "S3Trigger110393e5"
         }
       ]
     },
-    "AMPLIFY_storage_redlaboral913971a0_region": {
+    "AMPLIFY_function_S3Trigger110393e5_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "S3Trigger110393e5"
+        }
+      ]
+    },
+    "AMPLIFY_storage_redlaboralc3e6ad68_bucketName": {
       "usedBy": [
         {
           "category": "storage",
-          "resourceName": "redlaboral913971a0"
+          "resourceName": "redlaboralc3e6ad68"
+        }
+      ]
+    },
+    "AMPLIFY_storage_redlaboralc3e6ad68_region": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "redlaboralc3e6ad68"
         }
       ]
     },

@@ -15,11 +15,21 @@
       "auth": {
         "RedLaboral": {}
       },
+      "api": {
+        "RedLaboral": {}
+      },
+      "function": {
+        "S3Trigger110393e5": {
+          "deploymentBucketName": "amplify-proyectoarquitectura-dev-230004-deployment",
+          "s3Key": "amplify-builds/S3Trigger110393e5-6d7845562b7161776963-build.zip"
+        }
+      },
       "storage": {
-        "redlaboral913971a0": {
-          "bucketName": "amplify-proyectoarquitectura-dev-230004-deployment",
+        "redlaboralc3e6ad68": {
+          "bucketName": "redlaboral19257eadb6ca46f884138dce31d01e60230004-dev",
           "region": "us-east-1"
         },
+<<<<<<< HEAD
         "s33d3f857e": {},
         "redlaboralc3e6ad68": {
           "bucketName": "redlaboral19257eadb6ca46f884138dce31d01e60230004-dev",
@@ -32,6 +42,9 @@
           "deploymentBucketName": "amplify-proyectoarquitectura-dev-230004-deployment",
           "s3Key": "amplify-builds/S3Trigger110393e5-6d7845562b7161776963-build.zip"
         }
+=======
+        "s3575ad62a": {}
+>>>>>>> mario
       }
     }
   }
