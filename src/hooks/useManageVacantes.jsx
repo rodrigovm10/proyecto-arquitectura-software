@@ -111,23 +111,129 @@ export function useManageVacantes() {
       newVacantes = await DataStore.query(Vacante, c => c.and(c => [c.visible.eq(true), c.numeroPlazas.gt(0)]), {
         sort: s => s.createdAt(SortDirection.DESCENDING)
       })
-      console.log(newVacantes)
+
       setVacantesVisibles(newVacantes)
     } catch (err) {
       throw new Error('Error al obtener vacantes', err)
     }
   }
 
-  async function listVacantesFiltros({ emailEmpresa, municipio, area, salarioMin, salarioMax }) {
+  async function listVacantesFiltros({ filtros }) {
+    const { municipio, area, salarioMin, salarioMax } = filtros
     let newVacantes
     try {
-      if (municipio !== 'Todos') {
-        newVacantes = await DataStore.query(Vacante, c => c.and(c => [c.visible.eq(true), c.numeroPlazas.gt(0), c.emailEmpresa.eq(emailEmpresa), c.municipio.eq(municipio)]), {
+      //NO FILTROS
+      if (municipio === 'Todos' && area === 'Todas' && salarioMin === 0 && salarioMax === 100000) {
+        newVacantes = await DataStore.query(Vacante, c => c.and(c => [c.visible.eq(true), c.numeroPlazas.gt(0)]), {
           sort: s => s.createdAt(SortDirection.DESCENDING)
         })
+        setVacantesVisibles(newVacantes)
+        return
       }
-
-      setVacantesVisibles(newVacantes)
+      //FILTRO POR MUNICIPIO
+      if (municipio !== 'Todos' && area === 'Todas' && salarioMin === 0 && salarioMax === 100000) {
+        let newVacantes = await DataStore.query(Vacante, c => c.and(c => [c.visible.eq(true), c.numeroPlazas.gt(0), c.municipio.eq(municipio)]), {
+          sort: s => s.createdAt(SortDirection.DESCENDING)
+        })
+        setVacantesVisibles(newVacantes)
+        return
+      }
+      //FILTRO POR ÁREAS
+      if (area !== 'Todas' && municipio === 'Todos' && salarioMin === 0 && salarioMax === 100000) {
+        newVacantes = await DataStore.query(Vacante, c => c.and(c => [c.visible.eq(true), c.numeroPlazas.gt(0), c.area.eq(area)]), {
+          sort: s => s.createdAt(SortDirection.DESCENDING)
+        })
+        setVacantesVisibles(newVacantes)
+        return
+      }
+      //FILTRO POR SALARIO MÍNIMO
+      if (salarioMin !== 0 && area === 'Todas' && municipio === 'Todos' && salarioMax === 100000) {
+        newVacantes = await DataStore.query(Vacante, c => c.and(c => [c.visible.eq(true), c.numeroPlazas.gt(0), c.salarioMin.ge(salarioMin)]), {
+          sort: s => s.createdAt(SortDirection.DESCENDING)
+        })
+        setVacantesVisibles(newVacantes)
+        return
+      }
+      //FILTRO POR SALARIO MÁXIMO
+      if (salarioMax !== 100000 && area === 'Todas' && municipio === 'Todos' && salarioMin === 0) {
+        newVacantes = await DataStore.query(Vacante, c => c.and(c => [c.visible.eq(true), c.numeroPlazas.gt(0), c.salarioMax.le(salarioMax)]), {
+          sort: s => s.createdAt(SortDirection.DESCENDING)
+        })
+        setVacantesVisibles(newVacantes)
+        return
+      }
+      //FILTRO POR SALARIO MÍNIMO Y SALARIO MÁXIMO
+      if (salarioMax !== 100000 && salarioMin !== 0 && area === 'Todas' && municipio === 'Todos') {
+        newVacantes = await DataStore.query(Vacante, c => c.and(c => [c.visible.eq(true), c.numeroPlazas.gt(0), c.salarioMin.ge(salarioMin), c.salarioMax.le(salarioMax)]), {
+          sort: s => s.createdAt(SortDirection.DESCENDING)
+        })
+        setVacantesVisibles(newVacantes)
+        return
+      }
+      //FILTRO POR MUNICIPIO Y ÁREAS
+      if (municipio !== 'Todos' && area !== 'Todas' && salarioMin === 0 && salarioMax === 100000) {
+        newVacantes = await DataStore.query(Vacante, c => c.and(c => [c.visible.eq(true), c.numeroPlazas.gt(0), c.municipio.eq(municipio), c.area.eq(area)]), {
+          sort: s => s.createdAt(SortDirection.DESCENDING)
+        })
+        setVacantesVisibles(newVacantes)
+        return
+      }
+      //FILTRO POR MUNICIPIO Y SALARIO MÍNIMO
+      if (municipio !== 'Todos' && area === 'Todas' && salarioMin !== 0 && salarioMax === 100000) {
+        newVacantes = await DataStore.query(Vacante, c => c.and(c => [c.visible.eq(true), c.numeroPlazas.gt(0), c.municipio.eq(municipio), c.salarioMin.ge(salarioMin)]), {
+          sort: s => s.createdAt(SortDirection.DESCENDING)
+        })
+        setVacantesVisibles(newVacantes)
+        return
+      }
+      //FILTRO POR MUNICIPIO Y SALARIO MÁXMIO
+      if (municipio !== 'Todos' && area === 'Todas' && salarioMin === 0 && salarioMax !== 100000) {
+        newVacantes = await DataStore.query(Vacante, c => c.and(c => [c.visible.eq(true), c.numeroPlazas.gt(0), c.municipio.eq(municipio), c.salarioMax.ge(salarioMax)]), {
+          sort: s => s.createdAt(SortDirection.DESCENDING)
+        })
+        setVacantesVisibles(newVacantes)
+        return
+      }
+      //FILTRO POR MUNICIPIO Y SALARIO MÍNIMO Y SALARIO MÁXIMO
+      if (municipio !== 'Todos' && area === 'Todas' && salarioMin !== 0 && salarioMax !== 100000) {
+        newVacantes = await DataStore.query(Vacante, c => c.and(c => [c.visible.eq(true), c.numeroPlazas.gt(0), c.municipio.eq(municipio), c.salarioMin.ge(salarioMin), c.salarioMax.le(salarioMax)]), {
+          sort: s => s.createdAt(SortDirection.DESCENDING)
+        })
+        setVacantesVisibles(newVacantes)
+        return
+      }
+      //FILTRO POR TODO
+      if (municipio !== 'Todos' && area !== 'Todas' && salarioMin !== 0 && salarioMax !== 100000) {
+        newVacantes = await DataStore.query(Vacante, c => c.and(c => [c.visible.eq(true), c.numeroPlazas.gt(0), c.municipio.eq(municipio), c.salarioMin.ge(salarioMin), c.salarioMax.le(salarioMax), c.area.eq(area)]), {
+          sort: s => s.createdAt(SortDirection.DESCENDING)
+        })
+        setVacantesVisibles(newVacantes)
+        return
+      }
+      // FILTRO POR ÁREA Y SALARIO MÍNIMO
+      if (municipio === 'Todos' && area !== 'Todas' && salarioMin !== 0 && salarioMax === 100000) {
+        newVacantes = await DataStore.query(Vacante, c => c.and(c => [c.visible.eq(true), c.numeroPlazas.gt(0), c.area.eq(area), c.salarioMin.ge(salarioMin)]), {
+          sort: s => s.createdAt(SortDirection.DESCENDING)
+        })
+        setVacantesVisibles(newVacantes)
+        return
+      }
+      // FILTRO POR ÁREA Y SALARIO MÁXIMO
+      if (municipio === 'Todos' && area !== 'Todas' && salarioMin === 0 && salarioMax !== 100000) {
+        newVacantes = await DataStore.query(Vacante, c => c.and(c => [c.visible.eq(true), c.numeroPlazas.gt(0), c.area.eq(area), c.salarioMax.le(salarioMax)]), {
+          sort: s => s.createdAt(SortDirection.DESCENDING)
+        })
+        setVacantesVisibles(newVacantes)
+        return
+      }
+      // FILTRO POR ÁREA Y SALARIO MÁXIMO Y SALARIO MÍNOIMO
+      if (municipio === 'Todos' && area !== 'Todas' && salarioMin !== 0 && salarioMax !== 100000) {
+        newVacantes = await DataStore.query(Vacante, c => c.and(c => [c.visible.eq(true), c.numeroPlazas.gt(0), c.area.eq(area), c.salarioMin.ge(salarioMin), c.salarioMax.le(salarioMax)]), {
+          sort: s => s.createdAt(SortDirection.DESCENDING)
+        })
+        setVacantesVisibles(newVacantes)
+        return
+      }
     } catch (e) {
       throw new Error('Error al obtener vacantes', e)
     }
@@ -222,5 +328,20 @@ export function useManageVacantes() {
     } catch (error) {}
   }
 
-  return { saveVacanteOnDataStore, listVacantes, vacantesNoVisibles, vacantesVisibles, listVacantesNoVisibles, handleChangeVacanteStatus, isVacanteVisible, listVacante, vacante, deleteVacante, updateStatusVacante, isVacanteLoaded, updateVacante }
+  return {
+    saveVacanteOnDataStore,
+    listVacantes,
+    vacantesNoVisibles,
+    vacantesVisibles,
+    listVacantesNoVisibles,
+    handleChangeVacanteStatus,
+    isVacanteVisible,
+    listVacante,
+    vacante,
+    deleteVacante,
+    updateStatusVacante,
+    isVacanteLoaded,
+    updateVacante,
+    listVacantesFiltros
+  }
 }

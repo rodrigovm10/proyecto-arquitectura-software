@@ -4,14 +4,18 @@ import { useEffect } from 'react'
 import { VacanteBDT } from './VacanteBDT'
 import { Filtros } from './Filtros'
 import { useSession } from '../../hooks/useSession'
+import { useFiltros } from '../../hooks/useFiltros'
+import { SinVacantes } from './SinVacantes'
 
 export function VacantesBDT() {
-  const { listVacantes, vacantesVisibles } = useManageVacantes()
+  const { listVacantesFiltros, vacantesVisibles } = useManageVacantes()
   const { dataSession } = useSession()
+  const { filtros, setFiltros } = useFiltros()
 
   useEffect(() => {
-    listVacantes({ emailEmpresa: dataSession.email })
-  }, [])
+    listVacantesFiltros({ filtros })
+    console.log(dataSession)
+  }, [filtros])
 
   return (
     <>
@@ -28,19 +32,22 @@ export function VacantesBDT() {
           mb='2rem'>
           En esta sección podrás visualizar las vacantes y postularte a ellas
         </Text>
-        <Filtros />
+        <Filtros
+          filtros={filtros}
+          setFiltros={setFiltros}
+        />
         <Grid mt='2rem'>
           <GridItem>
             <Text
               fontSize='md'
               as='i'
               opacity='0.8'>
-              {`${vacantesVisibles.length} resultados`}
+              {`${vacantesVisibles?.length} resultados`}
             </Text>
           </GridItem>
         </Grid>
       </Stack>
-      <VacanteBDT vacantes={vacantesVisibles} />
+      {!vacantesVisibles?.length ? <SinVacantes hasButton={false}>No hay vacantes con los filtros proporcionados</SinVacantes> : <VacanteBDT vacantes={vacantesVisibles} />}
     </>
   )
 }

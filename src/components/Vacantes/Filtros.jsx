@@ -1,7 +1,24 @@
 import { Box, Flex, FormLabel, Heading, Select, NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper, ButtonGroup, Button } from '@chakra-ui/react'
 import { AREA_EMPRESA_FILTROS, MUNICIPIOS_FILTROS } from '../../constants/Datos'
 
-export function Filtros() {
+export function Filtros({ filtros, setFiltros }) {
+  const handleChangeFiltros = e => {
+    const { name, value } = e.target
+    console.log(name)
+    setFiltros(prevFiltros => ({ ...prevFiltros, [name]: value }))
+  }
+
+  const handleClickCleanFilter = () => {
+    setFiltros({ municipio: 'Todos', area: 'Todas', salarioMin: 0, salarioMax: 100000 })
+  }
+
+  const handleNumberChange = ({ value, name }) => {
+    setFiltros(prevFiltros => ({
+      ...prevFiltros,
+      [name]: parseFloat(value)
+    }))
+  }
+
   return (
     <Box>
       <Heading
@@ -17,9 +34,8 @@ export function Filtros() {
           <Select
             focusBorderColor='#ea754b'
             name='municipio'
-            // value={datosVacante.municipio}
-            // onChange={handleInputChange}
-          >
+            value={filtros.municipio}
+            onChange={handleChangeFiltros}>
             {MUNICIPIOS_FILTROS.map((municipio, i) => (
               <option
                 value={municipio}
@@ -32,12 +48,10 @@ export function Filtros() {
         <Box>
           <FormLabel>Área</FormLabel>
           <Select
-            placeholder='Seleccione el área de la empresa'
             name='area'
             focusBorderColor='#ea754b'
-            // onChange={handleInputChange}
-            // value={datosVacante.area}
-          >
+            onChange={handleChangeFiltros}
+            value={filtros.area}>
             {AREA_EMPRESA_FILTROS.map((area, i) => (
               <option
                 value={area}
@@ -52,8 +66,11 @@ export function Filtros() {
           <NumberInput
             focusBorderColor='#ea754b'
             defaultValue={0}
+            name={'salarioMin'}
             min={0}
-            max={100000}>
+            max={100000}
+            value={filtros.salarioMin ? parseFloat(filtros.salarioMin) : 0}
+            onChange={value => handleNumberChange({ value, name: 'salarioMin' })}>
             <NumberInputField />
             <NumberInputStepper>
               <NumberIncrementStepper />
@@ -65,9 +82,11 @@ export function Filtros() {
           <FormLabel>Salario Máximo</FormLabel>
           <NumberInput
             focusBorderColor='#ea754b'
-            defaultValue={0}
+            defaultValue={100000}
             min={0}
-            max={100000}>
+            max={100000}
+            value={filtros.salarioMax ? parseFloat(filtros.salarioMax) : 0}
+            onChange={value => handleNumberChange({ value, name: 'salarioMax' })}>
             <NumberInputField />
             <NumberInputStepper>
               <NumberIncrementStepper />
@@ -83,13 +102,9 @@ export function Filtros() {
         <Button
           color='white'
           bg='#ea754b'
-          _hover={{ bg: '#ff964f' }}>
-          Buscar
-        </Button>
-        <Button
-          bg='#181c24'
-          color='#fff'>
-          Limpiar Filtros
+          _hover={{ bg: '#ff964f' }}
+          onClick={handleClickCleanFilter}>
+          Limpiar filtros
         </Button>
       </ButtonGroup>
     </Box>
