@@ -250,17 +250,25 @@ const ComponentePerfilBdT = ({ email,usuario, setUsuario, userID }) => {
           <PopoverCloseButton />
           <PopoverHeader>Opciones de PDF</PopoverHeader>
           <PopoverBody>
-            <a href={usuario.pdfImagenUrl} download="nombre-del-archivo.pdf" >
-              Descargar
-            </a>
-            
-            {isEditingPdf && (
+            <Center>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+          <a href={usuario.pdfImagenUrl} download="nombre-del-archivo.pdf">
+            Descargar
+          </a>
+
+          {isEditingPdf && (
+            <div >
               <PdfEditModal
                 pdfUrl={usuario.pdfImagenUrl}
                 onSave={closePdfEditModal}
                 usuario={usuario}
               />
-            )}
+            </div>
+          )}
+        </div>
+</Center>
+
+
           </PopoverBody>
         </PopoverContent>
       </Popover>
