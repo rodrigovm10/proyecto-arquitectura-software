@@ -1,8 +1,10 @@
-import { Grid, GridItem, Heading, Stack, Text } from '@chakra-ui/react'
+import { Box, Grid, GridItem, Heading, Stack, Text } from '@chakra-ui/react'
 import { useJobsApplications } from '../../hooks/useJobsApplications'
 import { useEffect } from 'react'
 import { useSession } from '../../hooks/useSession'
 import { Postulado } from './Postulado'
+import { Footer } from '../../landing/Footer'
+import { Header } from '../Header'
 
 export function Postulados() {
   const { listOportunidadesEmpresa, oportunidades } = useJobsApplications()
@@ -14,31 +16,35 @@ export function Postulados() {
 
   return (
     <>
-      <Stack
-        mt='2rem'
-        ml='2rem'>
-        <Heading
-          as='h2'
-          size='2xl'>
-          Postulados
-        </Heading>
-        <Text
-          fontSize='xl'
-          mb='2rem'>
-          En esta sección podrás visualizar las vacantes a los que los usuarios se han postulado
-        </Text>
-        <Grid mt='2rem'>
-          <GridItem>
-            <Text
-              fontSize='md'
-              as='i'
-              opacity='0.8'>
-              {`${oportunidades?.length} resultados`}
-            </Text>
-          </GridItem>
-        </Grid>
-      </Stack>
-      <Postulado postulados={oportunidades} />
+      <Header nombreDelGrupo='Empresa' />
+      <Box>
+        <Stack
+          mt='2rem'
+          ml='2rem'>
+          <Heading
+            as='h2'
+            size='2xl'>
+            Postulados
+          </Heading>
+          <Text
+            fontSize='xl'
+            mb='2rem'>
+            En esta sección podrás visualizar las vacantes a los que los usuarios se han postulado
+          </Text>
+          <Grid mt='2rem'>
+            <GridItem>
+              <Text
+                fontSize='md'
+                as='i'
+                opacity='0.8'>
+                {`${oportunidades?.length} resultados`}
+              </Text>
+            </GridItem>
+          </Grid>
+        </Stack>
+        <Postulado postulados={oportunidades} />
+      </Box>
+      {/* <Footer /> */}
     </>
   )
 }

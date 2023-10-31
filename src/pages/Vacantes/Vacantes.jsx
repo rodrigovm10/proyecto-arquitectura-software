@@ -7,6 +7,7 @@ import { ButtonVacante } from '../../components/ButtonVacante'
 import { useManageVacantes } from '../../hooks/useManageVacantes'
 import { Footer } from '../../landing/Footer'
 import { useSession } from '../../hooks/useSession'
+import Loading2 from '../../components/Loading2'
 
 export function Vacantes() {
   const { listVacantes, vacantesVisibles, vacantesNoVisibles, listVacantesNoVisibles, isVacanteVisible, handleChangeVacanteStatus } = useManageVacantes()

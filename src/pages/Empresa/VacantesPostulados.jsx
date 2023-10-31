@@ -5,7 +5,6 @@ import { Footer } from '../../landing/Footer'
 export function VacantesPostulados() {
   return (
     <>
-      <Header nombreDelGrupo='Empresa' />
       <Postulados />
       <Footer />
     </>

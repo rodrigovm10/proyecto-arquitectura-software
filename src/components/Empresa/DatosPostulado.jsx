@@ -1,7 +1,19 @@
-import { Box, Card, CardBody, CardHeader, Flex, Grid, Heading, Stack, StackDivider, Text } from '@chakra-ui/react'
+import { Avatar, Box, Card, CardBody, CardHeader, Flex, Grid, Heading, Stack, StackDivider, Text } from '@chakra-ui/react'
 import { TagsDatosVacante } from '../Vacantes/TagsDatosVacante'
+import { useJobsApplications } from '../../hooks/useJobsApplications'
+import { useEffect, useState } from 'react'
 
 export function DatosPostulado({ postulado }) {
+  const { getBDT } = useJobsApplications()
+  const [bdt, setBdt] = useState()
+
+  useEffect(() => {
+    const fetchBDT = async () => {
+      const newBdt = await getBDT({ emailBDT: postulado.emailBDT })
+      setBdt(newBdt)
+    }
+    fetchBDT()
+  }, [postulado])
   return (
     <Flex justifyContent='center'>
       <Card
@@ -9,22 +21,32 @@ export function DatosPostulado({ postulado }) {
         h='40rem'
         overflowY='scroll'>
         <CardHeader>
-          <Flex justifyContent='space-between'>
+          <Flex
+            justifyContent='space-between'
+            gap='2rem'>
+            <Box>
+              {' '}
+              <Avatar
+                bg='gray.400'
+                color='white'
+                alt={'foto postulado'}
+                src={postulado.imagenBDTUrl}
+                sx={{ width: '8rem', height: '8rem', fontSize: '8rem' }}
+              />
+            </Box>
             <Box>
               <Heading
                 as='h2'
                 size='lg'>
-                {postulado.nombre}
+                {postulado.nombreBDT} {postulado.apellidosBDT}
               </Heading>
-              <Text>{postulado.descripcion}</Text>
+              <Text
+                mt='1rems'
+                opacity='0.6'>
+                Pongasé en contacto con el usuario para continuar con su proceso de contratación
+              </Text>
             </Box>
           </Flex>
-          <Heading
-            as='h3'
-            size='sm'
-            color='#ea754b'>
-            Postulado(a)
-          </Heading>
         </CardHeader>
         <CardBody>
           <Stack
@@ -42,32 +64,14 @@ export function DatosPostulado({ postulado }) {
                 columnGap='4rem'
                 rowGap='1rem'>
                 <Text>
-                  <strong>Dirección de la vacante:</strong> {postulado.ubicacion}
+                  <strong>Escolaridad:</strong> {postulado.escolaridadBDT}
                 </Text>
                 <Text>
-                  <strong>Número de plazas:</strong> {postulado.numeroPlazas}
-                </Text>
-                <Text>
-                  <strong>Tipo de contrato:</strong> {postulado.tipoContrato}
-                </Text>
-                <Text>
-                  <strong>Modalidad:</strong> {postulado.modalidad}
-                </Text>
-                <Text>
-                  <strong>Días laborales:</strong> {postulado.diasLaborales}
-                </Text>
-                <Text>
-                  <strong>Área:</strong> {postulado.area}
-                </Text>
-                <Text>
-                  <strong>Salario:</strong> ${postulado.salarioMin} - ${postulado.salarioMax} - {postulado.periodoPago}
-                </Text>
-                <Text>
-                  <strong>Jornada laboral:</strong> {postulado.jornadaLaboral}
+                  <strong>Género:</strong> {postulado.generoBDT}
                 </Text>
               </Grid>
             </Box>
-            <Box>
+            {/* <Box>
               <Heading
                 color='#ea754b'
                 as='h3'
@@ -95,21 +99,40 @@ export function DatosPostulado({ postulado }) {
                   <strong>Edad:</strong> {postulado.edadMin} años a {postulado.edadMax} años
                 </Text>
               </Grid>
-            </Box>
+            </Box> */}
             <TagsDatosVacante
-              titulo={'Prestaciones'}
+              titulo={'Idiomas del usuario'}
+              tags={bdt?.idioma}
+            />
+            <TagsDatosVacante
+              titulo={'Habilidades blandas del usuario'}
+              tags={bdt?.habilidadesBlandas}
+            />
+            <TagsDatosVacante
+              titulo={'Habilidades técnicas del usuario'}
+              tags={bdt?.habilidadesTecnicas}
+            />
+            <TagsDatosVacante
+              titulo={'Prestaciones de la vacante'}
               tags={postulado.prestaciones}
             />
             <TagsDatosVacante
-              titulo={'Habilidades blandas'}
+              titulo={'Habilidades blandas de la vacante'}
               tags={postulado.habilidadesBlandas}
             />
             <TagsDatosVacante
-              titulo={'Habilidades técnicas'}
+              titulo={'Habilidades técnicas de la vacante'}
               tags={postulado.habilidadesTecnicas}
             />
           </Stack>
         </CardBody>
+        <Flex>
+          <a
+            href={postulado.pdfImagenUrl}
+            download='nombre-del-archivo.pdf'>
+            Descargar CV
+          </a>
+        </Flex>
       </Card>
     </Flex>
   )

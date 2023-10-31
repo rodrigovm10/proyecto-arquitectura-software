@@ -3,13 +3,15 @@ import { useState } from 'react'
 import { LiaAddressCardSolid, LiaCalendarCheckSolid, LiaClockSolid, LiaMailBulkSolid, LiaMoneyBillWaveAltSolid, LiaPhoneAltSolid, LiaSchoolSolid } from 'react-icons/lia'
 import { SinVacantes } from '../Vacantes/SinVacantes'
 import { DatosPostulado } from './DatosPostulado'
-import { Email } from '../../assets/Icons'
+import { useSession } from '../../hooks/useSession'
 
 export function Postulado({ postulados }) {
+  const { getDataSession } = useSession('empresa')
   const [isPostuladoSelected, setIsPostuladoSelected] = useState(false)
   const [postuladoSelected, setPostuladoSelected] = useState()
 
   const handleClickOpenVacante = oportunidad => {
+    getDataSession()
     setPostuladoSelected(oportunidad)
     setIsPostuladoSelected(true)
   }
@@ -23,7 +25,7 @@ export function Postulado({ postulados }) {
           gap='2rem'
           flexDir='column'>
           {postulados?.map(postulado => {
-            const { nombre, area, diasLaborales, escolaridad, salarioMin, salarioMax, modalidad, id, nombreBDT, emailBDT, apellidosBDT, telefonoBDT } = postulado
+            const { nombre, area, diasLaborales, escolaridad, salarioMin, salarioMaximo, modalidad, id, nombreBDT, emailBDT, apellidosBDT, telefonoBDT } = postulado
             return (
               <Card
                 onClick={() => handleClickOpenVacante(postulado)}
@@ -62,7 +64,7 @@ export function Postulado({ postulados }) {
                       as='h3'
                       size='md'
                       p='0'>
-                      {nombre}
+                      Vacante: {nombre}
                     </Heading>
                     <Flex
                       gap='1rem'
@@ -74,7 +76,7 @@ export function Postulado({ postulados }) {
                       gap='1rem'
                       alignItems='center'>
                       <LiaMoneyBillWaveAltSolid />
-                      <Text>{`$${salarioMin} - $${salarioMax}`}</Text>
+                      <Text>{`$${salarioMin} - $${salarioMaximo}`}</Text>
                     </Flex>
                     <Flex
                       gap='1rem'

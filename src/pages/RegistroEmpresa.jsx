@@ -2,15 +2,14 @@ import { Navigate } from 'react-router-dom'
 import { FormEmpresa } from '../components/Empresa/FormEmpresa'
 import { useSession } from '../hooks/useSession'
 import { DatosEmpresaProvider } from '../context/DataEmpresaContext'
-import { useEffect } from 'react'
+import Loading2 from '../components/Loading2'
 
 export function RegistroEmpresa() {
-  const { dataSession, getDataSession, nombreGrupo } = useSession('Empresa')
-  useEffect(() => {
-    getDataSession()
-  }, [])
+  const { dataSession, nombreGrupo } = useSession('Empresa')
+
   return (
     <div>
+      <Loading2 />
       {dataSession.session && nombreGrupo === 'Empresa' && dataSession.cuentaExistente === 1 && <Navigate to='/inicio-empresa' />}
       {dataSession.session && nombreGrupo === 'Empresa' && dataSession.cuentaExistente === 0 && (
         <DatosEmpresaProvider>
