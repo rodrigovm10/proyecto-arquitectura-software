@@ -1,12 +1,26 @@
 import { Box, Button, Card, CardBody, CardHeader, Flex, Grid, Heading, Stack, StackDivider, Text } from '@chakra-ui/react'
 import { TagsDatosVacante } from './TagsDatosVacante'
 import { useAlerts } from '../../hooks/useAlerts'
+import { useJobsApplications } from '../../hooks/useJobsApplications'
+import { useSession } from '../../hooks/useSession'
+import { useEffect, useState } from 'react'
 
 export function DatosVacanteBDT({ vacante }) {
   const { applicationSubmissionAlert } = useAlerts()
+  const { dataSession } = useSession()
+  const { getBDT } = useJobsApplications()
+  const [bdt, setBdt] = useState()
   const handleClickApplicationSubmission = () => {
     applicationSubmissionAlert({ vacante })
   }
+  useEffect(() => {
+    const getBDTVacante = async () => {
+      const newBdt = await getBDT({ emailBDT: dataSession.email })
+      setBdt(newBdt)
+      console.log(newBdt)
+    }
+    getBDTVacante()
+  }, [])
   return (
     <Flex justifyContent='center'>
       <Card
@@ -24,13 +38,21 @@ export function DatosVacanteBDT({ vacante }) {
               <Text>{vacante.descripcion}</Text>
             </Box>
           </Flex>
-          <Button
-            bg='#ea754b'
-            color='#fff'
-            _hover={{ bg: '#ff964f' }}
-            onClick={handleClickApplicationSubmission}>
-            Postularse
-          </Button>
+          {bdt?.buscaEmpleo ? (
+            <Button
+              mt='1rem'
+              bg='#ea754b'
+              color='#fff'
+              _hover={{ bg: '#ff964f' }}
+              onClick={handleClickApplicationSubmission}>
+              Postularse
+            </Button>
+          ) : (
+            <Flex flexDir='column'>
+              <Text opacity='0.6'>Postulación no disponible</Text>
+              <Text opacity='0.6'>Lo sentimos, actualmente tu perfil indica que no estás buscando empleo. Si deseas postularte a esta vacante, por favor cambia tu estado a "¿Buscas empleo?" en tu perfil.</Text>
+            </Flex>
+          )}
         </CardHeader>
         <CardBody>
           <Stack

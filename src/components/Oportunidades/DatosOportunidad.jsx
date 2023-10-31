@@ -19,12 +19,11 @@ export function DatosOportunidad({ oportunidad }) {
               <Text>{oportunidad.descripcion}</Text>
             </Box>
           </Flex>
-          <Heading
-            as='h3'
-            size='sm'
-            color='#ea754b'>
-            Postulado(a)
-          </Heading>
+          <Text
+            mt='1rem'
+            opacity='0.6'>
+            Postulado(a), la empresa en cuestión se pondrá en contacto contigo
+          </Text>
         </CardHeader>
         <CardBody>
           <Stack
@@ -60,7 +59,7 @@ export function DatosOportunidad({ oportunidad }) {
                   <strong>Área:</strong> {oportunidad.area}
                 </Text>
                 <Text>
-                  <strong>Salario:</strong> ${oportunidad.salarioMin} - ${oportunidad.salarioMax} - {oportunidad.periodoPago}
+                  <strong>Salario:</strong> ${oportunidad.salarioMin} - ${oportunidad.salarioMaximo} - {oportunidad.periodoPago}
                 </Text>
                 <Text>
                   <strong>Jornada laboral:</strong> {oportunidad.jornadaLaboral}

@@ -1,5 +1,5 @@
 import { Card, CardBody, CardHeader, Flex, Grid, GridItem, Heading, Stack, Text } from '@chakra-ui/react'
-import { LiaAddressCardSolid, LiaCalendarCheckSolid, LiaClockSolid, LiaMoneyBillWaveAltSolid, LiaSchoolSolid } from 'react-icons/lia'
+import { LiaAddressCardSolid, LiaCalendarCheckSolid, LiaClockSolid, LiaMailBulkSolid, LiaMoneyBillWaveAltSolid, LiaSchoolSolid } from 'react-icons/lia'
 import { SinVacantes } from './SinVacantes'
 import { useState } from 'react'
 import { DatosVacanteBDT } from './DatosVacanteBDT'
@@ -22,7 +22,7 @@ export function VacanteBDT({ vacantes }) {
           gap='2rem'
           flexDir='column'>
           {vacantes?.map(vacante => {
-            const { nombre, nombreEmpresa, area, diasLaborales, escolaridad, salarioMin, salarioMax, modalidad, id } = vacante
+            const { nombre, nombreEmpresa, emailEmpresa, area, diasLaborales, escolaridad, salarioMin, salarioMax, modalidad, id } = vacante
             return (
               <Card
                 onClick={() => handleClickOpenVacante(vacante)}
@@ -40,7 +40,7 @@ export function VacanteBDT({ vacantes }) {
                     as='h3'
                     size='md'
                     p='0'>
-                    {nombre}
+                    Vacante: {nombre}
                   </Heading>
                 </CardHeader>
                 <CardBody>
@@ -79,8 +79,14 @@ export function VacanteBDT({ vacantes }) {
                       as='h3'
                       size='md'
                       p='0'>
-                      {nombreEmpresa}
+                      Empresa: {nombreEmpresa}
                     </Heading>
+                    <Flex
+                      gap='1rem'
+                      alignItems='center'>
+                      <LiaMailBulkSolid />
+                      <Text>{emailEmpresa}</Text>
+                    </Flex>
                   </Stack>
                 </CardBody>
               </Card>

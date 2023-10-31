@@ -1,6 +1,6 @@
 import { Card, CardBody, CardHeader, Flex, Grid, GridItem, Heading, Stack, Text } from '@chakra-ui/react'
 import { useState } from 'react'
-import { LiaAddressCardSolid, LiaCalendarCheckSolid, LiaClockSolid, LiaMoneyBillWaveAltSolid, LiaSchoolSolid } from 'react-icons/lia'
+import { LiaAddressCardSolid, LiaCalendarCheckSolid, LiaClockSolid, LiaMailBulkSolid, LiaMoneyBillWaveAltSolid, LiaSchoolSolid } from 'react-icons/lia'
 import { SinVacantes } from '../Vacantes/SinVacantes'
 import { DatosOportunidad } from './DatosOportunidad'
 
@@ -22,7 +22,7 @@ export function Oportunidad({ oportunidades }) {
           gap='2rem'
           flexDir='column'>
           {oportunidades?.map(oportunidad => {
-            const { nombre, nombreEmpresa, area, diasLaborales, escolaridad, salarioMin, salarioMax, modalidad, id } = oportunidad
+            const { nombre, nombreEmpresa, emailEmpresa, area, diasLaborales, escolaridad, salarioMin, salarioMaximo, modalidad, id } = oportunidad
             return (
               <Card
                 onClick={() => handleClickOpenVacante(oportunidad)}
@@ -39,8 +39,8 @@ export function Oportunidad({ oportunidades }) {
                   <Heading
                     as='h3'
                     size='md'
-                    p='0'>
-                    {nombre}
+                    pb='0'>
+                    Vacante: {nombre}
                   </Heading>
                 </CardHeader>
                 <CardBody>
@@ -55,7 +55,7 @@ export function Oportunidad({ oportunidades }) {
                       gap='1rem'
                       alignItems='center'>
                       <LiaMoneyBillWaveAltSolid />
-                      <Text>{`$${salarioMin} - $${salarioMax}`}</Text>
+                      <Text>{`$${salarioMin} - $${salarioMaximo}`}</Text>
                     </Flex>
                     <Flex
                       gap='1rem'
@@ -76,11 +76,18 @@ export function Oportunidad({ oportunidades }) {
                       <Text>{escolaridad}</Text>
                     </Flex>
                     <Heading
+                      mt='1rem'
                       as='h3'
                       size='md'
                       p='0'>
                       {nombreEmpresa}
                     </Heading>
+                    <Flex
+                      gap='1rem'
+                      alignItems='center'>
+                      <LiaMailBulkSolid />
+                      <Text>{emailEmpresa}</Text>
+                    </Flex>
                   </Stack>
                 </CardBody>
               </Card>

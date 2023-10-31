@@ -36,8 +36,7 @@ export function useJobsApplications() {
       ubicacion,
       id,
       empresaID,
-      nombreEmpresa,
-      apellidoBDT
+      nombreEmpresa
     } = vacante
     const oportunidad = new Oportunidades({
       nombre,
@@ -81,7 +80,6 @@ export function useJobsApplications() {
     })
     try {
       await DataStore.save(oportunidad)
-      console.log(oportunidad)
     } catch (err) {
       throw new Error('Error al guardar la oportunidad', err)
     }
@@ -97,7 +95,6 @@ export function useJobsApplications() {
       const newOportunidades = await DataStore.query(Oportunidades, c => c.emailBDT.eq(emailBDT), {
         sort: s => s.createdAt(SortDirection.DESCENDING)
       })
-      console.log(newOportunidades)
       setOportunidades(newOportunidades)
     } catch (error) {
       throw new Error('Error al listar las oportunidaes', error)
@@ -116,5 +113,5 @@ export function useJobsApplications() {
     }
   }
 
-  return { saveOportunidadesOnDataStore, listOportunidadesBDT, listOportunidadesEmpresa, oportunidades }
+  return { saveOportunidadesOnDataStore, listOportunidadesBDT, listOportunidadesEmpresa, oportunidades, getBDT }
 }

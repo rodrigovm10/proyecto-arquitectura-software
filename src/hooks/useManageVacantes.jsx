@@ -253,7 +253,7 @@ export function useManageVacantes() {
     try {
       await DataStore.delete(Vacante, id)
     } catch (error) {
-      console.error('Error al eliminar el registro:', error)
+      throw new Error('Error al eliminar la vacante', error)
     }
   }
 
@@ -267,7 +267,7 @@ export function useManageVacantes() {
 
       await DataStore.save(updatedVacante)
     } catch (error) {
-      console.error('Error al actualizar el registro:', error)
+      throw new Error('Error al actualizar la vacante', error)
     }
   }
 
@@ -295,11 +295,9 @@ export function useManageVacantes() {
             Object.assign(updatedItem, actualizaciones)
           })
         )
-      } else {
-        console.log('No se realizaron cambios en el registro.')
       }
     } catch (error) {
-      console.error('Error al actualizar el registro:', error)
+      throw new Error('Error al actualizar la vacante', error)
     }
   }
 
@@ -325,7 +323,9 @@ export function useManageVacantes() {
       })
 
       setVacantesNoVisibles(newVacantes)
-    } catch (error) {}
+    } catch (error) {
+      throw new Error('Error al listar las vacantes no visibles', error)
+    }
   }
 
   return {

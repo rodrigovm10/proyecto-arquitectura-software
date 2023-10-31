@@ -4,7 +4,6 @@ import { AREA_EMPRESA_FILTROS, MUNICIPIOS_FILTROS } from '../../constants/Datos'
 export function Filtros({ filtros, setFiltros }) {
   const handleChangeFiltros = e => {
     const { name, value } = e.target
-    console.log(name)
     setFiltros(prevFiltros => ({ ...prevFiltros, [name]: value }))
   }
 
