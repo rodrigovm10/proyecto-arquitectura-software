@@ -28,20 +28,28 @@ type EagerOportunidades = {
   readonly nivelIdioma?: (string | null)[] | null;
   readonly prestaciones?: (string | null)[] | null;
   readonly habilidadesBlandas?: (string | null)[] | null;
-  readonly habilidadesTecnicas?: string | null;
+  readonly habilidadesTecnicas?: (string | null)[] | null;
   readonly emailEmpresa?: string | null;
-  readonly visible?: string | null;
+  readonly visible?: boolean | null;
   readonly ubicacion?: string | null;
   readonly nombreEmpresa?: string | null;
   readonly salarioMaximo?: number | null;
-  readonly salarioMin?: string | null;
-  readonly idiomaConNivel?: string | null;
+  readonly salarioMin?: number | null;
+  readonly idiomaConNivel?: (string | null)[] | null;
   readonly municipio?: string | null;
   readonly jornadaLaboral?: string | null;
   readonly emailBDT?: string | null;
   readonly nombreBDT?: string | null;
   readonly bdtID: string;
   readonly vacanteID: string;
+  readonly empresaID: string;
+  readonly periodoPago?: string | null;
+  readonly apellidosBDT?: string | null;
+  readonly imagenBDTUrl?: string | null;
+  readonly pdfImagenUrl?: string | null;
+  readonly escolaridadBDT?: string | null;
+  readonly telefonoBDT?: string | null;
+  readonly generoBDT?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -68,20 +76,28 @@ type LazyOportunidades = {
   readonly nivelIdioma?: (string | null)[] | null;
   readonly prestaciones?: (string | null)[] | null;
   readonly habilidadesBlandas?: (string | null)[] | null;
-  readonly habilidadesTecnicas?: string | null;
+  readonly habilidadesTecnicas?: (string | null)[] | null;
   readonly emailEmpresa?: string | null;
-  readonly visible?: string | null;
+  readonly visible?: boolean | null;
   readonly ubicacion?: string | null;
   readonly nombreEmpresa?: string | null;
   readonly salarioMaximo?: number | null;
-  readonly salarioMin?: string | null;
-  readonly idiomaConNivel?: string | null;
+  readonly salarioMin?: number | null;
+  readonly idiomaConNivel?: (string | null)[] | null;
   readonly municipio?: string | null;
   readonly jornadaLaboral?: string | null;
   readonly emailBDT?: string | null;
   readonly nombreBDT?: string | null;
   readonly bdtID: string;
   readonly vacanteID: string;
+  readonly empresaID: string;
+  readonly periodoPago?: string | null;
+  readonly apellidosBDT?: string | null;
+  readonly imagenBDTUrl?: string | null;
+  readonly pdfImagenUrl?: string | null;
+  readonly escolaridadBDT?: string | null;
+  readonly telefonoBDT?: string | null;
+  readonly generoBDT?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -196,6 +212,7 @@ type EagerEmpresa = {
   readonly tipoSucursal?: string | null;
   readonly numero?: number | null;
   readonly Vacantes?: (Vacante | null)[] | null;
+  readonly Oportunidades?: (Oportunidades | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -220,6 +237,7 @@ type LazyEmpresa = {
   readonly tipoSucursal?: string | null;
   readonly numero?: number | null;
   readonly Vacantes: AsyncCollection<Vacante>;
+  readonly Oportunidades: AsyncCollection<Oportunidades>;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

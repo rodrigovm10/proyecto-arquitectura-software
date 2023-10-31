@@ -8,6 +8,7 @@ import FilesBDT from './FilesBDT';
 import { Storage } from 'aws-amplify';
 import Swal from 'sweetalert2'
 import { registroCompleto } from '../../../hooks/useSendEmail';
+import NavegadorBDT from '../inicioBdT/NavegadorBDT';
 export default function RegistrarBdt({email}) {
   const [datosInforPersonal, setEDatosInforPersonal] = useState({nombre: '',apellidos: '', curp: '', fechaNacimiento: '',telefono: '',escolaridad: '',genero: '',correo: email,municipio: '',colonia: '',calle: '',codigoPostal: '',});
   const [habilidades, setHabilidades] = useState({
@@ -20,7 +21,7 @@ export default function RegistrarBdt({email}) {
   
   const [files, setFiles]=useState({imagenBDTUrl:null,	pdfImagenUrl:null})
 
-  console.log(files.imagenBDTUrl);
+
   const handleSubmit = async () => {
     registroCompleto(datosInforPersonal,email)
     // Verifica si algún campo en datosInforPersonal está vacío
@@ -42,14 +43,14 @@ export default function RegistrarBdt({email}) {
       })
     } else {
       // Todos los campos están completos, procede con el registro en la base de datos
-      console.log("Situación", datosSituacion);
-      console.log('files',files.imagenBDTUrl);
+
       await registarBdE(datosInforPersonal, habilidades, datosSituacion, files);//
     }
   }
 
   return (
     <div>
+      <NavegadorBDT/>
       <div>
         <RegistroInfoPersonal
           datosInforPersonal={datosInforPersonal}
