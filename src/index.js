@@ -23,6 +23,7 @@ import { VacanteDatos } from './pages/Vacantes/VacanteDatos'
 import { DataVacanteProvider } from './context/DataVacanteContext'
 import { FormVacanteEdit } from './pages/FormVacanteEdit'
 import Error from './components/Error'
+import { BuscarEmpleo } from './pages/BDT/BuscarEmpleo'
 
 Amplify.configure(awsExports)
 
