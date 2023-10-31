@@ -10,12 +10,13 @@ export function DatosSucursalForm() {
         as='h3'
         size='md'
         mb='1rem'>
-        Datos sucursales
+        Datos sucursal
       </Heading>
       <Flex
         gap={5}
-        justify='space-between'
-        direction={{ base: 'column', sm: 'row' }}>
+        // justify='space-between'
+        // direction={{ base: 'column', sm: 'row' }}
+      >
         {DATOS_EMPRESA.map(campos => {
           const { id, campo, nombre, datos } = campos
           return (

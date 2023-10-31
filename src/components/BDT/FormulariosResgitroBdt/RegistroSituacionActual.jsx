@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import {Box,Center,Card,Radio,RadioGroup,FormControl,FormLabel, HStack,} from "@chakra-ui/react";
+import {Box,Center,Card,Radio,RadioGroup,FormControl,FormLabel, HStack,Heading} from "@chakra-ui/react";
 
 
 function RegistroBdESituacionActual({ datosSituacion, setDatosSituacion }) {
@@ -26,6 +26,9 @@ function RegistroBdESituacionActual({ datosSituacion, setDatosSituacion }) {
         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <Box spacing={2} className="m-4 text-center">
           
+          <Heading fontSize="xl" mb="4" textAlign="center" p="4">
+          Habilidades
+        </Heading>
             <FormControl display="flex"
               alignItems="center"
               justifyContent="space-between" // Añade esta línea

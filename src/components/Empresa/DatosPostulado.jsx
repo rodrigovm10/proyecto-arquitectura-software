@@ -69,37 +69,14 @@ export function DatosPostulado({ postulado }) {
                 <Text>
                   <strong>Género:</strong> {postulado.generoBDT}
                 </Text>
+                <Text>
+                  <strong>Correo:</strong> {postulado.emailBDT}
+                </Text>
+                <Text>
+                  <strong>Télefono:</strong> {postulado.telefonoBDT}
+                </Text>
               </Grid>
             </Box>
-            {/* <Box>
-              <Heading
-                color='#ea754b'
-                as='h3'
-                size='md'>
-                Requisitos
-              </Heading>
-              <Grid
-                templateColumns='repeat(2, 1fr)'
-                columnGap='4rem'
-                rowGap='1rem'>
-                <Text>
-                  <strong>Experiencia laboral:</strong> {postulado.experienciaLaboral}
-                </Text>
-                <Text>
-                  <strong>Género:</strong> {postulado.genero}
-                </Text>
-                <TagsDatosVacante
-                  titulo={'Idiomas'}
-                  tags={postulado.idioma}
-                />
-                <Text>
-                  <strong>Escolaridad:</strong> {postulado.escolaridad}
-                </Text>
-                <Text>
-                  <strong>Edad:</strong> {postulado.edadMin} años a {postulado.edadMax} años
-                </Text>
-              </Grid>
-            </Box> */}
             <TagsDatosVacante
               titulo={'Idiomas del usuario'}
               tags={bdt?.idioma}
@@ -112,25 +89,16 @@ export function DatosPostulado({ postulado }) {
               titulo={'Habilidades técnicas del usuario'}
               tags={bdt?.habilidadesTecnicas}
             />
-            <TagsDatosVacante
-              titulo={'Prestaciones de la vacante'}
-              tags={postulado.prestaciones}
-            />
-            <TagsDatosVacante
-              titulo={'Habilidades blandas de la vacante'}
-              tags={postulado.habilidadesBlandas}
-            />
-            <TagsDatosVacante
-              titulo={'Habilidades técnicas de la vacante'}
-              tags={postulado.habilidadesTecnicas}
-            />
           </Stack>
         </CardBody>
-        <Flex>
+        <Flex
+          justifyContent='center'
+          my='1rem'>
           <a
+            _hover={{ color: '#ea754b' }}
             href={postulado.pdfImagenUrl}
             download='nombre-del-archivo.pdf'>
-            Descargar CV
+            Descargar CV del postulado
           </a>
         </Flex>
       </Card>

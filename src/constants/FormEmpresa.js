@@ -82,11 +82,5 @@ export const DATOS_EMPRESA = [
     campo: 'Tipo Sucursal',
     nombre: 'tipoSucursal',
     datos: ['Tipo Sucursal', 'Matriz', 'Sucursal']
-  },
-  {
-    id: 2,
-    campo: 'Sector',
-    nombre: 'sector',
-    datos: ['Sector', '0', 'A', 'B']
   }
 ]

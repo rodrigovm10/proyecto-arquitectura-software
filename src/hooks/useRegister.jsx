@@ -39,7 +39,7 @@ export function useRegister() {
 
   const somePropertyIsNull = object => {
     for (const property in object) {
-      if (property === 'emailEmpresa' || property === 'idioma' || property === 'nombreEmpresa' || property === 'ubicacion') return false
+      if (property === 'emailEmpresa' || property === 'idioma' || property === 'nombreEmpresa' || property === 'ubicacion' || property === 'sector') return false
       if (object.hasOwnProperty(property)) {
         const valor = object[property]
         if (valor === null || valor === undefined || valor === '' || property.length === 0) {

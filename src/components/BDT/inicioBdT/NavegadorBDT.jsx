@@ -71,13 +71,17 @@ function NavegadorBDT({ setSession }) {
         alignItems='center'>
         {isLargeScreen ? (
           <ButtonGroup>
-            <RouterLink
-              color='#fff'
-              to='/inicio-bdt'>
-              Inicio
-            </RouterLink>
-            <RouterLink to='/buscar-empleo'>Buscar empleo</RouterLink>
-            <RouterLink to='/oportunidades-laborales'>Oportunidades laborales</RouterLink>
+            {bde !== 'Usuario' && (
+              <>
+                <RouterLink
+                  color='#fff'
+                  to='/inicio-bdt'>
+                  Inicio
+                </RouterLink>
+                <RouterLink to='/buscar-empleo'>Buscar empleo</RouterLink>
+                <RouterLink to='/oportunidades-laborales'>Oportunidades laborales</RouterLink>
+              </>
+            )}
           </ButtonGroup>
         ) : (
           <Menu>
@@ -88,26 +92,30 @@ function NavegadorBDT({ setSession }) {
               icon={<HamburgerIcon color='white' />}
               variant='outline'
             />
-            <MenuList>
-              <RouterLink
-                color='#fff'
-                to='/inicio-bdt'
-                _hover={{ color: '#ea754b' }}>
-                Inicio
-              </RouterLink>
-              <MenuItem
-                as={RouterLink}
-                to='/buscar-empleo'
-                color='grey'>
-                Buscar empleo
-              </MenuItem>
-              <MenuItem
-                as={RouterLink}
-                to='/oportunidades-laborales'
-                color='grey'>
-                Oportunidades laborales
-              </MenuItem>
-            </MenuList>
+            {bde !== 'Usuario' && (
+              <>
+                <MenuList>
+                  <RouterLink
+                    color='#fff'
+                    to='/inicio-bdt'
+                    _hover={{ color: '#ea754b' }}>
+                    Inicio
+                  </RouterLink>
+                  <MenuItem
+                    as={RouterLink}
+                    to='/buscar-empleo'
+                    color='grey'>
+                    Buscar empleo
+                  </MenuItem>
+                  <MenuItem
+                    as={RouterLink}
+                    to='/oportunidades-laborales'
+                    color='grey'>
+                    Oportunidades laborales
+                  </MenuItem>
+                </MenuList>
+              </>
+            )}
           </Menu>
         )}
         {colorMode === 'light' ? (
@@ -144,17 +152,16 @@ function NavegadorBDT({ setSession }) {
               />
             </Center>
             <br />
-            <Center color={colorMode === 'light' ? 'black' : 'white'}>
+            <Center color='grey'>
               <p>{localStorage.nombreNav === undefined ? bde : localStorage.nombreNav}</p>
             </Center>
             <br />
             <MenuDivider />
-            <RouterLink to='/perfil-bdt'>
-              <MenuItem color={colorMode === 'light' ? 'black' : 'white'}>Perfil</MenuItem>
-            </RouterLink>
+
+            <RouterLink to='/perfil-bdt'>{bde !== 'Usuario' && <MenuItem color='grey'>Perfil</MenuItem>}</RouterLink>
             <MenuItem
               onClick={logOut}
-              color={colorMode === 'light' ? 'black' : 'white'}>
+              color='grey'>
               Cerrar Sesión
             </MenuItem>
           </MenuList>

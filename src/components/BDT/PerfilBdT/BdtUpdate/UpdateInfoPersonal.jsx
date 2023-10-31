@@ -8,7 +8,7 @@ import {
   Center,
   Box,
 } from "@chakra-ui/react";
-import { Escolaridad, Genero } from "../../../../constants/Datos";
+import { Escolaridad, Genero,MUNICIPIOS } from "../../../../constants/Datos";
 
 export default function UpdateInfoPersonal({
   datosInforPersonal,
@@ -132,7 +132,20 @@ export default function UpdateInfoPersonal({
                     </option>
                   ))}
                 </Select>
-              ) : (
+              ): attribute === 'municipio' ?(
+                <Select
+                name="municipio"
+                value={formData.municipio}
+                onChange={handleChange}
+              >
+                <option value="">Género </option>
+                {MUNICIPIOS.map((municipio, index) => (
+                  <option key={index} value={municipio}>
+                    {municipio}
+                  </option>
+                ))}
+              </Select>
+              )   : (
                 <Input
                   type={
                     attribute === "telefono" || attribute === "codigoPostal"

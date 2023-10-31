@@ -15,7 +15,7 @@ export const guardarEmpresaEnDataStore = async ({ datosEmpresa, email }) => {
     colonia,
     calle,
     actividad,
-    sector,
+    sector: '',
     tipoSucursal
   })
   console.log(empresa)

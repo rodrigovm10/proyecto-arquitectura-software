@@ -9,8 +9,12 @@ export function RegistroEmpresa() {
 
   return (
     <div>
-      <Loading2 />
-      {dataSession.session && nombreGrupo === 'Empresa' && dataSession.cuentaExistente === 1 && <Navigate to='/inicio-empresa' />}
+      {dataSession.session && nombreGrupo === 'Empresa' && dataSession.cuentaExistente === 1 && (
+        <>
+          <Loading2 />
+          <Navigate to='/inicio-empresa' />
+        </>
+      )}
       {dataSession.session && nombreGrupo === 'Empresa' && dataSession.cuentaExistente === 0 && (
         <DatosEmpresaProvider>
           <FormEmpresa email={dataSession.email} />
