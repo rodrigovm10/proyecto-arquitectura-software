@@ -6,6 +6,38 @@ import { LazyLoading, LazyLoadingDisabled, AsyncCollection } from "@aws-amplify/
 
 
 
+type EagerVersionVacante = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<VersionVacante, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly empresaID: string;
+  readonly vacanteID: string;
+  readonly informacionVacante?: (string | null)[] | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyVersionVacante = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<VersionVacante, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly empresaID: string;
+  readonly vacanteID: string;
+  readonly informacionVacante?: (string | null)[] | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type VersionVacante = LazyLoading extends LazyLoadingDisabled ? EagerVersionVacante : LazyVersionVacante
+
+export declare const VersionVacante: (new (init: ModelInit<VersionVacante>) => VersionVacante) & {
+  copyOf(source: VersionVacante, mutator: (draft: MutableModel<VersionVacante>) => MutableModel<VersionVacante> | void): VersionVacante;
+}
+
 type EagerOportunidades = {
   readonly [__modelMeta__]: {
     identifier: ManagedIdentifier<Oportunidades, 'id'>;
@@ -143,6 +175,7 @@ type EagerVacante = {
   readonly jornadaLaboral?: string | null;
   readonly periodoPago?: string | null;
   readonly Oportunidades?: (Oportunidades | null)[] | null;
+  readonly VersionVacantes?: (VersionVacante | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -182,6 +215,7 @@ type LazyVacante = {
   readonly jornadaLaboral?: string | null;
   readonly periodoPago?: string | null;
   readonly Oportunidades: AsyncCollection<Oportunidades>;
+  readonly VersionVacantes: AsyncCollection<VersionVacante>;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -213,6 +247,7 @@ type EagerEmpresa = {
   readonly numero?: number | null;
   readonly Vacantes?: (Vacante | null)[] | null;
   readonly Oportunidades?: (Oportunidades | null)[] | null;
+  readonly VersionVacantes?: (VersionVacante | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -238,6 +273,7 @@ type LazyEmpresa = {
   readonly numero?: number | null;
   readonly Vacantes: AsyncCollection<Vacante>;
   readonly Oportunidades: AsyncCollection<Oportunidades>;
+  readonly VersionVacantes: AsyncCollection<VersionVacante>;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
