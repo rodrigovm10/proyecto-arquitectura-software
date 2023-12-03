@@ -4,11 +4,18 @@ import { useState } from 'react'; // Importa useState
 import {  IconButton } from "@chakra-ui/react";
 import { EditIcon } from "@chakra-ui/icons";
 import {ImageEditModal} from '../BdtUpdate/FilesEdit'
+import { CambioColorDecorator,CambioTipografiaDecorator } from "./DecoratorStyle";
+import ModalPersonalizacion from './ModalPersonalizacion';
+
+
+
 function BuscadorDeTrabajo({ usuario, setInfoEdit }) {
   const nombreCompleto = `${usuario.nombre} ${usuario.apellidos}`;
   const direccionCompleta = `${usuario.municipio}, ${usuario.colonia}, ${usuario.calle}, ${usuario.codigoPostal}`;
   const [showEditIcon, setShowEditIcon] = useState(false); // Estado para mostrar/ocultar el ícono de edición
-
+  const [color, setColor] = useState(usuario.color || 'defaultColor');
+  const [font, setFont] = useState(usuario.font || 'defaultFont');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   function calcularEdad(fechaNacimiento) {
     const partes = fechaNacimiento.split("-");
@@ -30,6 +37,8 @@ function BuscadorDeTrabajo({ usuario, setInfoEdit }) {
   const imagenSrc = usuario.imagenBDTUrl ? usuario.imagenBDTUrl : `name=${usuario.nombre}`;
 
   return (
+    <CambioColorDecorator color={color}>
+    <CambioTipografiaDecorator  font={font}>
     <Flex
       boxShadow="xl"
       borderWidth="2px"
@@ -104,7 +113,19 @@ function BuscadorDeTrabajo({ usuario, setInfoEdit }) {
         </Center>
       </>
     </Flex>
-  );
+    <Button colorScheme="blue" onClick={() => setIsModalOpen(true)}>
+          Personalizar
+        </Button>
+
+        <ModalPersonalizacion
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          setColor={setColor}
+          setFont={setFont}
+        />
+    </ CambioTipografiaDecorator>
+    </CambioColorDecorator>
+    );
 }
 
 export default BuscadorDeTrabajo;
