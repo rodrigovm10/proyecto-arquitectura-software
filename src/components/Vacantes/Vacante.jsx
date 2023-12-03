@@ -1,4 +1,4 @@
-import { Box, Card, CardBody, CardHeader, Flex, Grid, GridItem, Heading } from '@chakra-ui/react'
+import { Card, CardBody, CardHeader, Flex, Grid, GridItem, Heading } from '@chakra-ui/react'
 import {
 	LiaAddressCardSolid,
 	LiaCalendarCheckSolid,
@@ -7,7 +7,6 @@ import {
 	LiaSchoolSolid
 } from 'react-icons/lia'
 import { useNavigate } from 'react-router-dom'
-import { DotsVertical } from '../../assets/Icons'
 import MementoExample from '../memento'
 
 export function Vacante({ vacantes }) {

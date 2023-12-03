@@ -25,98 +25,104 @@ import Error from './components/Error'
 import { BuscarEmpleo } from './pages/BDT/BuscarEmpleo'
 import { OportunidadesLaborales } from './pages/BDT/OportunidadesLaborales'
 import { VacantesPostulados } from './pages/Empresa/VacantesPostulados'
+import { VacanteVersiones } from './pages/Vacantes/VacantesVersiones'
+import { DataVacanteVersionsContext } from './context/DataVacanteVersionsContext'
 
 Amplify.configure(awsExports)
 
 const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <App />
-  },
-  //Empresa
-  {
-    path: '/login-empresa',
-    element: <LoginEmpresa />
-  },
-  {
-    path: '/registro-empresa',
-    element: <RegistroEmpresa />
-  },
-  {
-    path: '/perfil-bdt',
-    element: <PerfilBdT />
-  },
-  {
-    path: '/form-empresa',
-    element: <FormEmpresa />
-  },
-  {
-    path: '/inicio-empresa',
-    element: <LandingEmpresa />
-  },
-  {
-    path: '/postulados',
-    element: <VacantesPostulados />
-  },
-  //BDT
-  {
-    path: '/login-bdt',
-    element: <LoginBdt />
-  },
-  {
-    path: '/registro-bdt',
-    element: <RegistroBdT />
-  },
-  {
-    path: '/inicio-bdt',
-    element: <LandingBdt />
-  },
-  {
-    path: '/oportunidades-laborales',
-    element: <OportunidadesLaborales />
-  },
-  {
-    path: 'buscar-empleo',
-    element: <BuscarEmpleo />
-  },
-  //Vacante
-  {
-    path: '/registro-vacante',
-    element: (
-      <DataVacanteProvider>
-        <FormVacante />
-      </DataVacanteProvider>
-    )
-  },
-  {
-    path: '/vacantes',
-    element: <Vacantes />
-  },
-  {
-    path: '/vacantes/vacante/:id',
-    element: <VacanteDatos />
-  },
-  {
-    path: '/vacantes/vacante/editar-vacante/:id',
-    element: (
-      <DataVacanteProvider>
-        <FormVacanteEdit />
-      </DataVacanteProvider>
-    )
-  },
-  {
-    path: '/error',
-    element: <Error />
-  }
+	{
+		path: '/',
+		element: <App />
+	},
+	//Empresa
+	{
+		path: '/login-empresa',
+		element: <LoginEmpresa />
+	},
+	{
+		path: '/registro-empresa',
+		element: <RegistroEmpresa />
+	},
+	{
+		path: '/perfil-bdt',
+		element: <PerfilBdT />
+	},
+	{
+		path: '/form-empresa',
+		element: <FormEmpresa />
+	},
+	{
+		path: '/inicio-empresa',
+		element: <LandingEmpresa />
+	},
+	{
+		path: '/postulados',
+		element: <VacantesPostulados />
+	},
+	//BDT
+	{
+		path: '/login-bdt',
+		element: <LoginBdt />
+	},
+	{
+		path: '/registro-bdt',
+		element: <RegistroBdT />
+	},
+	{
+		path: '/inicio-bdt',
+		element: <LandingBdt />
+	},
+	{
+		path: '/oportunidades-laborales',
+		element: <OportunidadesLaborales />
+	},
+	{
+		path: 'buscar-empleo',
+		element: <BuscarEmpleo />
+	},
+	//Vacante
+	{
+		path: '/registro-vacante',
+		element: (
+			<DataVacanteProvider>
+				<FormVacante />
+			</DataVacanteProvider>
+		)
+	},
+	{
+		path: '/vacantes',
+		element: <Vacantes />
+	},
+	{
+		path: '/vacantes/vacante/:id',
+		element: <VacanteDatos />
+	},
+	{
+		path: '/vacantes/vacante/editar-vacante/:id',
+		element: (
+			<DataVacanteProvider>
+				<FormVacanteEdit />
+			</DataVacanteProvider>
+		)
+	},
+	{
+		path: '/vacantes/vacante/versiones/:id',
+		element: <VacanteVersiones />
+	},
+	{
+		path: '*',
+		element: <Error />
+	}
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-  <ChakraProvider>
-    <SessionProvider>
-      <RouterProvider router={router} />
-    </SessionProvider>
-  </ChakraProvider>
+	<ChakraProvider>
+		<SessionProvider>
+			<RouterProvider router={router} />
+		</SessionProvider>
+	</ChakraProvider>
 )
 
 // If you want to start measuring performance in your app, pass a function

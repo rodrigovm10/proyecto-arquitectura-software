@@ -7,10 +7,13 @@ import { correoBdtPostulacion, correoEmpresaPostulacion } from './useSendEmail'
 import { useSession } from '../hooks/useSession'
 import { BDT } from '../models'
 import { DataStore } from 'aws-amplify'
+import { useVersions } from './useVersions'
 export function useAlerts() {
 	const { deleteVacante, updateStatusVacante } = useManageVacantes()
 	const { saveOportunidadesOnDataStore } = useJobsApplications()
 	const { dataSession, nombreGrupo, getDataSessionBDT } = useSession('trabajador')
+	const { restoreLastVersion } = useVersions()
+
 	const [bdt, setBdt] = useState({})
 
 	useEffect(() => {
@@ -33,8 +36,6 @@ export function useAlerts() {
 		}
 		fetchBDT()
 	}, [dataSession.email])
-
-	console.log(bdt)
 
 	const navigate = useNavigate()
 	const basicAlert = ({ title, icon, text }) => {
@@ -136,10 +137,10 @@ export function useAlerts() {
 		})
 	}
 
-	const createVersion = () => {
+	const restoreVersion = id => {
 		Swal.fire({
-			title: '¿Estás seguro de crear una de esta vacante?',
-			text: 'Una vez creada la versión podras consultarla y recuperarla de ser requerido.',
+			title: '¿Estás seguro de restaurar esta versión de su vacante?',
+			text: 'Una vez recuperada la versión no podrás recuperar la información de la vacante actual.',
 			icon: 'info',
 			showCancelButton: true,
 			confirmButtonColor: '#3085d6',
@@ -148,7 +149,10 @@ export function useAlerts() {
 			confirmButtonText: 'Sí, crearla'
 		}).then(result => {
 			if (result.isConfirmed) {
-				Swal.fire('Creada correctamente', 'Has creado una versión para esta vacante.', 'success')
+				Swal.fire('Restaurada correctamente', 'Has recuperado la última versión almacenada de tu vacante.', 'success')
+				if (result.isConfirmed) {
+					navigate(`/vacantes/vacante/${id}`)
+				}
 			}
 		})
 	}
@@ -160,6 +164,6 @@ export function useAlerts() {
 		updateVisibleAlert,
 		updateVacanteAlert,
 		applicationSubmissionAlert,
-		createVersion
+		restoreVersion
 	}
 }
