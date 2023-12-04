@@ -20,6 +20,7 @@ import { SessionProvider } from './context/SessionContext'
 import { Vacantes } from './pages/Vacantes/Vacantes'
 import { VacanteDatos } from './pages/Vacantes/VacanteDatos'
 import { DataVacanteProvider } from './context/DataVacanteContext'
+import { Innovation } from './components/Empresa/innovation'
 import { FormVacanteEdit } from './pages/FormVacanteEdit'
 import Error from './components/Error'
 import { BuscarEmpleo } from './pages/BDT/BuscarEmpleo'
@@ -95,6 +96,11 @@ const router = createBrowserRouter([
   {
     path: '/vacantes/vacante/:id',
     element: <VacanteDatos />
+  }
+  ,
+  {
+    path: '/innovation',
+    element: <Innovation />
   },
   {
     path: '/vacantes/vacante/editar-vacante/:id',

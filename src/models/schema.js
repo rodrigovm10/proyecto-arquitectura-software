@@ -1,5 +1,97 @@
 export const schema = {
     "models": {
+        "VersionVacante": {
+            "name": "VersionVacante",
+            "fields": {
+                "id": {
+                    "name": "id",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "empresaID": {
+                    "name": "empresaID",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "vacanteID": {
+                    "name": "vacanteID",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "informacionVacante": {
+                    "name": "informacionVacante",
+                    "isArray": true,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                }
+            },
+            "syncable": true,
+            "pluralName": "VersionVacantes",
+            "attributes": [
+                {
+                    "type": "model",
+                    "properties": {}
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byEmpresa",
+                        "fields": [
+                            "empresaID"
+                        ]
+                    }
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byVacante",
+                        "fields": [
+                            "vacanteID"
+                        ]
+                    }
+                },
+                {
+                    "type": "auth",
+                    "properties": {
+                        "rules": [
+                            {
+                                "allow": "public",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
         "Oportunidades": {
             "name": "Oportunidades",
             "fields": {
@@ -390,7 +482,7 @@ export const schema = {
                 "numeroPlazas": {
                     "name": "numeroPlazas",
                     "isArray": false,
-                    "type": "Int",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -425,14 +517,14 @@ export const schema = {
                 "edadMin": {
                     "name": "edadMin",
                     "isArray": false,
-                    "type": "Int",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
                 "edadMax": {
                     "name": "edadMax",
                     "isArray": false,
-                    "type": "Int",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -535,14 +627,14 @@ export const schema = {
                 "salarioMin": {
                     "name": "salarioMin",
                     "isArray": false,
-                    "type": "Float",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
                 "salarioMax": {
                     "name": "salarioMax",
                     "isArray": false,
-                    "type": "Float",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -580,6 +672,22 @@ export const schema = {
                     "isArray": true,
                     "type": {
                         "model": "Oportunidades"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true,
+                    "association": {
+                        "connectionType": "HAS_MANY",
+                        "associatedWith": [
+                            "vacanteID"
+                        ]
+                    }
+                },
+                "VersionVacantes": {
+                    "name": "VersionVacantes",
+                    "isArray": true,
+                    "type": {
+                        "model": "VersionVacante"
                     },
                     "isRequired": false,
                     "attributes": [],
@@ -799,6 +907,22 @@ export const schema = {
                     "isArray": true,
                     "type": {
                         "model": "Oportunidades"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true,
+                    "association": {
+                        "connectionType": "HAS_MANY",
+                        "associatedWith": [
+                            "empresaID"
+                        ]
+                    }
+                },
+                "VersionVacantes": {
+                    "name": "VersionVacantes",
+                    "isArray": true,
+                    "type": {
+                        "model": "VersionVacante"
                     },
                     "isRequired": false,
                     "attributes": [],
@@ -1164,5 +1288,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "05884d0b73eeb014f85f394fef888029"
+    "version": "d3e87e046be08fea910c9019f172d700"
 };
