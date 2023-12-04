@@ -20,6 +20,7 @@ export function Innovation() {
   const images = [
     "https://media.istockphoto.com/id/879813798/es/foto/manos-de-hombre-de-negocios-trabajando-en-ordenador.jpg?s=612x612&w=0&k=20&c=kT-IVSqKc-MMPCJLXfeXFsafArq3Tbn4FbKd0s_nG38=",
     "https://media.istockphoto.com/id/1165260383/es/foto/manos-masculinas-escribiendo-texto-o-c%C3%B3digo-de-programaci%C3%B3n-en-el-ordenador-port%C3%A1til.jpg?s=612x612&w=0&k=20&c=t0AL7bS2FYrC5lYn72gd_kxKLqjXKSpSIg8NxhKxezA=",
+    "https://media.istockphoto.com/id/1165260383/es/foto/manos-masculinas-escribiendo-texto-o-c%C3%B3digo-de-programaci%C3%B3n-en-el-ordenador-port%C3%A1til.jpg?s=612x612&w=0&k=20&c=t0AL7bS2FYrC5lYn72gd_kxKLqjXKSpSIg8NxhKxezA=",
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
