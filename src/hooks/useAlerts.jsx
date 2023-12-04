@@ -146,12 +146,13 @@ export function useAlerts() {
 			confirmButtonColor: '#3085d6',
 			cancelButtonText: 'Cancelar',
 			cancelButtonColor: '#d33',
-			confirmButtonText: 'Sí, crearla'
+			confirmButtonText: 'Sí, restaurar'
 		}).then(result => {
 			if (result.isConfirmed) {
 				Swal.fire('Restaurada correctamente', 'Has recuperado la última versión almacenada de tu vacante.', 'success')
 				if (result.isConfirmed) {
 					navigate(`/vacantes/vacante/${id}`)
+					restoreLastVersion(id)
 				}
 			}
 		})

@@ -482,7 +482,7 @@ export const schema = {
                 "numeroPlazas": {
                     "name": "numeroPlazas",
                     "isArray": false,
-                    "type": "Int",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -517,14 +517,14 @@ export const schema = {
                 "edadMin": {
                     "name": "edadMin",
                     "isArray": false,
-                    "type": "Int",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
                 "edadMax": {
                     "name": "edadMax",
                     "isArray": false,
-                    "type": "Int",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -627,14 +627,14 @@ export const schema = {
                 "salarioMin": {
                     "name": "salarioMin",
                     "isArray": false,
-                    "type": "Float",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
                 "salarioMax": {
                     "name": "salarioMax",
                     "isArray": false,
-                    "type": "Float",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -1288,5 +1288,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "917368ef7bf6386af6cf3ecfba23c841"
+    "version": "d3e87e046be08fea910c9019f172d700"
 };

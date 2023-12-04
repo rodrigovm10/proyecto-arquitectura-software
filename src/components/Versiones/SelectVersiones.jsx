@@ -28,7 +28,7 @@ export function SelectVersiones({ versiones, nombreVacante }) {
 				{versiones?.map((version, i) => (
 					<option
 						key={version.id}
-						value={JSON.stringify(version.informacionVacante)}
+						value={JSON.stringify(version?.informacionVacante)}
 					>
 						Versión {i + 1} - Fecha de creación {version.createdAt.slice(0, 10)}
 					</option>

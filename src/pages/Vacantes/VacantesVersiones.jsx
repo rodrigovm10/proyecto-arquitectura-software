@@ -3,7 +3,7 @@ import { useManageVacantes } from '../../hooks/useManageVacantes'
 import { useVersions } from '../../hooks/useVersions'
 import { useEffect } from 'react'
 import { Header } from '../../components/Header'
-import { Box, Grid, GridItem, Heading, Stack, Text } from '@chakra-ui/react'
+import { Box, Heading, Stack, Text } from '@chakra-ui/react'
 import { Versiones } from '../../components/Versiones/Versiones'
 import { Footer } from '../../landing/Footer'
 
@@ -15,12 +15,10 @@ export function VacanteVersiones() {
 	useEffect(() => {
 		listVacante(id)
 		getVersionesVacantes(id)
-		console.log(versiones)
 	}, [])
 
 	useEffect(() => {
 		if (!isVacanteLoaded) return
-		console.log(vacante)
 	}, [isVacanteLoaded, vacante])
 
 	return (
