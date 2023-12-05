@@ -180,9 +180,16 @@ function NavegadorBDT({ setSession }) {
             <MenuDivider />
 
             <RouterLink to="/perfil-bdt">
-              {bde !== "Usuario" && <MenuItem color="grey">Perfil</MenuItem>}
+              {bde !== "Usuario" && (
+                <MenuItem color={colorMode === "light" ? "black" : "white"}>
+                  Perfil
+                </MenuItem>
+              )}
             </RouterLink>
-            <MenuItem onClick={logOut} color="grey">
+            <MenuItem
+              onClick={logOut}
+              color={colorMode === "light" ? "black" : "white"}
+            >
               Cerrar Sesión
             </MenuItem>
           </MenuList>
