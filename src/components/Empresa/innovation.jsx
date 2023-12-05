@@ -10,6 +10,7 @@ import {
   AlertDescription,
   CloseButton,
   Text,
+  useColorMode,
 } from "@chakra-ui/react";
 import { Nav } from "../../components/Nav";
 import vacantes from "../../img/vacantes.png";
@@ -20,14 +21,15 @@ import vacantes5 from "../../img/vacante5.png";
 import { Footer } from "../../landing/Footer";
 
 export function Innovation() {
+  const { colorMode, toggleColorMode } = useColorMode();
   // Arreglo de URLs de tus imágenes
   const images = [vacantes, vacantes2, vacantes3, vacantes4, vacantes5];
   const imageDescriptions = [
     "En el apartado de vacantes seleccione una vacante",
     "Haz clic en el ícono de los tres puntos. Selecciona 'Versiones' para revisar y administrar las versiones anteriores de la publicación de la vacante.",
-    "Vaya al apartado de versiones y de clic para que pueda seleccionar la versión que desea visualizar",
-    "Descripción de vacantes4",
-    "Descripción de vacantes5",
+    "Haga clic en el menú desplegable situado en la parte superior izquierda para expandir la lista de todas las versiones disponibles. Luego, seleccione la versión que desea revisar.",
+    " Aquí se muestra la 'versión' con su fecha de creación. En el panel izquierdo, se detalla la información de la versión. Si desea resturarla haga clic en el botón 'Recuperar versión'",
+    "Se le presenta un cuadro de diálogo de confirmación solicitando su aprobación para proceder con la restauración de una versión anterior de su vacante.",
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -86,7 +88,12 @@ export function Innovation() {
           {imageDescriptions[currentImageIndex]}
         </Text>
         <Flex direction="row" alignItems="center" mt={5} mb={5}>
-          <Button onClick={previousImage} size="lg" color="white" mr={4}>
+          <Button
+            onClick={previousImage}
+            size="lg"
+            color={colorMode === "light" ? "black" : "white"}
+            mr={4}
+          >
             &lt;
           </Button>
           <Image
@@ -95,7 +102,12 @@ export function Innovation() {
             w="88%"
             objectFit="cover"
           />
-          <Button onClick={nextImage} size="lg" color="white" ml={4}>
+          <Button
+            onClick={nextImage}
+            size="lg"
+            color={colorMode === "light" ? "black" : "white"}
+            ml={4}
+          >
             &gt;
           </Button>
         </Flex>
