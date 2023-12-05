@@ -12,6 +12,7 @@ import {
   IconButton,
   useBreakpointValue,
   Text,
+  Box,
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { Link as RouterLink } from "react-router-dom";
@@ -123,17 +124,35 @@ export function Nav({ nombreDelGrupo = "Empresa" }) {
                   Cerrar Sesión
                 </Link>
                 <RouterLink to="/innovation">
-                  <Text
-                    color="#fff"
-                    mt={1}
-                    _hover={{
-                      color: "#ea754b",
-                      transform: "scale(1.5)",
-                      transition: "transform 0.2s ease", // Agrega una transición suave
-                    }}
-                  >
-                    <MdNotificationsActive />
-                  </Text>
+                  <Box position="relative">
+                    <Text
+                      color="#fff"
+                      mt={1}
+                      _hover={{
+                        color: "#ea754b",
+                        transform: "scale(1.1)",
+                        transition: "transform 0.2s ease",
+                      }}
+                    >
+                      <MdNotificationsActive />
+                    </Text>
+                    <Box
+                      position="absolute"
+                      top="-1"
+                      right="-1"
+                      bgColor="red.500"
+                      width="3"
+                      height="3"
+                      borderRadius="full"
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="center"
+                    >
+                      <Text fontSize="xs" color="white">
+                        !
+                      </Text>
+                    </Box>
+                  </Box>
                 </RouterLink>
               </ButtonGroup>
             )}

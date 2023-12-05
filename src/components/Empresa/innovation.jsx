@@ -1,26 +1,33 @@
 import React, { useState, useEffect } from "react";
-import { Box, Button, Image, Flex, useToast } from "@chakra-ui/react";
-import { MdNotificationsActive } from "react-icons/md";
+import {
+  Box,
+  Button,
+  Image,
+  Flex,
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+  CloseButton,
+  Text,
+} from "@chakra-ui/react";
 import { Nav } from "../../components/Nav";
+import vacantes from "../../img/vacantes.png";
+import vacantes2 from "../../img/vacantes2.png";
+import vacantes3 from "../../img/vacantes3.png";
+import vacantes4 from "../../img/vacantes4.png";
+import vacantes5 from "../../img/vacante5.png";
+import { Footer } from "../../landing/Footer";
 
 export function Innovation() {
-  const toast = useToast();
-
-  useEffect(() => {
-    toast({
-      status: "info",
-      duration: 9000,
-      isClosable: true,
-      position: "top",
-      icon: <MdNotificationsActive />, // Icono de notificación
-    });
-  }, [toast]);
-
   // Arreglo de URLs de tus imágenes
-  const images = [
-    "https://media.istockphoto.com/id/879813798/es/foto/manos-de-hombre-de-negocios-trabajando-en-ordenador.jpg?s=612x612&w=0&k=20&c=kT-IVSqKc-MMPCJLXfeXFsafArq3Tbn4FbKd0s_nG38=",
-    "https://media.istockphoto.com/id/1165260383/es/foto/manos-masculinas-escribiendo-texto-o-c%C3%B3digo-de-programaci%C3%B3n-en-el-ordenador-port%C3%A1til.jpg?s=612x612&w=0&k=20&c=t0AL7bS2FYrC5lYn72gd_kxKLqjXKSpSIg8NxhKxezA=",
-    "https://media.istockphoto.com/id/1165260383/es/foto/manos-masculinas-escribiendo-texto-o-c%C3%B3digo-de-programaci%C3%B3n-en-el-ordenador-port%C3%A1til.jpg?s=612x612&w=0&k=20&c=t0AL7bS2FYrC5lYn72gd_kxKLqjXKSpSIg8NxhKxezA=",
+  const images = [vacantes, vacantes2, vacantes3, vacantes4, vacantes5];
+  const imageDescriptions = [
+    "En el apartado de vacantes seleccione una vacante",
+    "Haz clic en el ícono de los tres puntos. Selecciona 'Versiones' para revisar y administrar las versiones anteriores de la publicación de la vacante.",
+    "Vaya al apartado de versiones y de clic para que pueda seleccionar la versión que desea visualizar",
+    "Descripción de vacantes4",
+    "Descripción de vacantes5",
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -35,6 +42,16 @@ export function Innovation() {
     );
   };
 
+  const [showAlert, setShowAlert] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowAlert(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
       <Nav />
@@ -48,21 +65,42 @@ export function Innovation() {
         alignItems="center"
         justifyContent="center"
       >
-        <Flex direction="row" alignItems="center" mb={4}>
-          <Button onClick={previousImage} size="lg" color="black" mr={4}>
+        {showAlert && (
+          <Alert status="info" variant="solid" color="black" borderRadius="md">
+            <AlertIcon />
+            <AlertTitle mr={2}>¡Nueva funcionalidad disponible!</AlertTitle>
+            <AlertDescription>
+              Ahora puedes crear y administrar diferentes versiones de tus
+              vacantes. ¡Prueba esta nueva herramienta para mejorar tu proceso
+              de selección!
+            </AlertDescription>
+            <CloseButton
+              position="absolute"
+              right="8px"
+              top="8px"
+              onClick={() => setShowAlert(false)}
+            />
+          </Alert>
+        )}
+        <Text fontSize="3xl" w="90%">
+          {imageDescriptions[currentImageIndex]}
+        </Text>
+        <Flex direction="row" alignItems="center" mt={5} mb={5}>
+          <Button onClick={previousImage} size="lg" color="white" mr={4}>
             &lt;
           </Button>
           <Image
             src={images[currentImageIndex]}
             alt={`Imagen ${currentImageIndex + 1}`}
-            w="full"
+            w="88%"
             objectFit="cover"
           />
-          <Button onClick={nextImage} size="lg" color="black" ml={4}>
+          <Button onClick={nextImage} size="lg" color="white" ml={4}>
             &gt;
           </Button>
         </Flex>
       </Box>
+      <Footer />
     </>
   );
 }
