@@ -47,17 +47,17 @@ export function Innovation() {
     vacantes6,
   ];
   const imageDescriptions = [
-    "Sigue nuestra guía paso a paso para implementar esta nueva funcionalidad y comienza a gestionar las versiones de tus vacantes de manera más efectiva",
+    "Sigue nuestra guía paso a paso para gestionar las versiones de tus vacantes de manera más efectiva.",
     "Dirígete a la sección 'Vacantes', identifica la vacante  que se desea editar y haz clic en ella para acceder a las opciones de edición disponibles.",
     "Selecciona la opción 'Editar' del menú de los tres puntos verticales al lado de la vacante para comenzar a editarla.",
     "Para actualizar la vacante, edita los campos necesarios. En este ejemplo, hemos modificado el 'Nombre Vacante'.",
     "Para finalizar la edición de la vacante, desplázate hacia abajo y haz clic en el botón 'Guardar'.",
     "Una vez que la vacante ha sido actualizada, confirma el cambio haciendo clic en 'OK' en el cuadro de diálogo de confirmación.",
     "Para regresar al listado general de vacantes, haz clic en el botón 'Volver a las vacantes'.",
-    "Listado general de vacantes, identifica la vacante editada y haz clic en ella para acceder a las versiones disponibles.",
+    "En el listado general de vacantes, identifica la vacante editada y haz clic en ella para acceder a las versiones.",
     "Haz clic en el ícono de los tres puntos. Selecciona 'Versiones' para revisar y administrar las versiones anteriores de la vacante.",
     "Haz clic en el menú desplegable situado en la parte superior izquierda para expandir la lista de todas las versiones disponibles. Luego, seleccione la versión que desea revisar.",
-    "Aquí se muestra la 'Versión' de la vacante y su fecha de creación. En el panel izquierdo, se detallan los cambios. Para restaurarla, haga clic en el botón 'Recuperar versión anterior'",
+    "Aquí se muestra la 'Versión' de la vacante y su fecha de creación. En el panel izquierdo, verás los cambios. Para restaurarla, haz clic en 'Recuperar versión anterior'.",
     "Se le presenta un cuadro de diálogo de confirmación solicitando su aprobación para proceder con la restauración de una versión anterior de su vacante.",
     "La versión se ha restaurado con éxito. Ahora puedes ver y gestionar los detalles de esta versión, que se ha establecido como la versión actual de la publicación.",
   ];
