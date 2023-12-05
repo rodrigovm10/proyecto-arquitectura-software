@@ -10,13 +10,6 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "tipografiaSit": {
-                    "name": "tipografiaSit",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
                 "cardSit": {
                     "name": "cardSit",
                     "isArray": false,
@@ -38,22 +31,8 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "tipografiaHab": {
-                    "name": "tipografiaHab",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
                 "cardInfo": {
                     "name": "cardInfo",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "tipografiaInfo": {
-                    "name": "tipografiaInfo",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
@@ -1449,5 +1428,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "80aab29e2917bfcbe780a57b8acb5c8e"
+    "version": "a4cec7dba657e423b9eeefa0547095b4"
 };
