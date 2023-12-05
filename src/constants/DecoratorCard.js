@@ -46,6 +46,6 @@ export const opcionesColores = [
   }
   
   
-    // Si quiere puede agregart mas estilos
+    // Si quiere puede agregart mas estilos v2
   ];
   
