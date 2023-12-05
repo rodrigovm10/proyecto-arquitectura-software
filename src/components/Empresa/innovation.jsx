@@ -13,23 +13,38 @@ import {
   useColorMode,
 } from "@chakra-ui/react";
 import { Nav } from "../../components/Nav";
+import introduccion from "../../img/introduccion.png";
 import vacantes from "../../img/vacantes.png";
 import vacantes2 from "../../img/vacantes2.png";
 import vacantes3 from "../../img/vacantes3.png";
 import vacantes4 from "../../img/vacantes4.png";
 import vacantes5 from "../../img/vacante5.png";
+import vacantes6 from "../../img/vacantes6.png";
+import vacantes7 from "../../img/vacantes7.png";
 import { Footer } from "../../landing/Footer";
 
 export function Innovation() {
   const { colorMode, toggleColorMode } = useColorMode();
   // Arreglo de URLs de tus imágenes
-  const images = [vacantes, vacantes2, vacantes3, vacantes4, vacantes5];
+  const images = [
+    introduccion,
+    vacantes,
+    vacantes2,
+    vacantes3,
+    vacantes4,
+    vacantes5,
+    vacantes6,
+    vacantes7,
+  ];
   const imageDescriptions = [
+    "",
     "En el apartado de vacantes seleccione una vacante",
     "Haz clic en el ícono de los tres puntos. Selecciona 'Versiones' para revisar y administrar las versiones anteriores de la publicación de la vacante.",
     "Haga clic en el menú desplegable situado en la parte superior izquierda para expandir la lista de todas las versiones disponibles. Luego, seleccione la versión que desea revisar.",
     " Aquí se muestra la 'versión' con su fecha de creación. En el panel izquierdo, se detalla la información de la versión. Si desea resturarla haga clic en el botón 'Recuperar versión'",
     "Se le presenta un cuadro de diálogo de confirmación solicitando su aprobación para proceder con la restauración de una versión anterior de su vacante.",
+    "La versión  ha sido exitosamente restaurada. Ahora puede visualizar y administrar los detalles de esta versión, que se ha reestablecido como la versión actual de la publicación.",
+    "Tambien se puede visualizar y administrar los detalles de las versiones restauradas, en el apartado de vacantes",
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -49,7 +64,7 @@ export function Innovation() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowAlert(false);
-    }, 2000);
+    }, 8000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -70,9 +85,9 @@ export function Innovation() {
         {showAlert && (
           <Alert status="info" variant="solid" color="black" borderRadius="md">
             <AlertIcon />
-            <AlertTitle mr={2}>¡Nueva funcionalidad disponible!</AlertTitle>
+            <AlertTitle>¡Nueva funcionalidad disponible!</AlertTitle>
             <AlertDescription>
-              Ahora puedes crear y administrar diferentes versiones de tus
+              Ahora puedes crear y administrar diversas versiones de tus
               vacantes. ¡Prueba esta nueva herramienta para mejorar tu proceso
               de selección!
             </AlertDescription>
