@@ -5,17 +5,46 @@ import SituacionActualList from "./BdTList/SituacionActualList";
 import UpdateInfoPersonal from "./BdtUpdate/UpdateInfoPersonal";
 import UpdateHabilidades from "./BdtUpdate/UpdateHabilidades";
 import UpdateSituacionActual from "./BdtUpdate/UpdateSituacionActual";
-import { updateBdT, updateBdTHab, updateBdTSit } from "../../../hooks/EditarBdt";
+import {
+  updateBdT,
+  updateBdTHab,
+  updateBdTSit,
+} from "../../../hooks/EditarBdt";
 import { deleteUserMail } from "../../../hooks/DeleteUsuario";
 import Swal from "sweetalert2";
 import { BDT } from "../../../models";
 import { DataStore } from "aws-amplify";
 import { useNavigate } from "react-router-dom";
-import { Popover, PopoverContent, PopoverTrigger, PopoverArrow, PopoverCloseButton, PopoverHeader, PopoverBody, Link, Text, Button, Flex, Wrap, Center, WrapItem, Grid, } from "@chakra-ui/react";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+  PopoverArrow,
+  PopoverCloseButton,
+  PopoverHeader,
+  PopoverBody,
+  Link,
+  Text,
+  Button,
+  Flex,
+  Wrap,
+  Center,
+  WrapItem,
+  Grid,
+} from "@chakra-ui/react";
 import { PdfEditModal } from "./BdtUpdate/FilesEdit";
 import { sendBajaLogica, sendBajaFisica } from "../../../hooks/useSendEmail";
-import { PersonalizarPerfil, PersonalizarPerfilEdicion } from "./BdTList/ModalPersonalizacion";
-const ComponentePerfilBdT = ({ email, usuario, setUsuario, userID, styles }) => {
+import {
+  PersonalizarPerfil,
+  PersonalizarPerfilEdicion,
+} from "./BdTList/ModalPersonalizacion";
+const ComponentePerfilBdT = ({
+  email,
+  usuario,
+  setUsuario,
+  userID,
+  styles,
+}) => {
   const navigate = useNavigate();
   const [InfoEdit, setInfoEdit] = useState(false);
   const [habEdit, setHabEdit] = useState(false);
@@ -24,27 +53,26 @@ const ComponentePerfilBdT = ({ email, usuario, setUsuario, userID, styles }) => 
   const [isEditingPdf, setIsEditingPdf] = useState(false);
   const [updateKey, setUpdateKey] = useState(0); // Estado para forzar la recarga
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isPersonalizarPerfilEditing, setIsPersonalizarPerfilEditing] = useState(false);
-
-
+  const [isPersonalizarPerfilEditing, setIsPersonalizarPerfilEditing] =
+    useState(false);
 
   // Función de guardado genérica
   const GuardarCambios = (section) => {
     // Revertir los cambios solo para la sección especificada
     switch (section) {
       case "info":
-        updateBdT(usuario)
+        updateBdT(usuario);
         setUsuario(originalUsuario);
         setInfoEdit(false);
         break;
       case "hab":
-        updateBdTHab(usuario)
+        updateBdTHab(usuario);
         setUsuario(originalUsuario);
         setHabEdit(false);
         break;
       case "sit":
         console.log(usuario.buscaEmpleo);
-        updateBdTSit(usuario)
+        updateBdTSit(usuario);
         if (usuario.buscaEmpleo === false) {
           sendBajaLogica(usuario, email);
         }
@@ -54,7 +82,7 @@ const ComponentePerfilBdT = ({ email, usuario, setUsuario, userID, styles }) => 
         break;
       default:
         break;
-    };
+    }
     // Incrementar el estado updateKey para forzar la recarga
     setUpdateKey((prevKey) => prevKey + 1);
     updateBdT(usuario);
@@ -63,27 +91,26 @@ const ComponentePerfilBdT = ({ email, usuario, setUsuario, userID, styles }) => 
   const CancelarCambios = (section) => {
     // Revertir los cambios solo para la sección especificada
     switch (section) {
-      case 'info':
-        updateBdT(usuario)
-        setUsuario(originalUsuario)
-        setInfoEdit(false)
-        break
-      case 'hab':
-        updateBdTHab(usuario)
-        setUsuario(originalUsuario)
-        setHabEdit(false)
-        break
-      case 'sit':
-        console.log(usuario.buscaEmpleo)
-        updateBdTSit(usuario)
-        if (usuario.buscaEmpleo === false) {
-          sendBajaLogica(usuario, email)
-        }
-
+      case "info":
+        setUsuario(originalUsuario);
+        setInfoEdit(false);
+        break;
+      case "hab":
+        setUsuario(originalUsuario);
+        setHabEdit(false);
+        break;
+      case "sit":
+        setUsuario(originalUsuario);
+        setSitEdit(false);
+        break;
+      default:
+        break;
+    }
+  };
 
   const openPdfEditModal = () => {
-    setIsEditingPdf(true)
-  }
+    setIsEditingPdf(true);
+  };
 
   const closePdfEditModal = () => {
     setIsEditingPdf(false);
@@ -93,27 +120,29 @@ const ComponentePerfilBdT = ({ email, usuario, setUsuario, userID, styles }) => 
     try {
       // Muestra un SweetAlert de confirmación
       const result = await Swal.fire({
-        title: '¿Está seguro de que desea eliminar su cuenta?',
-        text: 'Esta acción no se puede deshacer.',
-        icon: 'warning',
+        title: "¿Está seguro de que desea eliminar su cuenta?",
+        text: "Esta acción no se puede deshacer.",
+        icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: 'red',
-        cancelButtonColor: 'gray',
-        confirmButtonText: 'Sí, estoy seguro',
-        cancelButtonText: 'Cancelar'
-      })
+        confirmButtonColor: "red",
+        cancelButtonColor: "gray",
+        confirmButtonText: "Sí, estoy seguro",
+        cancelButtonText: "Cancelar",
+      });
 
       if (result.isConfirmed) {
-        console.log('Usuario ID:', usuario.id)
+        console.log("Usuario ID:", usuario.id);
         try {
           // Intenta eliminar el registro de DataStore
-          const bdeToDelete = await DataStore.query(BDT, c => c.id.eq(usuario.id))
+          const bdeToDelete = await DataStore.query(BDT, (c) =>
+            c.id.eq(usuario.id)
+          );
           for (let bde of bdeToDelete) {
-            await DataStore.delete(BDT, bde)
+            await DataStore.delete(BDT, bde);
           }
 
           // Intenta eliminar el correo del usuario
-          await deleteUserMail(userID)
+          await deleteUserMail(userID);
 
           // Ambas operaciones se realizaron con éxito, puedes continuar
           sendBajaFisica(usuario, email);
@@ -122,69 +151,68 @@ const ComponentePerfilBdT = ({ email, usuario, setUsuario, userID, styles }) => 
           localStorage.clear();
           sessionStorage.clear();
           Swal.fire("¡Gracias!", "Tu perfil ha sido eliminado.", "success");
-
         } catch (error) {
           // Maneja errores de DataStore o deleteUserMail aquí.
-          console.error('Error al eliminar la cuenta:', error)
+          console.error("Error al eliminar la cuenta:", error);
         }
       }
     } catch (error) {
       // Maneja errores de SweetAlert aquí.
-      console.error('Error:', error)
+      console.error("Error:", error);
     }
   };
   // Asegúrate de que 'styles' y 'usuario' estén definidos antes de acceder a sus propiedades
   const isBdtIdMatch = styles?.bdtID && usuario?.id === styles.bdtID;
   return (
     <>
-    <Flex style={{justifyContent:'end'}} mr='5' mt='7'>
-      {isBdtIdMatch ? (
-        <Button
-          colorScheme="blue"
-          onClick={() => setIsModalOpen(true)}
-          style={{ marginLeft: "5px" }}
-        >
-          Editar
-        </Button>
-      ) : (
-        <Button
-          colorScheme="blue"
-          onClick={() => setIsModalOpen(true)}
-          style={{ marginLeft: "5px" }}
-        >
-          Personalizar
-        </Button>
-      )}
+      <Flex style={{ justifyContent: "end" }} mr="5" mt="7">
+        {isBdtIdMatch ? (
+          <Button
+            colorScheme="blue"
+            onClick={() => setIsModalOpen(true)}
+            style={{ marginLeft: "5px" }}
+          >
+            Editar
+          </Button>
+        ) : (
+          <Button
+            colorScheme="blue"
+            onClick={() => setIsModalOpen(true)}
+            style={{ marginLeft: "5px" }}
+          >
+            Personalizar
+          </Button>
+        )}
 
-      {isBdtIdMatch ? (
-        <PersonalizarPerfilEdicion
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-          bde={usuario.id}
-          styles={styles}
-        />
-      ) : (
-        <PersonalizarPerfil
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-          bde={usuario.id}
-        />
-      )}
-</Flex>
-
+        {isBdtIdMatch ? (
+          <PersonalizarPerfilEdicion
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+            bde={usuario.id}
+            styles={styles}
+          />
+        ) : (
+          <PersonalizarPerfil
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+            bde={usuario.id}
+          />
+        )}
+      </Flex>
 
       <Text fontSize="4xl" ml="170">
         Mi perfil
       </Text>
       <Grid
         templateColumns={{
-          base: 'repeat(1, 1fr)', // col-xs-12
-          sm: 'repeat(1, 1fr)', // col-sm-6
-          md: 'repeat(2, 1fr)', // col-md-4
-          lg: 'repeat(2, 1fr)' // col-lg-3
+          base: "repeat(1, 1fr)", // col-xs-12
+          sm: "repeat(1, 1fr)", // col-sm-6
+          md: "repeat(2, 1fr)", // col-md-4
+          lg: "repeat(2, 1fr)", // col-lg-3
         }}
         gap={10}
-        p={8}>
+        p={8}
+      >
         <div>
           {InfoEdit ? (
             // Componente de edición de información personal
@@ -194,17 +222,19 @@ const ComponentePerfilBdT = ({ email, usuario, setUsuario, userID, styles }) => 
                 datosInforPersonal={usuario}
                 setEDatosInforPersonal={setUsuario}
               />
-              <Flex justify='center'>
+              <Flex justify="center">
                 <Button
-                  colorScheme='blue'
-                  onClick={() => GuardarCambios('info')}
-                  m='2'>
+                  colorScheme="blue"
+                  onClick={() => GuardarCambios("info")}
+                  m="2"
+                >
                   Guardar
                 </Button>
                 <Button
-                  colorScheme='red'
-                  onClick={() => CancelarCambios('info')}
-                  m='2'>
+                  colorScheme="red"
+                  onClick={() => CancelarCambios("info")}
+                  m="2"
+                >
                   Cancelar
                 </Button>
               </Flex>
@@ -231,13 +261,18 @@ const ComponentePerfilBdT = ({ email, usuario, setUsuario, userID, styles }) => 
                 setHabilidades={setUsuario}
               />
               <Flex justify="center">
-                <Button colorScheme="blue" onClick={() => GuardarCambios('hab')} m="2">
+                <Button
+                  colorScheme="blue"
+                  onClick={() => GuardarCambios("hab")}
+                  m="2"
+                >
                   Guardar
                 </Button>
                 <Button
-                  colorScheme='red'
-                  onClick={() => CancelarCambios('hab')}
-                  m='2'>
+                  colorScheme="red"
+                  onClick={() => CancelarCambios("hab")}
+                  m="2"
+                >
                   Cancelar
                 </Button>
               </Flex>
@@ -264,10 +299,18 @@ const ComponentePerfilBdT = ({ email, usuario, setUsuario, userID, styles }) => 
                 setDatosSituacion={setUsuario}
               />
               <Flex justify="center">
-                <Button colorScheme="blue" onClick={() => GuardarCambios('sit')} m="2">
+                <Button
+                  colorScheme="blue"
+                  onClick={() => GuardarCambios("sit")}
+                  m="2"
+                >
                   Guardar
                 </Button>
-                <Button colorScheme="red" onClick={() => CancelarCambios('sit')} m="2">
+                <Button
+                  colorScheme="red"
+                  onClick={() => CancelarCambios("sit")}
+                  m="2"
+                >
                   Cancelar
                 </Button>
               </Flex>
@@ -275,13 +318,23 @@ const ComponentePerfilBdT = ({ email, usuario, setUsuario, userID, styles }) => 
           ) : (
             // Componente de visualización de situación actual
             <>
-              <SituacionActualList usuario={usuario} setUsuario={setUsuario} setSitEdit={setSitEdit} styles={styles} />
+              <SituacionActualList
+                usuario={usuario}
+                setUsuario={setUsuario}
+                setSitEdit={setSitEdit}
+                styles={styles}
+              />
             </>
           )}
         </div>
       </Grid>
       <Wrap justify="center"></Wrap>
-      <Flex justify="flex-end" mr="20" mb="20" _hover={{ transform: "scale(1)" }}>
+      <Flex
+        justify="flex-end"
+        mr="20"
+        mb="20"
+        _hover={{ transform: "scale(1)" }}
+      >
         <Popover>
           <PopoverTrigger>
             <Button
@@ -298,13 +351,22 @@ const ComponentePerfilBdT = ({ email, usuario, setUsuario, userID, styles }) => 
             <PopoverHeader>Opciones de PDF</PopoverHeader>
             <PopoverBody>
               <Center>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-                  <a href={usuario.pdfImagenUrl} download="nombre-del-archivo.pdf">
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "1fr 1fr",
+                    gap: "10px",
+                  }}
+                >
+                  <a
+                    href={usuario.pdfImagenUrl}
+                    download="nombre-del-archivo.pdf"
+                  >
                     Descargar
                   </a>
 
                   {isEditingPdf && (
-                    <div >
+                    <div>
                       <PdfEditModal
                         pdfUrl={usuario.pdfImagenUrl}
                         onSave={closePdfEditModal}
@@ -314,12 +376,14 @@ const ComponentePerfilBdT = ({ email, usuario, setUsuario, userID, styles }) => 
                   )}
                 </div>
               </Center>
-
-
             </PopoverBody>
           </PopoverContent>
         </Popover>
-        <Button onClick={eliminarPerfil} m="2" color="red.500" bg="transparent"
+        <Button
+          onClick={eliminarPerfil}
+          m="2"
+          color="red.500"
+          bg="transparent"
           _hover={{
             backgroundColor: "red.500",
             color: "white",
@@ -330,7 +394,7 @@ const ComponentePerfilBdT = ({ email, usuario, setUsuario, userID, styles }) => 
       </Flex>
       <Wrap justify="center"></Wrap>
     </>
-  )
-}
+  );
+};
 
-export default ComponentePerfilBdT
+export default ComponentePerfilBdT;
