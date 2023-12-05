@@ -43,9 +43,10 @@ export function VersionAntigua({ vacante, isLastVersion }) {
                   color="white"
                   bg="#ea754b"
                   _hover={{ bg: "#ff964f" }}
-                  ps="1rem"
+                  w="full"
+                  p="3"
                 >
-                  Recuperar versión
+                  Recuperar versión anterior
                 </Button>
               ) : (
                 <Button

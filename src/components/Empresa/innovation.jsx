@@ -21,11 +21,11 @@ import vacanteseditada from "../../img/vacanteeditada.png";
 import vacantesguardada from "../../img/vacanteguardada.png";
 import vacantesactualizada from "../../img/vacanteactualizada.png";
 import vacantevolver from "../../img/vacantevolver.png";
+import vacantelista from "../../img/vacantelista.png";
 import vacantes3 from "../../img/vacantes3.png";
 import vacantes4 from "../../img/vacantes4.png";
 import vacantes5 from "../../img/vacante5.png";
 import vacantes6 from "../../img/vacantes6.png";
-import vacantes7 from "../../img/vacantes7.png";
 import { Footer } from "../../landing/Footer";
 
 export function Innovation() {
@@ -39,27 +39,27 @@ export function Innovation() {
     vacantesguardada,
     vacantesactualizada,
     vacantevolver,
+    vacantelista,
     vacantes2,
     vacantes3,
     vacantes4,
     vacantes5,
     vacantes6,
-    vacantes7,
   ];
   const imageDescriptions = [
-    "",
-    "Dirígete a la sección 'Vacantes', identifica la vacante de 'Diseñador Web' que se desea editar y haz clic en ella para acceder a las opciones de edición disponibles.",
-    "Haz clic en los tres puntos verticales junto a la vacante de 'Diseñador Web' y elige 'Editar' para modificarla.",
-    "Ingresa al campo 'Nombre Vacante' para editar el título de la posición de 'Diseñador Web'.",
-    "Guardar vacante",
-    "Se le presenta un cuadro de diálogo de vacante actualizada",
-    "Volver a las vacantes",
-    "Haz clic en el ícono de los tres puntos. Selecciona 'Versiones' para revisar y administrar las versiones anteriores de la publicación de la vacante.",
-    "Haga clic en el menú desplegable situado en la parte superior izquierda para expandir la lista de todas las versiones disponibles. Luego, seleccione la versión que desea revisar.",
-    " Aquí se muestra la 'versión' con su fecha de creación. En el panel izquierdo, se detalla la información de la versión. Si desea resturarla haga clic en el botón 'Recuperar versión'",
+    "Sigue nuestra guía paso a paso para implementar esta nueva funcionalidad y comienza a gestionar las versiones de tus vacantes de manera más efectiva",
+    "Dirígete a la sección 'Vacantes', identifica la vacante  que se desea editar y haz clic en ella para acceder a las opciones de edición disponibles.",
+    "Selecciona la opción 'Editar' del menú de los tres puntos verticales al lado de la vacante para comenzar a editarla.",
+    "Para actualizar la vacante, edita los campos necesarios. En este ejemplo, hemos modificado el 'Nombre Vacante'.",
+    "Para finalizar la edición de la vacante, desplázate hacia abajo y haz clic en el botón 'Guardar'.",
+    "Una vez que la vacante ha sido actualizada, confirma el cambio haciendo clic en 'OK' en el cuadro de diálogo de confirmación.",
+    "Para regresar al listado general de vacantes, haz clic en el botón 'Volver a las vacantes'.",
+    "Listado general de vacantes, identifica la vacante editada y haz clic en ella para acceder a las versiones disponibles.",
+    "Haz clic en el ícono de los tres puntos. Selecciona 'Versiones' para revisar y administrar las versiones anteriores de la vacante.",
+    "Haz clic en el menú desplegable situado en la parte superior izquierda para expandir la lista de todas las versiones disponibles. Luego, seleccione la versión que desea revisar.",
+    "Aquí se muestra la 'Versión' de la vacante y su fecha de creación. En el panel izquierdo, se detallan los cambios. Para restaurarla, haga clic en el botón 'Recuperar versión anterior'",
     "Se le presenta un cuadro de diálogo de confirmación solicitando su aprobación para proceder con la restauración de una versión anterior de su vacante.",
-    "La versión  ha sido exitosamente restaurada. Ahora puede visualizar y administrar los detalles de esta versión, que se ha reestablecido como la versión actual de la publicación.",
-    "Tambien se puede visualizar y administrar los detalles de las versiones restauradas, en el apartado de vacantes",
+    "La versión se ha restaurado con éxito. Ahora puedes ver y gestionar los detalles de esta versión, que se ha establecido como la versión actual de la publicación.",
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
