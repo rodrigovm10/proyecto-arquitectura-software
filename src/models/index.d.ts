@@ -12,13 +12,10 @@ type EagerStyles = {
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly tipografiaSit?: string | null;
   readonly cardSit?: string | null;
   readonly bdtID: string;
   readonly cardHab?: string | null;
-  readonly tipografiaHab?: string | null;
   readonly cardInfo?: string | null;
-  readonly tipografiaInfo?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -29,13 +26,10 @@ type LazyStyles = {
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly tipografiaSit?: string | null;
   readonly cardSit?: string | null;
   readonly bdtID: string;
   readonly cardHab?: string | null;
-  readonly tipografiaHab?: string | null;
   readonly cardInfo?: string | null;
-  readonly tipografiaInfo?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

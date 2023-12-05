@@ -12,7 +12,7 @@ export  function PersonalizarPerfil({ isOpen, onClose, bde, styles }) {
   const [hab, setHab] = useState('');
 
   const handleGuardar = async () => {
-  await registrarStyle(situacion, bdeInfo, hab, bde);
+   registrarStyle(situacion, bdeInfo, hab, bde);
   window.location.reload(); // Recargar la página
   onClose();
 };
@@ -78,7 +78,7 @@ export const PersonalizarPerfilEdicion = ({ isOpen, onClose, bde, styles }) => {
   const [hab, setHab] = useState(styles.cardHab);
 
   const handleGuardar = async () => {
-    await updatedStyle(situacion, bdeInfo, hab, bde,styles);
+     updatedStyle(situacion, bdeInfo, hab, bde,styles);
     window.location.reload(); // Recargar la página
     onClose();
   };

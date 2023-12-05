@@ -71,15 +71,9 @@ export const updateBdTSit = async (usuario) => {
 }
 export const updatedStyle = async (situacion, bdeInfo, hab, bde, styles) => {
   try {
-    console.log("Estilos:", styles);
-    console.log("ID de Estilos:", styles?.id);
-    console.log("Situación:", situacion);
-    console.log("BDE Info:", bdeInfo);
-    console.log("HAB:", hab);
-
-    if (styles && styles.id && situacion !== '' && bdeInfo !== '' && hab !== '') {
+    console.log(styles.id);
       const original = await DataStore.query(Styles, styles.id);
-      console.log("Estilo recuperado:", original);
+      
 
       await DataStore.save(
         Styles.copyOf(original, (updated) => {
@@ -89,9 +83,7 @@ export const updatedStyle = async (situacion, bdeInfo, hab, bde, styles) => {
         })
       );
       console.log("Estilo guardado exitosamente!");
-    } else {
-      console.log("Todos los campos deben completarse para actualizar el estilo.");
-    }
+  
   } catch (error) {
     console.error("Error al guardar el estilo:", error);
   }
