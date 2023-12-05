@@ -6,6 +6,78 @@ import { LazyLoading, LazyLoadingDisabled, AsyncCollection } from "@aws-amplify/
 
 
 
+type EagerStyles = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<Styles, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly tipografiaSit?: string | null;
+  readonly cardSit?: string | null;
+  readonly bdtID: string;
+  readonly cardHab?: string | null;
+  readonly tipografiaHab?: string | null;
+  readonly cardInfo?: string | null;
+  readonly tipografiaInfo?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyStyles = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<Styles, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly tipografiaSit?: string | null;
+  readonly cardSit?: string | null;
+  readonly bdtID: string;
+  readonly cardHab?: string | null;
+  readonly tipografiaHab?: string | null;
+  readonly cardInfo?: string | null;
+  readonly tipografiaInfo?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type Styles = LazyLoading extends LazyLoadingDisabled ? EagerStyles : LazyStyles
+
+export declare const Styles: (new (init: ModelInit<Styles>) => Styles) & {
+  copyOf(source: Styles, mutator: (draft: MutableModel<Styles>) => MutableModel<Styles> | void): Styles;
+}
+
+type EagerVersionVacante = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<VersionVacante, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly empresaID: string;
+  readonly vacanteID: string;
+  readonly informacionVacante?: (string | null)[] | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyVersionVacante = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<VersionVacante, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly empresaID: string;
+  readonly vacanteID: string;
+  readonly informacionVacante?: (string | null)[] | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type VersionVacante = LazyLoading extends LazyLoadingDisabled ? EagerVersionVacante : LazyVersionVacante
+
+export declare const VersionVacante: (new (init: ModelInit<VersionVacante>) => VersionVacante) & {
+  copyOf(source: VersionVacante, mutator: (draft: MutableModel<VersionVacante>) => MutableModel<VersionVacante> | void): VersionVacante;
+}
+
 type EagerOportunidades = {
   readonly [__modelMeta__]: {
     identifier: ManagedIdentifier<Oportunidades, 'id'>;
@@ -116,13 +188,13 @@ type EagerVacante = {
   readonly id: string;
   readonly nombre?: string | null;
   readonly descripcion?: string | null;
-  readonly numeroPlazas?: number | null;
+  readonly numeroPlazas?: string | null;
   readonly area?: string | null;
   readonly tipoContrato?: string | null;
   readonly modalidad?: string | null;
   readonly diasLaborales?: string | null;
-  readonly edadMin?: number | null;
-  readonly edadMax?: number | null;
+  readonly edadMin?: string | null;
+  readonly edadMax?: string | null;
   readonly genero?: string | null;
   readonly experienciaLaboral?: string | null;
   readonly escolaridad?: string | null;
@@ -136,13 +208,14 @@ type EagerVacante = {
   readonly ubicacion?: string | null;
   readonly nombreEmpresa?: string | null;
   readonly empresaID: string;
-  readonly salarioMin?: number | null;
-  readonly salarioMax?: number | null;
+  readonly salarioMin?: string | null;
+  readonly salarioMax?: string | null;
   readonly idiomaConNivel?: (string | null)[] | null;
   readonly municipio?: string | null;
   readonly jornadaLaboral?: string | null;
   readonly periodoPago?: string | null;
   readonly Oportunidades?: (Oportunidades | null)[] | null;
+  readonly VersionVacantes?: (VersionVacante | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -155,13 +228,13 @@ type LazyVacante = {
   readonly id: string;
   readonly nombre?: string | null;
   readonly descripcion?: string | null;
-  readonly numeroPlazas?: number | null;
+  readonly numeroPlazas?: string | null;
   readonly area?: string | null;
   readonly tipoContrato?: string | null;
   readonly modalidad?: string | null;
   readonly diasLaborales?: string | null;
-  readonly edadMin?: number | null;
-  readonly edadMax?: number | null;
+  readonly edadMin?: string | null;
+  readonly edadMax?: string | null;
   readonly genero?: string | null;
   readonly experienciaLaboral?: string | null;
   readonly escolaridad?: string | null;
@@ -175,13 +248,14 @@ type LazyVacante = {
   readonly ubicacion?: string | null;
   readonly nombreEmpresa?: string | null;
   readonly empresaID: string;
-  readonly salarioMin?: number | null;
-  readonly salarioMax?: number | null;
+  readonly salarioMin?: string | null;
+  readonly salarioMax?: string | null;
   readonly idiomaConNivel?: (string | null)[] | null;
   readonly municipio?: string | null;
   readonly jornadaLaboral?: string | null;
   readonly periodoPago?: string | null;
   readonly Oportunidades: AsyncCollection<Oportunidades>;
+  readonly VersionVacantes: AsyncCollection<VersionVacante>;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -213,6 +287,7 @@ type EagerEmpresa = {
   readonly numero?: number | null;
   readonly Vacantes?: (Vacante | null)[] | null;
   readonly Oportunidades?: (Oportunidades | null)[] | null;
+  readonly VersionVacantes?: (VersionVacante | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -238,6 +313,7 @@ type LazyEmpresa = {
   readonly numero?: number | null;
   readonly Vacantes: AsyncCollection<Vacante>;
   readonly Oportunidades: AsyncCollection<Oportunidades>;
+  readonly VersionVacantes: AsyncCollection<VersionVacante>;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -276,6 +352,7 @@ type EagerBDT = {
   readonly imagenBDTUrl?: string | null;
   readonly pdfImagenUrl?: string | null;
   readonly Oportunidades?: (Oportunidades | null)[] | null;
+  readonly Styles?: (Styles | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -308,6 +385,7 @@ type LazyBDT = {
   readonly imagenBDTUrl?: string | null;
   readonly pdfImagenUrl?: string | null;
   readonly Oportunidades: AsyncCollection<Oportunidades>;
+  readonly Styles: AsyncCollection<Styles>;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

@@ -13,3 +13,39 @@ export const opcionesColores = [
     { value: 'Courier New', label: 'Courier New' }
   ];
     
+ export const estilosTarjetas = [
+  {
+    id: 'default',
+    className: 'default',
+
+  },
+
+  {
+    id: 'customCardStyle',
+    className: 'estilo_1',
+    contentClassName: 'estilo_card1',
+    // Agrega aquí otras propiedades si son necesarias
+  },
+  {
+    id: 'customCardStyle2',
+    className: 'estilo_2',
+    contentClassName: 'estilo_card2',
+    // Agrega aquí otras propiedades si son necesarias
+  },
+  {
+    id: 'customCardStyle3',
+    className: 'estilo_card3',
+    contentClassName: 'estilo_3',
+  },
+  {
+    id: 'customCardStyle4',
+    className: 'box',
+    contentClassName: 'container',
+
+    // Agrega aquí otras propiedades si son necesarias
+  }
+  
+  
+    // Agrega aquí más estilos si es necesario
+  ];
+  

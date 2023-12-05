@@ -1,5 +1,5 @@
 import { DataStore } from '@aws-amplify/datastore';
-import { BDT } from '../models';
+import { BDT,Styles } from '../models';
 
 // Función para actualizar el usuario (datos personales)
 export const updateBdT = async (usuario) => {
@@ -69,3 +69,31 @@ export const updateBdTSit = async (usuario) => {
     console.error("Error al actualizar el usuario:", error);
   }
 }
+export const updatedStyle = async (situacion, bdeInfo, hab, bde, styles) => {
+  try {
+    console.log("Estilos:", styles);
+    console.log("ID de Estilos:", styles?.id);
+    console.log("Situación:", situacion);
+    console.log("BDE Info:", bdeInfo);
+    console.log("HAB:", hab);
+
+    if (styles && styles.id && situacion !== '' && bdeInfo !== '' && hab !== '') {
+      const original = await DataStore.query(Styles, styles.id);
+      console.log("Estilo recuperado:", original);
+
+      await DataStore.save(
+        Styles.copyOf(original, (updated) => {
+          updated.cardSit = situacion;
+          updated.cardInfo = bdeInfo;
+          updated.cardHab = hab;
+        })
+      );
+      console.log("Estilo guardado exitosamente!");
+    } else {
+      console.log("Todos los campos deben completarse para actualizar el estilo.");
+    }
+  } catch (error) {
+    console.error("Error al guardar el estilo:", error);
+  }
+};
+

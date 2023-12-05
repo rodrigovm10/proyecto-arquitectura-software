@@ -4,7 +4,7 @@ import { Auth } from 'aws-amplify'
 import { NombreGrupo } from '../../hooks/NombreGrupo'
 import { Navigate } from 'react-router-dom'
 import { DataStore } from '@aws-amplify/datastore'
-import { BDT } from '../../models'
+import { BDT,Styles } from '../../models'
 import NavegadorBDT from '../../components/BDT/inicioBdT/NavegadorBDT'
 import Loading2 from '../../components/Loading2'
 
@@ -14,6 +14,7 @@ function PerfilBdT() {
   const [userData, setUserData] = useState('')
   const [user, setUser] = useState('')
   const [email, setEmail] = useState('')
+  const [styles, setStyles] = useState('')
 
   //BDE
   useEffect(() => {
@@ -37,6 +38,25 @@ function PerfilBdT() {
     }
     saves()
   }, [])
+  ;
+
+  //Styles
+  useEffect(() => {
+    if (userData && userData.id) {  // Se agrega esta línea para verificar userData
+      try {
+        const sub = DataStore.observeQuery(Styles, (c) => c.bdtID.eq(userData.id)).subscribe(({ items }) => {
+          setStyles(items[0]);
+        });
+
+        return () => {
+          sub.unsubscribe();
+        };
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }, [userData])
+console.log(styles);
 
   if (!nombreGrupo) {
     if (session) {
@@ -58,6 +78,7 @@ function PerfilBdT() {
                     userID={user}
                     usuario={userData}
                     setUsuario={setUserData}
+                    styles={styles}
                   />
                 </>
               ) : (
