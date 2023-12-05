@@ -24,13 +24,13 @@ export const opcionesColores = [
     id: 'customCardStyle',
     className: 'estilo_1',
     contentClassName: 'estilo_card1',
-    // Agrega aquí otras propiedades si son necesarias
+  
   },
   {
     id: 'customCardStyle2',
     className: 'estilo_2',
     contentClassName: 'estilo_card2',
-    // Agrega aquí otras propiedades si son necesarias
+
   },
   {
     id: 'customCardStyle3',
@@ -42,10 +42,10 @@ export const opcionesColores = [
     className: 'box',
     contentClassName: 'container',
 
-    // Agrega aquí otras propiedades si son necesarias
+
   }
   
   
-    // Agrega aquí más estilos si es necesario
+    // Si quiere puede agregart mas estilos
   ];
   
