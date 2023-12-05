@@ -11,3 +11,177 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.estilo_1 {
+  color: #ffffff; /* Texto blanco para alto contraste */
+  text-shadow: 1px 1px 2px black; /* Sombra de texto para mejorar la legibilidad */
+  font-size: 1.1em; /* Un tamaño de fuente ligeramente más grande */
+  line-height: 1.5; /* Espaciado adecuado entre líneas */
+  font-weight: 500; /* Peso de la fuente para mejorar la visibilidad */
+}
+
+
+.estilo_card1 {
+  height: 100%;
+  border-radius: 5px;
+  padding: 8px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+}
+
+.estilo_1 {
+
+  background: rgb(5, 6, 45);
+  border-radius: 10px;
+  height: 100%;
+}
+
+.estilo_2 {
+  background: #181818;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  border-radius: 7px; /* Ajustado para coherencia */
+}
+
+.estilo_card2::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  bottom: 30px;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  transform: scale(0.95);
+  filter: blur(25px);
+  background: #f7ba2b;
+  background: var(--background);
+  transition: opacity .5s;
+
+}
+
+.estilo_card2 {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to left, #f7ba2b, #ea5358);
+  padding: 9px;
+  border-radius: 7px;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease; /* Agrega una transición suave */
+}
+
+.estilo_card2::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 30px;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  transform: scale(0.95);
+  filter: blur(25px);
+  background: linear-gradient
+}
+
+.estilo_card2 h2 {
+  font-weight: bold;
+  letter-spacing: .1em;
+  color: white;
+  
+  
+}
+.estilo_3, .estilo_card3 {
+  font-family: 'Menlo', 'Monaco', 'Lucida Console', monospace;
+  color: #1B1B1B; /* Color de fuente oscuro como se muestra en tu imagen */
+  background: #F2F1F1; /* Color de fondo claro como se muestra en tu imagen */
+  font-size: 13.328px; /* Tamaño de fuente específico como se muestra en tu imagen */
+  padding: 2px 4px; /* Padding como se muestra en tu imagen */
+}
+.estilo_3 {
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
+  border-radius: 10px;
+  transition: all .3s;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden; /* Asegura que el contenido interno respete el border-radius */
+}
+
+.estilo_3:hover {
+  box-shadow: 0px 0px 30px 1px rgba(0, 255, 119, 0.911);
+}
+
+.estilo_card3 {
+  width: 100%;
+  height: 100%;
+  background-color: #1a1a1a;
+  border-radius: 8px; /* Border-radius consistente con el estilo */
+  transition: transform .2s, border-radius .2s; /* Transiciones suaves para transform y border-radius */
+}
+
+.estilo_card3:hover {
+  transform: scale(0.98); /* Efecto de escala al pasar el ratón */
+}
+
+.estilo_card3 {
+  color: #ffffff; /* Texto blanco para alto contraste */
+  text-shadow: 1px 1px 2px black; /* Sombra de texto para mejorar la legibilidad */
+  font-size: 1.1em; /* Un tamaño de fuente ligeramente más grande */
+  line-height: 1.5; /* Espaciado adecuado entre líneas */
+  font-weight: 500; /* Peso de la fuente para mejorar la visibilidad */
+}
+
+.container {
+  position: relative;
+  font-family: 'Poppins', sans-serif; /* Una tipografía moderna y legible */
+  color: white;
+  width: 100%; /* Ancho fijo para mejor control */
+  height: 100%; /* Altura automática para adaptarse al contenido */
+  background: rgba(255, 255, 255, 0.1); /* Fondo semitransparente para efecto de cristal */
+  border-radius: 17px; /* Bordes suavemente redondeados */
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  overflow: hidden; /* Oculta los pseudoelementos que se desbordan */
+  transition: all 0.3s ease-in-out; /* Transición suave para hover */
+}
+
+.container:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más prominente en hover */
+}
+
+.container::before,
+.container::after {
+  content: '';
+  background-color: #fab5704c;
+  position: absolute;
+  border-radius: 50%; /* Forma circular perfecta */
+  z-index: -1; /* Coloca los círculos detrás del contenido */
+}
+
+.container::before {
+  width: 3rem;
+  height: 3rem;
+  top: 20%; /* Posición ajustada */
+  left: 80%; /* Posición ajustada */
+}
+
+.container::after {
+  width: 2rem;
+  height: 2rem;
+  top: 10%; /* Posición ajustada */
+  left: 10%; /* Posición ajustada */
+}
+
+.box {
+  background-color: transparent; /* Fondo transparente para mantener el efecto de cristal */
+  height: 100%; /* Asegura que llene el contenedor padre */
+  display: flex;
+
+  transition: all ease 0.3s;
+}

@@ -6,6 +6,49 @@ import { LazyLoading, LazyLoadingDisabled, AsyncCollection } from "@aws-amplify/
 
 
 
+<<<<<<< HEAD
+=======
+type EagerStyles = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<Styles, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly tipografiaSit?: string | null;
+  readonly cardSit?: string | null;
+  readonly bdtID: string;
+  readonly cardHab?: string | null;
+  readonly tipografiaHab?: string | null;
+  readonly cardInfo?: string | null;
+  readonly tipografiaInfo?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyStyles = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<Styles, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly tipografiaSit?: string | null;
+  readonly cardSit?: string | null;
+  readonly bdtID: string;
+  readonly cardHab?: string | null;
+  readonly tipografiaHab?: string | null;
+  readonly cardInfo?: string | null;
+  readonly tipografiaInfo?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type Styles = LazyLoading extends LazyLoadingDisabled ? EagerStyles : LazyStyles
+
+export declare const Styles: (new (init: ModelInit<Styles>) => Styles) & {
+  copyOf(source: Styles, mutator: (draft: MutableModel<Styles>) => MutableModel<Styles> | void): Styles;
+}
+
+>>>>>>> mariodos
 type EagerVersionVacante = {
   readonly [__modelMeta__]: {
     identifier: ManagedIdentifier<VersionVacante, 'id'>;
@@ -312,6 +355,7 @@ type EagerBDT = {
   readonly imagenBDTUrl?: string | null;
   readonly pdfImagenUrl?: string | null;
   readonly Oportunidades?: (Oportunidades | null)[] | null;
+  readonly Styles?: (Styles | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -344,6 +388,7 @@ type LazyBDT = {
   readonly imagenBDTUrl?: string | null;
   readonly pdfImagenUrl?: string | null;
   readonly Oportunidades: AsyncCollection<Oportunidades>;
+  readonly Styles: AsyncCollection<Styles>;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

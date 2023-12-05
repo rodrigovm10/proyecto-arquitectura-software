@@ -1,3 +1,17 @@
+<<<<<<< HEAD
+=======
+type Styles @model @auth(rules: [{allow: public}, {allow: owner}, {allow: groups, groups: ["trabajador"], operations: [read, create, update, delete]}, {allow: private}]) {
+  id: ID!
+  tipografiaSit: String
+  cardSit: String
+  bdtID: ID! @index(name: "byBDT")
+  cardHab: String
+  tipografiaHab: String
+  cardInfo: String
+  tipografiaInfo: String
+}
+
+>>>>>>> mariodos
 type VersionVacante @model @auth(rules: [{allow: public}]) {
   id: ID!
   empresaID: ID! @index(name: "byEmpresa")
@@ -125,4 +139,10 @@ type BDT @model @auth(rules: [{allow: public}, {allow: owner}, {allow: private},
   imagenBDTUrl: String
   pdfImagenUrl: String
   Oportunidades: [Oportunidades] @hasMany(indexName: "byBDT", fields: ["id"])
+<<<<<<< HEAD
 } 
+=======
+  Styles: [Styles] @hasMany(indexName: "byBDT", fields: ["id"])
+}
+ 
+>>>>>>> mariodos

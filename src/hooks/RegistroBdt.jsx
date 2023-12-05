@@ -1,5 +1,5 @@
 import { DataStore } from "@aws-amplify/datastore";
-import { BDT } from "../models";
+import { BDT,Styles } from "../models";
 
 export const registarBdE = async (
   datosInforPersonal,
@@ -51,3 +51,25 @@ export const registarBdE = async (
   );
   console.log(BDT);
 };
+
+export const registrarStyle = async (situacion, bdeInfo, hab, bde) => {
+  try {
+    await DataStore.save(
+      new Styles({
+        cardSit: situacion,
+        cardInfo: bdeInfo,
+        cardHab: hab,
+        bdtID: bde,
+      })
+    );
+    console.log("Style saved successfully!");
+  } catch (error) {
+    console.error("Error saving style:", error);
+  }
+};
+
+
+
+
+
+

@@ -1,15 +1,25 @@
-import {Center,Box, Stack,Heading,Text, Grid, GridItem,Button, Avatar, Divider,Flex} from "@chakra-ui/react";
+import {Center,Box,Heading,Text,Button, Avatar, Divider,Flex} from "@chakra-ui/react";
  // Importa el ícono de edición
 import { useState } from 'react'; // Importa useState
-import {  IconButton } from "@chakra-ui/react";
-import { EditIcon } from "@chakra-ui/icons";
+
 import {ImageEditModal} from '../BdtUpdate/FilesEdit'
-function BuscadorDeTrabajo({ usuario, setInfoEdit }) {
+import { CambioColorDecorator,CambioTipografiaDecorator, PersonalizacionDecorator} from "./DecoratorStyle";
+
+import {estilosTarjetas} from '../../../../constants/DecoratorCard'
+
+
+
+function BuscadorDeTrabajo({ usuario, setInfoEdit,styles }) {
   const nombreCompleto = `${usuario.nombre} ${usuario.apellidos}`;
   const direccionCompleta = `${usuario.municipio}, ${usuario.colonia}, ${usuario.calle}, ${usuario.codigoPostal}`;
   const [showEditIcon, setShowEditIcon] = useState(false); // Estado para mostrar/ocultar el ícono de edición
-
-
+  const [color, setColor] = useState(usuario.color || 'defaultColor');
+  const [font, setFont] = useState(usuario.font || 'defaultFont');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const cardStyleDefault = estilosTarjetas.find(e => e.id === 'default');
+  const cardStyleInicial = styles && styles.cardInfo ? estilosTarjetas.find(e => e.id === styles.cardInfo) : cardStyleDefault;
+  const [cardStyle, setCardStyle] = useState(cardStyleInicial);
+  
   function calcularEdad(fechaNacimiento) {
     const partes = fechaNacimiento.split("-");
     const fechaNac = new Date(partes[0], partes[1] - 1, partes[2]);
@@ -28,8 +38,11 @@ function BuscadorDeTrabajo({ usuario, setInfoEdit }) {
   const edad = calcularEdad(usuario.fechaNacimiento);
 
   const imagenSrc = usuario.imagenBDTUrl ? usuario.imagenBDTUrl : `name=${usuario.nombre}`;
-
+  
+  
   return (
+    <PersonalizacionDecorator color={color}  font={font}  styleId={styles ? styles.cardInfo : 'default'}>
+    
     <Flex
       boxShadow="xl"
       borderWidth="2px"
@@ -39,6 +52,7 @@ function BuscadorDeTrabajo({ usuario, setInfoEdit }) {
       p="4"
       mb="5"
       _hover={{ transform: "scale(1.02)" }}
+      className={cardStyle.className}
     >
       <>
         <Heading fontSize="xl" mb="4" textAlign="center" p="4">
@@ -101,10 +115,14 @@ function BuscadorDeTrabajo({ usuario, setInfoEdit }) {
           <Button colorScheme="blue" onClick={() => setInfoEdit(true)}>
             Editar
           </Button>
+         
         </Center>
       </>
     </Flex>
-  );
+
+    </ PersonalizacionDecorator>
+
+    );
 }
 
 export default BuscadorDeTrabajo;
