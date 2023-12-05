@@ -16,6 +16,11 @@ import { Nav } from "../../components/Nav";
 import introduccion from "../../img/introduccion.png";
 import vacantes from "../../img/vacantes.png";
 import vacantes2 from "../../img/vacantes2.png";
+import vacanteseditar from "../../img/vacanteeditar.png";
+import vacanteseditada from "../../img/vacanteeditada.png";
+import vacantesguardada from "../../img/vacanteguardada.png";
+import vacantesactualizada from "../../img/vacanteactualizada.png";
+import vacantevolver from "../../img/vacantevolver.png";
 import vacantes3 from "../../img/vacantes3.png";
 import vacantes4 from "../../img/vacantes4.png";
 import vacantes5 from "../../img/vacante5.png";
@@ -30,6 +35,11 @@ export function Innovation() {
     introduccion,
     vacantes,
     vacantes2,
+    vacanteseditar,
+    vacanteseditada,
+    vacantesguardada,
+    vacantesactualizada,
+    vacantevolver,
     vacantes3,
     vacantes4,
     vacantes5,
@@ -40,6 +50,11 @@ export function Innovation() {
     "",
     "En el apartado de vacantes seleccione una vacante",
     "Haz clic en el ícono de los tres puntos. Selecciona 'Versiones' para revisar y administrar las versiones anteriores de la publicación de la vacante.",
+    "Editar vacante para crear versión",
+    "Editar campo nombre",
+    "Guardar vacante",
+    "Volver a las vacantes",
+    "Lista vacantes",
     "Haga clic en el menú desplegable situado en la parte superior izquierda para expandir la lista de todas las versiones disponibles. Luego, seleccione la versión que desea revisar.",
     " Aquí se muestra la 'versión' con su fecha de creación. En el panel izquierdo, se detalla la información de la versión. Si desea resturarla haga clic en el botón 'Recuperar versión'",
     "Se le presenta un cuadro de diálogo de confirmación solicitando su aprobación para proceder con la restauración de una versión anterior de su vacante.",
