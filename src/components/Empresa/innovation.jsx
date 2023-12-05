@@ -77,11 +77,7 @@ export function Innovation() {
   const [showAlert, setShowAlert] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowAlert(false);
-    }, 8000);
-
-    return () => clearTimeout(timer);
+    setShowAlert(true);
   }, []);
 
   return (
