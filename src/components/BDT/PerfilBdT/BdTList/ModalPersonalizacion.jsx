@@ -12,9 +12,17 @@ export  function PersonalizarPerfil({ isOpen, onClose, bde, styles }) {
   const [hab, setHab] = useState('');
 
   const handleGuardar = async () => {
+    try {
    registrarStyle(situacion, bdeInfo, hab, bde);
-  window.location.reload(); // Recargar la página
   onClose();
+     // Introduce un pequeño retraso (por ejemplo, 500 milisegundos) antes de recargar
+     setTimeout(() => {
+      window.location.reload();
+    }, 1000);
+  } catch (error) {
+    console.error("Error al guardar el estilo:", error);
+    // Puedes agregar aquí lógica adicional en caso de error, como mostrar un mensaje al usuario.
+  }
 };
 
 
@@ -76,12 +84,24 @@ export const PersonalizarPerfilEdicion = ({ isOpen, onClose, bde, styles }) => {
   const [situacion, setSituacion] = useState(styles.cardSit);
   const [bdeInfo, setBdeInfo] = useState(styles.cardInfo);
   const [hab, setHab] = useState(styles.cardHab);
-
+  
   const handleGuardar = async () => {
-     updatedStyle(situacion, bdeInfo, hab, bde,styles);
-    window.location.reload(); // Recargar la página
-    onClose();
+    try {
+      await updatedStyle(situacion, bdeInfo, hab, bde, styles);
+      onClose();
+      
+  
+      // Introduce un pequeño retraso (por ejemplo, 500 milisegundos) antes de recargar
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+    } catch (error) {
+      console.error("Error al guardar el estilo:", error);
+      // Puedes agregar aquí lógica adicional en caso de error, como mostrar un mensaje al usuario.
+    }
   };
+  
+  
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
