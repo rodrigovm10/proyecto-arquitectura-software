@@ -6,8 +6,6 @@ import { LazyLoading, LazyLoadingDisabled, AsyncCollection } from "@aws-amplify/
 
 
 
-<<<<<<< HEAD
-=======
 type EagerStyles = {
   readonly [__modelMeta__]: {
     identifier: ManagedIdentifier<Styles, 'id'>;
@@ -48,7 +46,6 @@ export declare const Styles: (new (init: ModelInit<Styles>) => Styles) & {
   copyOf(source: Styles, mutator: (draft: MutableModel<Styles>) => MutableModel<Styles> | void): Styles;
 }
 
->>>>>>> mariodos
 type EagerVersionVacante = {
   readonly [__modelMeta__]: {
     identifier: ManagedIdentifier<VersionVacante, 'id'>;

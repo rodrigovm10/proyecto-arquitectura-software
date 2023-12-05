@@ -1,7 +1,5 @@
 export const schema = {
     "models": {
-<<<<<<< HEAD
-=======
         "Styles": {
             "name": "Styles",
             "fields": {
@@ -147,7 +145,6 @@ export const schema = {
                 }
             ]
         },
->>>>>>> mariodos
         "VersionVacante": {
             "name": "VersionVacante",
             "fields": {
@@ -1452,9 +1449,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.4.4",
-<<<<<<< HEAD
-    "version": "d3e87e046be08fea910c9019f172d700"
-=======
     "version": "80aab29e2917bfcbe780a57b8acb5c8e"
->>>>>>> mariodos
 };

@@ -15,8 +15,8 @@ import {
 import { Nav } from "../../components/Nav";
 import introduccion from "../../img/introduccion.png";
 import vacantes from "../../img/vacantes.png";
-import vacantes2 from "../../img/vacantes2.png";
 import vacanteseditar from "../../img/vacanteeditar.png";
+import vacantes2 from "../../img/vacantes2.png";
 import vacanteseditada from "../../img/vacanteeditada.png";
 import vacantesguardada from "../../img/vacanteguardada.png";
 import vacantesactualizada from "../../img/vacanteactualizada.png";
@@ -34,12 +34,12 @@ export function Innovation() {
   const images = [
     introduccion,
     vacantes,
-    vacantes2,
     vacanteseditar,
     vacanteseditada,
     vacantesguardada,
     vacantesactualizada,
     vacantevolver,
+    vacantes2,
     vacantes3,
     vacantes4,
     vacantes5,
@@ -48,13 +48,13 @@ export function Innovation() {
   ];
   const imageDescriptions = [
     "",
-    "En el apartado de vacantes seleccione una vacante",
-    "Haz clic en el ícono de los tres puntos. Selecciona 'Versiones' para revisar y administrar las versiones anteriores de la publicación de la vacante.",
-    "Editar vacante para crear versión",
-    "Editar campo nombre",
+    "Dirígete a la sección 'Vacantes', identifica la vacante de 'Diseñador Web' que se desea editar y haz clic en ella para acceder a las opciones de edición disponibles.",
+    "Haz clic en los tres puntos verticales junto a la vacante de 'Diseñador Web' y elige 'Editar' para modificarla.",
+    "Ingresa al campo 'Nombre Vacante' para editar el título de la posición de 'Diseñador Web'.",
     "Guardar vacante",
+    "Se le presenta un cuadro de diálogo de vacante actualizada",
     "Volver a las vacantes",
-    "Lista vacantes",
+    "Haz clic en el ícono de los tres puntos. Selecciona 'Versiones' para revisar y administrar las versiones anteriores de la publicación de la vacante.",
     "Haga clic en el menú desplegable situado en la parte superior izquierda para expandir la lista de todas las versiones disponibles. Luego, seleccione la versión que desea revisar.",
     " Aquí se muestra la 'versión' con su fecha de creación. En el panel izquierdo, se detalla la información de la versión. Si desea resturarla haga clic en el botón 'Recuperar versión'",
     "Se le presenta un cuadro de diálogo de confirmación solicitando su aprobación para proceder con la restauración de una versión anterior de su vacante.",
