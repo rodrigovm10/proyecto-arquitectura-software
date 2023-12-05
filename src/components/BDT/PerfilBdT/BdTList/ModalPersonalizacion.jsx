@@ -13,12 +13,12 @@ export  function PersonalizarPerfil({ isOpen, onClose, bde, styles }) {
 
   const handleGuardar = async () => {
     try {
-   registrarStyle(situacion, bdeInfo, hab, bde);
+    await registrarStyle(situacion, bdeInfo, hab, bde);
   onClose();
      // Introduce un pequeño retraso (por ejemplo, 500 milisegundos) antes de recargar
-     setTimeout(() => {
-      window.location.reload();
-    }, 1000);
+  
+      await window.location.reload();
+
   } catch (error) {
     console.error("Error al guardar el estilo:", error);
     // Puedes agregar aquí lógica adicional en caso de error, como mostrar un mensaje al usuario.
