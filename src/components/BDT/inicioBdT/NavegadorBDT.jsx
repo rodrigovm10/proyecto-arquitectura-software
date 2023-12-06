@@ -17,8 +17,10 @@ import {
   IconButton,
   Center,
   ButtonGroup,
+  Text,
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon, HamburgerIcon } from "@chakra-ui/icons";
+import { MdNotificationsActive } from "react-icons/md";
 import { Link as RouterLink } from "react-router-dom";
 import { Auth, DataStore } from "aws-amplify";
 import { BDT } from "../../../models";
@@ -96,6 +98,19 @@ function NavegadorBDT({ setSession }) {
                 <RouterLink to="/buscar-empleo">Buscar empleo</RouterLink>
                 <RouterLink to="/oportunidades-laborales">
                   Oportunidades laborales
+                </RouterLink>
+                <RouterLink to="/innovationbde">
+                  <Text
+                    color="#fff"
+                    mt={1}
+                    _hover={{
+                      color: "#ea754b",
+                      transform: "scale(1.5)",
+                      transition: "transform 0.2s ease", // Agrega una transición suave
+                    }}
+                  >
+                    <MdNotificationsActive />
+                  </Text>
                 </RouterLink>
               </>
             )}

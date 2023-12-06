@@ -21,6 +21,7 @@ import { Vacantes } from './pages/Vacantes/Vacantes'
 import { VacanteDatos } from './pages/Vacantes/VacanteDatos'
 import { DataVacanteProvider } from './context/DataVacanteContext'
 import { Innovation } from './components/Empresa/innovation'
+import { Innovationbde } from './components/BDT/innovationbde'
 import { FormVacanteEdit } from './pages/FormVacanteEdit'
 import Error from './components/Error'
 import { BuscarEmpleo } from './pages/BDT/BuscarEmpleo'
@@ -103,6 +104,9 @@ const router = createBrowserRouter([
 	{
 		path: '/innovation',
 		element: <Innovation />
+	}, {
+		path: '/innovationbde',
+		element: <Innovationbde />
 	},
 	{
 		path: '/vacantes/vacante/editar-vacante/:id',
