@@ -56,7 +56,7 @@ export function Footer() {
         <Flex direction="column" textColor={"white"}>
           <h2>Contacto</h2>
           <p>León Gto, NY 10012, US</p>
-          <p>redlaboral@gmail.com</p>
+          <p>redlabolal@gmail.com</p>
           <p>+ 01 123 675 78</p>
           <p>+ 477 688 89 09</p>
         </Flex>

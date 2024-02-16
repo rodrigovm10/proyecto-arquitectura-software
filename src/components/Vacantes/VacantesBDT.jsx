@@ -1,53 +1,47 @@
-import { Grid, GridItem, Heading, Stack, Text } from '@chakra-ui/react'
-import { useManageVacantes } from '../../hooks/useManageVacantes'
-import { useEffect } from 'react'
-import { VacanteBDT } from './VacanteBDT'
-import { Filtros } from './Filtros'
-import { useSession } from '../../hooks/useSession'
-import { useFiltros } from '../../hooks/useFiltros'
-import { SinVacantes } from './SinVacantes'
+import { Grid, GridItem, Heading, Stack, Text } from "@chakra-ui/react";
+import { useManageVacantes } from "../../hooks/useManageVacantes";
+import { useEffect } from "react";
+import { VacanteBDT } from "./VacanteBDT";
+import { Filtros } from "./Filtros";
+import { useSession } from "../../hooks/useSession";
+import { useFiltros } from "../../hooks/useFiltros";
+import { SinVacantes } from "./SinVacantes";
 
 export function VacantesBDT() {
-  const { listVacantesFiltros, vacantesVisibles } = useManageVacantes()
-  const { dataSession } = useSession()
-  const { filtros, setFiltros } = useFiltros()
+  const { listVacantesFiltros, vacantesVisibles } = useManageVacantes();
+  const { dataSession } = useSession();
+  const { filtros, setFiltros } = useFiltros();
 
   useEffect(() => {
-    listVacantesFiltros({ filtros })
-    console.log(dataSession)
-  }, [filtros])
+    listVacantesFiltros({ filtros });
+    console.log(dataSession);
+  }, [filtros]);
 
   return (
     <>
-      <Stack
-        mt='2rem'
-        ml='2rem'>
-        <Heading
-          as='h2'
-          size='2xl'>
+      <Stack mt="2rem" ml="2rem">
+        <Heading as="h2" size="2xl">
           Vacantes
         </Heading>
-        <Text
-          fontSize='xl'
-          mb='2rem'>
+        <Text fontSize="xl" mb="2rem">
           En esta sección podrás visualizar las vacantes y postularte a ellas
         </Text>
-        <Filtros
-          filtros={filtros}
-          setFiltros={setFiltros}
-        />
-        <Grid mt='2rem'>
-          <GridItem>
-            <Text
-              fontSize='md'
-              as='i'
-              opacity='0.8'>
+        <Filtros filtros={filtros} setFiltros={setFiltros} />
+        <Grid mt="2rem">
+          <GridItem p="0.4rem">
+            <Text fontSize="md" as="i" opacity="0.8">
               {`${vacantesVisibles?.length} resultados`}
             </Text>
           </GridItem>
         </Grid>
       </Stack>
-      {!vacantesVisibles?.length ? <SinVacantes hasButton={false}>No hay vacantes con los filtros proporcionados</SinVacantes> : <VacanteBDT vacantes={vacantesVisibles} />}
+      {!vacantesVisibles?.length ? (
+        <SinVacantes hasButton={false}>
+          No hay vacantes con los filtros proporcionados
+        </SinVacantes>
+      ) : (
+        <VacanteBDT vacantes={vacantesVisibles} />
+      )}
     </>
-  )
+  );
 }
