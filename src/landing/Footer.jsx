@@ -64,9 +64,9 @@ export function Footer() {
         <Flex color="white">@ Derechos reservados por Red Laboral</Flex>
         {/**Redes */}
         <Flex color="white" justify="end">
-          <Facebook />
-          <Instagram />
-          <X />
+        <a href="https://www.facebook.com/profile.php?id=61556749311225" target="_blank"><Facebook /></a>
+        <a href="https://www.instagram.com/redlaboral2/" target="_blank"><Instagram /></a>
+        <a href="https://twitter.com/RedLaboral56859" target="_blank"><X /></a>
         </Flex>
       </Grid>
     </>

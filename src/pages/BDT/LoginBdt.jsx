@@ -10,6 +10,8 @@ function LoginBdt() {
 
   useEffect(() => {
     saveDataIntoGroupsBDT()
+    console.log(dataSession);
+    console.log(nombreGrupo);
   }, [])
   return (
     <div>

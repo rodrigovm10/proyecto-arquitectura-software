@@ -19,7 +19,7 @@ export function useAddToGroup(nombreDelGrupo) {
       }
       console.log(requestOptions)
 
-      const response = await fetch(process.env.REACT_APP_API_REDLABORAL + '/agregar-usuarios', requestOptions)
+      const response = await fetch(process.env.REACT_APP_API_REDLABORAL + '/agregar-usuario', requestOptions)
       const responseData = await response.json()
 
       const body = JSON.parse(responseData.body)

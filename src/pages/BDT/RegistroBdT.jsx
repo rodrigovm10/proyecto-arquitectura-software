@@ -8,6 +8,7 @@ function RegistroBdT() {
   const { dataSession, getDataSessionBDT, nombreGrupo } = useSession('trabajador')
 
   useEffect(() => {
+    console.log(dataSession);
     getDataSessionBDT()
   }, [])
 

@@ -1,25 +1,25 @@
 {
   "version": 1,
   "serviceConfiguration": {
-    "apiName": "RedLaboral",
+    "apiName": "EnlaceLaboral",
     "serviceName": "AppSync",
     "defaultAuthType": {
-      "mode": "API_KEY",
-      "keyDescription": "api key description",
-      "expirationTime": 30
+      "mode": "AMAZON_COGNITO_USER_POOLS",
+      "cognitoUserPoolId": "authEnlaceLaboral"
     },
     "additionalAuthTypes": [
       {
         "mode": "AWS_IAM"
       },
       {
-        "mode": "AMAZON_COGNITO_USER_POOLS",
-        "cognitoUserPoolId": "authRedLaboral"
+        "mode": "API_KEY",
+        "keyDescription": "api key description",
+        "expirationTime": 30
       }
     ],
     "conflictResolution": {
       "defaultResolutionStrategy": {
-        "type": "AUTOMERGE"
+        "type": "NONE"
       }
     }
   }

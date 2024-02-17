@@ -4,12 +4,13 @@ import { schema } from './schema';
 
 
 
-const { VersionVacante, Oportunidades, Vacante, Empresa, BDT } = initSchema(schema);
+const { BDT, Empresa, Vacante, Oportunidades, VersionVacante, Styles } = initSchema(schema);
 
 export {
-  VersionVacante,
-  Oportunidades,
-  Vacante,
+  BDT,
   Empresa,
-  BDT
+  Vacante,
+  Oportunidades,
+  VersionVacante,
+  Styles
 };

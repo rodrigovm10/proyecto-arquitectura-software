@@ -1,13 +1,13 @@
 {
   "api": {
-    "RedLaboral": {
+    "EnlaceLaboral": {
       "dependsOn": [
         {
           "attributes": [
             "UserPoolId"
           ],
           "category": "auth",
-          "resourceName": "RedLaboral"
+          "resourceName": "EnlaceLaboral"
         }
       ],
       "output": {
@@ -17,18 +17,18 @@
               "authenticationType": "AWS_IAM"
             },
             {
-              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
-              "userPoolConfig": {
-                "userPoolId": "authRedLaboral"
-              }
+              "apiKeyConfig": {
+                "apiKeyExpirationDays": 30,
+                "description": "api key description"
+              },
+              "authenticationType": "API_KEY"
             }
           ],
           "defaultAuthentication": {
-            "apiKeyConfig": {
-              "apiKeyExpirationDays": 30,
-              "description": "api key description"
-            },
-            "authenticationType": "API_KEY"
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authEnlaceLaboral"
+            }
           }
         }
       },
@@ -37,7 +37,7 @@
     }
   },
   "auth": {
-    "RedLaboral": {
+    "EnlaceLaboral": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
@@ -54,9 +54,7 @@
           ],
           "passwordPolicyMinLength": 8
         },
-        "signupAttributes": [
-          "EMAIL"
-        ],
+        "signupAttributes": [],
         "socialProviders": [],
         "usernameAttributes": [
           "EMAIL"
@@ -67,60 +65,6 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
-    }
-  },
-  "function": {
-    "S3Trigger110393e5": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    }
-  },
-  "parameters": {
-    "AMPLIFY_function_S3Trigger110393e5_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "S3Trigger110393e5"
-        }
-      ]
-    },
-    "AMPLIFY_function_S3Trigger110393e5_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "S3Trigger110393e5"
-        }
-      ]
-    },
-    "AMPLIFY_storage_redlaboralc3e6ad68_bucketName": {
-      "usedBy": [
-        {
-          "category": "storage",
-          "resourceName": "redlaboralc3e6ad68"
-        }
-      ]
-    },
-    "AMPLIFY_storage_redlaboralc3e6ad68_region": {
-      "usedBy": [
-        {
-          "category": "storage",
-          "resourceName": "redlaboralc3e6ad68"
-        }
-      ]
-    }
-  },
-  "storage": {
-    "redlaboralc3e6ad68": {
-      "dependsOn": [],
-      "providerPlugin": "awscloudformation",
-      "service": "S3",
-      "serviceType": "imported"
-    },
-    "s3575ad62a": {
-      "dependsOn": [],
-      "providerPlugin": "awscloudformation",
-      "service": "S3"
     }
   }
 }

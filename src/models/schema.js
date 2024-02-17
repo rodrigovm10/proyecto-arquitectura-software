@@ -1,99 +1,7 @@
 export const schema = {
     "models": {
-        "VersionVacante": {
-            "name": "VersionVacante",
-            "fields": {
-                "id": {
-                    "name": "id",
-                    "isArray": false,
-                    "type": "ID",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "empresaID": {
-                    "name": "empresaID",
-                    "isArray": false,
-                    "type": "ID",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "vacanteID": {
-                    "name": "vacanteID",
-                    "isArray": false,
-                    "type": "ID",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "informacionVacante": {
-                    "name": "informacionVacante",
-                    "isArray": true,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isArrayNullable": true
-                },
-                "createdAt": {
-                    "name": "createdAt",
-                    "isArray": false,
-                    "type": "AWSDateTime",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isReadOnly": true
-                },
-                "updatedAt": {
-                    "name": "updatedAt",
-                    "isArray": false,
-                    "type": "AWSDateTime",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isReadOnly": true
-                }
-            },
-            "syncable": true,
-            "pluralName": "VersionVacantes",
-            "attributes": [
-                {
-                    "type": "model",
-                    "properties": {}
-                },
-                {
-                    "type": "key",
-                    "properties": {
-                        "name": "byEmpresa",
-                        "fields": [
-                            "empresaID"
-                        ]
-                    }
-                },
-                {
-                    "type": "key",
-                    "properties": {
-                        "name": "byVacante",
-                        "fields": [
-                            "vacanteID"
-                        ]
-                    }
-                },
-                {
-                    "type": "auth",
-                    "properties": {
-                        "rules": [
-                            {
-                                "allow": "public",
-                                "operations": [
-                                    "create",
-                                    "update",
-                                    "delete",
-                                    "read"
-                                ]
-                            }
-                        ]
-                    }
-                }
-            ]
-        },
-        "Oportunidades": {
-            "name": "Oportunidades",
+        "BDT": {
+            "name": "BDT",
             "fields": {
                 "id": {
                     "name": "id",
@@ -109,71 +17,29 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "descripcion": {
-                    "name": "descripcion",
+                "apellidos": {
+                    "name": "apellidos",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "numeroPlazas": {
-                    "name": "numeroPlazas",
-                    "isArray": false,
-                    "type": "Int",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "area": {
-                    "name": "area",
+                "curp": {
+                    "name": "curp",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "tipoContrato": {
-                    "name": "tipoContrato",
+                "fechaNacimiento": {
+                    "name": "fechaNacimiento",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "modalidad": {
-                    "name": "modalidad",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "diasLaborales": {
-                    "name": "diasLaborales",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "edadMax": {
-                    "name": "edadMax",
-                    "isArray": false,
-                    "type": "Int",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "edadMin": {
-                    "name": "edadMin",
-                    "isArray": false,
-                    "type": "Int",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "genero": {
-                    "name": "genero",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "experienciaLaboral": {
-                    "name": "experienciaLaboral",
+                "telefono": {
+                    "name": "telefono",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
@@ -181,6 +47,13 @@ export const schema = {
                 },
                 "escolaridad": {
                     "name": "escolaridad",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "genero": {
+                    "name": "genero",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
@@ -194,21 +67,26 @@ export const schema = {
                     "attributes": [],
                     "isArrayNullable": true
                 },
-                "nivelIdioma": {
-                    "name": "nivelIdioma",
-                    "isArray": true,
-                    "type": "String",
+                "buscaEmpleo": {
+                    "name": "buscaEmpleo",
+                    "isArray": false,
+                    "type": "Boolean",
                     "isRequired": false,
-                    "attributes": [],
-                    "isArrayNullable": true
+                    "attributes": []
                 },
-                "prestaciones": {
-                    "name": "prestaciones",
-                    "isArray": true,
+                "trabajando": {
+                    "name": "trabajando",
+                    "isArray": false,
                     "type": "String",
                     "isRequired": false,
-                    "attributes": [],
-                    "isArrayNullable": true
+                    "attributes": []
+                },
+                "correo": {
+                    "name": "correo",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
                 },
                 "habilidadesBlandas": {
                     "name": "habilidadesBlandas",
@@ -226,55 +104,19 @@ export const schema = {
                     "attributes": [],
                     "isArrayNullable": true
                 },
-                "emailEmpresa": {
-                    "name": "emailEmpresa",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "visible": {
-                    "name": "visible",
+                "dispViajar": {
+                    "name": "dispViajar",
                     "isArray": false,
                     "type": "Boolean",
                     "isRequired": false,
                     "attributes": []
                 },
-                "ubicacion": {
-                    "name": "ubicacion",
+                "dispRadicar": {
+                    "name": "dispRadicar",
                     "isArray": false,
-                    "type": "String",
+                    "type": "Boolean",
                     "isRequired": false,
                     "attributes": []
-                },
-                "nombreEmpresa": {
-                    "name": "nombreEmpresa",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "salarioMaximo": {
-                    "name": "salarioMaximo",
-                    "isArray": false,
-                    "type": "Float",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "salarioMin": {
-                    "name": "salarioMin",
-                    "isArray": false,
-                    "type": "Float",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "idiomaConNivel": {
-                    "name": "idiomaConNivel",
-                    "isArray": true,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isArrayNullable": true
                 },
                 "municipio": {
                     "name": "municipio",
@@ -283,59 +125,24 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "jornadaLaboral": {
-                    "name": "jornadaLaboral",
+                "colonia": {
+                    "name": "colonia",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "emailBDT": {
-                    "name": "emailBDT",
+                "calle": {
+                    "name": "calle",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "nombreBDT": {
-                    "name": "nombreBDT",
+                "codigoPostal": {
+                    "name": "codigoPostal",
                     "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "bdtID": {
-                    "name": "bdtID",
-                    "isArray": false,
-                    "type": "ID",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "vacanteID": {
-                    "name": "vacanteID",
-                    "isArray": false,
-                    "type": "ID",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "empresaID": {
-                    "name": "empresaID",
-                    "isArray": false,
-                    "type": "ID",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "periodoPago": {
-                    "name": "periodoPago",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "apellidosBDT": {
-                    "name": "apellidosBDT",
-                    "isArray": false,
-                    "type": "String",
+                    "type": "Int",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -353,320 +160,6 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "escolaridadBDT": {
-                    "name": "escolaridadBDT",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "telefonoBDT": {
-                    "name": "telefonoBDT",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "generoBDT": {
-                    "name": "generoBDT",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "createdAt": {
-                    "name": "createdAt",
-                    "isArray": false,
-                    "type": "AWSDateTime",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isReadOnly": true
-                },
-                "updatedAt": {
-                    "name": "updatedAt",
-                    "isArray": false,
-                    "type": "AWSDateTime",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isReadOnly": true
-                }
-            },
-            "syncable": true,
-            "pluralName": "Oportunidades",
-            "attributes": [
-                {
-                    "type": "model",
-                    "properties": {}
-                },
-                {
-                    "type": "key",
-                    "properties": {
-                        "name": "byBDT",
-                        "fields": [
-                            "bdtID"
-                        ]
-                    }
-                },
-                {
-                    "type": "key",
-                    "properties": {
-                        "name": "byVacante",
-                        "fields": [
-                            "vacanteID"
-                        ]
-                    }
-                },
-                {
-                    "type": "key",
-                    "properties": {
-                        "name": "byEmpresa",
-                        "fields": [
-                            "empresaID"
-                        ]
-                    }
-                },
-                {
-                    "type": "auth",
-                    "properties": {
-                        "rules": [
-                            {
-                                "allow": "public",
-                                "operations": [
-                                    "create",
-                                    "update",
-                                    "delete",
-                                    "read"
-                                ]
-                            },
-                            {
-                                "provider": "userPools",
-                                "ownerField": "owner",
-                                "allow": "owner",
-                                "identityClaim": "cognito:username",
-                                "operations": [
-                                    "create",
-                                    "update",
-                                    "delete",
-                                    "read"
-                                ]
-                            }
-                        ]
-                    }
-                }
-            ]
-        },
-        "Vacante": {
-            "name": "Vacante",
-            "fields": {
-                "id": {
-                    "name": "id",
-                    "isArray": false,
-                    "type": "ID",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "nombre": {
-                    "name": "nombre",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "descripcion": {
-                    "name": "descripcion",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "numeroPlazas": {
-                    "name": "numeroPlazas",
-                    "isArray": false,
-                    "type": "Int",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "area": {
-                    "name": "area",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "tipoContrato": {
-                    "name": "tipoContrato",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "modalidad": {
-                    "name": "modalidad",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "diasLaborales": {
-                    "name": "diasLaborales",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "edadMin": {
-                    "name": "edadMin",
-                    "isArray": false,
-                    "type": "Int",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "edadMax": {
-                    "name": "edadMax",
-                    "isArray": false,
-                    "type": "Int",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "genero": {
-                    "name": "genero",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "experienciaLaboral": {
-                    "name": "experienciaLaboral",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "escolaridad": {
-                    "name": "escolaridad",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "idioma": {
-                    "name": "idioma",
-                    "isArray": true,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isArrayNullable": true
-                },
-                "nivelIdioma": {
-                    "name": "nivelIdioma",
-                    "isArray": true,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isArrayNullable": true
-                },
-                "prestaciones": {
-                    "name": "prestaciones",
-                    "isArray": true,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isArrayNullable": true
-                },
-                "habilidadesBlandas": {
-                    "name": "habilidadesBlandas",
-                    "isArray": true,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isArrayNullable": true
-                },
-                "habilidadesTecnicas": {
-                    "name": "habilidadesTecnicas",
-                    "isArray": true,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isArrayNullable": true
-                },
-                "emailEmpresa": {
-                    "name": "emailEmpresa",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "visible": {
-                    "name": "visible",
-                    "isArray": false,
-                    "type": "Boolean",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "ubicacion": {
-                    "name": "ubicacion",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "nombreEmpresa": {
-                    "name": "nombreEmpresa",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "empresaID": {
-                    "name": "empresaID",
-                    "isArray": false,
-                    "type": "ID",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "salarioMin": {
-                    "name": "salarioMin",
-                    "isArray": false,
-                    "type": "Float",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "salarioMax": {
-                    "name": "salarioMax",
-                    "isArray": false,
-                    "type": "Float",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "idiomaConNivel": {
-                    "name": "idiomaConNivel",
-                    "isArray": true,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isArrayNullable": true
-                },
-                "municipio": {
-                    "name": "municipio",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "jornadaLaboral": {
-                    "name": "jornadaLaboral",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "periodoPago": {
-                    "name": "periodoPago",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
                 "Oportunidades": {
                     "name": "Oportunidades",
                     "isArray": true,
@@ -679,15 +172,15 @@ export const schema = {
                     "association": {
                         "connectionType": "HAS_MANY",
                         "associatedWith": [
-                            "vacanteID"
+                            "bdtID"
                         ]
                     }
                 },
-                "VersionVacantes": {
-                    "name": "VersionVacantes",
+                "Styles": {
+                    "name": "Styles",
                     "isArray": true,
                     "type": {
-                        "model": "VersionVacante"
+                        "model": "Styles"
                     },
                     "isRequired": false,
                     "attributes": [],
@@ -695,7 +188,7 @@ export const schema = {
                     "association": {
                         "connectionType": "HAS_MANY",
                         "associatedWith": [
-                            "vacanteID"
+                            "bdtID"
                         ]
                     }
                 },
@@ -717,20 +210,11 @@ export const schema = {
                 }
             },
             "syncable": true,
-            "pluralName": "Vacantes",
+            "pluralName": "BDTS",
             "attributes": [
                 {
                     "type": "model",
                     "properties": {}
-                },
-                {
-                    "type": "key",
-                    "properties": {
-                        "name": "byEmpresa",
-                        "fields": [
-                            "empresaID"
-                        ]
-                    }
                 },
                 {
                     "type": "auth",
@@ -743,41 +227,6 @@ export const schema = {
                                     "update",
                                     "delete",
                                     "read"
-                                ]
-                            },
-                            {
-                                "provider": "userPools",
-                                "ownerField": "owner",
-                                "allow": "owner",
-                                "identityClaim": "cognito:username",
-                                "operations": [
-                                    "create",
-                                    "update",
-                                    "delete",
-                                    "read"
-                                ]
-                            },
-                            {
-                                "allow": "private",
-                                "operations": [
-                                    "create",
-                                    "update",
-                                    "delete",
-                                    "read"
-                                ]
-                            },
-                            {
-                                "groupClaim": "cognito:groups",
-                                "provider": "userPools",
-                                "allow": "groups",
-                                "groups": [
-                                    "Empresa"
-                                ],
-                                "operations": [
-                                    "read",
-                                    "create",
-                                    "update",
-                                    "delete"
                                 ]
                             }
                         ]
@@ -970,59 +419,14 @@ export const schema = {
                                     "delete",
                                     "read"
                                 ]
-                            },
-                            {
-                                "provider": "userPools",
-                                "ownerField": "owner",
-                                "allow": "owner",
-                                "identityClaim": "cognito:username",
-                                "operations": [
-                                    "create",
-                                    "update",
-                                    "delete",
-                                    "read"
-                                ]
-                            },
-                            {
-                                "allow": "private",
-                                "operations": [
-                                    "create",
-                                    "update",
-                                    "delete",
-                                    "read"
-                                ]
-                            },
-                            {
-                                "allow": "private",
-                                "provider": "iam",
-                                "operations": [
-                                    "create",
-                                    "update",
-                                    "delete",
-                                    "read"
-                                ]
-                            },
-                            {
-                                "groupClaim": "cognito:groups",
-                                "provider": "userPools",
-                                "allow": "groups",
-                                "groups": [
-                                    "Empresa"
-                                ],
-                                "operations": [
-                                    "read",
-                                    "create",
-                                    "update",
-                                    "delete"
-                                ]
                             }
                         ]
                     }
                 }
             ]
         },
-        "BDT": {
-            "name": "BDT",
+        "Vacante": {
+            "name": "Vacante",
             "fields": {
                 "id": {
                     "name": "id",
@@ -1038,36 +442,57 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "apellidos": {
-                    "name": "apellidos",
+                "descripcion": {
+                    "name": "descripcion",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "curp": {
-                    "name": "curp",
+                "numeroPlazas": {
+                    "name": "numeroPlazas",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "fechaNacimiento": {
-                    "name": "fechaNacimiento",
+                "area": {
+                    "name": "area",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "telefono": {
-                    "name": "telefono",
+                "tipoContrato": {
+                    "name": "tipoContrato",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "escolaridad": {
-                    "name": "escolaridad",
+                "modalidad": {
+                    "name": "modalidad",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "diasLaborales": {
+                    "name": "diasLaborales",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "edadMin": {
+                    "name": "edadMin",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "edadMax": {
+                    "name": "edadMax",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
@@ -1075,6 +500,20 @@ export const schema = {
                 },
                 "genero": {
                     "name": "genero",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "experienciaLaboral": {
+                    "name": "experienciaLaboral",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "escolaridad": {
+                    "name": "escolaridad",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
@@ -1088,26 +527,21 @@ export const schema = {
                     "attributes": [],
                     "isArrayNullable": true
                 },
-                "buscaEmpleo": {
-                    "name": "buscaEmpleo",
-                    "isArray": false,
-                    "type": "Boolean",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "trabajando": {
-                    "name": "trabajando",
-                    "isArray": false,
-                    "type": "Boolean",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "correo": {
-                    "name": "correo",
-                    "isArray": false,
+                "nivelIdioma": {
+                    "name": "nivelIdioma",
+                    "isArray": true,
                     "type": "String",
                     "isRequired": false,
-                    "attributes": []
+                    "attributes": [],
+                    "isArrayNullable": true
+                },
+                "prestaciones": {
+                    "name": "prestaciones",
+                    "isArray": true,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true
                 },
                 "habilidadesBlandas": {
                     "name": "habilidadesBlandas",
@@ -1125,19 +559,55 @@ export const schema = {
                     "attributes": [],
                     "isArrayNullable": true
                 },
-                "dispViajar": {
-                    "name": "dispViajar",
+                "emailEmpresa": {
+                    "name": "emailEmpresa",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "visible": {
+                    "name": "visible",
                     "isArray": false,
                     "type": "Boolean",
                     "isRequired": false,
                     "attributes": []
                 },
-                "dispRadicar": {
-                    "name": "dispRadicar",
+                "ubicacion": {
+                    "name": "ubicacion",
                     "isArray": false,
-                    "type": "Boolean",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
+                },
+                "nombreEmpresa": {
+                    "name": "nombreEmpresa",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "salarioMin": {
+                    "name": "salarioMin",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "salarioMax": {
+                    "name": "salarioMax",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "idiomaConNivel": {
+                    "name": "idiomaConNivel",
+                    "isArray": true,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true
                 },
                 "municipio": {
                     "name": "municipio",
@@ -1146,39 +616,25 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "colonia": {
-                    "name": "colonia",
+                "jornadaLaboral": {
+                    "name": "jornadaLaboral",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "calle": {
-                    "name": "calle",
+                "periodoPago": {
+                    "name": "periodoPago",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "codigoPostal": {
-                    "name": "codigoPostal",
+                "empresaID": {
+                    "name": "empresaID",
                     "isArray": false,
-                    "type": "Int",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "imagenBDTUrl": {
-                    "name": "imagenBDTUrl",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "pdfImagenUrl": {
-                    "name": "pdfImagenUrl",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
+                    "type": "ID",
+                    "isRequired": true,
                     "attributes": []
                 },
                 "Oportunidades": {
@@ -1193,7 +649,23 @@ export const schema = {
                     "association": {
                         "connectionType": "HAS_MANY",
                         "associatedWith": [
-                            "bdtID"
+                            "vacanteID"
+                        ]
+                    }
+                },
+                "VersionVacantes": {
+                    "name": "VersionVacantes",
+                    "isArray": true,
+                    "type": {
+                        "model": "VersionVacante"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true,
+                    "association": {
+                        "connectionType": "HAS_MANY",
+                        "associatedWith": [
+                            "vacanteID"
                         ]
                     }
                 },
@@ -1215,11 +687,20 @@ export const schema = {
                 }
             },
             "syncable": true,
-            "pluralName": "BDTS",
+            "pluralName": "Vacantes",
             "attributes": [
                 {
                     "type": "model",
                     "properties": {}
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byEmpresa",
+                        "fields": [
+                            "empresaID"
+                        ]
+                    }
                 },
                 {
                     "type": "auth",
@@ -1233,50 +714,537 @@ export const schema = {
                                     "delete",
                                     "read"
                                 ]
-                            },
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "Oportunidades": {
+            "name": "Oportunidades",
+            "fields": {
+                "id": {
+                    "name": "id",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "nombre": {
+                    "name": "nombre",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "descripcion": {
+                    "name": "descripcion",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "numeroPlazas": {
+                    "name": "numeroPlazas",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "area": {
+                    "name": "area",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "tipoContrato": {
+                    "name": "tipoContrato",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "modaiidad": {
+                    "name": "modaiidad",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "diasLaborales": {
+                    "name": "diasLaborales",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "edadMax": {
+                    "name": "edadMax",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "edadMin": {
+                    "name": "edadMin",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "genero": {
+                    "name": "genero",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "experienciaLaboral": {
+                    "name": "experienciaLaboral",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "escolaridad": {
+                    "name": "escolaridad",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "idioma": {
+                    "name": "idioma",
+                    "isArray": true,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true
+                },
+                "nivelIdioma": {
+                    "name": "nivelIdioma",
+                    "isArray": true,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true
+                },
+                "prestaciones": {
+                    "name": "prestaciones",
+                    "isArray": true,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true
+                },
+                "habilidadesBlandas": {
+                    "name": "habilidadesBlandas",
+                    "isArray": true,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true
+                },
+                "habilidadesTecnicas": {
+                    "name": "habilidadesTecnicas",
+                    "isArray": true,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true
+                },
+                "emailEmpresa": {
+                    "name": "emailEmpresa",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "visible": {
+                    "name": "visible",
+                    "isArray": false,
+                    "type": "Boolean",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "ubicacion": {
+                    "name": "ubicacion",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "nombreEmpresa": {
+                    "name": "nombreEmpresa",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "salarioMaximo": {
+                    "name": "salarioMaximo",
+                    "isArray": false,
+                    "type": "Float",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "salarioMin": {
+                    "name": "salarioMin",
+                    "isArray": false,
+                    "type": "Float",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "idiomaConNivel": {
+                    "name": "idiomaConNivel",
+                    "isArray": true,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true
+                },
+                "municipio": {
+                    "name": "municipio",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "jornadaLaboral": {
+                    "name": "jornadaLaboral",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "emailBDT": {
+                    "name": "emailBDT",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "nombreBDT": {
+                    "name": "nombreBDT",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "periodoPago": {
+                    "name": "periodoPago",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "apellidosBDT": {
+                    "name": "apellidosBDT",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "imagenBDTUrl": {
+                    "name": "imagenBDTUrl",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "pdfimagenUrl": {
+                    "name": "pdfimagenUrl",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "escolaridadBDT": {
+                    "name": "escolaridadBDT",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "telefonoBDT": {
+                    "name": "telefonoBDT",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "generoBDT": {
+                    "name": "generoBDT",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "bdtID": {
+                    "name": "bdtID",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "empresaID": {
+                    "name": "empresaID",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "vacanteID": {
+                    "name": "vacanteID",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                }
+            },
+            "syncable": true,
+            "pluralName": "Oportunidades",
+            "attributes": [
+                {
+                    "type": "model",
+                    "properties": {}
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byBDT",
+                        "fields": [
+                            "bdtID"
+                        ]
+                    }
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byEmpresa",
+                        "fields": [
+                            "empresaID"
+                        ]
+                    }
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byVacante",
+                        "fields": [
+                            "vacanteID"
+                        ]
+                    }
+                },
+                {
+                    "type": "auth",
+                    "properties": {
+                        "rules": [
                             {
-                                "provider": "userPools",
-                                "ownerField": "owner",
-                                "allow": "owner",
-                                "identityClaim": "cognito:username",
+                                "allow": "public",
                                 "operations": [
                                     "create",
                                     "update",
                                     "delete",
                                     "read"
                                 ]
-                            },
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "VersionVacante": {
+            "name": "VersionVacante",
+            "fields": {
+                "id": {
+                    "name": "id",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "informacionVacante": {
+                    "name": "informacionVacante",
+                    "isArray": true,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true
+                },
+                "empresaID": {
+                    "name": "empresaID",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "vacanteID": {
+                    "name": "vacanteID",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                }
+            },
+            "syncable": true,
+            "pluralName": "VersionVacantes",
+            "attributes": [
+                {
+                    "type": "model",
+                    "properties": {}
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byEmpresa",
+                        "fields": [
+                            "empresaID"
+                        ]
+                    }
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byVacante",
+                        "fields": [
+                            "vacanteID"
+                        ]
+                    }
+                },
+                {
+                    "type": "auth",
+                    "properties": {
+                        "rules": [
                             {
-                                "allow": "private",
+                                "allow": "public",
                                 "operations": [
                                     "create",
                                     "update",
                                     "delete",
                                     "read"
                                 ]
-                            },
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "Styles": {
+            "name": "Styles",
+            "fields": {
+                "id": {
+                    "name": "id",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "cardSit": {
+                    "name": "cardSit",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "cardHab": {
+                    "name": "cardHab",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "cardInfo": {
+                    "name": "cardInfo",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "bdtID": {
+                    "name": "bdtID",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                }
+            },
+            "syncable": true,
+            "pluralName": "Styles",
+            "attributes": [
+                {
+                    "type": "model",
+                    "properties": {}
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byBDT",
+                        "fields": [
+                            "bdtID"
+                        ]
+                    }
+                },
+                {
+                    "type": "auth",
+                    "properties": {
+                        "rules": [
                             {
-                                "allow": "private",
-                                "provider": "iam",
+                                "allow": "public",
                                 "operations": [
                                     "create",
                                     "update",
                                     "delete",
                                     "read"
-                                ]
-                            },
-                            {
-                                "groupClaim": "cognito:groups",
-                                "provider": "userPools",
-                                "allow": "groups",
-                                "groups": [
-                                    "trabajador"
-                                ],
-                                "operations": [
-                                    "read",
-                                    "create",
-                                    "update",
-                                    "delete"
                                 ]
                             }
                         ]
@@ -1288,5 +1256,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "917368ef7bf6386af6cf3ecfba23c841"
+    "version": "f707877d9c7f2683cac2dc843c210346"
 };
