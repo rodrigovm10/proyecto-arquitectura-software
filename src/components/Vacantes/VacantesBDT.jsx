@@ -14,7 +14,6 @@ export function VacantesBDT() {
 
   useEffect(() => {
     listVacantesFiltros({ filtros });
-    console.log(dataSession);
   }, [filtros]);
 
   return (

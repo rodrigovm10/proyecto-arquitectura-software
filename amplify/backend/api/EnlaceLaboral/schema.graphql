@@ -1,15 +1,15 @@
-type BDT @model @auth(rules: [{allow: public}]) {
+type BDT @model @auth(rules: [{allow: public}, {allow: private}]) {
   id: ID!
   nombre: String
   apellidos: String
   curp: String
   fechaNacimiento: String
-  telefono: String
+  telefono: Int
   escolaridad: String
   genero: String
   idioma: [String]
   buscaEmpleo: Boolean
-  trabajando: String
+  trabajando: Boolean
   correo: String
   habilidadesBlandas: [String]
   habilidadesTecnicas: [String]
@@ -21,17 +21,17 @@ type BDT @model @auth(rules: [{allow: public}]) {
   codigoPostal: Int
   imagenBDTUrl: String
   pdfImagenUrl: String
-  Oportunidades: [Oportunidades] @hasMany(indexName: "byBDT", fields: ["id"])
+  Oportunidades: [Styles] @hasMany(indexName: "byBDT", fields: ["id"])
   Styles: [Styles] @hasMany(indexName: "byBDT", fields: ["id"])
 }
 
-type Empresa @model @auth(rules: [{allow: public}]) {
+type Empresa @model @auth(rules: [{allow: public}, {allow: private}]) {
   id: ID!
   nombreComercial: String
   razonSocial: String
   rfc: String
   email: String
-  telefono: Int
+  telefono: String
   municipio: String
   codigoPostal: Int
   colonia: String
@@ -40,22 +40,22 @@ type Empresa @model @auth(rules: [{allow: public}]) {
   sector: String
   tipoSucursal: String
   numero: Int
-  Vacantes: [Vacante] @hasMany(indexName: "byEmpresa", fields: ["id"])
-  Oportunidades: [Oportunidades] @hasMany(indexName: "byEmpresa", fields: ["id"])
+  Vacantes: [VersionVacante] @hasMany(indexName: "byEmpresa", fields: ["id"])
+  Oportunidades: [VersionVacante] @hasMany(indexName: "byEmpresa", fields: ["id"])
   VersionVacantes: [VersionVacante] @hasMany(indexName: "byEmpresa", fields: ["id"])
 }
 
-type Vacante @model @auth(rules: [{allow: public}]) {
+type Vacante @model @auth(rules: [{allow: public}, {allow: private}]) {
   id: ID!
   nombre: String
   descripcion: String
-  numeroPlazas: String
+  numeroPlazas: Int
   area: String
   tipoContrato: String
   modalidad: String
   diasLaborales: String
-  edadMin: String
-  edadMax: String
+  edadMin: Int
+  edadMax: Int
   genero: String
   experienciaLaboral: String
   escolaridad: String
@@ -68,18 +68,18 @@ type Vacante @model @auth(rules: [{allow: public}]) {
   visible: Boolean
   ubicacion: String
   nombreEmpresa: String
-  salarioMin: String
-  salarioMax: String
+  salarioMin: Int
+  salarioMax: Int
   idiomaConNivel: [String]
   municipio: String
   jornadaLaboral: String
   periodoPago: String
   empresaID: ID! @index(name: "byEmpresa")
-  Oportunidades: [Oportunidades] @hasMany(indexName: "byVacante", fields: ["id"])
+  Oportunidades: [VersionVacante] @hasMany(indexName: "byVacante", fields: ["id"])
   VersionVacantes: [VersionVacante] @hasMany(indexName: "byVacante", fields: ["id"])
 }
 
-type Oportunidades @model @auth(rules: [{allow: public}]) {
+type Oportunidades @model @auth(rules: [{allow: public}, {allow: private}]) {
   id: ID!
   nombre: String
   descripcion: String
@@ -121,17 +121,18 @@ type Oportunidades @model @auth(rules: [{allow: public}]) {
   vacanteID: ID! @index(name: "byVacante")
 }
 
-type VersionVacante @model @auth(rules: [{allow: public}]) {
+type VersionVacante @model @auth(rules: [{allow: public}, {allow: private}]) {
   id: ID!
   informacionVacante: [String]
   empresaID: ID! @index(name: "byEmpresa")
   vacanteID: ID! @index(name: "byVacante")
 }
 
-type Styles @model @auth(rules: [{allow: public}]) {
+type Styles @model @auth(rules: [{allow: public}, {allow: private}]) {
   id: ID!
   cardSit: String
   cardHab: String
   cardInfo: String
   bdtID: ID! @index(name: "byBDT")
-} 
+}
+ 

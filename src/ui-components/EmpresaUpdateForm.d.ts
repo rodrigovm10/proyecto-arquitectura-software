@@ -27,7 +27,7 @@ export declare type EmpresaUpdateFormInputValues = {
     razonSocial?: string;
     rfc?: string;
     email?: string;
-    telefono?: number;
+    telefono?: string;
     municipio?: string;
     codigoPostal?: number;
     colonia?: string;
@@ -42,7 +42,7 @@ export declare type EmpresaUpdateFormValidationValues = {
     razonSocial?: ValidationFunction<string>;
     rfc?: ValidationFunction<string>;
     email?: ValidationFunction<string>;
-    telefono?: ValidationFunction<number>;
+    telefono?: ValidationFunction<string>;
     municipio?: ValidationFunction<string>;
     codigoPostal?: ValidationFunction<number>;
     colonia?: ValidationFunction<string>;

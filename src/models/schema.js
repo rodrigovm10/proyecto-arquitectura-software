@@ -41,7 +41,7 @@ export const schema = {
                 "telefono": {
                     "name": "telefono",
                     "isArray": false,
-                    "type": "String",
+                    "type": "Int",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -77,7 +77,7 @@ export const schema = {
                 "trabajando": {
                     "name": "trabajando",
                     "isArray": false,
-                    "type": "String",
+                    "type": "Boolean",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -164,7 +164,7 @@ export const schema = {
                     "name": "Oportunidades",
                     "isArray": true,
                     "type": {
-                        "model": "Oportunidades"
+                        "model": "Styles"
                     },
                     "isRequired": false,
                     "attributes": [],
@@ -228,6 +228,15 @@ export const schema = {
                                     "delete",
                                     "read"
                                 ]
+                            },
+                            {
+                                "allow": "private",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
                             }
                         ]
                     }
@@ -275,7 +284,7 @@ export const schema = {
                 "telefono": {
                     "name": "telefono",
                     "isArray": false,
-                    "type": "Int",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -339,7 +348,7 @@ export const schema = {
                     "name": "Vacantes",
                     "isArray": true,
                     "type": {
-                        "model": "Vacante"
+                        "model": "VersionVacante"
                     },
                     "isRequired": false,
                     "attributes": [],
@@ -355,7 +364,7 @@ export const schema = {
                     "name": "Oportunidades",
                     "isArray": true,
                     "type": {
-                        "model": "Oportunidades"
+                        "model": "VersionVacante"
                     },
                     "isRequired": false,
                     "attributes": [],
@@ -419,6 +428,15 @@ export const schema = {
                                     "delete",
                                     "read"
                                 ]
+                            },
+                            {
+                                "allow": "private",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
                             }
                         ]
                     }
@@ -452,7 +470,7 @@ export const schema = {
                 "numeroPlazas": {
                     "name": "numeroPlazas",
                     "isArray": false,
-                    "type": "String",
+                    "type": "Int",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -487,14 +505,14 @@ export const schema = {
                 "edadMin": {
                     "name": "edadMin",
                     "isArray": false,
-                    "type": "String",
+                    "type": "Int",
                     "isRequired": false,
                     "attributes": []
                 },
                 "edadMax": {
                     "name": "edadMax",
                     "isArray": false,
-                    "type": "String",
+                    "type": "Int",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -590,14 +608,14 @@ export const schema = {
                 "salarioMin": {
                     "name": "salarioMin",
                     "isArray": false,
-                    "type": "String",
+                    "type": "Int",
                     "isRequired": false,
                     "attributes": []
                 },
                 "salarioMax": {
                     "name": "salarioMax",
                     "isArray": false,
-                    "type": "String",
+                    "type": "Int",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -641,7 +659,7 @@ export const schema = {
                     "name": "Oportunidades",
                     "isArray": true,
                     "type": {
-                        "model": "Oportunidades"
+                        "model": "VersionVacante"
                     },
                     "isRequired": false,
                     "attributes": [],
@@ -708,6 +726,15 @@ export const schema = {
                         "rules": [
                             {
                                 "allow": "public",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
+                            },
+                            {
+                                "allow": "private",
                                 "operations": [
                                     "create",
                                     "update",
@@ -1065,6 +1092,15 @@ export const schema = {
                                     "delete",
                                     "read"
                                 ]
+                            },
+                            {
+                                "allow": "private",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
                             }
                         ]
                     }
@@ -1151,6 +1187,15 @@ export const schema = {
                         "rules": [
                             {
                                 "allow": "public",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
+                            },
+                            {
+                                "allow": "private",
                                 "operations": [
                                     "create",
                                     "update",
@@ -1246,6 +1291,15 @@ export const schema = {
                                     "delete",
                                     "read"
                                 ]
+                            },
+                            {
+                                "allow": "private",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
                             }
                         ]
                     }
@@ -1256,5 +1310,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "f707877d9c7f2683cac2dc843c210346"
+    "version": "9ff34976a82d350038a7fc3ecaccc069"
 };

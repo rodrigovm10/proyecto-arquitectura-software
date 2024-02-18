@@ -58,7 +58,6 @@ export function useSession(nombreDelGrupo) {
       const sub = DataStore.observeQuery(Empresa, c => c.email.eq(userData.attributes.email), { limit: 1 }).subscribe(({ items }) => {
         setDataSession(prevDataSession => ({ ...prevDataSession, cuentaExistente: items.length }))
       })
-      console.log(dataSession)
       return () => {
         sub.unsubscribe()
       }

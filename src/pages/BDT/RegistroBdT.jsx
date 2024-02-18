@@ -8,11 +8,10 @@ function RegistroBdT() {
   const { dataSession, getDataSessionBDT, nombreGrupo } = useSession('trabajador')
 
   useEffect(() => {
-    console.log(dataSession);
     getDataSessionBDT()
   }, [])
 
-  if (!dataSession) {
+  if (!dataSession && !nombreGrupo) {
     return <Loading2 /> // Renderiza un componente de carga mientras los datos se están cargando
   }
 

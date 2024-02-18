@@ -19,9 +19,8 @@ import {
   TextField,
   useTheme,
 } from "@aws-amplify/ui-react";
-import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { Vacante } from "../models";
-import { fetchByPath, validateField } from "./utils";
+import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { DataStore } from "aws-amplify";
 function ArrayField({
   items = [],
@@ -190,34 +189,65 @@ export default function VacanteCreateForm(props) {
     ...rest
   } = props;
   const initialValues = {
-    nombreVacante: "",
+    nombre: "",
     descripcion: "",
+    numeroPlazas: "",
+    area: "",
+    tipoContrato: "",
+    modalidad: "",
     diasLaborales: "",
-    habilidadesBlandas: [],
-    habilidadesTecnicas: [],
-    generoBDT: "",
     edadMin: "",
     edadMax: "",
-    area: "",
-    tipoEmpleo: "",
-    dispViajar: false,
-    dispRadicar: false,
+    genero: "",
+    experienciaLaboral: "",
     escolaridad: "",
-    prestaciones: "",
-    direccionEmpresa: "",
-    Idioma: [],
-    salarioMax: "",
+    idioma: [],
+    nivelIdioma: [],
+    prestaciones: [],
+    habilidadesBlandas: [],
+    habilidadesTecnicas: [],
+    emailEmpresa: "",
+    visible: false,
+    ubicacion: "",
+    nombreEmpresa: "",
     salarioMin: "",
-    direccionVacante: "",
+    salarioMax: "",
+    idiomaConNivel: [],
+    municipio: "",
+    jornadaLaboral: "",
+    periodoPago: "",
+    empresaID: "",
   };
-  const [nombreVacante, setNombreVacante] = React.useState(
-    initialValues.nombreVacante
-  );
+  const [nombre, setNombre] = React.useState(initialValues.nombre);
   const [descripcion, setDescripcion] = React.useState(
     initialValues.descripcion
   );
+  const [numeroPlazas, setNumeroPlazas] = React.useState(
+    initialValues.numeroPlazas
+  );
+  const [area, setArea] = React.useState(initialValues.area);
+  const [tipoContrato, setTipoContrato] = React.useState(
+    initialValues.tipoContrato
+  );
+  const [modalidad, setModalidad] = React.useState(initialValues.modalidad);
   const [diasLaborales, setDiasLaborales] = React.useState(
     initialValues.diasLaborales
+  );
+  const [edadMin, setEdadMin] = React.useState(initialValues.edadMin);
+  const [edadMax, setEdadMax] = React.useState(initialValues.edadMax);
+  const [genero, setGenero] = React.useState(initialValues.genero);
+  const [experienciaLaboral, setExperienciaLaboral] = React.useState(
+    initialValues.experienciaLaboral
+  );
+  const [escolaridad, setEscolaridad] = React.useState(
+    initialValues.escolaridad
+  );
+  const [idioma, setIdioma] = React.useState(initialValues.idioma);
+  const [nivelIdioma, setNivelIdioma] = React.useState(
+    initialValues.nivelIdioma
+  );
+  const [prestaciones, setPrestaciones] = React.useState(
+    initialValues.prestaciones
   );
   const [habilidadesBlandas, setHabilidadesBlandas] = React.useState(
     initialValues.habilidadesBlandas
@@ -225,84 +255,111 @@ export default function VacanteCreateForm(props) {
   const [habilidadesTecnicas, setHabilidadesTecnicas] = React.useState(
     initialValues.habilidadesTecnicas
   );
-  const [generoBDT, setGeneroBDT] = React.useState(initialValues.generoBDT);
-  const [edadMin, setEdadMin] = React.useState(initialValues.edadMin);
-  const [edadMax, setEdadMax] = React.useState(initialValues.edadMax);
-  const [area, setArea] = React.useState(initialValues.area);
-  const [tipoEmpleo, setTipoEmpleo] = React.useState(initialValues.tipoEmpleo);
-  const [dispViajar, setDispViajar] = React.useState(initialValues.dispViajar);
-  const [dispRadicar, setDispRadicar] = React.useState(
-    initialValues.dispRadicar
+  const [emailEmpresa, setEmailEmpresa] = React.useState(
+    initialValues.emailEmpresa
   );
-  const [escolaridad, setEscolaridad] = React.useState(
-    initialValues.escolaridad
+  const [visible, setVisible] = React.useState(initialValues.visible);
+  const [ubicacion, setUbicacion] = React.useState(initialValues.ubicacion);
+  const [nombreEmpresa, setNombreEmpresa] = React.useState(
+    initialValues.nombreEmpresa
   );
-  const [prestaciones, setPrestaciones] = React.useState(
-    initialValues.prestaciones
-  );
-  const [direccionEmpresa, setDireccionEmpresa] = React.useState(
-    initialValues.direccionEmpresa
-  );
-  const [Idioma, setIdioma] = React.useState(initialValues.Idioma);
-  const [salarioMax, setSalarioMax] = React.useState(initialValues.salarioMax);
   const [salarioMin, setSalarioMin] = React.useState(initialValues.salarioMin);
-  const [direccionVacante, setDireccionVacante] = React.useState(
-    initialValues.direccionVacante
+  const [salarioMax, setSalarioMax] = React.useState(initialValues.salarioMax);
+  const [idiomaConNivel, setIdiomaConNivel] = React.useState(
+    initialValues.idiomaConNivel
   );
+  const [municipio, setMunicipio] = React.useState(initialValues.municipio);
+  const [jornadaLaboral, setJornadaLaboral] = React.useState(
+    initialValues.jornadaLaboral
+  );
+  const [periodoPago, setPeriodoPago] = React.useState(
+    initialValues.periodoPago
+  );
+  const [empresaID, setEmpresaID] = React.useState(initialValues.empresaID);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
-    setNombreVacante(initialValues.nombreVacante);
+    setNombre(initialValues.nombre);
     setDescripcion(initialValues.descripcion);
+    setNumeroPlazas(initialValues.numeroPlazas);
+    setArea(initialValues.area);
+    setTipoContrato(initialValues.tipoContrato);
+    setModalidad(initialValues.modalidad);
     setDiasLaborales(initialValues.diasLaborales);
+    setEdadMin(initialValues.edadMin);
+    setEdadMax(initialValues.edadMax);
+    setGenero(initialValues.genero);
+    setExperienciaLaboral(initialValues.experienciaLaboral);
+    setEscolaridad(initialValues.escolaridad);
+    setIdioma(initialValues.idioma);
+    setCurrentIdiomaValue("");
+    setNivelIdioma(initialValues.nivelIdioma);
+    setCurrentNivelIdiomaValue("");
+    setPrestaciones(initialValues.prestaciones);
+    setCurrentPrestacionesValue("");
     setHabilidadesBlandas(initialValues.habilidadesBlandas);
     setCurrentHabilidadesBlandasValue("");
     setHabilidadesTecnicas(initialValues.habilidadesTecnicas);
     setCurrentHabilidadesTecnicasValue("");
-    setGeneroBDT(initialValues.generoBDT);
-    setEdadMin(initialValues.edadMin);
-    setEdadMax(initialValues.edadMax);
-    setArea(initialValues.area);
-    setTipoEmpleo(initialValues.tipoEmpleo);
-    setDispViajar(initialValues.dispViajar);
-    setDispRadicar(initialValues.dispRadicar);
-    setEscolaridad(initialValues.escolaridad);
-    setPrestaciones(initialValues.prestaciones);
-    setDireccionEmpresa(initialValues.direccionEmpresa);
-    setIdioma(initialValues.Idioma);
-    setCurrentIdiomaValue("");
-    setSalarioMax(initialValues.salarioMax);
+    setEmailEmpresa(initialValues.emailEmpresa);
+    setVisible(initialValues.visible);
+    setUbicacion(initialValues.ubicacion);
+    setNombreEmpresa(initialValues.nombreEmpresa);
     setSalarioMin(initialValues.salarioMin);
-    setDireccionVacante(initialValues.direccionVacante);
+    setSalarioMax(initialValues.salarioMax);
+    setIdiomaConNivel(initialValues.idiomaConNivel);
+    setCurrentIdiomaConNivelValue("");
+    setMunicipio(initialValues.municipio);
+    setJornadaLaboral(initialValues.jornadaLaboral);
+    setPeriodoPago(initialValues.periodoPago);
+    setEmpresaID(initialValues.empresaID);
     setErrors({});
   };
+  const [currentIdiomaValue, setCurrentIdiomaValue] = React.useState("");
+  const idiomaRef = React.createRef();
+  const [currentNivelIdiomaValue, setCurrentNivelIdiomaValue] =
+    React.useState("");
+  const nivelIdiomaRef = React.createRef();
+  const [currentPrestacionesValue, setCurrentPrestacionesValue] =
+    React.useState("");
+  const prestacionesRef = React.createRef();
   const [currentHabilidadesBlandasValue, setCurrentHabilidadesBlandasValue] =
     React.useState("");
   const habilidadesBlandasRef = React.createRef();
   const [currentHabilidadesTecnicasValue, setCurrentHabilidadesTecnicasValue] =
     React.useState("");
   const habilidadesTecnicasRef = React.createRef();
-  const [currentIdiomaValue, setCurrentIdiomaValue] = React.useState("");
-  const IdiomaRef = React.createRef();
+  const [currentIdiomaConNivelValue, setCurrentIdiomaConNivelValue] =
+    React.useState("");
+  const idiomaConNivelRef = React.createRef();
   const validations = {
-    nombreVacante: [],
+    nombre: [],
     descripcion: [],
+    numeroPlazas: [],
+    area: [],
+    tipoContrato: [],
+    modalidad: [],
     diasLaborales: [],
-    habilidadesBlandas: [],
-    habilidadesTecnicas: [],
-    generoBDT: [],
     edadMin: [],
     edadMax: [],
-    area: [],
-    tipoEmpleo: [],
-    dispViajar: [],
-    dispRadicar: [],
+    genero: [],
+    experienciaLaboral: [],
     escolaridad: [],
+    idioma: [],
+    nivelIdioma: [],
     prestaciones: [],
-    direccionEmpresa: [],
-    Idioma: [],
-    salarioMax: [],
+    habilidadesBlandas: [],
+    habilidadesTecnicas: [],
+    emailEmpresa: [],
+    visible: [],
+    ubicacion: [],
+    nombreEmpresa: [],
     salarioMin: [],
-    direccionVacante: [],
+    salarioMax: [],
+    idiomaConNivel: [],
+    municipio: [],
+    jornadaLaboral: [],
+    periodoPago: [],
+    empresaID: [{ type: "Required" }],
   };
   const runValidationTasks = async (
     fieldName,
@@ -330,25 +387,34 @@ export default function VacanteCreateForm(props) {
       onSubmit={async (event) => {
         event.preventDefault();
         let modelFields = {
-          nombreVacante,
+          nombre,
           descripcion,
+          numeroPlazas,
+          area,
+          tipoContrato,
+          modalidad,
           diasLaborales,
-          habilidadesBlandas,
-          habilidadesTecnicas,
-          generoBDT,
           edadMin,
           edadMax,
-          area,
-          tipoEmpleo,
-          dispViajar,
-          dispRadicar,
+          genero,
+          experienciaLaboral,
           escolaridad,
+          idioma,
+          nivelIdioma,
           prestaciones,
-          direccionEmpresa,
-          Idioma,
-          salarioMax,
+          habilidadesBlandas,
+          habilidadesTecnicas,
+          emailEmpresa,
+          visible,
+          ubicacion,
+          nombreEmpresa,
           salarioMin,
-          direccionVacante,
+          salarioMax,
+          idiomaConNivel,
+          municipio,
+          jornadaLaboral,
+          periodoPago,
+          empresaID,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -395,46 +461,55 @@ export default function VacanteCreateForm(props) {
       {...rest}
     >
       <TextField
-        label="Nombre vacante"
+        label="Nombre"
         isRequired={false}
         isReadOnly={false}
-        value={nombreVacante}
+        value={nombre}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              nombreVacante: value,
+              nombre: value,
               descripcion,
+              numeroPlazas,
+              area,
+              tipoContrato,
+              modalidad,
               diasLaborales,
-              habilidadesBlandas,
-              habilidadesTecnicas,
-              generoBDT,
               edadMin,
               edadMax,
-              area,
-              tipoEmpleo,
-              dispViajar,
-              dispRadicar,
+              genero,
+              experienciaLaboral,
               escolaridad,
+              idioma,
+              nivelIdioma,
               prestaciones,
-              direccionEmpresa,
-              Idioma,
-              salarioMax,
+              habilidadesBlandas,
+              habilidadesTecnicas,
+              emailEmpresa,
+              visible,
+              ubicacion,
+              nombreEmpresa,
               salarioMin,
-              direccionVacante,
+              salarioMax,
+              idiomaConNivel,
+              municipio,
+              jornadaLaboral,
+              periodoPago,
+              empresaID,
             };
             const result = onChange(modelFields);
-            value = result?.nombreVacante ?? value;
+            value = result?.nombre ?? value;
           }
-          if (errors.nombreVacante?.hasError) {
-            runValidationTasks("nombreVacante", value);
+          if (errors.nombre?.hasError) {
+            runValidationTasks("nombre", value);
           }
-          setNombreVacante(value);
+          setNombre(value);
         }}
-        onBlur={() => runValidationTasks("nombreVacante", nombreVacante)}
-        errorMessage={errors.nombreVacante?.errorMessage}
-        hasError={errors.nombreVacante?.hasError}
-        {...getOverrideProps(overrides, "nombreVacante")}
+        onBlur={() => runValidationTasks("nombre", nombre)}
+        errorMessage={errors.nombre?.errorMessage}
+        hasError={errors.nombre?.hasError}
+        {...getOverrideProps(overrides, "nombre")}
       ></TextField>
       <TextField
         label="Descripcion"
@@ -445,25 +520,34 @@ export default function VacanteCreateForm(props) {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              nombreVacante,
+              nombre,
               descripcion: value,
+              numeroPlazas,
+              area,
+              tipoContrato,
+              modalidad,
               diasLaborales,
-              habilidadesBlandas,
-              habilidadesTecnicas,
-              generoBDT,
               edadMin,
               edadMax,
-              area,
-              tipoEmpleo,
-              dispViajar,
-              dispRadicar,
+              genero,
+              experienciaLaboral,
               escolaridad,
+              idioma,
+              nivelIdioma,
               prestaciones,
-              direccionEmpresa,
-              Idioma,
-              salarioMax,
+              habilidadesBlandas,
+              habilidadesTecnicas,
+              emailEmpresa,
+              visible,
+              ubicacion,
+              nombreEmpresa,
               salarioMin,
-              direccionVacante,
+              salarioMax,
+              idiomaConNivel,
+              municipio,
+              jornadaLaboral,
+              periodoPago,
+              empresaID,
             };
             const result = onChange(modelFields);
             value = result?.descripcion ?? value;
@@ -479,6 +563,214 @@ export default function VacanteCreateForm(props) {
         {...getOverrideProps(overrides, "descripcion")}
       ></TextField>
       <TextField
+        label="Numero plazas"
+        isRequired={false}
+        isReadOnly={false}
+        type="number"
+        step="any"
+        value={numeroPlazas}
+        onChange={(e) => {
+          let value = isNaN(parseInt(e.target.value))
+            ? e.target.value
+            : parseInt(e.target.value);
+          if (onChange) {
+            const modelFields = {
+              nombre,
+              descripcion,
+              numeroPlazas: value,
+              area,
+              tipoContrato,
+              modalidad,
+              diasLaborales,
+              edadMin,
+              edadMax,
+              genero,
+              experienciaLaboral,
+              escolaridad,
+              idioma,
+              nivelIdioma,
+              prestaciones,
+              habilidadesBlandas,
+              habilidadesTecnicas,
+              emailEmpresa,
+              visible,
+              ubicacion,
+              nombreEmpresa,
+              salarioMin,
+              salarioMax,
+              idiomaConNivel,
+              municipio,
+              jornadaLaboral,
+              periodoPago,
+              empresaID,
+            };
+            const result = onChange(modelFields);
+            value = result?.numeroPlazas ?? value;
+          }
+          if (errors.numeroPlazas?.hasError) {
+            runValidationTasks("numeroPlazas", value);
+          }
+          setNumeroPlazas(value);
+        }}
+        onBlur={() => runValidationTasks("numeroPlazas", numeroPlazas)}
+        errorMessage={errors.numeroPlazas?.errorMessage}
+        hasError={errors.numeroPlazas?.hasError}
+        {...getOverrideProps(overrides, "numeroPlazas")}
+      ></TextField>
+      <TextField
+        label="Area"
+        isRequired={false}
+        isReadOnly={false}
+        value={area}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              nombre,
+              descripcion,
+              numeroPlazas,
+              area: value,
+              tipoContrato,
+              modalidad,
+              diasLaborales,
+              edadMin,
+              edadMax,
+              genero,
+              experienciaLaboral,
+              escolaridad,
+              idioma,
+              nivelIdioma,
+              prestaciones,
+              habilidadesBlandas,
+              habilidadesTecnicas,
+              emailEmpresa,
+              visible,
+              ubicacion,
+              nombreEmpresa,
+              salarioMin,
+              salarioMax,
+              idiomaConNivel,
+              municipio,
+              jornadaLaboral,
+              periodoPago,
+              empresaID,
+            };
+            const result = onChange(modelFields);
+            value = result?.area ?? value;
+          }
+          if (errors.area?.hasError) {
+            runValidationTasks("area", value);
+          }
+          setArea(value);
+        }}
+        onBlur={() => runValidationTasks("area", area)}
+        errorMessage={errors.area?.errorMessage}
+        hasError={errors.area?.hasError}
+        {...getOverrideProps(overrides, "area")}
+      ></TextField>
+      <TextField
+        label="Tipo contrato"
+        isRequired={false}
+        isReadOnly={false}
+        value={tipoContrato}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              nombre,
+              descripcion,
+              numeroPlazas,
+              area,
+              tipoContrato: value,
+              modalidad,
+              diasLaborales,
+              edadMin,
+              edadMax,
+              genero,
+              experienciaLaboral,
+              escolaridad,
+              idioma,
+              nivelIdioma,
+              prestaciones,
+              habilidadesBlandas,
+              habilidadesTecnicas,
+              emailEmpresa,
+              visible,
+              ubicacion,
+              nombreEmpresa,
+              salarioMin,
+              salarioMax,
+              idiomaConNivel,
+              municipio,
+              jornadaLaboral,
+              periodoPago,
+              empresaID,
+            };
+            const result = onChange(modelFields);
+            value = result?.tipoContrato ?? value;
+          }
+          if (errors.tipoContrato?.hasError) {
+            runValidationTasks("tipoContrato", value);
+          }
+          setTipoContrato(value);
+        }}
+        onBlur={() => runValidationTasks("tipoContrato", tipoContrato)}
+        errorMessage={errors.tipoContrato?.errorMessage}
+        hasError={errors.tipoContrato?.hasError}
+        {...getOverrideProps(overrides, "tipoContrato")}
+      ></TextField>
+      <TextField
+        label="Modalidad"
+        isRequired={false}
+        isReadOnly={false}
+        value={modalidad}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              nombre,
+              descripcion,
+              numeroPlazas,
+              area,
+              tipoContrato,
+              modalidad: value,
+              diasLaborales,
+              edadMin,
+              edadMax,
+              genero,
+              experienciaLaboral,
+              escolaridad,
+              idioma,
+              nivelIdioma,
+              prestaciones,
+              habilidadesBlandas,
+              habilidadesTecnicas,
+              emailEmpresa,
+              visible,
+              ubicacion,
+              nombreEmpresa,
+              salarioMin,
+              salarioMax,
+              idiomaConNivel,
+              municipio,
+              jornadaLaboral,
+              periodoPago,
+              empresaID,
+            };
+            const result = onChange(modelFields);
+            value = result?.modalidad ?? value;
+          }
+          if (errors.modalidad?.hasError) {
+            runValidationTasks("modalidad", value);
+          }
+          setModalidad(value);
+        }}
+        onBlur={() => runValidationTasks("modalidad", modalidad)}
+        errorMessage={errors.modalidad?.errorMessage}
+        hasError={errors.modalidad?.hasError}
+        {...getOverrideProps(overrides, "modalidad")}
+      ></TextField>
+      <TextField
         label="Dias laborales"
         isRequired={false}
         isReadOnly={false}
@@ -487,25 +779,34 @@ export default function VacanteCreateForm(props) {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              nombreVacante,
+              nombre,
               descripcion,
+              numeroPlazas,
+              area,
+              tipoContrato,
+              modalidad,
               diasLaborales: value,
-              habilidadesBlandas,
-              habilidadesTecnicas,
-              generoBDT,
               edadMin,
               edadMax,
-              area,
-              tipoEmpleo,
-              dispViajar,
-              dispRadicar,
+              genero,
+              experienciaLaboral,
               escolaridad,
+              idioma,
+              nivelIdioma,
               prestaciones,
-              direccionEmpresa,
-              Idioma,
-              salarioMax,
+              habilidadesBlandas,
+              habilidadesTecnicas,
+              emailEmpresa,
+              visible,
+              ubicacion,
+              nombreEmpresa,
               salarioMin,
-              direccionVacante,
+              salarioMax,
+              idiomaConNivel,
+              municipio,
+              jornadaLaboral,
+              periodoPago,
+              empresaID,
             };
             const result = onChange(modelFields);
             value = result?.diasLaborales ?? value;
@@ -520,30 +821,524 @@ export default function VacanteCreateForm(props) {
         hasError={errors.diasLaborales?.hasError}
         {...getOverrideProps(overrides, "diasLaborales")}
       ></TextField>
+      <TextField
+        label="Edad min"
+        isRequired={false}
+        isReadOnly={false}
+        type="number"
+        step="any"
+        value={edadMin}
+        onChange={(e) => {
+          let value = isNaN(parseInt(e.target.value))
+            ? e.target.value
+            : parseInt(e.target.value);
+          if (onChange) {
+            const modelFields = {
+              nombre,
+              descripcion,
+              numeroPlazas,
+              area,
+              tipoContrato,
+              modalidad,
+              diasLaborales,
+              edadMin: value,
+              edadMax,
+              genero,
+              experienciaLaboral,
+              escolaridad,
+              idioma,
+              nivelIdioma,
+              prestaciones,
+              habilidadesBlandas,
+              habilidadesTecnicas,
+              emailEmpresa,
+              visible,
+              ubicacion,
+              nombreEmpresa,
+              salarioMin,
+              salarioMax,
+              idiomaConNivel,
+              municipio,
+              jornadaLaboral,
+              periodoPago,
+              empresaID,
+            };
+            const result = onChange(modelFields);
+            value = result?.edadMin ?? value;
+          }
+          if (errors.edadMin?.hasError) {
+            runValidationTasks("edadMin", value);
+          }
+          setEdadMin(value);
+        }}
+        onBlur={() => runValidationTasks("edadMin", edadMin)}
+        errorMessage={errors.edadMin?.errorMessage}
+        hasError={errors.edadMin?.hasError}
+        {...getOverrideProps(overrides, "edadMin")}
+      ></TextField>
+      <TextField
+        label="Edad max"
+        isRequired={false}
+        isReadOnly={false}
+        type="number"
+        step="any"
+        value={edadMax}
+        onChange={(e) => {
+          let value = isNaN(parseInt(e.target.value))
+            ? e.target.value
+            : parseInt(e.target.value);
+          if (onChange) {
+            const modelFields = {
+              nombre,
+              descripcion,
+              numeroPlazas,
+              area,
+              tipoContrato,
+              modalidad,
+              diasLaborales,
+              edadMin,
+              edadMax: value,
+              genero,
+              experienciaLaboral,
+              escolaridad,
+              idioma,
+              nivelIdioma,
+              prestaciones,
+              habilidadesBlandas,
+              habilidadesTecnicas,
+              emailEmpresa,
+              visible,
+              ubicacion,
+              nombreEmpresa,
+              salarioMin,
+              salarioMax,
+              idiomaConNivel,
+              municipio,
+              jornadaLaboral,
+              periodoPago,
+              empresaID,
+            };
+            const result = onChange(modelFields);
+            value = result?.edadMax ?? value;
+          }
+          if (errors.edadMax?.hasError) {
+            runValidationTasks("edadMax", value);
+          }
+          setEdadMax(value);
+        }}
+        onBlur={() => runValidationTasks("edadMax", edadMax)}
+        errorMessage={errors.edadMax?.errorMessage}
+        hasError={errors.edadMax?.hasError}
+        {...getOverrideProps(overrides, "edadMax")}
+      ></TextField>
+      <TextField
+        label="Genero"
+        isRequired={false}
+        isReadOnly={false}
+        value={genero}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              nombre,
+              descripcion,
+              numeroPlazas,
+              area,
+              tipoContrato,
+              modalidad,
+              diasLaborales,
+              edadMin,
+              edadMax,
+              genero: value,
+              experienciaLaboral,
+              escolaridad,
+              idioma,
+              nivelIdioma,
+              prestaciones,
+              habilidadesBlandas,
+              habilidadesTecnicas,
+              emailEmpresa,
+              visible,
+              ubicacion,
+              nombreEmpresa,
+              salarioMin,
+              salarioMax,
+              idiomaConNivel,
+              municipio,
+              jornadaLaboral,
+              periodoPago,
+              empresaID,
+            };
+            const result = onChange(modelFields);
+            value = result?.genero ?? value;
+          }
+          if (errors.genero?.hasError) {
+            runValidationTasks("genero", value);
+          }
+          setGenero(value);
+        }}
+        onBlur={() => runValidationTasks("genero", genero)}
+        errorMessage={errors.genero?.errorMessage}
+        hasError={errors.genero?.hasError}
+        {...getOverrideProps(overrides, "genero")}
+      ></TextField>
+      <TextField
+        label="Experiencia laboral"
+        isRequired={false}
+        isReadOnly={false}
+        value={experienciaLaboral}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              nombre,
+              descripcion,
+              numeroPlazas,
+              area,
+              tipoContrato,
+              modalidad,
+              diasLaborales,
+              edadMin,
+              edadMax,
+              genero,
+              experienciaLaboral: value,
+              escolaridad,
+              idioma,
+              nivelIdioma,
+              prestaciones,
+              habilidadesBlandas,
+              habilidadesTecnicas,
+              emailEmpresa,
+              visible,
+              ubicacion,
+              nombreEmpresa,
+              salarioMin,
+              salarioMax,
+              idiomaConNivel,
+              municipio,
+              jornadaLaboral,
+              periodoPago,
+              empresaID,
+            };
+            const result = onChange(modelFields);
+            value = result?.experienciaLaboral ?? value;
+          }
+          if (errors.experienciaLaboral?.hasError) {
+            runValidationTasks("experienciaLaboral", value);
+          }
+          setExperienciaLaboral(value);
+        }}
+        onBlur={() =>
+          runValidationTasks("experienciaLaboral", experienciaLaboral)
+        }
+        errorMessage={errors.experienciaLaboral?.errorMessage}
+        hasError={errors.experienciaLaboral?.hasError}
+        {...getOverrideProps(overrides, "experienciaLaboral")}
+      ></TextField>
+      <TextField
+        label="Escolaridad"
+        isRequired={false}
+        isReadOnly={false}
+        value={escolaridad}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              nombre,
+              descripcion,
+              numeroPlazas,
+              area,
+              tipoContrato,
+              modalidad,
+              diasLaborales,
+              edadMin,
+              edadMax,
+              genero,
+              experienciaLaboral,
+              escolaridad: value,
+              idioma,
+              nivelIdioma,
+              prestaciones,
+              habilidadesBlandas,
+              habilidadesTecnicas,
+              emailEmpresa,
+              visible,
+              ubicacion,
+              nombreEmpresa,
+              salarioMin,
+              salarioMax,
+              idiomaConNivel,
+              municipio,
+              jornadaLaboral,
+              periodoPago,
+              empresaID,
+            };
+            const result = onChange(modelFields);
+            value = result?.escolaridad ?? value;
+          }
+          if (errors.escolaridad?.hasError) {
+            runValidationTasks("escolaridad", value);
+          }
+          setEscolaridad(value);
+        }}
+        onBlur={() => runValidationTasks("escolaridad", escolaridad)}
+        errorMessage={errors.escolaridad?.errorMessage}
+        hasError={errors.escolaridad?.hasError}
+        {...getOverrideProps(overrides, "escolaridad")}
+      ></TextField>
       <ArrayField
         onChange={async (items) => {
           let values = items;
           if (onChange) {
             const modelFields = {
-              nombreVacante,
+              nombre,
               descripcion,
+              numeroPlazas,
+              area,
+              tipoContrato,
+              modalidad,
               diasLaborales,
-              habilidadesBlandas: values,
-              habilidadesTecnicas,
-              generoBDT,
               edadMin,
               edadMax,
-              area,
-              tipoEmpleo,
-              dispViajar,
-              dispRadicar,
+              genero,
+              experienciaLaboral,
               escolaridad,
+              idioma: values,
+              nivelIdioma,
               prestaciones,
-              direccionEmpresa,
-              Idioma,
-              salarioMax,
+              habilidadesBlandas,
+              habilidadesTecnicas,
+              emailEmpresa,
+              visible,
+              ubicacion,
+              nombreEmpresa,
               salarioMin,
-              direccionVacante,
+              salarioMax,
+              idiomaConNivel,
+              municipio,
+              jornadaLaboral,
+              periodoPago,
+              empresaID,
+            };
+            const result = onChange(modelFields);
+            values = result?.idioma ?? values;
+          }
+          setIdioma(values);
+          setCurrentIdiomaValue("");
+        }}
+        currentFieldValue={currentIdiomaValue}
+        label={"Idioma"}
+        items={idioma}
+        hasError={errors?.idioma?.hasError}
+        runValidationTasks={async () =>
+          await runValidationTasks("idioma", currentIdiomaValue)
+        }
+        errorMessage={errors?.idioma?.errorMessage}
+        setFieldValue={setCurrentIdiomaValue}
+        inputFieldRef={idiomaRef}
+        defaultFieldValue={""}
+      >
+        <TextField
+          label="Idioma"
+          isRequired={false}
+          isReadOnly={false}
+          value={currentIdiomaValue}
+          onChange={(e) => {
+            let { value } = e.target;
+            if (errors.idioma?.hasError) {
+              runValidationTasks("idioma", value);
+            }
+            setCurrentIdiomaValue(value);
+          }}
+          onBlur={() => runValidationTasks("idioma", currentIdiomaValue)}
+          errorMessage={errors.idioma?.errorMessage}
+          hasError={errors.idioma?.hasError}
+          ref={idiomaRef}
+          labelHidden={true}
+          {...getOverrideProps(overrides, "idioma")}
+        ></TextField>
+      </ArrayField>
+      <ArrayField
+        onChange={async (items) => {
+          let values = items;
+          if (onChange) {
+            const modelFields = {
+              nombre,
+              descripcion,
+              numeroPlazas,
+              area,
+              tipoContrato,
+              modalidad,
+              diasLaborales,
+              edadMin,
+              edadMax,
+              genero,
+              experienciaLaboral,
+              escolaridad,
+              idioma,
+              nivelIdioma: values,
+              prestaciones,
+              habilidadesBlandas,
+              habilidadesTecnicas,
+              emailEmpresa,
+              visible,
+              ubicacion,
+              nombreEmpresa,
+              salarioMin,
+              salarioMax,
+              idiomaConNivel,
+              municipio,
+              jornadaLaboral,
+              periodoPago,
+              empresaID,
+            };
+            const result = onChange(modelFields);
+            values = result?.nivelIdioma ?? values;
+          }
+          setNivelIdioma(values);
+          setCurrentNivelIdiomaValue("");
+        }}
+        currentFieldValue={currentNivelIdiomaValue}
+        label={"Nivel idioma"}
+        items={nivelIdioma}
+        hasError={errors?.nivelIdioma?.hasError}
+        runValidationTasks={async () =>
+          await runValidationTasks("nivelIdioma", currentNivelIdiomaValue)
+        }
+        errorMessage={errors?.nivelIdioma?.errorMessage}
+        setFieldValue={setCurrentNivelIdiomaValue}
+        inputFieldRef={nivelIdiomaRef}
+        defaultFieldValue={""}
+      >
+        <TextField
+          label="Nivel idioma"
+          isRequired={false}
+          isReadOnly={false}
+          value={currentNivelIdiomaValue}
+          onChange={(e) => {
+            let { value } = e.target;
+            if (errors.nivelIdioma?.hasError) {
+              runValidationTasks("nivelIdioma", value);
+            }
+            setCurrentNivelIdiomaValue(value);
+          }}
+          onBlur={() =>
+            runValidationTasks("nivelIdioma", currentNivelIdiomaValue)
+          }
+          errorMessage={errors.nivelIdioma?.errorMessage}
+          hasError={errors.nivelIdioma?.hasError}
+          ref={nivelIdiomaRef}
+          labelHidden={true}
+          {...getOverrideProps(overrides, "nivelIdioma")}
+        ></TextField>
+      </ArrayField>
+      <ArrayField
+        onChange={async (items) => {
+          let values = items;
+          if (onChange) {
+            const modelFields = {
+              nombre,
+              descripcion,
+              numeroPlazas,
+              area,
+              tipoContrato,
+              modalidad,
+              diasLaborales,
+              edadMin,
+              edadMax,
+              genero,
+              experienciaLaboral,
+              escolaridad,
+              idioma,
+              nivelIdioma,
+              prestaciones: values,
+              habilidadesBlandas,
+              habilidadesTecnicas,
+              emailEmpresa,
+              visible,
+              ubicacion,
+              nombreEmpresa,
+              salarioMin,
+              salarioMax,
+              idiomaConNivel,
+              municipio,
+              jornadaLaboral,
+              periodoPago,
+              empresaID,
+            };
+            const result = onChange(modelFields);
+            values = result?.prestaciones ?? values;
+          }
+          setPrestaciones(values);
+          setCurrentPrestacionesValue("");
+        }}
+        currentFieldValue={currentPrestacionesValue}
+        label={"Prestaciones"}
+        items={prestaciones}
+        hasError={errors?.prestaciones?.hasError}
+        runValidationTasks={async () =>
+          await runValidationTasks("prestaciones", currentPrestacionesValue)
+        }
+        errorMessage={errors?.prestaciones?.errorMessage}
+        setFieldValue={setCurrentPrestacionesValue}
+        inputFieldRef={prestacionesRef}
+        defaultFieldValue={""}
+      >
+        <TextField
+          label="Prestaciones"
+          isRequired={false}
+          isReadOnly={false}
+          value={currentPrestacionesValue}
+          onChange={(e) => {
+            let { value } = e.target;
+            if (errors.prestaciones?.hasError) {
+              runValidationTasks("prestaciones", value);
+            }
+            setCurrentPrestacionesValue(value);
+          }}
+          onBlur={() =>
+            runValidationTasks("prestaciones", currentPrestacionesValue)
+          }
+          errorMessage={errors.prestaciones?.errorMessage}
+          hasError={errors.prestaciones?.hasError}
+          ref={prestacionesRef}
+          labelHidden={true}
+          {...getOverrideProps(overrides, "prestaciones")}
+        ></TextField>
+      </ArrayField>
+      <ArrayField
+        onChange={async (items) => {
+          let values = items;
+          if (onChange) {
+            const modelFields = {
+              nombre,
+              descripcion,
+              numeroPlazas,
+              area,
+              tipoContrato,
+              modalidad,
+              diasLaborales,
+              edadMin,
+              edadMax,
+              genero,
+              experienciaLaboral,
+              escolaridad,
+              idioma,
+              nivelIdioma,
+              prestaciones,
+              habilidadesBlandas: values,
+              habilidadesTecnicas,
+              emailEmpresa,
+              visible,
+              ubicacion,
+              nombreEmpresa,
+              salarioMin,
+              salarioMax,
+              idiomaConNivel,
+              municipio,
+              jornadaLaboral,
+              periodoPago,
+              empresaID,
             };
             const result = onChange(modelFields);
             values = result?.habilidadesBlandas ?? values;
@@ -596,25 +1391,34 @@ export default function VacanteCreateForm(props) {
           let values = items;
           if (onChange) {
             const modelFields = {
-              nombreVacante,
+              nombre,
               descripcion,
+              numeroPlazas,
+              area,
+              tipoContrato,
+              modalidad,
               diasLaborales,
-              habilidadesBlandas,
-              habilidadesTecnicas: values,
-              generoBDT,
               edadMin,
               edadMax,
-              area,
-              tipoEmpleo,
-              dispViajar,
-              dispRadicar,
+              genero,
+              experienciaLaboral,
               escolaridad,
+              idioma,
+              nivelIdioma,
               prestaciones,
-              direccionEmpresa,
-              Idioma,
-              salarioMax,
+              habilidadesBlandas,
+              habilidadesTecnicas: values,
+              emailEmpresa,
+              visible,
+              ubicacion,
+              nombreEmpresa,
               salarioMin,
-              direccionVacante,
+              salarioMax,
+              idiomaConNivel,
+              municipio,
+              jornadaLaboral,
+              periodoPago,
+              empresaID,
             };
             const result = onChange(modelFields);
             values = result?.habilidadesTecnicas ?? values;
@@ -663,541 +1467,208 @@ export default function VacanteCreateForm(props) {
         ></TextField>
       </ArrayField>
       <TextField
-        label="Genero bdt"
+        label="Email empresa"
         isRequired={false}
         isReadOnly={false}
-        value={generoBDT}
+        value={emailEmpresa}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              nombreVacante,
+              nombre,
               descripcion,
+              numeroPlazas,
+              area,
+              tipoContrato,
+              modalidad,
               diasLaborales,
-              habilidadesBlandas,
-              habilidadesTecnicas,
-              generoBDT: value,
               edadMin,
               edadMax,
-              area,
-              tipoEmpleo,
-              dispViajar,
-              dispRadicar,
+              genero,
+              experienciaLaboral,
               escolaridad,
+              idioma,
+              nivelIdioma,
               prestaciones,
-              direccionEmpresa,
-              Idioma,
-              salarioMax,
-              salarioMin,
-              direccionVacante,
-            };
-            const result = onChange(modelFields);
-            value = result?.generoBDT ?? value;
-          }
-          if (errors.generoBDT?.hasError) {
-            runValidationTasks("generoBDT", value);
-          }
-          setGeneroBDT(value);
-        }}
-        onBlur={() => runValidationTasks("generoBDT", generoBDT)}
-        errorMessage={errors.generoBDT?.errorMessage}
-        hasError={errors.generoBDT?.hasError}
-        {...getOverrideProps(overrides, "generoBDT")}
-      ></TextField>
-      <TextField
-        label="Edad min"
-        isRequired={false}
-        isReadOnly={false}
-        type="number"
-        step="any"
-        value={edadMin}
-        onChange={(e) => {
-          let value = isNaN(parseInt(e.target.value))
-            ? e.target.value
-            : parseInt(e.target.value);
-          if (onChange) {
-            const modelFields = {
-              nombreVacante,
-              descripcion,
-              diasLaborales,
               habilidadesBlandas,
               habilidadesTecnicas,
-              generoBDT,
-              edadMin: value,
-              edadMax,
-              area,
-              tipoEmpleo,
-              dispViajar,
-              dispRadicar,
-              escolaridad,
-              prestaciones,
-              direccionEmpresa,
-              Idioma,
-              salarioMax,
+              emailEmpresa: value,
+              visible,
+              ubicacion,
+              nombreEmpresa,
               salarioMin,
-              direccionVacante,
+              salarioMax,
+              idiomaConNivel,
+              municipio,
+              jornadaLaboral,
+              periodoPago,
+              empresaID,
             };
             const result = onChange(modelFields);
-            value = result?.edadMin ?? value;
+            value = result?.emailEmpresa ?? value;
           }
-          if (errors.edadMin?.hasError) {
-            runValidationTasks("edadMin", value);
+          if (errors.emailEmpresa?.hasError) {
+            runValidationTasks("emailEmpresa", value);
           }
-          setEdadMin(value);
+          setEmailEmpresa(value);
         }}
-        onBlur={() => runValidationTasks("edadMin", edadMin)}
-        errorMessage={errors.edadMin?.errorMessage}
-        hasError={errors.edadMin?.hasError}
-        {...getOverrideProps(overrides, "edadMin")}
-      ></TextField>
-      <TextField
-        label="Edad max"
-        isRequired={false}
-        isReadOnly={false}
-        type="number"
-        step="any"
-        value={edadMax}
-        onChange={(e) => {
-          let value = isNaN(parseInt(e.target.value))
-            ? e.target.value
-            : parseInt(e.target.value);
-          if (onChange) {
-            const modelFields = {
-              nombreVacante,
-              descripcion,
-              diasLaborales,
-              habilidadesBlandas,
-              habilidadesTecnicas,
-              generoBDT,
-              edadMin,
-              edadMax: value,
-              area,
-              tipoEmpleo,
-              dispViajar,
-              dispRadicar,
-              escolaridad,
-              prestaciones,
-              direccionEmpresa,
-              Idioma,
-              salarioMax,
-              salarioMin,
-              direccionVacante,
-            };
-            const result = onChange(modelFields);
-            value = result?.edadMax ?? value;
-          }
-          if (errors.edadMax?.hasError) {
-            runValidationTasks("edadMax", value);
-          }
-          setEdadMax(value);
-        }}
-        onBlur={() => runValidationTasks("edadMax", edadMax)}
-        errorMessage={errors.edadMax?.errorMessage}
-        hasError={errors.edadMax?.hasError}
-        {...getOverrideProps(overrides, "edadMax")}
-      ></TextField>
-      <TextField
-        label="Area"
-        isRequired={false}
-        isReadOnly={false}
-        value={area}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              nombreVacante,
-              descripcion,
-              diasLaborales,
-              habilidadesBlandas,
-              habilidadesTecnicas,
-              generoBDT,
-              edadMin,
-              edadMax,
-              area: value,
-              tipoEmpleo,
-              dispViajar,
-              dispRadicar,
-              escolaridad,
-              prestaciones,
-              direccionEmpresa,
-              Idioma,
-              salarioMax,
-              salarioMin,
-              direccionVacante,
-            };
-            const result = onChange(modelFields);
-            value = result?.area ?? value;
-          }
-          if (errors.area?.hasError) {
-            runValidationTasks("area", value);
-          }
-          setArea(value);
-        }}
-        onBlur={() => runValidationTasks("area", area)}
-        errorMessage={errors.area?.errorMessage}
-        hasError={errors.area?.hasError}
-        {...getOverrideProps(overrides, "area")}
-      ></TextField>
-      <TextField
-        label="Tipo empleo"
-        isRequired={false}
-        isReadOnly={false}
-        value={tipoEmpleo}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              nombreVacante,
-              descripcion,
-              diasLaborales,
-              habilidadesBlandas,
-              habilidadesTecnicas,
-              generoBDT,
-              edadMin,
-              edadMax,
-              area,
-              tipoEmpleo: value,
-              dispViajar,
-              dispRadicar,
-              escolaridad,
-              prestaciones,
-              direccionEmpresa,
-              Idioma,
-              salarioMax,
-              salarioMin,
-              direccionVacante,
-            };
-            const result = onChange(modelFields);
-            value = result?.tipoEmpleo ?? value;
-          }
-          if (errors.tipoEmpleo?.hasError) {
-            runValidationTasks("tipoEmpleo", value);
-          }
-          setTipoEmpleo(value);
-        }}
-        onBlur={() => runValidationTasks("tipoEmpleo", tipoEmpleo)}
-        errorMessage={errors.tipoEmpleo?.errorMessage}
-        hasError={errors.tipoEmpleo?.hasError}
-        {...getOverrideProps(overrides, "tipoEmpleo")}
+        onBlur={() => runValidationTasks("emailEmpresa", emailEmpresa)}
+        errorMessage={errors.emailEmpresa?.errorMessage}
+        hasError={errors.emailEmpresa?.hasError}
+        {...getOverrideProps(overrides, "emailEmpresa")}
       ></TextField>
       <SwitchField
-        label="Disp viajar"
+        label="Visible"
         defaultChecked={false}
         isDisabled={false}
-        isChecked={dispViajar}
+        isChecked={visible}
         onChange={(e) => {
           let value = e.target.checked;
           if (onChange) {
             const modelFields = {
-              nombreVacante,
+              nombre,
               descripcion,
+              numeroPlazas,
+              area,
+              tipoContrato,
+              modalidad,
               diasLaborales,
-              habilidadesBlandas,
-              habilidadesTecnicas,
-              generoBDT,
               edadMin,
               edadMax,
-              area,
-              tipoEmpleo,
-              dispViajar: value,
-              dispRadicar,
+              genero,
+              experienciaLaboral,
               escolaridad,
+              idioma,
+              nivelIdioma,
               prestaciones,
-              direccionEmpresa,
-              Idioma,
-              salarioMax,
-              salarioMin,
-              direccionVacante,
-            };
-            const result = onChange(modelFields);
-            value = result?.dispViajar ?? value;
-          }
-          if (errors.dispViajar?.hasError) {
-            runValidationTasks("dispViajar", value);
-          }
-          setDispViajar(value);
-        }}
-        onBlur={() => runValidationTasks("dispViajar", dispViajar)}
-        errorMessage={errors.dispViajar?.errorMessage}
-        hasError={errors.dispViajar?.hasError}
-        {...getOverrideProps(overrides, "dispViajar")}
-      ></SwitchField>
-      <SwitchField
-        label="Disp radicar"
-        defaultChecked={false}
-        isDisabled={false}
-        isChecked={dispRadicar}
-        onChange={(e) => {
-          let value = e.target.checked;
-          if (onChange) {
-            const modelFields = {
-              nombreVacante,
-              descripcion,
-              diasLaborales,
               habilidadesBlandas,
               habilidadesTecnicas,
-              generoBDT,
-              edadMin,
-              edadMax,
-              area,
-              tipoEmpleo,
-              dispViajar,
-              dispRadicar: value,
-              escolaridad,
-              prestaciones,
-              direccionEmpresa,
-              Idioma,
-              salarioMax,
+              emailEmpresa,
+              visible: value,
+              ubicacion,
+              nombreEmpresa,
               salarioMin,
-              direccionVacante,
+              salarioMax,
+              idiomaConNivel,
+              municipio,
+              jornadaLaboral,
+              periodoPago,
+              empresaID,
             };
             const result = onChange(modelFields);
-            value = result?.dispRadicar ?? value;
+            value = result?.visible ?? value;
           }
-          if (errors.dispRadicar?.hasError) {
-            runValidationTasks("dispRadicar", value);
+          if (errors.visible?.hasError) {
+            runValidationTasks("visible", value);
           }
-          setDispRadicar(value);
+          setVisible(value);
         }}
-        onBlur={() => runValidationTasks("dispRadicar", dispRadicar)}
-        errorMessage={errors.dispRadicar?.errorMessage}
-        hasError={errors.dispRadicar?.hasError}
-        {...getOverrideProps(overrides, "dispRadicar")}
+        onBlur={() => runValidationTasks("visible", visible)}
+        errorMessage={errors.visible?.errorMessage}
+        hasError={errors.visible?.hasError}
+        {...getOverrideProps(overrides, "visible")}
       ></SwitchField>
       <TextField
-        label="Escolaridad"
+        label="Ubicacion"
         isRequired={false}
         isReadOnly={false}
-        value={escolaridad}
+        value={ubicacion}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              nombreVacante,
+              nombre,
               descripcion,
+              numeroPlazas,
+              area,
+              tipoContrato,
+              modalidad,
               diasLaborales,
-              habilidadesBlandas,
-              habilidadesTecnicas,
-              generoBDT,
               edadMin,
               edadMax,
-              area,
-              tipoEmpleo,
-              dispViajar,
-              dispRadicar,
-              escolaridad: value,
+              genero,
+              experienciaLaboral,
+              escolaridad,
+              idioma,
+              nivelIdioma,
               prestaciones,
-              direccionEmpresa,
-              Idioma,
-              salarioMax,
+              habilidadesBlandas,
+              habilidadesTecnicas,
+              emailEmpresa,
+              visible,
+              ubicacion: value,
+              nombreEmpresa,
               salarioMin,
-              direccionVacante,
+              salarioMax,
+              idiomaConNivel,
+              municipio,
+              jornadaLaboral,
+              periodoPago,
+              empresaID,
             };
             const result = onChange(modelFields);
-            value = result?.escolaridad ?? value;
+            value = result?.ubicacion ?? value;
           }
-          if (errors.escolaridad?.hasError) {
-            runValidationTasks("escolaridad", value);
+          if (errors.ubicacion?.hasError) {
+            runValidationTasks("ubicacion", value);
           }
-          setEscolaridad(value);
+          setUbicacion(value);
         }}
-        onBlur={() => runValidationTasks("escolaridad", escolaridad)}
-        errorMessage={errors.escolaridad?.errorMessage}
-        hasError={errors.escolaridad?.hasError}
-        {...getOverrideProps(overrides, "escolaridad")}
+        onBlur={() => runValidationTasks("ubicacion", ubicacion)}
+        errorMessage={errors.ubicacion?.errorMessage}
+        hasError={errors.ubicacion?.hasError}
+        {...getOverrideProps(overrides, "ubicacion")}
       ></TextField>
       <TextField
-        label="Prestaciones"
+        label="Nombre empresa"
         isRequired={false}
         isReadOnly={false}
-        value={prestaciones}
+        value={nombreEmpresa}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              nombreVacante,
+              nombre,
               descripcion,
+              numeroPlazas,
+              area,
+              tipoContrato,
+              modalidad,
               diasLaborales,
-              habilidadesBlandas,
-              habilidadesTecnicas,
-              generoBDT,
               edadMin,
               edadMax,
-              area,
-              tipoEmpleo,
-              dispViajar,
-              dispRadicar,
+              genero,
+              experienciaLaboral,
               escolaridad,
-              prestaciones: value,
-              direccionEmpresa,
-              Idioma,
-              salarioMax,
-              salarioMin,
-              direccionVacante,
-            };
-            const result = onChange(modelFields);
-            value = result?.prestaciones ?? value;
-          }
-          if (errors.prestaciones?.hasError) {
-            runValidationTasks("prestaciones", value);
-          }
-          setPrestaciones(value);
-        }}
-        onBlur={() => runValidationTasks("prestaciones", prestaciones)}
-        errorMessage={errors.prestaciones?.errorMessage}
-        hasError={errors.prestaciones?.hasError}
-        {...getOverrideProps(overrides, "prestaciones")}
-      ></TextField>
-      <TextField
-        label="Direccion empresa"
-        isRequired={false}
-        isReadOnly={false}
-        value={direccionEmpresa}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              nombreVacante,
-              descripcion,
-              diasLaborales,
-              habilidadesBlandas,
-              habilidadesTecnicas,
-              generoBDT,
-              edadMin,
-              edadMax,
-              area,
-              tipoEmpleo,
-              dispViajar,
-              dispRadicar,
-              escolaridad,
+              idioma,
+              nivelIdioma,
               prestaciones,
-              direccionEmpresa: value,
-              Idioma,
-              salarioMax,
-              salarioMin,
-              direccionVacante,
-            };
-            const result = onChange(modelFields);
-            value = result?.direccionEmpresa ?? value;
-          }
-          if (errors.direccionEmpresa?.hasError) {
-            runValidationTasks("direccionEmpresa", value);
-          }
-          setDireccionEmpresa(value);
-        }}
-        onBlur={() => runValidationTasks("direccionEmpresa", direccionEmpresa)}
-        errorMessage={errors.direccionEmpresa?.errorMessage}
-        hasError={errors.direccionEmpresa?.hasError}
-        {...getOverrideProps(overrides, "direccionEmpresa")}
-      ></TextField>
-      <ArrayField
-        onChange={async (items) => {
-          let values = items;
-          if (onChange) {
-            const modelFields = {
-              nombreVacante,
-              descripcion,
-              diasLaborales,
               habilidadesBlandas,
               habilidadesTecnicas,
-              generoBDT,
-              edadMin,
-              edadMax,
-              area,
-              tipoEmpleo,
-              dispViajar,
-              dispRadicar,
-              escolaridad,
-              prestaciones,
-              direccionEmpresa,
-              Idioma: values,
+              emailEmpresa,
+              visible,
+              ubicacion,
+              nombreEmpresa: value,
+              salarioMin,
               salarioMax,
-              salarioMin,
-              direccionVacante,
+              idiomaConNivel,
+              municipio,
+              jornadaLaboral,
+              periodoPago,
+              empresaID,
             };
             const result = onChange(modelFields);
-            values = result?.Idioma ?? values;
+            value = result?.nombreEmpresa ?? value;
           }
-          setIdioma(values);
-          setCurrentIdiomaValue("");
+          if (errors.nombreEmpresa?.hasError) {
+            runValidationTasks("nombreEmpresa", value);
+          }
+          setNombreEmpresa(value);
         }}
-        currentFieldValue={currentIdiomaValue}
-        label={"Idioma"}
-        items={Idioma}
-        hasError={errors?.Idioma?.hasError}
-        runValidationTasks={async () =>
-          await runValidationTasks("Idioma", currentIdiomaValue)
-        }
-        errorMessage={errors?.Idioma?.errorMessage}
-        setFieldValue={setCurrentIdiomaValue}
-        inputFieldRef={IdiomaRef}
-        defaultFieldValue={""}
-      >
-        <TextField
-          label="Idioma"
-          isRequired={false}
-          isReadOnly={false}
-          value={currentIdiomaValue}
-          onChange={(e) => {
-            let { value } = e.target;
-            if (errors.Idioma?.hasError) {
-              runValidationTasks("Idioma", value);
-            }
-            setCurrentIdiomaValue(value);
-          }}
-          onBlur={() => runValidationTasks("Idioma", currentIdiomaValue)}
-          errorMessage={errors.Idioma?.errorMessage}
-          hasError={errors.Idioma?.hasError}
-          ref={IdiomaRef}
-          labelHidden={true}
-          {...getOverrideProps(overrides, "Idioma")}
-        ></TextField>
-      </ArrayField>
-      <TextField
-        label="Salario max"
-        isRequired={false}
-        isReadOnly={false}
-        type="number"
-        step="any"
-        value={salarioMax}
-        onChange={(e) => {
-          let value = isNaN(parseInt(e.target.value))
-            ? e.target.value
-            : parseInt(e.target.value);
-          if (onChange) {
-            const modelFields = {
-              nombreVacante,
-              descripcion,
-              diasLaborales,
-              habilidadesBlandas,
-              habilidadesTecnicas,
-              generoBDT,
-              edadMin,
-              edadMax,
-              area,
-              tipoEmpleo,
-              dispViajar,
-              dispRadicar,
-              escolaridad,
-              prestaciones,
-              direccionEmpresa,
-              Idioma,
-              salarioMax: value,
-              salarioMin,
-              direccionVacante,
-            };
-            const result = onChange(modelFields);
-            value = result?.salarioMax ?? value;
-          }
-          if (errors.salarioMax?.hasError) {
-            runValidationTasks("salarioMax", value);
-          }
-          setSalarioMax(value);
-        }}
-        onBlur={() => runValidationTasks("salarioMax", salarioMax)}
-        errorMessage={errors.salarioMax?.errorMessage}
-        hasError={errors.salarioMax?.hasError}
-        {...getOverrideProps(overrides, "salarioMax")}
+        onBlur={() => runValidationTasks("nombreEmpresa", nombreEmpresa)}
+        errorMessage={errors.nombreEmpresa?.errorMessage}
+        hasError={errors.nombreEmpresa?.hasError}
+        {...getOverrideProps(overrides, "nombreEmpresa")}
       ></TextField>
       <TextField
         label="Salario min"
@@ -1212,25 +1683,34 @@ export default function VacanteCreateForm(props) {
             : parseInt(e.target.value);
           if (onChange) {
             const modelFields = {
-              nombreVacante,
+              nombre,
               descripcion,
+              numeroPlazas,
+              area,
+              tipoContrato,
+              modalidad,
               diasLaborales,
-              habilidadesBlandas,
-              habilidadesTecnicas,
-              generoBDT,
               edadMin,
               edadMax,
-              area,
-              tipoEmpleo,
-              dispViajar,
-              dispRadicar,
+              genero,
+              experienciaLaboral,
               escolaridad,
+              idioma,
+              nivelIdioma,
               prestaciones,
-              direccionEmpresa,
-              Idioma,
-              salarioMax,
+              habilidadesBlandas,
+              habilidadesTecnicas,
+              emailEmpresa,
+              visible,
+              ubicacion,
+              nombreEmpresa,
               salarioMin: value,
-              direccionVacante,
+              salarioMax,
+              idiomaConNivel,
+              municipio,
+              jornadaLaboral,
+              periodoPago,
+              empresaID,
             };
             const result = onChange(modelFields);
             value = result?.salarioMin ?? value;
@@ -1246,46 +1726,337 @@ export default function VacanteCreateForm(props) {
         {...getOverrideProps(overrides, "salarioMin")}
       ></TextField>
       <TextField
-        label="Direccion vacante"
+        label="Salario max"
         isRequired={false}
         isReadOnly={false}
-        value={direccionVacante}
+        type="number"
+        step="any"
+        value={salarioMax}
+        onChange={(e) => {
+          let value = isNaN(parseInt(e.target.value))
+            ? e.target.value
+            : parseInt(e.target.value);
+          if (onChange) {
+            const modelFields = {
+              nombre,
+              descripcion,
+              numeroPlazas,
+              area,
+              tipoContrato,
+              modalidad,
+              diasLaborales,
+              edadMin,
+              edadMax,
+              genero,
+              experienciaLaboral,
+              escolaridad,
+              idioma,
+              nivelIdioma,
+              prestaciones,
+              habilidadesBlandas,
+              habilidadesTecnicas,
+              emailEmpresa,
+              visible,
+              ubicacion,
+              nombreEmpresa,
+              salarioMin,
+              salarioMax: value,
+              idiomaConNivel,
+              municipio,
+              jornadaLaboral,
+              periodoPago,
+              empresaID,
+            };
+            const result = onChange(modelFields);
+            value = result?.salarioMax ?? value;
+          }
+          if (errors.salarioMax?.hasError) {
+            runValidationTasks("salarioMax", value);
+          }
+          setSalarioMax(value);
+        }}
+        onBlur={() => runValidationTasks("salarioMax", salarioMax)}
+        errorMessage={errors.salarioMax?.errorMessage}
+        hasError={errors.salarioMax?.hasError}
+        {...getOverrideProps(overrides, "salarioMax")}
+      ></TextField>
+      <ArrayField
+        onChange={async (items) => {
+          let values = items;
+          if (onChange) {
+            const modelFields = {
+              nombre,
+              descripcion,
+              numeroPlazas,
+              area,
+              tipoContrato,
+              modalidad,
+              diasLaborales,
+              edadMin,
+              edadMax,
+              genero,
+              experienciaLaboral,
+              escolaridad,
+              idioma,
+              nivelIdioma,
+              prestaciones,
+              habilidadesBlandas,
+              habilidadesTecnicas,
+              emailEmpresa,
+              visible,
+              ubicacion,
+              nombreEmpresa,
+              salarioMin,
+              salarioMax,
+              idiomaConNivel: values,
+              municipio,
+              jornadaLaboral,
+              periodoPago,
+              empresaID,
+            };
+            const result = onChange(modelFields);
+            values = result?.idiomaConNivel ?? values;
+          }
+          setIdiomaConNivel(values);
+          setCurrentIdiomaConNivelValue("");
+        }}
+        currentFieldValue={currentIdiomaConNivelValue}
+        label={"Idioma con nivel"}
+        items={idiomaConNivel}
+        hasError={errors?.idiomaConNivel?.hasError}
+        runValidationTasks={async () =>
+          await runValidationTasks("idiomaConNivel", currentIdiomaConNivelValue)
+        }
+        errorMessage={errors?.idiomaConNivel?.errorMessage}
+        setFieldValue={setCurrentIdiomaConNivelValue}
+        inputFieldRef={idiomaConNivelRef}
+        defaultFieldValue={""}
+      >
+        <TextField
+          label="Idioma con nivel"
+          isRequired={false}
+          isReadOnly={false}
+          value={currentIdiomaConNivelValue}
+          onChange={(e) => {
+            let { value } = e.target;
+            if (errors.idiomaConNivel?.hasError) {
+              runValidationTasks("idiomaConNivel", value);
+            }
+            setCurrentIdiomaConNivelValue(value);
+          }}
+          onBlur={() =>
+            runValidationTasks("idiomaConNivel", currentIdiomaConNivelValue)
+          }
+          errorMessage={errors.idiomaConNivel?.errorMessage}
+          hasError={errors.idiomaConNivel?.hasError}
+          ref={idiomaConNivelRef}
+          labelHidden={true}
+          {...getOverrideProps(overrides, "idiomaConNivel")}
+        ></TextField>
+      </ArrayField>
+      <TextField
+        label="Municipio"
+        isRequired={false}
+        isReadOnly={false}
+        value={municipio}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              nombreVacante,
+              nombre,
               descripcion,
+              numeroPlazas,
+              area,
+              tipoContrato,
+              modalidad,
               diasLaborales,
-              habilidadesBlandas,
-              habilidadesTecnicas,
-              generoBDT,
               edadMin,
               edadMax,
-              area,
-              tipoEmpleo,
-              dispViajar,
-              dispRadicar,
+              genero,
+              experienciaLaboral,
               escolaridad,
+              idioma,
+              nivelIdioma,
               prestaciones,
-              direccionEmpresa,
-              Idioma,
-              salarioMax,
+              habilidadesBlandas,
+              habilidadesTecnicas,
+              emailEmpresa,
+              visible,
+              ubicacion,
+              nombreEmpresa,
               salarioMin,
-              direccionVacante: value,
+              salarioMax,
+              idiomaConNivel,
+              municipio: value,
+              jornadaLaboral,
+              periodoPago,
+              empresaID,
             };
             const result = onChange(modelFields);
-            value = result?.direccionVacante ?? value;
+            value = result?.municipio ?? value;
           }
-          if (errors.direccionVacante?.hasError) {
-            runValidationTasks("direccionVacante", value);
+          if (errors.municipio?.hasError) {
+            runValidationTasks("municipio", value);
           }
-          setDireccionVacante(value);
+          setMunicipio(value);
         }}
-        onBlur={() => runValidationTasks("direccionVacante", direccionVacante)}
-        errorMessage={errors.direccionVacante?.errorMessage}
-        hasError={errors.direccionVacante?.hasError}
-        {...getOverrideProps(overrides, "direccionVacante")}
+        onBlur={() => runValidationTasks("municipio", municipio)}
+        errorMessage={errors.municipio?.errorMessage}
+        hasError={errors.municipio?.hasError}
+        {...getOverrideProps(overrides, "municipio")}
+      ></TextField>
+      <TextField
+        label="Jornada laboral"
+        isRequired={false}
+        isReadOnly={false}
+        value={jornadaLaboral}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              nombre,
+              descripcion,
+              numeroPlazas,
+              area,
+              tipoContrato,
+              modalidad,
+              diasLaborales,
+              edadMin,
+              edadMax,
+              genero,
+              experienciaLaboral,
+              escolaridad,
+              idioma,
+              nivelIdioma,
+              prestaciones,
+              habilidadesBlandas,
+              habilidadesTecnicas,
+              emailEmpresa,
+              visible,
+              ubicacion,
+              nombreEmpresa,
+              salarioMin,
+              salarioMax,
+              idiomaConNivel,
+              municipio,
+              jornadaLaboral: value,
+              periodoPago,
+              empresaID,
+            };
+            const result = onChange(modelFields);
+            value = result?.jornadaLaboral ?? value;
+          }
+          if (errors.jornadaLaboral?.hasError) {
+            runValidationTasks("jornadaLaboral", value);
+          }
+          setJornadaLaboral(value);
+        }}
+        onBlur={() => runValidationTasks("jornadaLaboral", jornadaLaboral)}
+        errorMessage={errors.jornadaLaboral?.errorMessage}
+        hasError={errors.jornadaLaboral?.hasError}
+        {...getOverrideProps(overrides, "jornadaLaboral")}
+      ></TextField>
+      <TextField
+        label="Periodo pago"
+        isRequired={false}
+        isReadOnly={false}
+        value={periodoPago}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              nombre,
+              descripcion,
+              numeroPlazas,
+              area,
+              tipoContrato,
+              modalidad,
+              diasLaborales,
+              edadMin,
+              edadMax,
+              genero,
+              experienciaLaboral,
+              escolaridad,
+              idioma,
+              nivelIdioma,
+              prestaciones,
+              habilidadesBlandas,
+              habilidadesTecnicas,
+              emailEmpresa,
+              visible,
+              ubicacion,
+              nombreEmpresa,
+              salarioMin,
+              salarioMax,
+              idiomaConNivel,
+              municipio,
+              jornadaLaboral,
+              periodoPago: value,
+              empresaID,
+            };
+            const result = onChange(modelFields);
+            value = result?.periodoPago ?? value;
+          }
+          if (errors.periodoPago?.hasError) {
+            runValidationTasks("periodoPago", value);
+          }
+          setPeriodoPago(value);
+        }}
+        onBlur={() => runValidationTasks("periodoPago", periodoPago)}
+        errorMessage={errors.periodoPago?.errorMessage}
+        hasError={errors.periodoPago?.hasError}
+        {...getOverrideProps(overrides, "periodoPago")}
+      ></TextField>
+      <TextField
+        label="Empresa id"
+        isRequired={true}
+        isReadOnly={false}
+        value={empresaID}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              nombre,
+              descripcion,
+              numeroPlazas,
+              area,
+              tipoContrato,
+              modalidad,
+              diasLaborales,
+              edadMin,
+              edadMax,
+              genero,
+              experienciaLaboral,
+              escolaridad,
+              idioma,
+              nivelIdioma,
+              prestaciones,
+              habilidadesBlandas,
+              habilidadesTecnicas,
+              emailEmpresa,
+              visible,
+              ubicacion,
+              nombreEmpresa,
+              salarioMin,
+              salarioMax,
+              idiomaConNivel,
+              municipio,
+              jornadaLaboral,
+              periodoPago,
+              empresaID: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.empresaID ?? value;
+          }
+          if (errors.empresaID?.hasError) {
+            runValidationTasks("empresaID", value);
+          }
+          setEmpresaID(value);
+        }}
+        onBlur={() => runValidationTasks("empresaID", empresaID)}
+        errorMessage={errors.empresaID?.errorMessage}
+        hasError={errors.empresaID?.hasError}
+        {...getOverrideProps(overrides, "empresaID")}
       ></TextField>
       <Flex
         justifyContent="space-between"
