@@ -1,13 +1,13 @@
-import { Postulados } from '../../components/Empresa/Postulados'
-import { Header } from '../../components/Header'
-import { Footer } from '../../landing/Footer'
+import { Postulados } from "../../components/Empresa/Postulados";
+import { Header } from "../../components/Header";
+import { Footer } from "../../landing/Footer";
 
 export function VacantesPostulados() {
   return (
     <>
-      <Header nombreDelGrupo='Empresa' />
+      <Header nombreDelGrupo="Empresa" />
       <Postulados />
       <Footer />
     </>
-  )
+  );
 }

@@ -38,16 +38,32 @@ export function Footer() {
         {/**Enlaces*/}
         <Flex direction="column" textColor={"white"}>
           <h2>Legal</h2>
-          <Link href="/" style={{ textDecoration: "underline" }}>
+          <Link
+            href="/terminos-bdt"
+            target="_blank"
+            style={{ textDecoration: "underline" }}
+          >
             Términos y condiciones de usuarios
           </Link>
-          <Link href="/" style={{ textDecoration: "underline" }}>
+          <Link
+            href="/aviso-bdt"
+            target="_blank"
+            style={{ textDecoration: "underline" }}
+          >
             Aviso de privacidad de usuarios
           </Link>
-          <Link href="/" style={{ textDecoration: "underline" }}>
+          <Link
+            href="/terminos-empresa"
+            target="_blank"
+            style={{ textDecoration: "underline" }}
+          >
             Términos y condiciones de empresas
           </Link>
-          <Link href="/" style={{ textDecoration: "underline" }}>
+          <Link
+            href="/aviso-empresa"
+            target="_blank"
+            style={{ textDecoration: "underline" }}
+          >
             Aviso de privacidad de empresas
           </Link>
         </Flex>
@@ -64,9 +80,18 @@ export function Footer() {
         <Flex color="white">@ Derechos reservados por Red Laboral</Flex>
         {/**Redes */}
         <Flex color="white" justify="end">
-        <a href="https://www.facebook.com/profile.php?id=61556749311225" target="_blank"><Facebook /></a>
-        <a href="https://www.instagram.com/redlaboral2/" target="_blank"><Instagram /></a>
-        <a href="https://twitter.com/RedLaboral56859" target="_blank"><X /></a>
+          <a
+            href="https://www.facebook.com/profile.php?id=61556749311225"
+            target="_blank"
+          >
+            <Facebook />
+          </a>
+          <a href="https://www.instagram.com/redlaboral2/" target="_blank">
+            <Instagram />
+          </a>
+          <a href="https://twitter.com/RedLaboral56859" target="_blank">
+            <X />
+          </a>
         </Flex>
       </Grid>
     </>

@@ -25,6 +25,10 @@ import Error from './components/Error'
 import { BuscarEmpleo } from './pages/BDT/BuscarEmpleo'
 import { OportunidadesLaborales } from './pages/BDT/OportunidadesLaborales'
 import { VacantesPostulados } from './pages/Empresa/VacantesPostulados'
+import { AvisoBdt } from './components/AvisosTerminos/AvisoBdt'
+import { AvisoEmpresa } from './components/AvisosTerminos/AvisoEmpresa'
+import { TerminosBdt } from './components/AvisosTerminos/TerminosBdt'
+import { TerminosEmpresa } from './components/AvisosTerminos/TerminosEmpresa'
 
 Amplify.configure(awsExports)
 
@@ -78,6 +82,23 @@ const router = createBrowserRouter([
   {
     path: 'buscar-empleo',
     element: <BuscarEmpleo />
+  },
+  //Terminos y condiciones empresa y bdt
+  {
+    path: 'aviso-bdt',
+    element: <AvisoBdt />
+  },
+  {
+    path: 'aviso-empresa',
+    element: <AvisoEmpresa />
+  },
+  {
+    path: 'terminos-bdt',
+    element: <TerminosBdt />
+  },
+  {
+    path: 'terminos-empresa',
+    element: <TerminosEmpresa />
   },
   //Vacante
   {
