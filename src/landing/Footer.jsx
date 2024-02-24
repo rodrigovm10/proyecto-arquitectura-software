@@ -1,8 +1,12 @@
 import { Grid, Link, Image, Flex } from "@chakra-ui/react";
-import logo from "../img/logo.png";
+import logo from "../img/logo-sinfondo.png";
 import { Facebook, Instagram, X } from "../assets/Icons";
+import { useLocation } from "react-router-dom";
 
 export function Footer() {
+  const location = useLocation();
+
+  const isActive = (path) => location.pathname === path;
   return (
     <>
       <Grid
@@ -30,9 +34,30 @@ export function Footer() {
         {/**Nav */}
         <Flex direction="column" textColor={"white"}>
           <h2>Navegación</h2>
-          <Link href="/">Inicio</Link>
-          <Link href="/login-bdt">Buscadores de trabajo</Link>
-          <Link href="/login-empresa">Empresas</Link>
+          <Link
+            color="#fff"
+            href="/"
+            _hover={{ color: "#79f0f7" }}
+            style={isActive("/") ? { color: "#79f0f7" } : null}
+          >
+            Inicio
+          </Link>
+          <Link
+            color="#fff"
+            href="/iniciop-bdt"
+            _hover={{ color: "#79f0f7" }}
+            style={isActive("/iniciop-bdt") ? { color: "#79f0f7" } : null}
+          >
+            Buscadores de trabajo
+          </Link>
+          <Link
+            color="#fff"
+            href="/login-empresa"
+            _hover={{ color: "#79f0f7" }}
+            style={isActive("/login-empresa") ? { color: "#79f0f7" } : null}
+          >
+            Empresas
+          </Link>
         </Flex>
 
         {/**Enlaces*/}
@@ -42,6 +67,7 @@ export function Footer() {
             href="/terminos-bdt"
             target="_blank"
             style={{ textDecoration: "underline" }}
+            _hover={{ color: "#79f0f7" }}
           >
             Términos y condiciones de usuarios
           </Link>
@@ -49,6 +75,7 @@ export function Footer() {
             href="/aviso-bdt"
             target="_blank"
             style={{ textDecoration: "underline" }}
+            _hover={{ color: "#79f0f7" }}
           >
             Aviso de privacidad de usuarios
           </Link>
@@ -56,6 +83,7 @@ export function Footer() {
             href="/terminos-empresa"
             target="_blank"
             style={{ textDecoration: "underline" }}
+            _hover={{ color: "#79f0f7" }}
           >
             Términos y condiciones de empresas
           </Link>
@@ -63,6 +91,7 @@ export function Footer() {
             href="/aviso-empresa"
             target="_blank"
             style={{ textDecoration: "underline" }}
+            _hover={{ color: "#79f0f7" }}
           >
             Aviso de privacidad de empresas
           </Link>
@@ -73,8 +102,7 @@ export function Footer() {
           <h2>Contacto</h2>
           <p>León Gto, NY 10012, US</p>
           <p>redlabolal@gmail.com</p>
-          <p>+ 01 123 675 78</p>
-          <p>+ 477 688 89 09</p>
+          <p>477 688 89 09</p>
         </Flex>
         {/**Derechos */}
         <Flex color="white">@ Derechos reservados por Red Laboral</Flex>

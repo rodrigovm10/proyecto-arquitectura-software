@@ -1,4 +1,11 @@
-import { Box, Text, Heading, VStack, Center } from "@chakra-ui/react";
+import {
+  Box,
+  Text,
+  Heading,
+  VStack,
+  ListItem,
+  UnorderedList,
+} from "@chakra-ui/react";
 import { Footer } from "../../landing/Footer";
 import { Header } from "../Header";
 
@@ -18,21 +25,27 @@ export function AvisoBdt() {
             un usuario, se le solicitará los siguientes datos personales en los
             diversos apartados que a continuación se señalan: Generación de
             usuario: Correo electrónico Generación de contraseña se recabarán
-            los siguientes datos personales: • Nombre • Clave Única de Registro
-            de Población (CURP) • Número de teléfono • Género • Fecha de
-            nacimiento • Domicilio (calle, municipio, número, colonia, C.P.) •
-            Registro Federal de Contribuyentes (RFC) • Número de Seguridad
-            Social • Constancia de situación fiscal
+            los siguientes datos personales:
+            <UnorderedList p={5}>
+              <ListItem>Nombre</ListItem>
+              <ListItem>Clave Única de Registro de Población (CURP)</ListItem>
+              <ListItem>Número de teléfono</ListItem>
+              <ListItem>Género</ListItem>
+              <ListItem>Fecha de nacimineto</ListItem>
+              <ListItem>
+                Domicilio (calle, municipio, número, colonia, C.P.)
+              </ListItem>
+              <ListItem>Género</ListItem>
+            </UnorderedList>
           </Text>
           <Text>
-            Al visitar nuestro sitio y/o comprar algo de nosotros, participas en
-            nuestro “Servicio” y aceptas los siguientes términos y condiciones
-            (“Términos de Servicio”, “Términos”), incluidos todos los términos y
-            condiciones adicionales y las políticas a las que se hace referencia
-            en el presente documento y/o disponible a través de hipervínculos.
-            Estas Condiciones de Servicio se aplican a todos los usuarios del
-            sitio, incluyendo sin limitación a usuarios que sean navegadores,
-            proveedores, clientes, comerciantes, y/o colaboradores de contenido.
+            Al visitar nuestro sitio, aceptas los siguientes avisos de
+            privacidad y Avisos, incluidos todos los avisos de privacidad
+            adicionales y las políticas a las que se hace referencia en el
+            presente documento y/o disponible a través de hipervínculos. Estas
+            Avisos se aplican a todos los usuarios del sitio, incluyendo sin
+            limitación a usuarios que sean navegadores, proveedores, clientes,
+            comerciantes, y/o colaboradores de contenido.
           </Text>
         </VStack>
       </Box>

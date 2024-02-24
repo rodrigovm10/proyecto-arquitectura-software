@@ -1,4 +1,11 @@
-import { Box, Flex, Heading, Image, useColorMode } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Heading,
+  Image,
+  useColorMode,
+  Text,
+} from "@chakra-ui/react";
 import logosinfondo from "../../img/logo-sinfondo.png";
 import logo from "../../img/logo-blanco.png";
 import { ButtonVacante } from "../ButtonVacante";
@@ -13,6 +20,7 @@ export function SinVacantes({ children, hasButton = true }) {
       mt="5rem"
       mb="5rem"
       gap="1rem"
+      w="20rem"
     >
       <Box>
         <Image

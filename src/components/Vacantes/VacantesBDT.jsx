@@ -18,7 +18,7 @@ export function VacantesBDT() {
 
   return (
     <>
-      <Stack mt="2rem" ml="2rem">
+      <Stack mt="2rem" p="1rem">
         <Heading as="h2" size="2xl">
           Vacantes
         </Heading>
@@ -36,7 +36,9 @@ export function VacantesBDT() {
       </Stack>
       {!vacantesVisibles?.length ? (
         <SinVacantes hasButton={false}>
-          No hay vacantes con los filtros proporcionados
+          <Text p={5} justifyItems="center" alignItems="center">
+            No hay vacantes con dichos filtros
+          </Text>
         </SinVacantes>
       ) : (
         <VacanteBDT vacantes={vacantesVisibles} />
