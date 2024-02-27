@@ -36,7 +36,7 @@ export function NavMedium() {
           alignItems="center"
           textAlign="center"
         >
-          <Heading fontSize={{ base: "2xl", md: "4xl", lg: "4rem" }} mb={4}>
+          <Heading fontSize={{ base: "2xl", md: "4xl", lg: "5rem" }} mb={4}>
             Únete a nuestra comunidad de red de trabajo.
           </Heading>
           <Text fontSize={{ base: "lg", lg: "lg" }} mb={4}>
@@ -143,27 +143,7 @@ export function NavMedium() {
           md: "repeat(1, 1fr)",
           lg: "repeat(2, 1fr)",
         }}
-      >
-        <Card border="0" background={"transparent"} boxShadow="none">
-          <Heading fontSize={{ base: "2xl", md: "4xl", lg: "56px" }} mb={4}>
-            Se parte de RedLaboral
-          </Heading>
-          <Text fontSize={{ base: "md", lg: "lg" }} mb={4}>
-            Enlazamos empresas y profesionales a través de una plataforma
-            sencilla y amigable.
-          </Text>
-        </Card>
-
-        <Card border="0" background={"transparent"} boxShadow="none">
-          <Heading fontSize={{ base: "2xl", md: "4xl", lg: "56px" }} mb={4}>
-            Se parte de RedLaboral
-          </Heading>
-          <Text fontSize={{ base: "md", lg: "lg" }} mb={4}>
-            Enlazamos empresas y profesionales a través de una plataforma
-            sencilla y amigable.
-          </Text>
-        </Card>
-      </SimpleGrid>
+      ></SimpleGrid>
     </Box>
   );
 }
