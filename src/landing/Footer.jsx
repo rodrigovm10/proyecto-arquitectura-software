@@ -1,4 +1,4 @@
-import { Grid, Link, Image, Flex } from "@chakra-ui/react";
+import { Grid, Link, Image, Flex, Text } from "@chakra-ui/react";
 import logo from "../img/logo-sinfondo.png";
 import { Facebook, Instagram, X } from "../assets/Icons";
 import { useLocation } from "react-router-dom";
@@ -10,6 +10,7 @@ export function Footer() {
   return (
     <>
       <Grid
+        fontSize={{ base: "lg", md: "sm", lg: "xl" }}
         templateColumns={{
           base: "repeat(1, 1fr)",
           md: "repeat(3, 1fr)",
@@ -25,10 +26,10 @@ export function Footer() {
           <Link href="/">
             <Image src={logo} width={{ base: "150px", md: "200px" }} />
           </Link>
-          <p>
+          <Text textAlign="justify">
             Únete a nuestra comunidad de red de trabajo. Enlazamos empresas y
             profesionales a través de una plataforma sencilla y amigable.
-          </p>
+          </Text>
         </Flex>
 
         {/**Nav */}
