@@ -30,6 +30,7 @@ import { AvisoBdt } from './components/AvisosTerminos/AvisoBdt'
 import { AvisoEmpresa } from './components/AvisosTerminos/AvisoEmpresa'
 import { TerminosBdt } from './components/AvisosTerminos/TerminosBdt'
 import { TerminosEmpresa } from './components/AvisosTerminos/TerminosEmpresa'
+import { MapaSitio } from './components/MapaSitio'
 
 Amplify.configure(awsExports)
 
@@ -131,7 +132,15 @@ const router = createBrowserRouter([
     )
   },
   {
+    path: '/mapa-sitio',
+    element: <MapaSitio />
+  }, ,
+  {
     path: '/error',
+    element: <Error />
+  },
+  {
+    path: '/*',
     element: <Error />
   }
 ])

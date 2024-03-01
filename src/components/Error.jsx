@@ -6,7 +6,7 @@ import {
   Image,
   Center,
 } from "@chakra-ui/react";
-import { ArrowBackIcon } from "@chakra-ui/icons"; // Importa el ícono de flecha hacia atrás
+import { ArrowBackIcon } from "@chakra-ui/icons";
 
 import logo from "../img/logo-sinfondo.png";
 
@@ -19,7 +19,7 @@ function Error() {
     <Flex direction="column" align="center" justify="center" minH="100vh">
       <Center>
         <Container>
-          <Image src={logo} alt="Coneecta GTO" />
+          <Image src={logo} alt="RedLaboral" />
         </Container>
       </Center>
       <Heading as="h1" size="2xl" color="gray.500" textAlign="center" mt={8}>
@@ -31,13 +31,14 @@ function Error() {
       </Heading>
 
       <Heading as="h3" size="md" color="gray.500" textAlign="center" mt={4}>
-        Lo sentimos, no se ha encontrado la página solicitada
+        La página que está buscando no existe o se ha movido. Vuelve a la página
+        de inicio.
       </Heading>
 
       <Button
         onClick={goBack}
         colorScheme="blue"
-        leftIcon={<ArrowBackIcon />} // Agrega el ícono de flecha hacia atrás al botón
+        leftIcon={<ArrowBackIcon />}
         mt={8}
       >
         Volver a la página anterior

@@ -34,7 +34,7 @@ export function Footer() {
 
         {/**Nav */}
         <Flex direction="column" textColor={"white"}>
-          <h2>Navegación</h2>
+          <Text>Navegación</Text>
           <Link
             color="#fff"
             href="/"
@@ -63,11 +63,11 @@ export function Footer() {
 
         {/**Enlaces*/}
         <Flex direction="column" textColor={"white"}>
-          <h2>Legal</h2>
+          <Text>Legal</Text>
           <Link
             href="/terminos-bdt"
             target="_blank"
-            style={{ textDecoration: "underline" }}
+            style={isActive("/terminos-bdt") ? { color: "#79f0f7" } : null}
             _hover={{ color: "#79f0f7" }}
           >
             Términos y condiciones de usuarios
@@ -75,7 +75,7 @@ export function Footer() {
           <Link
             href="/aviso-bdt"
             target="_blank"
-            style={{ textDecoration: "underline" }}
+            style={isActive("/aviso-bdt") ? { color: "#79f0f7" } : null}
             _hover={{ color: "#79f0f7" }}
           >
             Aviso de privacidad de usuarios
@@ -83,7 +83,7 @@ export function Footer() {
           <Link
             href="/terminos-empresa"
             target="_blank"
-            style={{ textDecoration: "underline" }}
+            style={isActive("/terminos-empresa") ? { color: "#79f0f7" } : null}
             _hover={{ color: "#79f0f7" }}
           >
             Términos y condiciones de empresas
@@ -91,7 +91,7 @@ export function Footer() {
           <Link
             href="/aviso-empresa"
             target="_blank"
-            style={{ textDecoration: "underline" }}
+            style={isActive("/aviso-empresa") ? { color: "#79f0f7" } : null}
             _hover={{ color: "#79f0f7" }}
           >
             Aviso de privacidad de empresas
@@ -100,10 +100,19 @@ export function Footer() {
 
         {/**Contact */}
         <Flex direction="column" textColor={"white"}>
-          <h2>Contacto</h2>
-          <p>León Gto, NY 10012, US</p>
-          <p>redlabolal@gmail.com</p>
-          <p>477 688 89 09</p>
+          <Text>Contacto</Text>
+          <Text>León Gto, NY 10012, US</Text>
+          <Text>redlabolal@gmail.com</Text>
+          <Text>477 688 89 09</Text>
+
+          <Link
+            color="#fff"
+            href="/mapa-sitio"
+            _hover={{ color: "#79f0f7" }}
+            style={isActive("/mapa-sitio") ? { color: "#79f0f7" } : null}
+          >
+            Mapa del sitio
+          </Link>
         </Flex>
         {/**Derechos */}
         <Flex color="white">@ Derechos reservados por Red Laboral</Flex>
